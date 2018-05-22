@@ -1,0 +1,600 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		959D89A520B393B300E17F2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959D89A420B393B300E17F2E /* AppDelegate.swift */; };
+		959D89A720B393B300E17F2E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959D89A620B393B300E17F2E /* ViewController.swift */; };
+		959D89AA20B393B300E17F2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 959D89A820B393B300E17F2E /* Main.storyboard */; };
+		959D89AD20B393B300E17F2E /* thebeautyapp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 959D89AB20B393B300E17F2E /* thebeautyapp.xcdatamodeld */; };
+		959D89AF20B393B400E17F2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 959D89AE20B393B400E17F2E /* Assets.xcassets */; };
+		959D89B220B393B400E17F2E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 959D89B020B393B400E17F2E /* LaunchScreen.storyboard */; };
+		959D89BD20B393B500E17F2E /* thebeautyappTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959D89BC20B393B500E17F2E /* thebeautyappTests.swift */; };
+		959D89C820B393B500E17F2E /* thebeautyappUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959D89C720B393B500E17F2E /* thebeautyappUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		959D89B920B393B500E17F2E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 959D899920B393B300E17F2E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 959D89A020B393B300E17F2E;
+			remoteInfo = thebeautyapp;
+		};
+		959D89C420B393B500E17F2E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 959D899920B393B300E17F2E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 959D89A020B393B300E17F2E;
+			remoteInfo = thebeautyapp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		959D89A120B393B300E17F2E /* thebeautyapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = thebeautyapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		959D89A420B393B300E17F2E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		959D89A620B393B300E17F2E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		959D89A920B393B300E17F2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		959D89AC20B393B300E17F2E /* thebeautyapp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = thebeautyapp.xcdatamodel; sourceTree = "<group>"; };
+		959D89AE20B393B400E17F2E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		959D89B120B393B400E17F2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		959D89B320B393B400E17F2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		959D89B820B393B500E17F2E /* thebeautyappTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = thebeautyappTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		959D89BC20B393B500E17F2E /* thebeautyappTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = thebeautyappTests.swift; sourceTree = "<group>"; };
+		959D89BE20B393B500E17F2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		959D89C320B393B500E17F2E /* thebeautyappUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = thebeautyappUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		959D89C720B393B500E17F2E /* thebeautyappUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = thebeautyappUITests.swift; sourceTree = "<group>"; };
+		959D89C920B393B500E17F2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		959D899E20B393B300E17F2E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		959D89B520B393B500E17F2E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		959D89C020B393B500E17F2E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		959D899820B393B300E17F2E = {
+			isa = PBXGroup;
+			children = (
+				959D89A320B393B300E17F2E /* thebeautyapp */,
+				959D89BB20B393B500E17F2E /* thebeautyappTests */,
+				959D89C620B393B500E17F2E /* thebeautyappUITests */,
+				959D89A220B393B300E17F2E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		959D89A220B393B300E17F2E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				959D89A120B393B300E17F2E /* thebeautyapp.app */,
+				959D89B820B393B500E17F2E /* thebeautyappTests.xctest */,
+				959D89C320B393B500E17F2E /* thebeautyappUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		959D89A320B393B300E17F2E /* thebeautyapp */ = {
+			isa = PBXGroup;
+			children = (
+				959D89A420B393B300E17F2E /* AppDelegate.swift */,
+				959D89A620B393B300E17F2E /* ViewController.swift */,
+				959D89A820B393B300E17F2E /* Main.storyboard */,
+				959D89AE20B393B400E17F2E /* Assets.xcassets */,
+				959D89B020B393B400E17F2E /* LaunchScreen.storyboard */,
+				959D89B320B393B400E17F2E /* Info.plist */,
+				959D89AB20B393B300E17F2E /* thebeautyapp.xcdatamodeld */,
+			);
+			path = thebeautyapp;
+			sourceTree = "<group>";
+		};
+		959D89BB20B393B500E17F2E /* thebeautyappTests */ = {
+			isa = PBXGroup;
+			children = (
+				959D89BC20B393B500E17F2E /* thebeautyappTests.swift */,
+				959D89BE20B393B500E17F2E /* Info.plist */,
+			);
+			path = thebeautyappTests;
+			sourceTree = "<group>";
+		};
+		959D89C620B393B500E17F2E /* thebeautyappUITests */ = {
+			isa = PBXGroup;
+			children = (
+				959D89C720B393B500E17F2E /* thebeautyappUITests.swift */,
+				959D89C920B393B500E17F2E /* Info.plist */,
+			);
+			path = thebeautyappUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		959D89A020B393B300E17F2E /* thebeautyapp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 959D89CC20B393B500E17F2E /* Build configuration list for PBXNativeTarget "thebeautyapp" */;
+			buildPhases = (
+				959D899D20B393B300E17F2E /* Sources */,
+				959D899E20B393B300E17F2E /* Frameworks */,
+				959D899F20B393B300E17F2E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = thebeautyapp;
+			productName = thebeautyapp;
+			productReference = 959D89A120B393B300E17F2E /* thebeautyapp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		959D89B720B393B500E17F2E /* thebeautyappTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 959D89CF20B393B500E17F2E /* Build configuration list for PBXNativeTarget "thebeautyappTests" */;
+			buildPhases = (
+				959D89B420B393B500E17F2E /* Sources */,
+				959D89B520B393B500E17F2E /* Frameworks */,
+				959D89B620B393B500E17F2E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				959D89BA20B393B500E17F2E /* PBXTargetDependency */,
+			);
+			name = thebeautyappTests;
+			productName = thebeautyappTests;
+			productReference = 959D89B820B393B500E17F2E /* thebeautyappTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		959D89C220B393B500E17F2E /* thebeautyappUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 959D89D220B393B500E17F2E /* Build configuration list for PBXNativeTarget "thebeautyappUITests" */;
+			buildPhases = (
+				959D89BF20B393B500E17F2E /* Sources */,
+				959D89C020B393B500E17F2E /* Frameworks */,
+				959D89C120B393B500E17F2E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				959D89C520B393B500E17F2E /* PBXTargetDependency */,
+			);
+			name = thebeautyappUITests;
+			productName = thebeautyappUITests;
+			productReference = 959D89C320B393B500E17F2E /* thebeautyappUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		959D899920B393B300E17F2E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = giraffeflight;
+				TargetAttributes = {
+					959D89A020B393B300E17F2E = {
+						CreatedOnToolsVersion = 9.3.1;
+					};
+					959D89B720B393B500E17F2E = {
+						CreatedOnToolsVersion = 9.3.1;
+						TestTargetID = 959D89A020B393B300E17F2E;
+					};
+					959D89C220B393B500E17F2E = {
+						CreatedOnToolsVersion = 9.3.1;
+						TestTargetID = 959D89A020B393B300E17F2E;
+					};
+				};
+			};
+			buildConfigurationList = 959D899C20B393B300E17F2E /* Build configuration list for PBXProject "thebeautyapp" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 959D899820B393B300E17F2E;
+			productRefGroup = 959D89A220B393B300E17F2E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				959D89A020B393B300E17F2E /* thebeautyapp */,
+				959D89B720B393B500E17F2E /* thebeautyappTests */,
+				959D89C220B393B500E17F2E /* thebeautyappUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		959D899F20B393B300E17F2E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				959D89B220B393B400E17F2E /* LaunchScreen.storyboard in Resources */,
+				959D89AF20B393B400E17F2E /* Assets.xcassets in Resources */,
+				959D89AA20B393B300E17F2E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		959D89B620B393B500E17F2E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		959D89C120B393B500E17F2E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		959D899D20B393B300E17F2E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				959D89A720B393B300E17F2E /* ViewController.swift in Sources */,
+				959D89AD20B393B300E17F2E /* thebeautyapp.xcdatamodeld in Sources */,
+				959D89A520B393B300E17F2E /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		959D89B420B393B500E17F2E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				959D89BD20B393B500E17F2E /* thebeautyappTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		959D89BF20B393B500E17F2E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				959D89C820B393B500E17F2E /* thebeautyappUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		959D89BA20B393B500E17F2E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 959D89A020B393B300E17F2E /* thebeautyapp */;
+			targetProxy = 959D89B920B393B500E17F2E /* PBXContainerItemProxy */;
+		};
+		959D89C520B393B500E17F2E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 959D89A020B393B300E17F2E /* thebeautyapp */;
+			targetProxy = 959D89C420B393B500E17F2E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		959D89A820B393B300E17F2E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				959D89A920B393B300E17F2E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		959D89B020B393B400E17F2E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				959D89B120B393B400E17F2E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		959D89CA20B393B500E17F2E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		959D89CB20B393B500E17F2E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		959D89CD20B393B500E17F2E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = thebeautyapp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = gf.thebeautyapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		959D89CE20B393B500E17F2E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = thebeautyapp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = gf.thebeautyapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		959D89D020B393B500E17F2E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = thebeautyappTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = gf.thebeautyappTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/thebeautyapp.app/thebeautyapp";
+			};
+			name = Debug;
+		};
+		959D89D120B393B500E17F2E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = thebeautyappTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = gf.thebeautyappTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/thebeautyapp.app/thebeautyapp";
+			};
+			name = Release;
+		};
+		959D89D320B393B500E17F2E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = thebeautyappUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = gf.thebeautyappUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = thebeautyapp;
+			};
+			name = Debug;
+		};
+		959D89D420B393B500E17F2E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = thebeautyappUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = gf.thebeautyappUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = thebeautyapp;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		959D899C20B393B300E17F2E /* Build configuration list for PBXProject "thebeautyapp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				959D89CA20B393B500E17F2E /* Debug */,
+				959D89CB20B393B500E17F2E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		959D89CC20B393B500E17F2E /* Build configuration list for PBXNativeTarget "thebeautyapp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				959D89CD20B393B500E17F2E /* Debug */,
+				959D89CE20B393B500E17F2E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		959D89CF20B393B500E17F2E /* Build configuration list for PBXNativeTarget "thebeautyappTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				959D89D020B393B500E17F2E /* Debug */,
+				959D89D120B393B500E17F2E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		959D89D220B393B500E17F2E /* Build configuration list for PBXNativeTarget "thebeautyappUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				959D89D320B393B500E17F2E /* Debug */,
+				959D89D420B393B500E17F2E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		959D89AB20B393B300E17F2E /* thebeautyapp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				959D89AC20B393B300E17F2E /* thebeautyapp.xcdatamodel */,
+			);
+			currentVersion = 959D89AC20B393B300E17F2E /* thebeautyapp.xcdatamodel */;
+			path = thebeautyapp.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 959D899920B393B300E17F2E /* Project object */;
+}
