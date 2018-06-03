@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		954D191D20C43F130051AE9A /* productViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954D191C20C43F130051AE9A /* productViewController.swift */; };
+		954D191F20C448650051AE9A /* splashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954D191E20C448650051AE9A /* splashViewController.swift */; };
+		954D192120C45DA10051AE9A /* statsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954D192020C45DA10051AE9A /* statsViewController.swift */; };
 		959D89A520B393B300E17F2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959D89A420B393B300E17F2E /* AppDelegate.swift */; };
-		959D89A720B393B300E17F2E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959D89A620B393B300E17F2E /* ViewController.swift */; };
+		959D89A720B393B300E17F2E /* homeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959D89A620B393B300E17F2E /* homeViewController.swift */; };
 		959D89AA20B393B300E17F2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 959D89A820B393B300E17F2E /* Main.storyboard */; };
 		959D89AD20B393B300E17F2E /* thebeautyapp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 959D89AB20B393B300E17F2E /* thebeautyapp.xcdatamodeld */; };
 		959D89AF20B393B400E17F2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 959D89AE20B393B400E17F2E /* Assets.xcassets */; };
@@ -35,9 +38,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		954D191C20C43F130051AE9A /* productViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = productViewController.swift; sourceTree = "<group>"; };
+		954D191E20C448650051AE9A /* splashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = splashViewController.swift; sourceTree = "<group>"; };
+		954D192020C45DA10051AE9A /* statsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = statsViewController.swift; sourceTree = "<group>"; };
 		959D89A120B393B300E17F2E /* thebeautyapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = thebeautyapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		959D89A420B393B300E17F2E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		959D89A620B393B300E17F2E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		959D89A620B393B300E17F2E /* homeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homeViewController.swift; sourceTree = "<group>"; };
 		959D89A920B393B300E17F2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		959D89AC20B393B300E17F2E /* thebeautyapp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = thebeautyapp.xcdatamodel; sourceTree = "<group>"; };
 		959D89AE20B393B400E17F2E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -100,12 +106,15 @@
 			isa = PBXGroup;
 			children = (
 				959D89A420B393B300E17F2E /* AppDelegate.swift */,
-				959D89A620B393B300E17F2E /* ViewController.swift */,
+				959D89A620B393B300E17F2E /* homeViewController.swift */,
 				959D89A820B393B300E17F2E /* Main.storyboard */,
 				959D89AE20B393B400E17F2E /* Assets.xcassets */,
 				959D89B020B393B400E17F2E /* LaunchScreen.storyboard */,
 				959D89B320B393B400E17F2E /* Info.plist */,
 				959D89AB20B393B300E17F2E /* thebeautyapp.xcdatamodeld */,
+				954D191C20C43F130051AE9A /* productViewController.swift */,
+				954D191E20C448650051AE9A /* splashViewController.swift */,
+				954D192020C45DA10051AE9A /* statsViewController.swift */,
 			);
 			path = thebeautyapp;
 			sourceTree = "<group>";
@@ -259,8 +268,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				959D89A720B393B300E17F2E /* ViewController.swift in Sources */,
+				954D192120C45DA10051AE9A /* statsViewController.swift in Sources */,
+				954D191F20C448650051AE9A /* splashViewController.swift in Sources */,
+				959D89A720B393B300E17F2E /* homeViewController.swift in Sources */,
 				959D89AD20B393B300E17F2E /* thebeautyapp.xcdatamodeld in Sources */,
+				954D191D20C43F130051AE9A /* productViewController.swift in Sources */,
 				959D89A520B393B300E17F2E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

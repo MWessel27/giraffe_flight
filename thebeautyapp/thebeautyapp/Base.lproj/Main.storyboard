@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fie-WK-Hbt">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,7 +13,7 @@
         <!--Product List Controller-->
         <scene sceneID="f6r-Fo-UyA">
             <objects>
-                <viewController id="IEi-9x-ppx" userLabel="Product List Controller" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="productViewController" title="Products" id="IEi-9x-ppx" userLabel="Product List Controller" customClass="productViewController" customModule="thebeautyapp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ky7-Yc-wMJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -21,14 +21,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="0ad-Rg-1uV">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sWx-TC-zWi">
-                                <rect key="frame" x="319" y="44" width="34" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Back"/>
-                                <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="qBi-uN-Poa"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -42,12 +34,64 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Yn-oM-O6f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-988" y="-669.45812807881771"/>
+            <point key="canvasLocation" x="1300" y="-321"/>
         </scene>
-        <!--View Controller-->
+        <!--Splash View Controller-->
+        <scene sceneID="z3z-95-zBG">
+            <objects>
+                <viewController id="fie-WK-Hbt" customClass="splashViewController" customModule="thebeautyapp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TmN-fX-4hh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="los-Nr-M3I">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="K6w-Jq-K2R">
+                                <rect key="frame" x="74" y="281" width="227" height="250"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="GT3-Gr-cD4" firstAttribute="trailing" secondItem="K6w-Jq-K2R" secondAttribute="trailing" constant="74" id="BCy-bx-bhz"/>
+                            <constraint firstItem="GT3-Gr-cD4" firstAttribute="bottom" secondItem="K6w-Jq-K2R" secondAttribute="bottom" constant="247" id="D4S-Me-zca"/>
+                            <constraint firstItem="K6w-Jq-K2R" firstAttribute="leading" secondItem="GT3-Gr-cD4" secondAttribute="leading" constant="74" id="Evm-7G-8bu"/>
+                            <constraint firstItem="los-Nr-M3I" firstAttribute="top" secondItem="TmN-fX-4hh" secondAttribute="top" id="GL5-Ua-x0e"/>
+                            <constraint firstItem="K6w-Jq-K2R" firstAttribute="top" secondItem="GT3-Gr-cD4" secondAttribute="top" constant="237" id="Htz-Ef-41W"/>
+                            <constraint firstItem="los-Nr-M3I" firstAttribute="leading" secondItem="GT3-Gr-cD4" secondAttribute="leading" id="VpD-6Y-TYy"/>
+                            <constraint firstAttribute="bottom" secondItem="los-Nr-M3I" secondAttribute="bottom" id="dZ7-b6-hfO"/>
+                            <constraint firstItem="los-Nr-M3I" firstAttribute="trailing" secondItem="GT3-Gr-cD4" secondAttribute="trailing" id="ilb-CC-2ux"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="GT3-Gr-cD4"/>
+                    </view>
+                    <connections>
+                        <segue destination="uRn-fg-idz" kind="show" identifier="goToMainUI" id="F49-gg-Dkg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x1F-V1-hxC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1943.2" y="124.8768472906404"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="s5z-ag-0a0">
+            <objects>
+                <navigationController id="uRn-fg-idz" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ozx-u2-fTS">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="TN2-ZA-MDA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Irl-so-j6r" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-964" y="125"/>
+        </scene>
+        <!--Home-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="thebeautyapp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Home" id="BYZ-38-t0r" customClass="homeViewController" customModule="thebeautyapp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -56,91 +100,57 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="ww7-jI-akV">
-                                <rect key="frame" x="28" y="148" width="318" height="248"/>
+                                <rect key="frame" x="28" y="192" width="318" height="204"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pd6-yt-1Q5">
-                                <rect key="frame" x="99" y="500" width="177" height="30"/>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Product List"/>
-                                <connections>
-                                    <segue destination="IEi-9x-ppx" kind="show" id="HvG-3U-JZC"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eoK-uF-i6G">
-                                <rect key="frame" x="99" y="558" width="177" height="30"/>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Daily"/>
-                                <connections>
-                                    <segue destination="VVZ-zR-xGI" kind="show" id="5tN-xL-imL"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="eoK-uF-i6G" secondAttribute="bottom" constant="190" id="2Fz-Rg-8NW"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ww7-jI-akV" secondAttribute="trailing" constant="29" id="4Ig-z9-EpS"/>
-                            <constraint firstItem="pd6-yt-1Q5" firstAttribute="top" secondItem="ww7-jI-akV" secondAttribute="bottom" constant="104" id="4ph-id-khD"/>
-                            <constraint firstItem="eoK-uF-i6G" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="99" id="8G9-7w-2Ds"/>
                             <constraint firstAttribute="bottom" secondItem="INY-S1-I9H" secondAttribute="bottom" id="Ad3-wU-ycg"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pd6-yt-1Q5" secondAttribute="trailing" constant="99" id="N8K-zs-xjw"/>
                             <constraint firstItem="INY-S1-I9H" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="PXo-ak-dkL"/>
                             <constraint firstItem="ww7-jI-akV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="28" id="SMk-k1-5we"/>
-                            <constraint firstItem="eoK-uF-i6G" firstAttribute="top" secondItem="pd6-yt-1Q5" secondAttribute="bottom" constant="28" id="SfL-NN-MlA"/>
                             <constraint firstItem="ww7-jI-akV" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="104" id="abT-VJ-wdD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ww7-jI-akV" secondAttribute="bottom" constant="382" id="hsA-0z-2L5"/>
                             <constraint firstItem="INY-S1-I9H" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="ji1-9g-ImX"/>
                             <constraint firstItem="INY-S1-I9H" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="lga-xH-mns"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eoK-uF-i6G" secondAttribute="trailing" constant="99" id="oq9-9Y-jLq"/>
-                            <constraint firstItem="pd6-yt-1Q5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="99" id="qQX-gL-Mok"/>
-                            <constraint firstItem="eoK-uF-i6G" firstAttribute="top" secondItem="pd6-yt-1Q5" secondAttribute="bottom" constant="28" id="sPN-i5-LI7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Today" id="ahw-VM-grd"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="140" y="124.8768472906404"/>
         </scene>
-        <!--Daily Track Controller-->
-        <scene sceneID="b5x-1n-duj">
+        <!--Calendar-->
+        <scene sceneID="ofB-Uu-MkZ">
             <objects>
-                <viewController id="VVZ-zR-xGI" userLabel="Daily Track Controller" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="g1s-iC-dCq">
+                <viewController storyboardIdentifier="statsViewController" title="Calendar" id="JJD-8J-CQr" customClass="statsViewController" customModule="thebeautyapp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FX1-ep-eMw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="gbz-Xa-m36">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="7xt-f2-oyn">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JYU-Sa-hvv">
-                                <rect key="frame" x="319" y="44" width="34" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Back"/>
-                                <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="tBd-yl-6Jl"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="gbz-Xa-m36" firstAttribute="leading" secondItem="wZE-pa-B3C" secondAttribute="leading" id="9lR-df-cpy"/>
-                            <constraint firstAttribute="bottom" secondItem="gbz-Xa-m36" secondAttribute="bottom" id="Wzr-H7-evh"/>
-                            <constraint firstItem="gbz-Xa-m36" firstAttribute="trailing" secondItem="wZE-pa-B3C" secondAttribute="trailing" id="di6-1h-VNH"/>
-                            <constraint firstItem="gbz-Xa-m36" firstAttribute="top" secondItem="g1s-iC-dCq" secondAttribute="top" id="ec1-A3-IdZ"/>
+                            <constraint firstItem="7xt-f2-oyn" firstAttribute="trailing" secondItem="HpF-5a-tdU" secondAttribute="trailing" id="BGg-or-vto"/>
+                            <constraint firstItem="7xt-f2-oyn" firstAttribute="leading" secondItem="HpF-5a-tdU" secondAttribute="leading" id="KJL-d8-zEI"/>
+                            <constraint firstAttribute="bottom" secondItem="7xt-f2-oyn" secondAttribute="bottom" id="pB0-mi-CNN"/>
+                            <constraint firstItem="7xt-f2-oyn" firstAttribute="top" secondItem="FX1-ep-eMw" secondAttribute="top" id="y2S-zk-g6d"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="wZE-pa-B3C"/>
+                        <viewLayoutGuide key="safeArea" id="HpF-5a-tdU"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iJo-fQ-y9c" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ho9-4K-Dhy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1077.5999999999999" y="-660.59113300492618"/>
+            <point key="canvasLocation" x="1300" y="510.59113300492612"/>
         </scene>
     </scenes>
     <resources>
         <image name="Logo" width="561" height="630"/>
         <image name="background" width="1125" height="2436"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="tBd-yl-6Jl"/>
-    </inferredMetricsTieBreakers>
 </document>
