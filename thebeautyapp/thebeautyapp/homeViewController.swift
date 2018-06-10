@@ -14,10 +14,6 @@ class homeViewController: UIViewController {
     
     var products = [String]()
     
-    let lightOrange:UIColor = UIColor(red: 0.996, green: 0.467, blue: 0.224, alpha: 1)
-    let medOrange:UIColor = UIColor(red: 0.973, green: 0.388, blue: 0.173, alpha: 1)
-    let darkOrange:UIColor = UIColor(red: 0.796, green: 0.263, blue: 0.106, alpha: 1)
-    
     let green:UIColor = UIColor(red: 0.251, green: 0.831, blue: 0.494, alpha: 1)
     
     fileprivate lazy var dateFormatter: DateFormatter = {
@@ -41,7 +37,7 @@ class homeViewController: UIViewController {
         let leftBarButton = UIBarButtonItem(title: "Stats", style: UIBarButtonItemStyle.plain, target: self, action: #selector(goToStatsCal))
         self.navigationItem.leftBarButtonItem = leftBarButton
         
-        mTableView.backgroundColor = darkOrange
+        mTableView.backgroundColor = UIColor.clear
         mTableView.separatorStyle = UITableViewCellSeparatorStyle.none
     }
     
@@ -82,9 +78,7 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "ProductCell")
         let productName = products[indexPath.row]
         cell.textLabel?.text = productName
-        cell.backgroundColor = medOrange
-        cell.textLabel?.textColor = UIColor.white
-        cell.detailTextLabel?.textColor = UIColor.gray
+        cell.backgroundColor = UIColor.clear
         
         return cell
     }
@@ -93,14 +87,28 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
         
         let date = Date()
         
-        
         let mySelectedCell:UITableViewCell = tableView.cellForRow(at: indexPath)!
+        
+        if(mySelectedCell.backgroundColor == green){
+            mySelectedCell.detailTextLabel?.backgroundColor = UIColor.clear
+        } else {
+            mySelectedCell.detailTextLabel?.backgroundColor = green
+        }
+        
         mySelectedCell.detailTextLabel?.textColor = UIColor.white
         mySelectedCell.detailTextLabel?.text = dateFormatter.string(for: date)
         mySelectedCell.accessoryType = UITableViewCellAccessoryType.checkmark
         mySelectedCell.tintColor = UIColor.white
-        mySelectedCell.detailTextLabel?.backgroundColor = green
         mySelectedCell.backgroundColor = green
+    }
+    
+    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+        let myHighlightedCell:UITableViewCell = tableView.cellForRow(at: indexPath)!
+        if(myHighlightedCell.backgroundColor == green){
+            myHighlightedCell.detailTextLabel?.backgroundColor = UIColor.clear
+        } else {
+            myHighlightedCell.detailTextLabel?.backgroundColor = green
+        }
     }
     
 }
