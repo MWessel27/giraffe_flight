@@ -11,6 +11,7 @@ import UIKit
 class homeViewController: UIViewController {
     
     @IBOutlet weak var mTableView: UITableView!
+    @IBOutlet weak var pmTableView: UITableView!
     
     var products = [String]()
     
@@ -30,6 +31,7 @@ class homeViewController: UIViewController {
         
         products = ["Lotion","Moisturizer","Lipstick"]
         mTableView.tableFooterView = UIView(frame: CGRect.zero)
+        pmTableView.tableFooterView = UIView(frame: CGRect.zero)
         
         let rightBarButton = UIBarButtonItem(title: "Products", style: UIBarButtonItemStyle.plain, target: self, action: #selector(goToProdList))
         self.navigationItem.rightBarButtonItem = rightBarButton
@@ -39,6 +41,9 @@ class homeViewController: UIViewController {
         
         mTableView.backgroundColor = UIColor.clear
         mTableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        
+        pmTableView.backgroundColor = UIColor.clear
+        pmTableView.separatorStyle = UITableViewCellSeparatorStyle.none
     }
     
     @objc func goToProdList() {
