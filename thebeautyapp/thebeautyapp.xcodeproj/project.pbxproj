@@ -35,6 +35,7 @@
 		959D89B220B393B400E17F2E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 959D89B020B393B400E17F2E /* LaunchScreen.storyboard */; };
 		959D89BD20B393B500E17F2E /* thebeautyappTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959D89BC20B393B500E17F2E /* thebeautyappTests.swift */; };
 		959D89C820B393B500E17F2E /* thebeautyappUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959D89C720B393B500E17F2E /* thebeautyappUITests.swift */; };
+		D755BF1720E0040C00FD77F1 /* product.swift in Sources */ = {isa = PBXBuildFile; fileRef = D755BF1620E0040C00FD77F1 /* product.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +107,7 @@
 		959D89C320B393B500E17F2E /* thebeautyappUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = thebeautyappUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		959D89C720B393B500E17F2E /* thebeautyappUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = thebeautyappUITests.swift; sourceTree = "<group>"; };
 		959D89C920B393B500E17F2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D755BF1620E0040C00FD77F1 /* product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = product.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +210,7 @@
 				954D191E20C448650051AE9A /* splashViewController.swift */,
 				954D192020C45DA10051AE9A /* statsViewController.swift */,
 				9539590020C4C2B500DD069A /* giraffe_flight-bridging-header.h */,
+				D755BF1620E0040C00FD77F1 /* product.swift */,
 			);
 			path = thebeautyapp;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				953958F620C469BE00DD069A /* FSCalendarConstants.m in Sources */,
+				D755BF1720E0040C00FD77F1 /* product.swift in Sources */,
 				954D192120C45DA10051AE9A /* statsViewController.swift in Sources */,
 				954D191F20C448650051AE9A /* splashViewController.swift in Sources */,
 				953958F020C469BE00DD069A /* FSCalendar.m in Sources */,
