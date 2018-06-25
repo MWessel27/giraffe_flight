@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import os.log
 
 class productViewController: UIViewController {
 
+    var products = [Product]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,7 +24,19 @@ class productViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    private func saveProducts() {
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(products, toFile: Product.ArchiveURL.path)
+        if isSuccessfulSave {
+            os_log("Products successfully saved.", log: OSLog.default, type: .debug)
+        } else {
+            os_log("Failed to save Products...", log: OSLog.default, type: .error)
+        }
+    }
 
+    private func loadProducts() -> [Product]? {
+            return NSKeyedUnarchiver.unarchiveObject(withFile: Product.ArchiveURL.path) as? [Product]
+    }
+    
     /*
     // MARK: - Navigation
 
