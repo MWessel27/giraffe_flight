@@ -13,22 +13,11 @@
         <!--Product List Controller-->
         <scene sceneID="f6r-Fo-UyA">
             <objects>
-                <viewController storyboardIdentifier="productViewController" title="Products" id="IEi-9x-ppx" userLabel="Product List Controller" customClass="productViewController" customModule="thebeautyapp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="productViewController" title="PRODUCTS" id="IEi-9x-ppx" userLabel="Product List Controller" customClass="productViewController" customModule="thebeautyapp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ky7-Yc-wMJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="0ad-Rg-1uV">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                            </imageView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="0ad-Rg-1uV" firstAttribute="trailing" secondItem="Myg-mD-qTp" secondAttribute="trailing" id="50r-Qc-o8E"/>
-                            <constraint firstAttribute="bottom" secondItem="0ad-Rg-1uV" secondAttribute="bottom" id="6L5-pg-o7a"/>
-                            <constraint firstItem="0ad-Rg-1uV" firstAttribute="top" secondItem="Ky7-Yc-wMJ" secondAttribute="top" id="QjJ-2U-4Hm"/>
-                            <constraint firstItem="0ad-Rg-1uV" firstAttribute="leading" secondItem="Myg-mD-qTp" secondAttribute="leading" id="a6J-JQ-STF"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Myg-mD-qTp"/>
                     </view>
                 </viewController>
@@ -80,6 +69,9 @@
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.96470588239999999" green="0.89019607840000003" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="17"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="TN2-ZA-MDA"/>
@@ -151,7 +143,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Today" id="ahw-VM-grd"/>
+                    <navigationItem key="navigationItem" title="TODAY" id="ahw-VM-grd"/>
                     <connections>
                         <outlet property="mTableView" destination="wFh-dx-kNV" id="7r9-Nr-Giq"/>
                         <outlet property="pmTableView" destination="r57-RE-DoE" id="bMr-qg-Ty7"/>
@@ -164,16 +156,14 @@
         <!--Data Source-->
         <scene sceneID="ofB-Uu-MkZ">
             <objects>
-                <viewController storyboardIdentifier="statsViewController" title="Calendar" id="JJD-8J-CQr" customClass="statsViewController" customModule="thebeautyapp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="statsViewController" title="CALENDAR" id="JJD-8J-CQr" customClass="statsViewController" customModule="thebeautyapp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FX1-ep-eMw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="7xt-f2-oyn">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                            </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8PD-ad-g81" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="54" width="375" height="416"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8PD-ad-g81" customClass="FSCalendar">
+                                <rect key="frame" x="0.0" y="76" width="375" height="416"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderDefaultColor">
@@ -190,16 +180,6 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="8PD-ad-g81" firstAttribute="trailing" secondItem="HpF-5a-tdU" secondAttribute="trailing" id="1J7-Wq-gxN"/>
-                            <constraint firstItem="7xt-f2-oyn" firstAttribute="trailing" secondItem="HpF-5a-tdU" secondAttribute="trailing" id="BGg-or-vto"/>
-                            <constraint firstItem="HpF-5a-tdU" firstAttribute="bottom" secondItem="8PD-ad-g81" secondAttribute="bottom" constant="308" id="DlC-cR-EoY"/>
-                            <constraint firstItem="8PD-ad-g81" firstAttribute="top" secondItem="HpF-5a-tdU" secondAttribute="top" constant="10" id="IWQ-BV-8n0"/>
-                            <constraint firstItem="8PD-ad-g81" firstAttribute="leading" secondItem="HpF-5a-tdU" secondAttribute="leading" id="Jav-Q4-j5E"/>
-                            <constraint firstItem="7xt-f2-oyn" firstAttribute="leading" secondItem="HpF-5a-tdU" secondAttribute="leading" id="KJL-d8-zEI"/>
-                            <constraint firstAttribute="bottom" secondItem="7xt-f2-oyn" secondAttribute="bottom" id="pB0-mi-CNN"/>
-                            <constraint firstItem="7xt-f2-oyn" firstAttribute="top" secondItem="FX1-ep-eMw" secondAttribute="top" id="y2S-zk-g6d"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="HpF-5a-tdU"/>
                     </view>
                 </viewController>

@@ -29,14 +29,14 @@ class homeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        products = ["Lotion","Moisturizer","Lipstick"]
+        products = ["Lotion","Moisturizer","Lipstick","Exfoliant"]
         mTableView.tableFooterView = UIView(frame: CGRect.zero)
         pmTableView.tableFooterView = UIView(frame: CGRect.zero)
         
-        let rightBarButton = UIBarButtonItem(title: "Products", style: UIBarButtonItemStyle.plain, target: self, action: #selector(goToProdList))
+        let rightBarButton = UIBarButtonItem(title: "PRODUCTS", style: UIBarButtonItemStyle.plain, target: self, action: #selector(goToProdList))
         self.navigationItem.rightBarButtonItem = rightBarButton
         
-        let leftBarButton = UIBarButtonItem(title: "Stats", style: UIBarButtonItemStyle.plain, target: self, action: #selector(goToStatsCal))
+        let leftBarButton = UIBarButtonItem(title: "STATS", style: UIBarButtonItemStyle.plain, target: self, action: #selector(goToStatsCal))
         self.navigationItem.leftBarButtonItem = leftBarButton
         
         mTableView.backgroundColor = UIColor.clear
@@ -83,8 +83,15 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "ProductCell")
         let productName = products[indexPath.row]
         cell.textLabel?.text = productName
+        cell.textLabel?.font = UIFont(name: "American Typewriter", size: 22)
         cell.backgroundColor = UIColor.clear
         
+        var imageView : UIImageView
+        imageView  = UIImageView(frame:CGRect(x: 5, y: 5, width: 25, height: 25))
+        imageView.image = UIImage(named:"checkmarkempty")
+        
+        cell.accessoryView = imageView
+
         return cell
     }
     
@@ -100,9 +107,18 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
             mySelectedCell.detailTextLabel?.backgroundColor = green
         }
         
+        mySelectedCell.detailTextLabel?.font = UIFont(name: "American Typewriter", size: 14)
+        
         mySelectedCell.detailTextLabel?.textColor = UIColor.white
         mySelectedCell.detailTextLabel?.text = dateFormatter.string(for: date)
-        mySelectedCell.accessoryType = UITableViewCellAccessoryType.checkmark
+        
+        var imageView : UIImageView
+        imageView  = UIImageView(frame:CGRect(x: 5, y: 5, width: 25, height: 25))
+        imageView.image = UIImage(named:"checkmark")
+        
+        mySelectedCell.accessoryView = imageView
+        
+        
         mySelectedCell.tintColor = UIColor.white
         mySelectedCell.backgroundColor = green
     }
