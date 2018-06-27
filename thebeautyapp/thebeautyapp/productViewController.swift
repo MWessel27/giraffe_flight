@@ -12,13 +12,26 @@ import os.log
 class productViewController: UIViewController {
 
     var products = [Product]()
+    var tempProducts = [String]()
+    
+    @IBOutlet weak var productTable: UITableView!
+    @IBOutlet weak var newProductEntry: UITextField!
+    @IBOutlet weak var newProdBtn: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tempProducts = ["Lotion", "Moisturizer","Lipstick","Exfoliant"]
 
         // Do any additional setup after loading the view.
     }
-
+    @IBAction func newProdBtnClick(_ sender: Any) {
+        tempProducts.append(newProductEntry.text!)
+        newProductEntry.text = ""
+        productTable.reloadData()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -48,3 +61,30 @@ class productViewController: UIViewController {
     */
 
 }
+
+extension productViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tempProducts.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "productListCell")
+
+        let productName = tempProducts[indexPath.row]
+        
+        cell.detailTextLabel?.textColor = UIColor.gray
+        cell.detailTextLabel?.text = "category"
+        
+        cell.textLabel?.text = productName
+        cell.textLabel?.font = UIFont(name: "American Typewriter", size: 18)
+        cell.backgroundColor = UIColor.clear
+        
+        return cell
+    }
+}
+
