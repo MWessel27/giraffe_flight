@@ -9,7 +9,7 @@
 import UIKit
 import os.log
 
-class Product {
+class Product: NSObject, NSCoding {
     
     //MARK: Properties
     

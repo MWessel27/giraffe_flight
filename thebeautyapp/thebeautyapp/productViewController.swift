@@ -22,12 +22,32 @@ class productViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tempProducts = ["Lotion", "Moisturizer","Lipstick","Exfoliant"]
+        if let savedProds = loadProducts() {
+            products += savedProds
+        }
+        
+        //loadSampleProducts()
+        
+        //tempProducts = ["Lotion", "Moisturizer","Lipstick","Exfoliant"]
 
         // Do any additional setup after loading the view.
     }
+    
+    func loadSampleProducts() {
+        guard let prod1 = Product(name: "lotion", daily: true, rating: 1, ampm: 1, cat: "mine") else {
+            fatalError("Unable to instantiate meal1")
+        }
+        products += [prod1]
+    }
+    
     @IBAction func newProdBtnClick(_ sender: Any) {
-        tempProducts.append(newProductEntry.text!)
+        let prodName = newProductEntry.text!
+        guard let prod1 = Product(name: prodName, daily: true, rating: 1, ampm: 1, cat: "mine") else {
+            fatalError("Unable to instantiate meal1")
+        }
+        products += [prod1]
+        saveProducts()
+        //tempProducts.append(newProductEntry.text!)
         newProductEntry.text = ""
         productTable.reloadData()
     }
@@ -69,16 +89,19 @@ extension productViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tempProducts.count
+        //return tempProducts.count
+        return products.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "productListCell")
 
-        let productName = tempProducts[indexPath.row]
+        //let productName = tempProducts[indexPath.row]
+        let productName = products[indexPath.row].name
+        let categoryName = products[indexPath.row].cat
         
         cell.detailTextLabel?.textColor = UIColor.gray
-        cell.detailTextLabel?.text = "category"
+        cell.detailTextLabel?.text = categoryName
         
         cell.textLabel?.text = productName
         cell.textLabel?.font = UIFont(name: "American Typewriter", size: 18)

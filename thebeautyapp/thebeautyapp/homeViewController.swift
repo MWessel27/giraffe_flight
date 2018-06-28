@@ -13,7 +13,8 @@ class homeViewController: UIViewController {
     @IBOutlet weak var mTableView: UITableView!
     @IBOutlet weak var pmTableView: UITableView!
     
-    var products = [String]()
+    //var products = [String]()
+    var products = [Product]()
     
     let green:UIColor = UIColor(red: 0.251, green: 0.831, blue: 0.494, alpha: 1)
     
@@ -29,7 +30,12 @@ class homeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        products = ["Lotion","Moisturizer","Lipstick","Exfoliant"]
+        if let savedProds = loadProducts() {
+            products += savedProds
+        }
+        
+        //products = ["Lotion","Moisturizer","Lipstick","Exfoliant"]
+        
         mTableView.tableFooterView = UIView(frame: CGRect.zero)
         pmTableView.tableFooterView = UIView(frame: CGRect.zero)
         
@@ -44,6 +50,10 @@ class homeViewController: UIViewController {
         
         pmTableView.backgroundColor = UIColor.clear
         pmTableView.separatorStyle = UITableViewCellSeparatorStyle.none
+    }
+    
+    private func loadProducts() -> [Product]? {
+        return NSKeyedUnarchiver.unarchiveObject(withFile: Product.ArchiveURL.path) as? [Product]
     }
     
     @objc func goToProdList() {
@@ -81,7 +91,7 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "ProductCell")
-        let productName = products[indexPath.row]
+        let productName = products[indexPath.row].name
         cell.textLabel?.text = productName
         cell.textLabel?.font = UIFont(name: "American Typewriter", size: 22)
         cell.backgroundColor = UIColor.clear
