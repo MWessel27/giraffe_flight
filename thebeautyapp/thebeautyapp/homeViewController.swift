@@ -10,8 +10,14 @@ import UIKit
 
 class homeViewController: UIViewController {
     
+    @IBOutlet var homeBackgroundView: UIView!
+    
     @IBOutlet weak var mTableView: UITableView!
     @IBOutlet weak var pmTableView: UITableView!
+    
+    @IBOutlet weak var sunImage: UIImageView!
+    @IBOutlet weak var moonImage: UIImageView!
+    @IBOutlet weak var gettingStartedBackground: UIImageView!
     
     //var products = [String]()
     var products = [Product]()
@@ -34,22 +40,32 @@ class homeViewController: UIViewController {
             products += savedProds
         }
         
-        //products = ["Lotion","Moisturizer","Lipstick","Exfoliant"]
-        
-        mTableView.tableFooterView = UIView(frame: CGRect.zero)
-        pmTableView.tableFooterView = UIView(frame: CGRect.zero)
-        
         let rightBarButton = UIBarButtonItem(title: "PRODUCTS", style: UIBarButtonItemStyle.plain, target: self, action: #selector(goToProdList))
         self.navigationItem.rightBarButtonItem = rightBarButton
         
         let leftBarButton = UIBarButtonItem(title: "STATS", style: UIBarButtonItemStyle.plain, target: self, action: #selector(goToStatsCal))
         self.navigationItem.leftBarButtonItem = leftBarButton
         
-        mTableView.backgroundColor = UIColor.clear
-        mTableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        if(products.count != 0) {
+            //products = ["Lotion","Moisturizer","Lipstick","Exfoliant"]
+            
+            mTableView.tableFooterView = UIView(frame: CGRect.zero)
+            pmTableView.tableFooterView = UIView(frame: CGRect.zero)
+            
+            mTableView.backgroundColor = UIColor.clear
+            mTableView.separatorStyle = UITableViewCellSeparatorStyle.none
+            
+            pmTableView.backgroundColor = UIColor.clear
+            pmTableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        } else {
+            sunImage.isHidden = true;
+            moonImage.isHidden = true;
+            mTableView.isHidden = true;
+            pmTableView.isHidden = true;
+            
+            gettingStartedBackground.isHidden = false;
+        }
         
-        pmTableView.backgroundColor = UIColor.clear
-        pmTableView.separatorStyle = UITableViewCellSeparatorStyle.none
     }
     
     private func loadProducts() -> [Product]? {

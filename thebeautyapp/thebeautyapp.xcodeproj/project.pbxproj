@@ -23,7 +23,6 @@
 		953958FC20C469BE00DD069A /* FSCalendarStickyHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 953958E920C469BE00DD069A /* FSCalendarStickyHeader.m */; };
 		953958FD20C469BE00DD069A /* FSCalendarTransitionCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 953958EB20C469BE00DD069A /* FSCalendarTransitionCoordinator.m */; };
 		953958FE20C469BE00DD069A /* FSCalendarWeekdayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 953958ED20C469BE00DD069A /* FSCalendarWeekdayView.m */; };
-		953958FF20C469BE00DD069A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 953958EE20C469BE00DD069A /* Info.plist */; };
 		954D191D20C43F130051AE9A /* productViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954D191C20C43F130051AE9A /* productViewController.swift */; };
 		954D191F20C448650051AE9A /* splashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954D191E20C448650051AE9A /* splashViewController.swift */; };
 		954D192120C45DA10051AE9A /* statsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954D192020C45DA10051AE9A /* statsViewController.swift */; };
@@ -337,7 +336,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				953958FF20C469BE00DD069A /* Info.plist in Resources */,
 				959D89B220B393B400E17F2E /* LaunchScreen.storyboard in Resources */,
 				959D89AF20B393B400E17F2E /* Assets.xcassets in Resources */,
 				959D89AA20B393B300E17F2E /* Main.storyboard in Resources */,
