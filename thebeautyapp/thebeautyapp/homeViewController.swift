@@ -68,6 +68,41 @@ class homeViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated);
+        
+        if let savedProds = loadProducts() {
+            products = savedProds
+        }
+        
+        if(products.count != 0) {
+            gettingStartedBackground.isHidden = true;
+            sunImage.isHidden = false;
+            moonImage.isHidden = false;
+            mTableView.isHidden = false;
+            pmTableView.isHidden = false;
+            
+            mTableView.tableFooterView = UIView(frame: CGRect.zero)
+            pmTableView.tableFooterView = UIView(frame: CGRect.zero)
+            
+            mTableView.backgroundColor = UIColor.clear
+            mTableView.separatorStyle = UITableViewCellSeparatorStyle.none
+            
+            pmTableView.backgroundColor = UIColor.clear
+            pmTableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        } else {
+            sunImage.isHidden = true;
+            moonImage.isHidden = true;
+            mTableView.isHidden = true;
+            pmTableView.isHidden = true;
+            
+            gettingStartedBackground.isHidden = false;
+        }
+        
+        self.mTableView.reloadData();
+        self.pmTableView.reloadData();
+    }
+    
     private func loadProducts() -> [Product]? {
         return NSKeyedUnarchiver.unarchiveObject(withFile: Product.ArchiveURL.path) as? [Product]
     }
