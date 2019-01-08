@@ -15,7 +15,7 @@ class statsViewController: UIViewController, FSCalendarDataSource, FSCalendarDel
     
     let green:UIColor = UIColor(red: 0.251, green: 0.831, blue: 0.494, alpha: 1)
     
-    var products = [String]()
+    var products = [Product]()
     
     var datesWithEvent = ["2018-06-03", "2018-06-06", "2018-06-12", "2018-06-25"]
     
@@ -30,7 +30,10 @@ class statsViewController: UIViewController, FSCalendarDataSource, FSCalendarDel
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        products = ["Lotion","Lipstick","Exfoliant","Lotion"]
+        if let savedProds = loadProducts() {
+            products += savedProds
+        }
+        
         statsProductList.tableFooterView = UIView(frame: CGRect.zero)
         
         statsProductList.backgroundColor = UIColor.clear
@@ -42,6 +45,10 @@ class statsViewController: UIViewController, FSCalendarDataSource, FSCalendarDel
         self.calendar = calendar
 
         // Do any additional setup after loading the view.
+    }
+    
+    private func loadProducts() -> [Product]? {
+        return NSKeyedUnarchiver.unarchiveObject(withFile: Product.ArchiveURL.path) as? [Product]
     }
 
     override func didReceiveMemoryWarning() {
@@ -82,7 +89,8 @@ extension statsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "statsProductCell")
-        let productName = products[indexPath.row]
+        
+        let productName = products[indexPath.row].name
         
         let date = Date()
         dateFormatterGet.dateFormat = "h:mm a"
