@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7BA0191C21ECB4510078E61B /* newProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA0191B21ECB4510078E61B /* newProductViewController.swift */; };
 		953958EF20C469BE00DD069A /* FSCalendar+Deprecated.m in Sources */ = {isa = PBXBuildFile; fileRef = 953958CE20C469BE00DD069A /* FSCalendar+Deprecated.m */; };
 		953958F020C469BE00DD069A /* FSCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 953958D020C469BE00DD069A /* FSCalendar.m */; };
 		953958F120C469BE00DD069A /* FSCalendarAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 953958D220C469BE00DD069A /* FSCalendarAppearance.m */; };
@@ -55,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7BA0191B21ECB4510078E61B /* newProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newProductViewController.swift; sourceTree = "<group>"; };
 		953958CE20C469BE00DD069A /* FSCalendar+Deprecated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FSCalendar+Deprecated.m"; sourceTree = "<group>"; };
 		953958CF20C469BE00DD069A /* FSCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendar.h; sourceTree = "<group>"; };
 		953958D020C469BE00DD069A /* FSCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendar.m; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				954D192020C45DA10051AE9A /* statsViewController.swift */,
 				9539590020C4C2B500DD069A /* giraffe_flight-bridging-header.h */,
 				D755BF1620E0040C00FD77F1 /* product.swift */,
+				7BA0191B21ECB4510078E61B /* newProductViewController.swift */,
 			);
 			path = thebeautyapp;
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 				959D89A720B393B300E17F2E /* homeViewController.swift in Sources */,
 				953958F820C469BE00DD069A /* FSCalendarDelegationProxy.m in Sources */,
 				959D89AD20B393B300E17F2E /* thebeautyapp.xcdatamodeld in Sources */,
+				7BA0191C21ECB4510078E61B /* newProductViewController.swift in Sources */,
 				953958FD20C469BE00DD069A /* FSCalendarTransitionCoordinator.m in Sources */,
 				953958F220C469BE00DD069A /* FSCalendarCalculator.m in Sources */,
 				953958F420C469BE00DD069A /* FSCalendarCollectionView.m in Sources */,

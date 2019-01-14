@@ -83,6 +83,21 @@
             </objects>
             <point key="canvasLocation" x="1300" y="-321.42857142857144"/>
         </scene>
+        <!--ADD PRODUCT-->
+        <scene sceneID="Zde-f7-4jH">
+            <objects>
+                <viewController storyboardIdentifier="newProductViewController" title="ADD PRODUCT" id="cEp-ob-1BY" customClass="newProductViewController" customModule="thebeautyapp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tJl-VK-Anp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="aQf-hH-jA4"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pbq-ts-TRr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2290" y="-325"/>
+        </scene>
         <!--Splash View Controller-->
         <scene sceneID="z3z-95-zBG">
             <objects>

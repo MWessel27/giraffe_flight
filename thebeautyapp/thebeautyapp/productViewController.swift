@@ -22,6 +22,9 @@ class productViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let rightBarButton = UIBarButtonItem(title: "ADD", style: UIBarButtonItemStyle.plain, target: self, action: #selector(addProdList))
+        self.navigationItem.rightBarButtonItem = rightBarButton
+        
         if let savedProds = loadProducts() {
             products += savedProds
         }
@@ -31,6 +34,13 @@ class productViewController: UIViewController {
         //tempProducts = ["Lotion", "Moisturizer","Lipstick","Exfoliant"]
 
         // Do any additional setup after loading the view.
+    }
+    
+    @objc func addProdList() {
+        let storyBoard : UIStoryboard = self.storyboard!
+        
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "newProductViewController")
+        self.navigationController?.pushViewController(nextViewController, animated: true)
     }
     
     func loadSampleProducts() {
