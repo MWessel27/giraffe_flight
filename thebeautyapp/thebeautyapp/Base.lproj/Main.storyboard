@@ -90,13 +90,35 @@
                     <view key="view" contentMode="scaleToFill" id="tJl-VK-Anp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S6G-1V-zqs">
+                                <rect key="frame" x="92" y="152" width="38" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="sunButton" image="sunIcon"/>
+                                <connections>
+                                    <action selector="sunButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="l6U-bd-eUt"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nPb-6E-U6t">
+                                <rect key="frame" x="245" y="151" width="38" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="moonButton" image="moonIcon"/>
+                                <connections>
+                                    <action selector="moonButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="U5J-0H-I5V"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="aQf-hH-jA4"/>
                     </view>
+                    <connections>
+                        <outlet property="moonButton" destination="nPb-6E-U6t" id="hyk-U0-lYR"/>
+                        <outlet property="sunButton" destination="S6G-1V-zqs" id="U9h-pn-hjT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pbq-ts-TRr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2290" y="-325"/>
+            <point key="canvasLocation" x="2288.8000000000002" y="-325.1231527093596"/>
         </scene>
         <!--Splash View Controller-->
         <scene sceneID="z3z-95-zBG">
@@ -347,5 +369,7 @@
         <image name="Sun" width="346" height="38"/>
         <image name="background" width="1125" height="2436"/>
         <image name="getting_started" width="375" height="812"/>
+        <image name="moonIcon" width="38" height="38"/>
+        <image name="sunIcon" width="38" height="38"/>
     </resources>
 </document>
