@@ -11,11 +11,46 @@ import os.log
 
 class newProductViewController: UIViewController {
     
+    @IBOutlet weak var submitNewProductBtn: UIButton!
+    @IBOutlet weak var newProductField: UITextField!
     @IBOutlet weak var sunButton: UIButton!
     @IBOutlet weak var moonButton: UIButton!
+    
+    var products = [Product]()
     let gradientLayer = CAGradientLayer()
     var sunSelected = 0
     var moonSelected = 0
+    
+    @objc func goHome() {
+        _ = navigationController?.popViewController(animated: true)
+    }
+    
+
+    @IBAction func submitNewProduct(_ sender: Any) {
+        let prodName = newProductField.text!
+        var timeOfDay = 0
+        if(sunSelected == 1) {
+            timeOfDay = 1
+        } else if(moonSelected == 1) {
+            timeOfDay = 2
+        }
+        guard let prod1 = Product(name: prodName, daily: true, rating: 1, ampm: timeOfDay, cat: "mine") else {
+            fatalError("Unable to instantiate meal1")
+        }
+        products += [prod1]
+        saveProducts()
+        newProductField.text = ""
+        goHome()
+    }
+    
+    private func saveProducts() {
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(products, toFile: Product.ArchiveURL.path)
+        if isSuccessfulSave {
+            os_log("Products successfully saved.", log: OSLog.default, type: .debug)
+        } else {
+            os_log("Failed to save Products...", log: OSLog.default, type: .error)
+        }
+    }
     
     func setGradientBackground(indicator: String) {
         

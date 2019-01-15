@@ -100,11 +100,26 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nPb-6E-U6t">
-                                <rect key="frame" x="245" y="151" width="38" height="38"/>
+                                <rect key="frame" x="260" y="152" width="38" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="moonButton" image="moonIcon"/>
                                 <connections>
                                     <action selector="moonButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="U5J-0H-I5V"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rM1-gG-WsL">
+                                <rect key="frame" x="101" y="240" width="172" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lxy-HD-6IR">
+                                <rect key="frame" x="163" y="729" width="48" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="ENTER"/>
+                                <connections>
+                                    <action selector="submitNewProduct:" destination="cEp-ob-1BY" eventType="touchUpInside" id="D9A-OO-M7z"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -113,6 +128,8 @@
                     </view>
                     <connections>
                         <outlet property="moonButton" destination="nPb-6E-U6t" id="hyk-U0-lYR"/>
+                        <outlet property="newProductField" destination="rM1-gG-WsL" id="ymb-HI-iYG"/>
+                        <outlet property="submitNewProductBtn" destination="lxy-HD-6IR" id="5vO-zf-GZi"/>
                         <outlet property="sunButton" destination="S6G-1V-zqs" id="U9h-pn-hjT"/>
                     </connections>
                 </viewController>
