@@ -14,7 +14,8 @@ class newProductViewController: UIViewController {
     @IBOutlet weak var sunButton: UIButton!
     @IBOutlet weak var moonButton: UIButton!
     let gradientLayer = CAGradientLayer()
-    var selectFlag = 0
+    var sunSelected = 0
+    var moonSelected = 0
     
     func setGradientBackground(indicator: String) {
         
@@ -26,37 +27,59 @@ class newProductViewController: UIViewController {
         } else if (indicator == "moon"){
             colorTop =  UIColor(red: 137.0/255.0, green: 137.0/255.0, blue: 137.0/255.0, alpha: 1.0).cgColor
             colorBottom = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1.0).cgColor
-        } else {
+        } else if(indicator == "shared"){
             colorTop =  UIColor(red: 255.0/255.0, green: 152.0/255.0, blue: 0.0/255.0, alpha: 1.0).cgColor
             colorBottom = UIColor(red: 137.0/255.0, green: 137.0/255.0, blue: 137.0/255.0, alpha: 1.0).cgColor
+        } else {
+            colorTop =  UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1.0).cgColor
+            colorBottom = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1.0).cgColor
         }
         
         gradientLayer.colors = [colorTop, colorBottom]
     }
     
     @IBAction func sunButtonClick(_ sender: Any) {
-        if(selectFlag == 1) {
-            setGradientBackground(indicator: "both")
-            selectFlag = 0
-        } else {
-            setGradientBackground(indicator: "sun")
-            //moonButton.backgroundColor = .clear
+        
+        if(sunSelected == 0) {
             sunButton.layer.cornerRadius = 5
             sunButton.backgroundColor = .white
-            selectFlag = 1
+            if(moonSelected == 1) {
+                setGradientBackground(indicator: "shared")
+            } else {
+                setGradientBackground(indicator: "sun")
+            }
+            sunSelected = 1
+        } else {
+            sunButton.layer.cornerRadius = 0
+            sunButton.backgroundColor = .clear
+            if(moonSelected == 1) {
+                setGradientBackground(indicator: "moon")
+            } else {
+                setGradientBackground(indicator: "")
+            }
+            sunSelected = 0
         }
     }
     
     @IBAction func moonButtonClick(_ sender: Any) {
-        if(selectFlag == 1) {
-            setGradientBackground(indicator: "both")
-            selectFlag = 0
-        } else {
-            //sunButton.backgroundColor = .clear
-            setGradientBackground(indicator: "moon")
+        if(moonSelected == 0) {
             moonButton.layer.cornerRadius = 5
             moonButton.backgroundColor = .white
-            selectFlag = 1
+            if(sunSelected == 1) {
+                setGradientBackground(indicator: "shared")
+            } else {
+                setGradientBackground(indicator: "moon")
+            }
+            moonSelected = 1
+        } else {
+            moonButton.layer.cornerRadius = 0
+            moonButton.backgroundColor = .clear
+            if(sunSelected == 1) {
+                setGradientBackground(indicator: "sun")
+            } else {
+                setGradientBackground(indicator: "")
+            }
+            moonSelected = 0
         }
     }
     

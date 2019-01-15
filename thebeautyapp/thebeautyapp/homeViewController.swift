@@ -109,8 +109,12 @@ class homeViewController: UIViewController {
     
     @objc func goToProdList() {
         let storyBoard : UIStoryboard = self.storyboard!
+        var nextViewController = storyBoard.instantiateViewController(withIdentifier: "productViewController")
         
-        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "productViewController")
+        if(products.count == 0) {
+            nextViewController = storyBoard.instantiateViewController(withIdentifier: "newProductViewController")
+            
+        }
         self.navigationController?.pushViewController(nextViewController, animated: true)
     }
     
