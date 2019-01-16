@@ -118,20 +118,31 @@ class newProductViewController: UIViewController {
         }
     }
     
+    private func loadProducts() -> [Product]? {
+        return NSKeyedUnarchiver.unarchiveObject(withFile: Product.ArchiveURL.path) as? [Product]
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let colorTop, colorBottom: CGColor
+        if let savedProds = loadProducts() {
+            products += savedProds
+        }
         
+        let colorTop, colorBottom: CGColor
+
         colorTop =  UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1.0).cgColor
         colorBottom = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1.0).cgColor
-        
+
         gradientLayer.colors = [colorTop, colorBottom]
         gradientLayer.locations = [0.0, 1.0]
         gradientLayer.frame = self.view.bounds
-        
-        self.view.layer.insertSublayer(gradientLayer, at: 0)
 
+        self.view.layer.insertSublayer(gradientLayer, at: 0)
+        
+        sunSelected = 1
+        sunButton.layer.cornerRadius = 5
+        sunButton.backgroundColor = .white
+        setGradientBackground(indicator: "sun")
     }
 }

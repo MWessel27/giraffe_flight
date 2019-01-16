@@ -91,7 +91,15 @@ extension statsViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "statsProductCell")
         
         let productName = products[indexPath.row].name
+        let timeOfDay = products[indexPath.row].ampm
         
+        var image : UIImage = UIImage(named: "sunIconSmall.png")!
+        
+        if(timeOfDay == 2) {
+            image = UIImage(named: "moonIconSmall.png")!
+        }
+        
+        cell.imageView?.image = image
         let date = Date()
         dateFormatterGet.dateFormat = "h:mm a"
         

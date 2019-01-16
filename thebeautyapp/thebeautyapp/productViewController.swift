@@ -36,6 +36,26 @@ class productViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated);
+        
+        if let savedProds = loadProducts() {
+            products = savedProds
+        }
+        
+        productTable.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated);
+        
+        if let savedProds = loadProducts() {
+            products = savedProds
+        }
+        
+        productTable.reloadData()
+    }
+    
     @objc func addProdList() {
         let storyBoard : UIStoryboard = self.storyboard!
         
@@ -108,10 +128,18 @@ extension productViewController: UITableViewDelegate, UITableViewDataSource {
 
         //let productName = tempProducts[indexPath.row]
         let productName = products[indexPath.row].name
-        let categoryName = products[indexPath.row].cat
+        //let categoryName = products[indexPath.row].cat
+        let timeOfDay = products[indexPath.row].ampm
         
+        var image : UIImage = UIImage(named: "sunIconSmall.png")!
+        
+        if(timeOfDay == 2) {
+            image = UIImage(named: "moonIconSmall.png")!
+        }
+        
+        cell.imageView?.image = image
         cell.detailTextLabel?.textColor = UIColor.gray
-        cell.detailTextLabel?.text = categoryName
+        //cell.detailTextLabel?.text = categoryName
         
         cell.textLabel?.text = productName
         cell.textLabel?.font = UIFont(name: "American Typewriter", size: 18)

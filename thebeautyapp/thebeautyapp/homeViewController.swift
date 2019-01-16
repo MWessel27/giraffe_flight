@@ -68,6 +68,41 @@ class homeViewController: UIViewController {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated);
+        
+        if let savedProds = loadProducts() {
+            products = savedProds
+        }
+        
+        if(products.count != 0) {
+            gettingStartedBackground.isHidden = true;
+            sunImage.isHidden = false;
+            moonImage.isHidden = false;
+            mTableView.isHidden = false;
+            pmTableView.isHidden = false;
+            
+            mTableView.tableFooterView = UIView(frame: CGRect.zero)
+            pmTableView.tableFooterView = UIView(frame: CGRect.zero)
+            
+            mTableView.backgroundColor = UIColor.clear
+            mTableView.separatorStyle = UITableViewCellSeparatorStyle.none
+            
+            pmTableView.backgroundColor = UIColor.clear
+            pmTableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        } else {
+            sunImage.isHidden = true;
+            moonImage.isHidden = true;
+            mTableView.isHidden = true;
+            pmTableView.isHidden = true;
+            
+            gettingStartedBackground.isHidden = false;
+        }
+        
+        self.mTableView.reloadData();
+        self.pmTableView.reloadData();
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
         
@@ -146,17 +181,38 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "ProductCell")
-        let productName = products[indexPath.row].name
-        cell.textLabel?.text = productName
-        cell.textLabel?.font = UIFont(name: "American Typewriter", size: 22)
-        cell.backgroundColor = UIColor.clear
         
-        var imageView : UIImageView
-        imageView  = UIImageView(frame:CGRect(x: 5, y: 5, width: 25, height: 25))
-        imageView.image = UIImage(named:"checkmarkempty")
+        if(tableView == mTableView) {
+            if(products[indexPath.row].ampm == 1) {
+                let productName = products[indexPath.row].name
+                cell.textLabel?.text = productName
+                cell.textLabel?.font = UIFont(name: "American Typewriter", size: 22)
+                cell.backgroundColor = UIColor.clear
+                
+                var imageView : UIImageView
+                imageView  = UIImageView(frame:CGRect(x: 5, y: 5, width: 25, height: 25))
+                imageView.image = UIImage(named:"checkmarkempty")
+                
+                cell.accessoryView = imageView
+                return cell
+            }
+        } else {
+            if(products[indexPath.row].ampm == 2) {
+                let productName = products[indexPath.row].name
+                cell.textLabel?.text = productName
+                cell.textLabel?.font = UIFont(name: "American Typewriter", size: 22)
+                cell.backgroundColor = UIColor.clear
+                
+                var imageView : UIImageView
+                imageView  = UIImageView(frame:CGRect(x: 5, y: 5, width: 25, height: 25))
+                imageView.image = UIImage(named:"checkmarkempty")
+                
+                cell.accessoryView = imageView
+                return cell
+            }
+        }
         
-        cell.accessoryView = imageView
-
+        cell.isHidden = true
         return cell
     }
     
