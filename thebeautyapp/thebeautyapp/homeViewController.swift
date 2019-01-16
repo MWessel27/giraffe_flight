@@ -183,7 +183,7 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "ProductCell")
         
         if(tableView == mTableView) {
-            if(products[indexPath.row].ampm == 1) {
+            if(products[indexPath.row].ampm == 1 || products[indexPath.row].ampm == 0) {
                 let productName = products[indexPath.row].name
                 cell.textLabel?.text = productName
                 cell.textLabel?.font = UIFont(name: "American Typewriter", size: 22)
@@ -197,7 +197,7 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
                 return cell
             }
         } else {
-            if(products[indexPath.row].ampm == 2) {
+            if(products[indexPath.row].ampm == 2 || products[indexPath.row].ampm == 0) {
                 let productName = products[indexPath.row].name
                 cell.textLabel?.text = productName
                 cell.textLabel?.font = UIFont(name: "American Typewriter", size: 22)
@@ -211,8 +211,7 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
                 return cell
             }
         }
-        
-        cell.isHidden = true
+    
         return cell
     }
     

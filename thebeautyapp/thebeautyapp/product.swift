@@ -51,7 +51,7 @@ class Product: NSObject, NSCoding {
         }
         
         // Initialization should fail if ampm is greater than 2 or less than 0
-        guard (ampm >= 0) && (ampm <= 2) else {
+        guard (ampm >= 0) && (ampm <= 3) else {
             return nil
         }
         

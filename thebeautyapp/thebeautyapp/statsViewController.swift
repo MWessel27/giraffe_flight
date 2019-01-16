@@ -93,9 +93,10 @@ extension statsViewController: UITableViewDelegate, UITableViewDataSource {
         let productName = products[indexPath.row].name
         let timeOfDay = products[indexPath.row].ampm
         
-        var image : UIImage = UIImage(named: "sunIconSmall.png")!
-        
-        if(timeOfDay == 2) {
+        var image : UIImage = UIImage(named: "sunMoonIcon.png")!
+        if(timeOfDay == 1) {
+            image = UIImage(named: "sunIconSmall.png")!
+        } else if(timeOfDay == 2) {
             image = UIImage(named: "moonIconSmall.png")!
         }
         

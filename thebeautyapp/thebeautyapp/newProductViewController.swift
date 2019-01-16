@@ -29,7 +29,10 @@ class newProductViewController: UIViewController {
     @IBAction func submitNewProduct(_ sender: Any) {
         let prodName = newProductField.text!
         var timeOfDay = 0
-        if(sunSelected == 1) {
+        
+        if(sunSelected == 1 && moonSelected == 1) {
+            timeOfDay = 0
+        } else if(sunSelected == 1) {
             timeOfDay = 1
         } else if(moonSelected == 1) {
             timeOfDay = 2

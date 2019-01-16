@@ -18,20 +18,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8Pp-eX-iu1">
-                                <rect key="frame" x="0.0" y="205" width="375" height="607"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="75" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8Pp-eX-iu1">
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="8Pp-eX-iu1" secondAttribute="height" multiplier="375:607" id="owx-RG-VPh"/>
-                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="productListCell" id="vk6-Q0-3eK">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vk6-Q0-3eK" id="2qt-07-WFC">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="74.666666666666671"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <rect key="contentStretch" x="0.0" y="0.0" width="0.94999999999999996" height="1"/>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -39,43 +37,17 @@
                                     <outlet property="delegate" destination="IEi-9x-ppx" id="zTx-JZ-Php"/>
                                 </connections>
                             </tableView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Mu-vT-tDb">
-                                <rect key="frame" x="42" y="115" width="291" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="1Mu-vT-tDb" secondAttribute="height" multiplier="97:10" id="da0-A8-Ooc"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rdu-tv-Ciw">
-                                <rect key="frame" x="163" y="160" width="48" height="30"/>
-                                <state key="normal" title="ENTER"/>
-                                <connections>
-                                    <action selector="newProdBtnClick:" destination="IEi-9x-ppx" eventType="touchUpInside" id="us7-Jc-Omi"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="8Pp-eX-iu1" firstAttribute="trailing" secondItem="Myg-mD-qTp" secondAttribute="trailing" id="2Ax-Ql-Ucv"/>
-                            <constraint firstAttribute="bottom" secondItem="8Pp-eX-iu1" secondAttribute="bottom" id="2vS-Rs-SOl"/>
-                            <constraint firstItem="rdu-tv-Ciw" firstAttribute="leading" secondItem="Myg-mD-qTp" secondAttribute="leading" constant="163" id="BPO-2o-SCQ"/>
-                            <constraint firstItem="rdu-tv-Ciw" firstAttribute="top" secondItem="1Mu-vT-tDb" secondAttribute="bottom" constant="8" id="BTH-SM-fNb"/>
-                            <constraint firstItem="1Mu-vT-tDb" firstAttribute="leading" secondItem="Myg-mD-qTp" secondAttribute="leading" constant="42" id="Dlt-Dt-24J"/>
-                            <constraint firstItem="Myg-mD-qTp" firstAttribute="trailing" secondItem="1Mu-vT-tDb" secondAttribute="trailing" constant="42" id="Ego-Ry-vgE"/>
-                            <constraint firstItem="rdu-tv-Ciw" firstAttribute="top" secondItem="1Mu-vT-tDb" secondAttribute="bottom" constant="8" id="FbZ-uJ-L6g"/>
-                            <constraint firstItem="1Mu-vT-tDb" firstAttribute="top" secondItem="Myg-mD-qTp" secondAttribute="top" constant="71" id="JOb-tr-osg"/>
-                            <constraint firstItem="8Pp-eX-iu1" firstAttribute="top" secondItem="rdu-tv-Ciw" secondAttribute="bottom" constant="22" id="VB2-hh-y8t"/>
-                            <constraint firstItem="8Pp-eX-iu1" firstAttribute="top" secondItem="rdu-tv-Ciw" secondAttribute="bottom" constant="22" id="Vm3-Et-ZZo"/>
-                            <constraint firstItem="Myg-mD-qTp" firstAttribute="trailing" secondItem="rdu-tv-Ciw" secondAttribute="trailing" constant="164" id="bo6-wL-A1U"/>
-                            <constraint firstItem="8Pp-eX-iu1" firstAttribute="leading" secondItem="Myg-mD-qTp" secondAttribute="leading" id="sVZ-s5-Pef"/>
+                            <constraint firstItem="8Pp-eX-iu1" firstAttribute="leading" secondItem="Myg-mD-qTp" secondAttribute="leading" id="26a-1h-RHd"/>
+                            <constraint firstItem="8Pp-eX-iu1" firstAttribute="top" secondItem="Myg-mD-qTp" secondAttribute="top" id="L0K-av-cg8"/>
+                            <constraint firstItem="8Pp-eX-iu1" firstAttribute="trailing" secondItem="Myg-mD-qTp" secondAttribute="trailing" id="LWL-1v-fIa"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="8Pp-eX-iu1" secondAttribute="bottom" id="qQ5-65-ZVe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Myg-mD-qTp"/>
                     </view>
                     <connections>
-                        <outlet property="newProdBtn" destination="rdu-tv-Ciw" id="X9S-Kh-hai"/>
-                        <outlet property="newProductEntry" destination="1Mu-vT-tDb" id="hjM-R3-vhS"/>
                         <outlet property="productTable" destination="8Pp-eX-iu1" id="F1S-Up-DZf"/>
                     </connections>
                 </viewController>
@@ -232,7 +204,7 @@
                                 </connections>
                             </tableView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="r57-RE-DoE" userLabel="PMTable View">
-                                <rect key="frame" x="0.0" y="557" width="375" height="183"/>
+                                <rect key="frame" x="0.0" y="557" width="375" height="235"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="r57-RE-DoE" secondAttribute="height" multiplier="75:47" id="Emb-0b-l3u"/>
@@ -265,12 +237,14 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Moon" translatesAutoresizingMaskIntoConstraints="NO" id="mF2-Q4-kZi">
                                 <rect key="frame" x="16" y="484" width="346" height="65"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="65" id="9uM-uP-wxx"/>
+                                    <constraint firstAttribute="width" constant="346" id="ady-Sq-siI"/>
                                     <constraint firstAttribute="width" secondItem="mF2-Q4-kZi" secondAttribute="height" multiplier="346:65" id="h8p-rl-3Hx"/>
                                     <constraint firstAttribute="width" secondItem="mF2-Q4-kZi" secondAttribute="height" multiplier="346:65" id="sce-zS-3gE"/>
                                 </constraints>
                             </imageView>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="getting_started" translatesAutoresizingMaskIntoConstraints="NO" id="N60-5Y-LQ3">
-                                <rect key="frame" x="0.0" y="33" width="375" height="724"/>
+                                <rect key="frame" x="0.0" y="33" width="375" height="776"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="N60-5Y-LQ3" secondAttribute="height" multiplier="375:724" id="CFZ-NA-NTa"/>
                                 </constraints>

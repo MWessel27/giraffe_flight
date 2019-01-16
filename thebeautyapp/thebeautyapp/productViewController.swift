@@ -15,8 +15,6 @@ class productViewController: UIViewController {
     var tempProducts = [String]()
     
     @IBOutlet weak var productTable: UITableView!
-    @IBOutlet weak var newProductEntry: UITextField!
-    @IBOutlet weak var newProdBtn: UIButton!
     
     
     override func viewDidLoad() {
@@ -28,12 +26,6 @@ class productViewController: UIViewController {
         if let savedProds = loadProducts() {
             products += savedProds
         }
-        
-        //loadSampleProducts()
-        
-        //tempProducts = ["Lotion", "Moisturizer","Lipstick","Exfoliant"]
-
-        // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -70,31 +62,11 @@ class productViewController: UIViewController {
         products += [prod1]
     }
     
-    @IBAction func newProdBtnClick(_ sender: Any) {
-        let prodName = newProductEntry.text!
-        guard let prod1 = Product(name: prodName, daily: true, rating: 1, ampm: 1, cat: "mine") else {
-            fatalError("Unable to instantiate meal1")
-        }
-        products += [prod1]
-        saveProducts()
-        //tempProducts.append(newProductEntry.text!)
-        newProductEntry.text = ""
-        productTable.reloadData()
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    private func saveProducts() {
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(products, toFile: Product.ArchiveURL.path)
-        if isSuccessfulSave {
-            os_log("Products successfully saved.", log: OSLog.default, type: .debug)
-        } else {
-            os_log("Failed to save Products...", log: OSLog.default, type: .error)
-        }
-    }
 
     private func loadProducts() -> [Product]? {
             return NSKeyedUnarchiver.unarchiveObject(withFile: Product.ArchiveURL.path) as? [Product]
@@ -126,19 +98,20 @@ extension productViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "productListCell")
 
-        //let productName = tempProducts[indexPath.row]
         let productName = products[indexPath.row].name
         //let categoryName = products[indexPath.row].cat
         let timeOfDay = products[indexPath.row].ampm
         
-        var image : UIImage = UIImage(named: "sunIconSmall.png")!
-        
-        if(timeOfDay == 2) {
+        var image : UIImage = UIImage(named: "sunMoonIcon.png")!
+        if(timeOfDay == 1) {
+            image = UIImage(named: "sunIconSmall.png")!
+        } else if(timeOfDay == 2) {
             image = UIImage(named: "moonIconSmall.png")!
         }
         
         cell.imageView?.image = image
         cell.detailTextLabel?.textColor = UIColor.gray
+        cell.textLabel?.font = UIFont(name: "American Typewriter", size: 22)
         //cell.detailTextLabel?.text = categoryName
         
         cell.textLabel?.text = productName
