@@ -9,12 +9,13 @@
 import UIKit
 import os.log
 
-class productViewController: UIViewController {
-
-    var products = [Product]()
-    var tempProducts = [String]()
+class ProductTableViewController: UITableViewController {
     
-    @IBOutlet weak var productTable: UITableView!
+    var products = [Product]()
+    //var tempProducts = [String]()
+    
+    @IBOutlet var productTableView: UITableView!
+    
     
     
     override func viewDidLoad() {
@@ -30,24 +31,23 @@ class productViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated);
-        
         if let savedProds = loadProducts() {
             products = savedProds
         }
-        
-        productTable.reloadData()
+
+        productTableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
-        
+
         if let savedProds = loadProducts() {
             products = savedProds
         }
-        
-        productTable.reloadData()
-    }
 
+        productTableView.reloadData()
+    }
+    
     
     @objc func addProdList() {
         let storyBoard : UIStoryboard = self.storyboard!
@@ -68,82 +68,80 @@ class productViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     private func loadProducts() -> [Product]? {
-            return NSKeyedUnarchiver.unarchiveObject(withFile: Product.ArchiveURL.path) as? [Product]
+        return NSKeyedUnarchiver.unarchiveObject(withFile: Product.ArchiveURL.path) as? [Product]
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
-        
-        switch(segue.identifier ?? "") {
-            case "ShowDetail":
-                guard let productDetailViewController = segue.destination as? newProductViewController else {
-                    fatalError("Unexpected destination: \(segue.destination)")
-                }
-                
-                guard let selectedProductCell = sender as? ProductTableViewCell else {
-                    fatalError("Unexpected sender: \(sender)")
-                }
-                
-                guard let indexPath = productTable.indexPath(for: selectedProductCell) else {
-                    fatalError("The selected cell is not being displayed by the table")
-                }
-                
-                let selectedProduct = products[indexPath.row]
-                productDetailViewController.product = selectedProduct
-            default:
-                fatalError("Unexpected Segue Identifier; \(segue.identifier)")
-        }
-    }
-
-}
-
-extension productViewController: UITableViewDelegate, UITableViewDataSource {
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        super.prepare(for: segue, sender: sender)
+//
+//        switch(segue.identifier ?? "") {
+//        case "ShowDetail":
+//            guard let productDetailViewController = segue.destination as? newProductViewController else {
+//                fatalError("Unexpected destination: \(segue.destination)")
+//            }
+//
+//            guard let selectedProductCell = sender as? ProductTableViewCell else {
+//                fatalError("Unexpected sender: \(sender)")
+//            }
+//
+//            guard let indexPath = productTableView.indexPath(for: selectedProductCell) else {
+//                fatalError("The selected cell is not being displayed by the table")
+//            }
+//
+//            let selectedProduct = products[indexPath.row]
+//            productDetailViewController.product = selectedProduct
+//        default:
+//            fatalError("Unexpected Segue Identifier; \(segue.identifier)")
+//        }
+//    }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "ShowDetail", sender: indexPath.row)
-    }
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        performSegue(withIdentifier: "ShowDetail", sender: indexPath.row)
+//    }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //return tempProducts.count
         return products.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cellIdentifier = "ProductTableViewCell"
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ProductTableViewCell  else {
             fatalError("The dequeued cell is not an instance of ProductTableViewCell.")
         }
-//        let cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: cellIdentifier) as? ProductTableViewCell
+        //        let cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: cellIdentifier) as? ProductTableViewCell
         
         let product = products[indexPath.row]
         
         cell.productLabel.text = product.name
         cell.productLabel.font = UIFont(name: "American Typewriter", size: 22)
-
+        
         let timeOfDay = products[indexPath.row].ampm
-
+        
         if(timeOfDay == 1) {
             cell.photoImageView.image = UIImage(named: "sunIconSmall.png")!
         } else if(timeOfDay == 2) {
             cell.photoImageView.image = UIImage(named: "moonIconSmall.png")!
+        } else {
+            cell.photoImageView.image = UIImage(named: "sunMoonIcon.png")!
         }
         
         //cell.detailTextLabel?.textColor = UIColor.gray
         //cell.detailTextLabel?.text = categoryName
         
-//        cell.textLabel?.text = productName
-//        cell.textLabel?.font = UIFont(name: "American Typewriter", size: 18)
+        //        cell.textLabel?.text = productName
+        //        cell.textLabel?.font = UIFont(name: "American Typewriter", size: 18)
         cell.backgroundColor = UIColor.clear
         
         return cell
     }
-}
 
+}

@@ -10,50 +10,54 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Product List Controller-->
-        <scene sceneID="f6r-Fo-UyA">
+        <!--PRODUCTS-->
+        <scene sceneID="nPI-ZP-kuh">
             <objects>
-                <viewController storyboardIdentifier="productViewController" title="PRODUCTS" id="IEi-9x-ppx" userLabel="Product List Controller" customClass="productViewController" customModule="thebeautyapp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Ky7-Yc-wMJ">
+                <tableViewController title="PRODUCTS" id="yNi-1X-of6" customClass="ProductTableViewController" customModule="thebeautyapp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="75" sectionHeaderHeight="28" sectionFooterHeight="28" id="Pmp-s1-eFv" userLabel="Product Table">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="75" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8Pp-eX-iu1">
-                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="productListCell" id="vk6-Q0-3eK">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="75"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vk6-Q0-3eK" id="2qt-07-WFC">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="74.666666666666671"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                        <rect key="contentStretch" x="0.0" y="0.0" width="0.94999999999999996" height="1"/>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="IEi-9x-ppx" id="p3j-on-4J0"/>
-                                    <outlet property="delegate" destination="IEi-9x-ppx" id="zTx-JZ-Php"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="8Pp-eX-iu1" firstAttribute="leading" secondItem="Myg-mD-qTp" secondAttribute="leading" id="26a-1h-RHd"/>
-                            <constraint firstItem="8Pp-eX-iu1" firstAttribute="top" secondItem="Myg-mD-qTp" secondAttribute="top" id="L0K-av-cg8"/>
-                            <constraint firstItem="8Pp-eX-iu1" firstAttribute="trailing" secondItem="Myg-mD-qTp" secondAttribute="trailing" id="LWL-1v-fIa"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="8Pp-eX-iu1" secondAttribute="bottom" id="qQ5-65-ZVe"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="Myg-mD-qTp"/>
-                    </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProductTableViewCell" rowHeight="75" id="6eD-iZ-SBx" customClass="ProductTableViewCell" customModule="thebeautyapp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="75"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6eD-iZ-SBx" id="BSO-VU-jdG">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="74.666666666666671"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="trX-Sw-Esu">
+                                            <rect key="frame" x="16" y="7" width="60" height="60"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ezK-ie-YBM">
+                                            <rect key="frame" x="102" y="27" width="257" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="photoImageView" destination="trX-Sw-Esu" id="4Mb-RN-tei"/>
+                                    <outlet property="productLabel" destination="ezK-ie-YBM" id="hPX-ss-Y5l"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="yNi-1X-of6" id="yRF-cA-Mi3"/>
+                            <outlet property="delegate" destination="yNi-1X-of6" id="2zN-D8-XD0"/>
+                        </connections>
+                    </tableView>
                     <connections>
-                        <outlet property="productTable" destination="8Pp-eX-iu1" id="F1S-Up-DZf"/>
+                        <outlet property="productTableView" destination="Pmp-s1-eFv" id="Nr6-fl-wE2"/>
+                        <segue destination="cEp-ob-1BY" kind="show" identifier="ShowDetail" id="hbV-KZ-SRt"/>
                     </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4Yn-oM-O6f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P5r-HD-dU1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1300" y="-321.42857142857144"/>
+            <point key="canvasLocation" x="1357.5999999999999" y="-325.1231527093596"/>
         </scene>
         <!--ADD PRODUCT-->
         <scene sceneID="Zde-f7-4jH">
@@ -204,7 +208,7 @@
                                 </connections>
                             </tableView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="r57-RE-DoE" userLabel="PMTable View">
-                                <rect key="frame" x="0.0" y="557" width="375" height="235"/>
+                                <rect key="frame" x="0.0" y="557" width="375" height="183"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="r57-RE-DoE" secondAttribute="height" multiplier="75:47" id="Emb-0b-l3u"/>
@@ -244,7 +248,7 @@
                                 </constraints>
                             </imageView>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="getting_started" translatesAutoresizingMaskIntoConstraints="NO" id="N60-5Y-LQ3">
-                                <rect key="frame" x="0.0" y="33" width="375" height="776"/>
+                                <rect key="frame" x="0.0" y="33" width="375" height="724"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="N60-5Y-LQ3" secondAttribute="height" multiplier="375:724" id="CFZ-NA-NTa"/>
                                 </constraints>
@@ -283,6 +287,7 @@
                         <outlet property="moonImage" destination="mF2-Q4-kZi" id="QlT-GL-aA2"/>
                         <outlet property="pmTableView" destination="r57-RE-DoE" id="bMr-qg-Ty7"/>
                         <outlet property="sunImage" destination="uac-eT-E5f" id="gjH-3z-DZY"/>
+                        <segue destination="yNi-1X-of6" kind="show" identifier="viewProdList" id="A6R-zD-k7F"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
