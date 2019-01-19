@@ -19,7 +19,6 @@ class homeViewController: UIViewController {
     @IBOutlet weak var moonImage: UIImageView!
     @IBOutlet weak var gettingStartedBackground: UIImageView!
     
-    //var products = [String]()
     var products = [Product]()
     
     let green:UIColor = UIColor(red: 0.251, green: 0.831, blue: 0.494, alpha: 1)
@@ -47,8 +46,6 @@ class homeViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = leftBarButton
         
         if(products.count != 0) {
-            //products = ["Lotion","Moisturizer","Lipstick","Exfoliant"]
-            
             mTableView.tableFooterView = UIView(frame: CGRect.zero)
             pmTableView.tableFooterView = UIView(frame: CGRect.zero)
             
@@ -219,7 +216,6 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         mySelectedCell.detailTextLabel?.font = UIFont(name: "American Typewriter", size: 14)
-        
         mySelectedCell.detailTextLabel?.textColor = UIColor.white
         mySelectedCell.detailTextLabel?.text = dateFormatter.string(for: date)
         
@@ -228,8 +224,6 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
         imageView.image = UIImage(named:"checkmark")
         
         mySelectedCell.accessoryView = imageView
-        
-        
         mySelectedCell.tintColor = UIColor.white
         mySelectedCell.backgroundColor = green
     }
@@ -242,6 +236,5 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
             myHighlightedCell.detailTextLabel?.backgroundColor = green
         }
     }
-    
 }
 

@@ -42,6 +42,7 @@
                                 <connections>
                                     <outlet property="photoImageView" destination="trX-Sw-Esu" id="4Mb-RN-tei"/>
                                     <outlet property="productLabel" destination="ezK-ie-YBM" id="hPX-ss-Y5l"/>
+                                    <segue destination="cEp-ob-1BY" kind="show" identifier="ShowDetail" id="g5p-ZB-7VM"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -52,7 +53,7 @@
                     </tableView>
                     <connections>
                         <outlet property="productTableView" destination="Pmp-s1-eFv" id="Nr6-fl-wE2"/>
-                        <segue destination="cEp-ob-1BY" kind="show" identifier="ShowDetail" id="hbV-KZ-SRt"/>
+                        <segue destination="cEp-ob-1BY" kind="presentation" identifier="AddItem" id="0au-Ri-gpG"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P5r-HD-dU1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -62,6 +63,8 @@
         <!--ADD PRODUCT-->
         <scene sceneID="Zde-f7-4jH">
             <objects>
+                <exit id="QDD-wT-aIh" userLabel="Exit" sceneMemberID="exit"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pbq-ts-TRr" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="newProductViewController" title="ADD PRODUCT" id="cEp-ob-1BY" customClass="newProductViewController" customModule="thebeautyapp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tJl-VK-Anp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
@@ -72,7 +75,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="ENTER"/>
                                 <connections>
-                                    <action selector="submitNewProduct:" destination="cEp-ob-1BY" eventType="touchUpInside" id="D9A-OO-M7z"/>
+                                    <segue destination="QDD-wT-aIh" kind="unwind" unwindAction="unwindToProductListWithSender:" id="txS-XH-klO"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S6G-1V-zqs">
@@ -115,9 +118,8 @@
                         <outlet property="sunButton" destination="S6G-1V-zqs" id="U9h-pn-hjT"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Pbq-ts-TRr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2288.8000000000002" y="-325.1231527093596"/>
+            <point key="canvasLocation" x="3007" y="-325"/>
         </scene>
         <!--Splash View Controller-->
         <scene sceneID="z3z-95-zBG">
@@ -374,4 +376,7 @@
         <image name="moonIcon" width="60" height="60"/>
         <image name="sunIcon" width="60" height="60"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="0au-Ri-gpG"/>
+    </inferredMetricsTieBreakers>
 </document>
