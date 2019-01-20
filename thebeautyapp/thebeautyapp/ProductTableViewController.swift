@@ -12,7 +12,6 @@ import os.log
 class ProductTableViewController: UITableViewController {
     
     var products = [Product]()
-    //var tempProducts = [String]()
     
     @IBOutlet var productTableView: UITableView!
     
@@ -86,7 +85,7 @@ class ProductTableViewController: UITableViewController {
                 products[selectedIndexPath.row] = product
                 productTableView.reloadRows(at: [selectedIndexPath], with: .none)
             } else {
-                // Add a new meal.
+                // Add a new product
                 let newIndexPath = IndexPath(row: products.count, section: 0)
                 
                 products.append(product)

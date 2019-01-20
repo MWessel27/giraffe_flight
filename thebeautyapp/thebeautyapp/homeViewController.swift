@@ -154,7 +154,6 @@ class homeViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
 }
 
 extension homeViewController: UITableViewDelegate, UITableViewDataSource {
@@ -183,6 +182,8 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
                 
                 cell.accessoryView = imageView
                 return cell
+            } else {
+                cell.isHidden = true
             }
         } else {
             if(products[indexPath.row].ampm == 2 || products[indexPath.row].ampm == 0) {
@@ -197,10 +198,31 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
                 
                 cell.accessoryView = imageView
                 return cell
+            } else {
+                cell.isHidden = true
             }
         }
     
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        var rowHeight:CGFloat = 0.0
+        
+        if(tableView == mTableView) {
+            if(products[indexPath.row].ampm == 1 || products[indexPath.row].ampm == 0) {
+                rowHeight = 50.0
+            } else {
+                rowHeight = 0.0
+            }
+        } else {
+            if(products[indexPath.row].ampm == 2 || products[indexPath.row].ampm == 0) {
+                rowHeight = 50.0
+            } else {
+                rowHeight = 0.0
+            }
+        }
+        return rowHeight
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

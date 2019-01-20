@@ -36,34 +36,25 @@ class newProductViewController: UIViewController {
         self.view.layer.insertSublayer(gradientLayer, at: 0)
         
         if let product = product {
+            // editing an existing product
             navigationItem.title = product.name
             newProductField.text = product.name
             
             if(product.ampm == 0) {
                 sunSelected = 1;
                 moonSelected = 1;
-                sunButton.layer.cornerRadius = 5
-                sunButton.backgroundColor = .black
-                //setGradientBackground(indicator: "sun")
-                moonButton.layer.cornerRadius = 5
-                moonButton.backgroundColor = .black
                 setGradientBackground(indicator: "shared")
             } else if(product.ampm == 1){
                 sunSelected = 1;
-                sunButton.layer.cornerRadius = 5
-                sunButton.backgroundColor = .black
                 setGradientBackground(indicator: "sun")
             } else if(product.ampm == 2) {
-                moonSelected = 2;
-                moonButton.layer.cornerRadius = 5
-                moonButton.backgroundColor = .black
+                moonSelected = 1;
                 setGradientBackground(indicator: "moon")
             }
         } else {
-                sunSelected = 1
-                sunButton.layer.cornerRadius = 5
-                sunButton.backgroundColor = .white
-                setGradientBackground(indicator: "sun")
+            // adding a new product
+            sunSelected = 1
+            setGradientBackground(indicator: "sun")
         }
     }
     
@@ -98,12 +89,24 @@ class newProductViewController: UIViewController {
         let colorTop, colorBottom: CGColor
         
         if(indicator == "sun") {
+            sunButton.layer.cornerRadius = 5
+            sunButton.backgroundColor = .white
+            moonButton.layer.cornerRadius = 0
+            moonButton.backgroundColor = .clear
             colorTop =  UIColor(red: 255.0/255.0, green: 152.0/255.0, blue: 0.0/255.0, alpha: 1.0).cgColor
             colorBottom = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1.0).cgColor
         } else if (indicator == "moon"){
+            moonButton.layer.cornerRadius = 5
+            moonButton.backgroundColor = .white
+            sunButton.layer.cornerRadius = 0
+            sunButton.backgroundColor = .clear
             colorTop =  UIColor(red: 137.0/255.0, green: 137.0/255.0, blue: 137.0/255.0, alpha: 1.0).cgColor
             colorBottom = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1.0).cgColor
         } else if(indicator == "shared"){
+            sunButton.layer.cornerRadius = 5
+            sunButton.backgroundColor = .white
+            moonButton.layer.cornerRadius = 5
+            moonButton.backgroundColor = .white
             colorTop =  UIColor(red: 255.0/255.0, green: 152.0/255.0, blue: 0.0/255.0, alpha: 1.0).cgColor
             colorBottom = UIColor(red: 137.0/255.0, green: 137.0/255.0, blue: 137.0/255.0, alpha: 1.0).cgColor
         } else {
@@ -115,47 +118,38 @@ class newProductViewController: UIViewController {
     }
     
     @IBAction func sunButtonClick(_ sender: Any) {
-        
         if(sunSelected == 0) {
-            sunButton.layer.cornerRadius = 5
-            sunButton.backgroundColor = .white
+            sunSelected = 1
             if(moonSelected == 1) {
                 setGradientBackground(indicator: "shared")
             } else {
                 setGradientBackground(indicator: "sun")
             }
-            sunSelected = 1
         } else {
-            sunButton.layer.cornerRadius = 0
-            sunButton.backgroundColor = .clear
+            sunSelected = 0
             if(moonSelected == 1) {
                 setGradientBackground(indicator: "moon")
             } else {
                 setGradientBackground(indicator: "")
             }
-            sunSelected = 0
         }
     }
     
     @IBAction func moonButtonClick(_ sender: Any) {
         if(moonSelected == 0) {
-            moonButton.layer.cornerRadius = 5
-            moonButton.backgroundColor = .white
+            moonSelected = 1
             if(sunSelected == 1) {
                 setGradientBackground(indicator: "shared")
             } else {
                 setGradientBackground(indicator: "moon")
             }
-            moonSelected = 1
         } else {
-            moonButton.layer.cornerRadius = 0
-            moonButton.backgroundColor = .clear
+            moonSelected = 0
             if(sunSelected == 1) {
                 setGradientBackground(indicator: "sun")
             } else {
                 setGradientBackground(indicator: "")
             }
-            moonSelected = 0
         }
     }
 }
