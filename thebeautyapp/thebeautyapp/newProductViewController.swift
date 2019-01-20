@@ -16,6 +16,17 @@ class newProductViewController: UIViewController {
     @IBOutlet weak var sunButton: UIButton!
     @IBOutlet weak var moonButton: UIButton!
     
+    // days of week buttons
+    @IBOutlet weak var sundayButton: UIButton!
+    @IBOutlet weak var mondayButton: UIButton!
+    @IBOutlet weak var tuesdayButton: UIButton!
+    @IBOutlet weak var wednesdayButton: UIButton!
+    @IBOutlet weak var thursdayButton: UIButton!
+    @IBOutlet weak var fridayButton: UIButton!
+    @IBOutlet weak var saturdayButton: UIButton!
+    
+    var daysOfWeek = [Int]()
+    
     let gradientLayer = CAGradientLayer()
     var sunSelected = 0
     var moonSelected = 0

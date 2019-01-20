@@ -78,7 +78,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rM1-gG-WsL">
-                                <rect key="frame" x="102" y="311" width="171" height="30"/>
+                                <rect key="frame" x="102" y="299" width="171" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -147,7 +147,7 @@
                             <constraint firstItem="rM1-gG-WsL" firstAttribute="leading" secondItem="aQf-hH-jA4" secondAttribute="leading" constant="102" id="2Wg-KH-Rmw"/>
                             <constraint firstItem="7KP-7C-5fq" firstAttribute="centerY" secondItem="tJl-VK-Anp" secondAttribute="centerY" id="R5W-iT-RLl"/>
                             <constraint firstItem="rCk-S9-Ofv" firstAttribute="centerX" secondItem="tJl-VK-Anp" secondAttribute="centerX" id="U93-c9-Bc2"/>
-                            <constraint firstItem="7KP-7C-5fq" firstAttribute="top" secondItem="rM1-gG-WsL" secondAttribute="bottom" constant="50" id="VwJ-8I-Iy5"/>
+                            <constraint firstItem="7KP-7C-5fq" firstAttribute="top" secondItem="rM1-gG-WsL" secondAttribute="bottom" constant="62" id="VwJ-8I-Iy5"/>
                             <constraint firstItem="lxy-HD-6IR" firstAttribute="leading" secondItem="aQf-hH-jA4" secondAttribute="leading" constant="163" id="XY6-ei-eGf"/>
                             <constraint firstItem="aQf-hH-jA4" firstAttribute="trailing" secondItem="rM1-gG-WsL" secondAttribute="trailing" constant="102" id="YMf-DA-Rrj"/>
                             <constraint firstItem="lxy-HD-6IR" firstAttribute="top" secondItem="7KP-7C-5fq" secondAttribute="bottom" constant="308" id="Ybd-LY-kbh"/>
@@ -159,10 +159,17 @@
                         <viewLayoutGuide key="safeArea" id="aQf-hH-jA4"/>
                     </view>
                     <connections>
+                        <outlet property="fridayButton" destination="DK9-iB-zWp" id="96A-2k-v70"/>
+                        <outlet property="mondayButton" destination="ibN-75-FAd" id="Gzm-GF-c9W"/>
                         <outlet property="moonButton" destination="nPb-6E-U6t" id="hyk-U0-lYR"/>
                         <outlet property="newProductField" destination="rM1-gG-WsL" id="ymb-HI-iYG"/>
+                        <outlet property="saturdayButton" destination="hEn-RF-KnO" id="CaV-qf-82i"/>
                         <outlet property="submitNewProductBtn" destination="lxy-HD-6IR" id="5vO-zf-GZi"/>
                         <outlet property="sunButton" destination="S6G-1V-zqs" id="U9h-pn-hjT"/>
+                        <outlet property="sundayButton" destination="p22-af-guG" id="xNJ-PX-S7u"/>
+                        <outlet property="thursdayButton" destination="5m5-yD-oma" id="kDE-Jp-FJF"/>
+                        <outlet property="tuesdayButton" destination="IUn-dc-RPO" id="erz-li-Bud"/>
+                        <outlet property="wednesdayButton" destination="Jle-Co-miS" id="DhX-Ga-bwu"/>
                     </connections>
                 </viewController>
             </objects>
