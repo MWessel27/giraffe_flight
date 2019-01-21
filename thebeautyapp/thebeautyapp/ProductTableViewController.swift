@@ -52,13 +52,6 @@ class ProductTableViewController: UITableViewController {
         self.navigationController?.pushViewController(nextViewController, animated: true)
     }
     
-    func loadSampleProducts() {
-        guard let prod1 = Product(name: "lotion", daily: true, rating: 1, ampm: 1, cat: "mine") else {
-            fatalError("Unable to instantiate meal1")
-        }
-        products += [prod1]
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -62,6 +62,35 @@ class newProductViewController: UIViewController {
                 moonSelected = 1;
                 setGradientBackground(indicator: "moon")
             }
+            
+            if(product.onSunday == 1) {
+                sundayButton.isSelected = true
+                daysOfWeek[0] = 1
+            }
+            if(product.onMonday == 1) {
+                mondayButton.isSelected = true
+                daysOfWeek[1] = 1
+            }
+            if(product.onTuesday == 1) {
+                tuesdayButton.isSelected = true
+                daysOfWeek[2] = 1
+            }
+            if(product.onWednesday == 1) {
+                wednesdayButton.isSelected = true
+                daysOfWeek[3] = 1
+            }
+            if(product.onThursday == 1) {
+                thursdayButton.isSelected = true
+                daysOfWeek[4] = 1
+            }
+            if(product.onFriday == 1) {
+                fridayButton.isSelected = true
+                daysOfWeek[5] = 1
+            }
+            if(product.onSaturday == 1) {
+                saturdayButton.isSelected = true
+                daysOfWeek[6] = 1
+            }
         } else {
             // adding a new product
             sunSelected = 1
@@ -92,7 +121,7 @@ class newProductViewController: UIViewController {
         }
         
         // Set the meal to be passed to MealTableViewController after the unwind segue.
-        product = Product(name: name, daily: true, rating: 1, ampm: timeOfDay, cat: "mine")
+        product = Product(name: name, daily: true, rating: 1, ampm: timeOfDay, cat: "mine", onSunday: daysOfWeek[0], onMonday: daysOfWeek[1], onTuesday: daysOfWeek[2], onWednesday: daysOfWeek[3], onThursday: daysOfWeek[4], onFriday: daysOfWeek[5], onSaturday: daysOfWeek[6])
     }
     
     func setGradientBackground(indicator: String) {
