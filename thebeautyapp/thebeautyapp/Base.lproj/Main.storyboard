@@ -162,10 +162,20 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pxm-PV-ZNP">
+                                <rect key="frame" x="150" y="451" width="74" height="30"/>
+                                <state key="normal" title="Every Day"/>
+                                <connections>
+                                    <action selector="everyDayButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="mx7-L8-WjR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="rM1-gG-WsL" firstAttribute="leading" secondItem="aQf-hH-jA4" secondAttribute="leading" constant="102" id="2Wg-KH-Rmw"/>
+                            <constraint firstItem="lxy-HD-6IR" firstAttribute="top" secondItem="Pxm-PV-ZNP" secondAttribute="bottom" constant="248" id="51e-gc-ZKr"/>
+                            <constraint firstItem="Pxm-PV-ZNP" firstAttribute="top" secondItem="7KP-7C-5fq" secondAttribute="bottom" constant="30" id="CKD-rh-lbu"/>
+                            <constraint firstItem="aQf-hH-jA4" firstAttribute="trailing" secondItem="Pxm-PV-ZNP" secondAttribute="trailing" constant="151" id="DiS-a4-209"/>
                             <constraint firstItem="7KP-7C-5fq" firstAttribute="centerY" secondItem="tJl-VK-Anp" secondAttribute="centerY" id="R5W-iT-RLl"/>
                             <constraint firstItem="rCk-S9-Ofv" firstAttribute="centerX" secondItem="tJl-VK-Anp" secondAttribute="centerX" id="U93-c9-Bc2"/>
                             <constraint firstItem="7KP-7C-5fq" firstAttribute="top" secondItem="rM1-gG-WsL" secondAttribute="bottom" constant="62" id="VwJ-8I-Iy5"/>
@@ -173,6 +183,7 @@
                             <constraint firstItem="aQf-hH-jA4" firstAttribute="trailing" secondItem="rM1-gG-WsL" secondAttribute="trailing" constant="102" id="YMf-DA-Rrj"/>
                             <constraint firstItem="lxy-HD-6IR" firstAttribute="top" secondItem="7KP-7C-5fq" secondAttribute="bottom" constant="308" id="Ybd-LY-kbh"/>
                             <constraint firstItem="7KP-7C-5fq" firstAttribute="centerX" secondItem="tJl-VK-Anp" secondAttribute="centerX" id="shA-8O-f6J"/>
+                            <constraint firstItem="Pxm-PV-ZNP" firstAttribute="leading" secondItem="aQf-hH-jA4" secondAttribute="leading" constant="150" id="uk7-5W-dhh"/>
                             <constraint firstItem="aQf-hH-jA4" firstAttribute="bottom" secondItem="lxy-HD-6IR" secondAttribute="bottom" constant="19" id="wKz-hj-rAq"/>
                             <constraint firstItem="aQf-hH-jA4" firstAttribute="trailing" secondItem="lxy-HD-6IR" secondAttribute="trailing" constant="164" id="wLp-xu-jcQ"/>
                             <constraint firstItem="rCk-S9-Ofv" firstAttribute="top" secondItem="aQf-hH-jA4" secondAttribute="top" constant="116" id="xKI-ur-xCO"/>
@@ -180,6 +191,7 @@
                         <viewLayoutGuide key="safeArea" id="aQf-hH-jA4"/>
                     </view>
                     <connections>
+                        <outlet property="everyDayButton" destination="Pxm-PV-ZNP" id="lal-yK-juM"/>
                         <outlet property="fridayButton" destination="DK9-iB-zWp" id="96A-2k-v70"/>
                         <outlet property="mondayButton" destination="ibN-75-FAd" id="Gzm-GF-c9W"/>
                         <outlet property="moonButton" destination="nPb-6E-U6t" id="hyk-U0-lYR"/>
@@ -194,7 +206,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="3007" y="-325"/>
+            <point key="canvasLocation" x="3005.5999999999999" y="-325.1231527093596"/>
         </scene>
         <!--Splash View Controller-->
         <scene sceneID="z3z-95-zBG">

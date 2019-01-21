@@ -25,6 +25,8 @@ class newProductViewController: UIViewController {
     @IBOutlet weak var fridayButton: UIButton!
     @IBOutlet weak var saturdayButton: UIButton!
     
+    @IBOutlet weak var everyDayButton: UIButton!
+    
     var daysOfWeek = [0,0,0,0,0,0,0]
     
     let gradientLayer = CAGradientLayer()
@@ -63,33 +65,48 @@ class newProductViewController: UIViewController {
                 setGradientBackground(indicator: "moon")
             }
             
-            if(product.onSunday == 1) {
-                sundayButton.isSelected = true
-                daysOfWeek[0] = 1
-            }
-            if(product.onMonday == 1) {
-                mondayButton.isSelected = true
-                daysOfWeek[1] = 1
-            }
-            if(product.onTuesday == 1) {
-                tuesdayButton.isSelected = true
-                daysOfWeek[2] = 1
-            }
-            if(product.onWednesday == 1) {
-                wednesdayButton.isSelected = true
-                daysOfWeek[3] = 1
-            }
-            if(product.onThursday == 1) {
-                thursdayButton.isSelected = true
-                daysOfWeek[4] = 1
-            }
-            if(product.onFriday == 1) {
-                fridayButton.isSelected = true
-                daysOfWeek[5] = 1
-            }
-            if(product.onSaturday == 1) {
-                saturdayButton.isSelected = true
-                daysOfWeek[6] = 1
+            if(product.daily) {
+                everyDayButton.isSelected = true
+                
+                sundayButton.isSelected = false
+                mondayButton.isSelected = false
+                tuesdayButton.isSelected = false
+                wednesdayButton.isSelected = false
+                thursdayButton.isSelected = false
+                fridayButton.isSelected = false
+                saturdayButton.isSelected = false
+                for n in daysOfWeek {
+                    daysOfWeek[n] = 0
+                }
+            } else {
+                if(product.onSunday == 1) {
+                    sundayButton.isSelected = true
+                    daysOfWeek[0] = 1
+                }
+                if(product.onMonday == 1) {
+                    mondayButton.isSelected = true
+                    daysOfWeek[1] = 1
+                }
+                if(product.onTuesday == 1) {
+                    tuesdayButton.isSelected = true
+                    daysOfWeek[2] = 1
+                }
+                if(product.onWednesday == 1) {
+                    wednesdayButton.isSelected = true
+                    daysOfWeek[3] = 1
+                }
+                if(product.onThursday == 1) {
+                    thursdayButton.isSelected = true
+                    daysOfWeek[4] = 1
+                }
+                if(product.onFriday == 1) {
+                    fridayButton.isSelected = true
+                    daysOfWeek[5] = 1
+                }
+                if(product.onSaturday == 1) {
+                    saturdayButton.isSelected = true
+                    daysOfWeek[6] = 1
+                }
             }
         } else {
             // adding a new product
@@ -111,6 +128,11 @@ class newProductViewController: UIViewController {
         
         let name = newProductField.text ?? ""
         var timeOfDay = 0
+        var daily = false
+        
+        if(everyDayButton.isSelected) {
+            daily = true
+        }
         
         if(sunSelected == 1 && moonSelected == 1) {
             timeOfDay = 0
@@ -120,8 +142,10 @@ class newProductViewController: UIViewController {
             timeOfDay = 2
         }
         
+       
+        
         // Set the meal to be passed to MealTableViewController after the unwind segue.
-        product = Product(name: name, daily: true, rating: 1, ampm: timeOfDay, cat: "mine", onSunday: daysOfWeek[0], onMonday: daysOfWeek[1], onTuesday: daysOfWeek[2], onWednesday: daysOfWeek[3], onThursday: daysOfWeek[4], onFriday: daysOfWeek[5], onSaturday: daysOfWeek[6])
+        product = Product(name: name, daily: daily, rating: 1, ampm: timeOfDay, cat: "mine", onSunday: daysOfWeek[0], onMonday: daysOfWeek[1], onTuesday: daysOfWeek[2], onWednesday: daysOfWeek[3], onThursday: daysOfWeek[4], onFriday: daysOfWeek[5], onSaturday: daysOfWeek[6])
     }
     
     func setGradientBackground(indicator: String) {
@@ -194,7 +218,31 @@ class newProductViewController: UIViewController {
     }
     
     // day of week button functions
+    
+    func resetAllButtons() {
+        sundayButton.isSelected = false
+        mondayButton.isSelected = false
+        tuesdayButton.isSelected = false
+        wednesdayButton.isSelected = false
+        thursdayButton.isSelected = false
+        fridayButton.isSelected = false
+        saturdayButton.isSelected = false
+        for n in daysOfWeek {
+            daysOfWeek[n] = 0
+        }
+    }
+    
+    @IBAction func everyDayButtonClick(_ sender: Any) {
+        if(everyDayButton.isSelected == true) {
+            everyDayButton.isSelected = false
+        } else {
+            everyDayButton.isSelected = true
+            resetAllButtons()
+        }
+    }
+    
     @IBAction func sundayButtonClick(_ sender: Any) {
+        everyDayButton.isSelected = false
         if(daysOfWeek[0] == 1) {
             sundayButton.isSelected = false
             daysOfWeek[0] = 0
@@ -205,6 +253,7 @@ class newProductViewController: UIViewController {
     }
     
     @IBAction func mondayButtonClick(_ sender: Any) {
+        everyDayButton.isSelected = false
         if(daysOfWeek[1] == 1) {
             mondayButton.isSelected = false
             daysOfWeek[1] = 0
@@ -215,6 +264,7 @@ class newProductViewController: UIViewController {
     }
     
     @IBAction func tuesdayButtonClick(_ sender: Any) {
+        everyDayButton.isSelected = false
         if(daysOfWeek[2] == 1) {
             tuesdayButton.isSelected = false
             daysOfWeek[2] = 0
@@ -225,6 +275,7 @@ class newProductViewController: UIViewController {
     }
     
     @IBAction func wednesdayButtonClick(_ sender: Any) {
+        everyDayButton.isSelected = false
         if(daysOfWeek[3] == 1) {
             wednesdayButton.isSelected = false
             daysOfWeek[3] = 0
@@ -235,6 +286,7 @@ class newProductViewController: UIViewController {
     }
     
     @IBAction func thursdayButtonClick(_ sender: Any) {
+        everyDayButton.isSelected = false
         if(daysOfWeek[4] == 1) {
             thursdayButton.isSelected = false
             daysOfWeek[4] = 0
@@ -245,6 +297,7 @@ class newProductViewController: UIViewController {
     }
     
     @IBAction func fridayButtonClick(_ sender: Any) {
+        everyDayButton.isSelected = false
         if(daysOfWeek[5] == 1) {
             fridayButton.isSelected = false
             daysOfWeek[5] = 0
@@ -255,6 +308,7 @@ class newProductViewController: UIViewController {
     }
     
     @IBAction func saturdayButtonClick(_ sender: Any) {
+        everyDayButton.isSelected = false
         if(daysOfWeek[6] == 1) {
             saturdayButton.isSelected = false
             daysOfWeek[6] = 0

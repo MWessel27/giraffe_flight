@@ -175,42 +175,46 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
         
         var productValidForDay = false
         
-        switch(dayOfWeek) {
-        case 1:
-            if(products[indexPath.row].onSunday == 1) {
-                productValidForDay = true
-            }
-            break;
-        case 2:
-            if(products[indexPath.row].onMonday == 1) {
-                productValidForDay = true
-            }
-            break;
-        case 3:
-            if(products[indexPath.row].onTuesday == 1) {
-                productValidForDay = true
-            }
-            break;
-        case 4:
-            if(products[indexPath.row].onWednesday == 1) {
-                productValidForDay = true
-            }
-            break;
-        case 5:
-            if(products[indexPath.row].onThursday == 1) {
-                productValidForDay = true
-            }
-            break;
-        case 6:
-            if(products[indexPath.row].onFriday == 1) {
-                productValidForDay = true
-            }
-            break;
-        default:
-            if(products[indexPath.row].onSaturday == 1) {
-                productValidForDay = true
-            }
-            break;
+        if(products[indexPath.row].daily) {
+            productValidForDay = true
+        } else {
+            switch(dayOfWeek) {
+                case 1:
+                    if(products[indexPath.row].onSunday == 1) {
+                        productValidForDay = true
+                    }
+                    break;
+                case 2:
+                    if(products[indexPath.row].onMonday == 1) {
+                        productValidForDay = true
+                    }
+                    break;
+                case 3:
+                    if(products[indexPath.row].onTuesday == 1) {
+                        productValidForDay = true
+                    }
+                    break;
+                case 4:
+                    if(products[indexPath.row].onWednesday == 1) {
+                        productValidForDay = true
+                    }
+                    break;
+                case 5:
+                    if(products[indexPath.row].onThursday == 1) {
+                        productValidForDay = true
+                    }
+                    break;
+                case 6:
+                    if(products[indexPath.row].onFriday == 1) {
+                        productValidForDay = true
+                    }
+                    break;
+                default:
+                    if(products[indexPath.row].onSaturday == 1) {
+                        productValidForDay = true
+                    }
+                    break;
+                }
         }
         
         if(tableView == mTableView) {
@@ -255,42 +259,46 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
         
         var productValidForDay = false
         
-        switch(dayOfWeek) {
-        case 1:
-            if(products[indexPath.row].onSunday == 1) {
-                productValidForDay = true
+        if(products[indexPath.row].daily) {
+            productValidForDay = true
+        } else {
+            switch(dayOfWeek) {
+                case 1:
+                    if(products[indexPath.row].onSunday == 1) {
+                        productValidForDay = true
+                    }
+                    break;
+                case 2:
+                    if(products[indexPath.row].onMonday == 1) {
+                        productValidForDay = true
+                    }
+                    break;
+                case 3:
+                    if(products[indexPath.row].onTuesday == 1) {
+                        productValidForDay = true
+                    }
+                    break;
+                case 4:
+                    if(products[indexPath.row].onWednesday == 1) {
+                        productValidForDay = true
+                    }
+                    break;
+                case 5:
+                    if(products[indexPath.row].onThursday == 1) {
+                        productValidForDay = true
+                    }
+                    break;
+                case 6:
+                    if(products[indexPath.row].onFriday == 1) {
+                        productValidForDay = true
+                    }
+                    break;
+                default:
+                    if(products[indexPath.row].onSaturday == 1) {
+                        productValidForDay = true
+                    }
+                    break;
             }
-            break;
-        case 2:
-            if(products[indexPath.row].onMonday == 1) {
-                productValidForDay = true
-            }
-            break;
-        case 3:
-            if(products[indexPath.row].onTuesday == 1) {
-                productValidForDay = true
-            }
-            break;
-        case 4:
-            if(products[indexPath.row].onWednesday == 1) {
-                productValidForDay = true
-            }
-            break;
-        case 5:
-            if(products[indexPath.row].onThursday == 1) {
-                productValidForDay = true
-            }
-            break;
-        case 6:
-            if(products[indexPath.row].onFriday == 1) {
-                productValidForDay = true
-            }
-            break;
-        default:
-            if(products[indexPath.row].onSaturday == 1) {
-                productValidForDay = true
-            }
-            break;
         }
         
         if(tableView == mTableView) {
