@@ -20,20 +20,24 @@ class homeViewController: UIViewController {
     @IBOutlet weak var gettingStartedBackground: UIImageView!
     
     var products = [Product]()
+    var dayOfWeek = 0
     
     let green:UIColor = UIColor(red: 0.251, green: 0.831, blue: 0.494, alpha: 1)
     
     fileprivate lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
         formatter.dateStyle = .medium
         formatter.timeStyle = .none
         formatter.locale = Locale(identifier: "en_US")
         return formatter
     }()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // returns an integer from 1 - 7, with 1 being Sunday and 7 being Saturday
+        dayOfWeek = Date().dayNumberOfWeek()!
         
         if let savedProds = loadProducts() {
             products += savedProds
@@ -169,8 +173,48 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "ProductCell")
         
+        var productValidForDay = false
+        
+        switch(dayOfWeek) {
+        case 1:
+            if(products[indexPath.row].onSunday == 1) {
+                productValidForDay = true
+            }
+            break;
+        case 2:
+            if(products[indexPath.row].onMonday == 1) {
+                productValidForDay = true
+            }
+            break;
+        case 3:
+            if(products[indexPath.row].onTuesday == 1) {
+                productValidForDay = true
+            }
+            break;
+        case 4:
+            if(products[indexPath.row].onWednesday == 1) {
+                productValidForDay = true
+            }
+            break;
+        case 5:
+            if(products[indexPath.row].onThursday == 1) {
+                productValidForDay = true
+            }
+            break;
+        case 6:
+            if(products[indexPath.row].onFriday == 1) {
+                productValidForDay = true
+            }
+            break;
+        default:
+            if(products[indexPath.row].onSaturday == 1) {
+                productValidForDay = true
+            }
+            break;
+        }
+        
         if(tableView == mTableView) {
-            if(products[indexPath.row].ampm == 1 || products[indexPath.row].ampm == 0) {
+            if((products[indexPath.row].ampm == 1 || products[indexPath.row].ampm == 0) && productValidForDay) {
                 let productName = products[indexPath.row].name
                 cell.textLabel?.text = productName
                 cell.textLabel?.font = UIFont(name: "American Typewriter", size: 22)
@@ -186,7 +230,7 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.isHidden = true
             }
         } else {
-            if(products[indexPath.row].ampm == 2 || products[indexPath.row].ampm == 0) {
+            if((products[indexPath.row].ampm == 2 || products[indexPath.row].ampm == 0)  && productValidForDay) {
                 let productName = products[indexPath.row].name
                 cell.textLabel?.text = productName
                 cell.textLabel?.font = UIFont(name: "American Typewriter", size: 22)
@@ -209,14 +253,54 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         var rowHeight:CGFloat = 0.0
         
+        var productValidForDay = false
+        
+        switch(dayOfWeek) {
+        case 1:
+            if(products[indexPath.row].onSunday == 1) {
+                productValidForDay = true
+            }
+            break;
+        case 2:
+            if(products[indexPath.row].onMonday == 1) {
+                productValidForDay = true
+            }
+            break;
+        case 3:
+            if(products[indexPath.row].onTuesday == 1) {
+                productValidForDay = true
+            }
+            break;
+        case 4:
+            if(products[indexPath.row].onWednesday == 1) {
+                productValidForDay = true
+            }
+            break;
+        case 5:
+            if(products[indexPath.row].onThursday == 1) {
+                productValidForDay = true
+            }
+            break;
+        case 6:
+            if(products[indexPath.row].onFriday == 1) {
+                productValidForDay = true
+            }
+            break;
+        default:
+            if(products[indexPath.row].onSaturday == 1) {
+                productValidForDay = true
+            }
+            break;
+        }
+        
         if(tableView == mTableView) {
-            if(products[indexPath.row].ampm == 1 || products[indexPath.row].ampm == 0) {
+            if((products[indexPath.row].ampm == 1 || products[indexPath.row].ampm == 0) && productValidForDay) {
                 rowHeight = 50.0
             } else {
                 rowHeight = 0.0
             }
         } else {
-            if(products[indexPath.row].ampm == 2 || products[indexPath.row].ampm == 0) {
+            if((products[indexPath.row].ampm == 2 || products[indexPath.row].ampm == 0) && productValidForDay) {
                 rowHeight = 50.0
             } else {
                 rowHeight = 0.0
@@ -260,3 +344,8 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+extension Date {
+    func dayNumberOfWeek() -> Int? {
+        return Calendar.current.dateComponents([.weekday], from: self).weekday
+    }
+}
