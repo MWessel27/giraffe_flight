@@ -89,30 +89,51 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p22-af-guG">
                                         <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                         <state key="normal" title="S"/>
+                                        <connections>
+                                            <action selector="sundayButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="vDH-9W-bnk"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ibN-75-FAd">
                                         <rect key="frame" x="33" y="0.0" width="30" height="30"/>
                                         <state key="normal" title="M"/>
+                                        <connections>
+                                            <action selector="mondayButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="C3T-ZF-Zso"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IUn-dc-RPO">
                                         <rect key="frame" x="65.999999999999986" y="0.0" width="30" height="30"/>
                                         <state key="normal" title="T"/>
+                                        <connections>
+                                            <action selector="tuesdayButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="ud4-sM-CtW"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jle-Co-miS">
                                         <rect key="frame" x="98.999999999999986" y="0.0" width="30.000000000000014" height="30"/>
                                         <state key="normal" title="W"/>
+                                        <connections>
+                                            <action selector="wednesdayButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="UfJ-cH-P38"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5m5-yD-oma">
                                         <rect key="frame" x="132" y="0.0" width="30" height="30"/>
                                         <state key="normal" title="T"/>
+                                        <connections>
+                                            <action selector="thursdayButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="KkI-jx-37g"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DK9-iB-zWp">
                                         <rect key="frame" x="165" y="0.0" width="30" height="30"/>
                                         <state key="normal" title="F"/>
+                                        <connections>
+                                            <action selector="fridayButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="qNE-Tq-8I7"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hEn-RF-KnO">
                                         <rect key="frame" x="198" y="0.0" width="30" height="30"/>
                                         <state key="normal" title="S"/>
+                                        <connections>
+                                            <action selector="saturdayButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="MZL-8V-ldg"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>

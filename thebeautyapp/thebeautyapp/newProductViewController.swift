@@ -25,7 +25,7 @@ class newProductViewController: UIViewController {
     @IBOutlet weak var fridayButton: UIButton!
     @IBOutlet weak var saturdayButton: UIButton!
     
-    var daysOfWeek = [Int]()
+    var daysOfWeek = [0,0,0,0,0,0,0]
     
     let gradientLayer = CAGradientLayer()
     var sunSelected = 0
@@ -161,6 +161,77 @@ class newProductViewController: UIViewController {
             } else {
                 setGradientBackground(indicator: "")
             }
+        }
+    }
+    
+    // day of week button functions
+    @IBAction func sundayButtonClick(_ sender: Any) {
+        if(daysOfWeek[0] == 1) {
+            sundayButton.isSelected = false
+            daysOfWeek[0] = 0
+        } else {
+            sundayButton.isSelected = true
+            daysOfWeek[0] = 1
+        }
+    }
+    
+    @IBAction func mondayButtonClick(_ sender: Any) {
+        if(daysOfWeek[1] == 1) {
+            mondayButton.isSelected = false
+            daysOfWeek[1] = 0
+        } else {
+            mondayButton.isSelected = true
+            daysOfWeek[1] = 1
+        }
+    }
+    
+    @IBAction func tuesdayButtonClick(_ sender: Any) {
+        if(daysOfWeek[2] == 1) {
+            tuesdayButton.isSelected = false
+            daysOfWeek[2] = 0
+        } else {
+            tuesdayButton.isSelected = true
+            daysOfWeek[2] = 1
+        }
+    }
+    
+    @IBAction func wednesdayButtonClick(_ sender: Any) {
+        if(daysOfWeek[3] == 1) {
+            wednesdayButton.isSelected = false
+            daysOfWeek[3] = 0
+        } else {
+            wednesdayButton.isSelected = true
+            daysOfWeek[3] = 1
+        }
+    }
+    
+    @IBAction func thursdayButtonClick(_ sender: Any) {
+        if(daysOfWeek[4] == 1) {
+            thursdayButton.isSelected = false
+            daysOfWeek[4] = 0
+        } else {
+            thursdayButton.isSelected = true
+            daysOfWeek[4] = 1
+        }
+    }
+    
+    @IBAction func fridayButtonClick(_ sender: Any) {
+        if(daysOfWeek[5] == 1) {
+            fridayButton.isSelected = false
+            daysOfWeek[5] = 0
+        } else {
+            fridayButton.isSelected = true
+            daysOfWeek[5] = 1
+        }
+    }
+    
+    @IBAction func saturdayButtonClick(_ sender: Any) {
+        if(daysOfWeek[6] == 1) {
+            saturdayButton.isSelected = false
+            daysOfWeek[6] = 0
+        } else {
+            saturdayButton.isSelected = true
+            daysOfWeek[6] = 1
         }
     }
 }
