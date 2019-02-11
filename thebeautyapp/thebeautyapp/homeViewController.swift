@@ -162,6 +162,38 @@ class homeViewController: UIViewController {
 
 extension homeViewController: UITableViewDelegate, UITableViewDataSource {
     
+    func setCellUnchecked(cell: UITableViewCell) -> UITableViewCell {
+        cell.textLabel?.font = UIFont(name: "American Typewriter", size: 22)
+        cell.backgroundColor = UIColor.clear
+        cell.detailTextLabel?.backgroundColor = UIColor.clear
+        cell.detailTextLabel?.text = ""
+        
+        var imageView : UIImageView
+        imageView  = UIImageView(frame:CGRect(x: 5, y: 5, width: 25, height: 25))
+        imageView.image = UIImage(named:"checkmarkempty")
+        
+        cell.accessoryView = imageView
+        return cell
+    }
+    
+    func setCellChecked(cell: UITableViewCell) -> UITableViewCell {
+        let date = Date()
+        
+        cell.detailTextLabel?.backgroundColor = green
+        cell.detailTextLabel?.font = UIFont(name: "American Typewriter", size: 14)
+        cell.detailTextLabel?.textColor = UIColor.white
+        cell.detailTextLabel?.text = dateFormatter.string(for: date)
+        
+        var imageView : UIImageView
+        imageView  = UIImageView(frame:CGRect(x: 5, y: 5, width: 25, height: 25))
+        imageView.image = UIImage(named:"checkmark")
+        
+        cell.accessoryView = imageView
+        cell.tintColor = UIColor.white
+        cell.backgroundColor = green
+        return cell
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -171,7 +203,7 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "ProductCell")
+        var cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "ProductCell")
         
         var productValidForDay = false
         
@@ -221,14 +253,7 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
             if((products[indexPath.row].ampm == 1 || products[indexPath.row].ampm == 0) && productValidForDay) {
                 let productName = products[indexPath.row].name
                 cell.textLabel?.text = productName
-                cell.textLabel?.font = UIFont(name: "American Typewriter", size: 22)
-                cell.backgroundColor = UIColor.clear
-                
-                var imageView : UIImageView
-                imageView  = UIImageView(frame:CGRect(x: 5, y: 5, width: 25, height: 25))
-                imageView.image = UIImage(named:"checkmarkempty")
-                
-                cell.accessoryView = imageView
+                cell = setCellUnchecked(cell: cell)
                 return cell
             } else {
                 cell.isHidden = true
@@ -237,14 +262,7 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
             if((products[indexPath.row].ampm == 2 || products[indexPath.row].ampm == 0)  && productValidForDay) {
                 let productName = products[indexPath.row].name
                 cell.textLabel?.text = productName
-                cell.textLabel?.font = UIFont(name: "American Typewriter", size: 22)
-                cell.backgroundColor = UIColor.clear
-                
-                var imageView : UIImageView
-                imageView  = UIImageView(frame:CGRect(x: 5, y: 5, width: 25, height: 25))
-                imageView.image = UIImage(named:"checkmarkempty")
-                
-                cell.accessoryView = imageView
+                cell = setCellUnchecked(cell: cell)
                 return cell
             } else {
                 cell.isHidden = true
@@ -319,33 +337,19 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let date = Date()
+        var mySelectedCell:UITableViewCell = tableView.cellForRow(at: indexPath)!
         
-        let mySelectedCell:UITableViewCell = tableView.cellForRow(at: indexPath)!
-        
-        if(mySelectedCell.backgroundColor == green){
-            mySelectedCell.detailTextLabel?.backgroundColor = UIColor.clear
+        if(mySelectedCell.backgroundColor == green) {
+            mySelectedCell = setCellUnchecked(cell: mySelectedCell)
         } else {
-            mySelectedCell.detailTextLabel?.backgroundColor = green
+            mySelectedCell = setCellChecked(cell: mySelectedCell)
         }
-        
-        mySelectedCell.detailTextLabel?.font = UIFont(name: "American Typewriter", size: 14)
-        mySelectedCell.detailTextLabel?.textColor = UIColor.white
-        mySelectedCell.detailTextLabel?.text = dateFormatter.string(for: date)
-        
-        var imageView : UIImageView
-        imageView  = UIImageView(frame:CGRect(x: 5, y: 5, width: 25, height: 25))
-        imageView.image = UIImage(named:"checkmark")
-        
-        mySelectedCell.accessoryView = imageView
-        mySelectedCell.tintColor = UIColor.white
-        mySelectedCell.backgroundColor = green
     }
     
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
         let myHighlightedCell:UITableViewCell = tableView.cellForRow(at: indexPath)!
         if(myHighlightedCell.backgroundColor == green){
-            myHighlightedCell.detailTextLabel?.backgroundColor = UIColor.clear
+            myHighlightedCell.detailTextLabel?.backgroundColor = UIColor.white
         } else {
             myHighlightedCell.detailTextLabel?.backgroundColor = green
         }
