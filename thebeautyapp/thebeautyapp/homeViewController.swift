@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class homeViewController: UIViewController {
     
@@ -20,6 +21,15 @@ class homeViewController: UIViewController {
     @IBOutlet weak var gettingStartedBackground: UIImageView!
     
     var products = [Product]()
+    var selectedProducts = [Product]()
+    
+    // saving used products array to use on calendar
+    var usedProducts = [UsedProducts]()
+
+    var moc:NSManagedObjectContext!
+    let appDelegate = UIApplication.shared.delegate as? AppDelegate
+    var todaysDate: String = ""
+    
     var dayOfWeek = 0
     
     let green:UIColor = UIColor(red: 0.251, green: 0.831, blue: 0.494, alpha: 1)
@@ -42,6 +52,13 @@ class homeViewController: UIViewController {
         if let savedProds = loadProducts() {
             products += savedProds
         }
+        
+        moc = appDelegate?.persistentContainer.viewContext
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        todaysDate = formatter.string(from: date)
+        usedProducts = [loadData()]
         
         let rightBarButton = UIBarButtonItem(title: "PRODUCTS", style: UIBarButtonItemStyle.plain, target: self, action: #selector(goToProdList))
         self.navigationItem.rightBarButtonItem = rightBarButton
@@ -162,6 +179,48 @@ class homeViewController: UIViewController {
 
 extension homeViewController: UITableViewDelegate, UITableViewDataSource {
     
+    func loadData() -> UsedProducts {
+        let dayRequest:NSFetchRequest<UsedProducts> = UsedProducts.fetchRequest()
+        
+        let sortDescriptor = NSSortDescriptor(key: "added", ascending: false)
+        dayRequest.sortDescriptors = [sortDescriptor]
+        
+        do {
+            try usedProducts = moc.fetch(dayRequest)
+        } catch {
+            print("Could not load data")
+        }
+        
+        // UsedProducts now adds 1 product to the right day
+        // need to change productName to an array of strings
+        // need to remove products for day when unchecked
+        for prod in usedProducts {
+            if(prod.added == todaysDate){
+//                print(prod.added)
+//                print(prod.productName)
+                return prod
+            }
+        }
+        let usedProd = UsedProducts(context: moc)
+        
+        return usedProd
+    }
+    
+    func addProductToDatabase(name: String) {
+        let todaysProd: UsedProducts
+        todaysProd = loadData()
+        if(todaysProd.added == todaysDate) {
+            todaysProd.productName = name
+            //usedProductList.append(todaysProd)
+            appDelegate?.saveContext()
+        } else {
+            let todaysUsedProducts = UsedProducts(context: moc)
+            todaysUsedProducts.added = todaysDate
+            todaysUsedProducts.productName = name
+            appDelegate?.saveContext()
+        }
+    }
+    
     func setCellUnchecked(cell: UITableViewCell) -> UITableViewCell {
         cell.textLabel?.font = UIFont(name: "American Typewriter", size: 22)
         cell.backgroundColor = UIColor.clear
@@ -249,11 +308,22 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
                 }
         }
         
+        var checked = false
+        for usedProd in usedProducts {
+            if(products[indexPath.row].name == usedProd.productName){
+                checked = true
+            }
+        }
+        
         if(tableView == mTableView) {
             if((products[indexPath.row].ampm == 1 || products[indexPath.row].ampm == 0) && productValidForDay) {
                 let productName = products[indexPath.row].name
                 cell.textLabel?.text = productName
-                cell = setCellUnchecked(cell: cell)
+                if(checked) {
+                    cell = setCellChecked(cell: cell)
+                } else {
+                    cell = setCellUnchecked(cell: cell)
+                }
                 return cell
             } else {
                 cell.isHidden = true
@@ -262,7 +332,11 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
             if((products[indexPath.row].ampm == 2 || products[indexPath.row].ampm == 0)  && productValidForDay) {
                 let productName = products[indexPath.row].name
                 cell.textLabel?.text = productName
-                cell = setCellUnchecked(cell: cell)
+                if(checked) {
+                    cell = setCellChecked(cell: cell)
+                } else {
+                    cell = setCellUnchecked(cell: cell)
+                }
                 return cell
             } else {
                 cell.isHidden = true
@@ -340,8 +414,19 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
         var mySelectedCell:UITableViewCell = tableView.cellForRow(at: indexPath)!
         
         if(mySelectedCell.backgroundColor == green) {
+            
+            for prod in selectedProducts {
+                if(prod.name == mySelectedCell.textLabel!.text) {
+                    if let index = selectedProducts.index(of: prod) {
+                        selectedProducts.remove(at: index)
+                    }
+                }
+            }
+
             mySelectedCell = setCellUnchecked(cell: mySelectedCell)
         } else {
+            selectedProducts.append(products[indexPath.row])
+            addProductToDatabase(name: products[indexPath.row].name)
             mySelectedCell = setCellChecked(cell: mySelectedCell)
         }
     }
