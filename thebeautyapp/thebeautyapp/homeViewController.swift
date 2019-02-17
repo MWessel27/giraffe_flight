@@ -54,6 +54,8 @@ class homeViewController: UIViewController {
         formatter.dateFormat = "yyyy-MM-dd"
         todaysDate = formatter.string(from: date)
         
+        //to-do update UsedActivity to accept AM/PM & check for each
+        
         let rightBarButton = UIBarButtonItem(title: "PRODUCTS", style: UIBarButtonItemStyle.plain, target: self, action: #selector(goToProdList))
         self.navigationItem.rightBarButtonItem = rightBarButton
         
@@ -182,34 +184,58 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func addUsedActivity(product: Product) {
-        print("used product \(product.name) on \(todaysDate)")
-        for act in product.usedActivities {
+    func addUsedActivity(product: Product, ampm: Int) {
+        
+        for (index, act) in product.usedActivities.enumerated() {
             if(act.date == todaysDate) {
-                print("prod already used today")
-                return
-            } else {
-                
+                if(act.ampm == ampm) {
+                    print("prod already used today")
+                    return
+                } else {
+                    if(ampm == 1 && act.ampm == 2) {
+                        act.ampm = 0
+                    } else if(ampm == 2 && act.ampm == 1) {
+                        act.ampm = 0
+                    } else {
+                        act.ampm = ampm
+                    }
+                    
+                    product.usedActivities[index].ampm = act.ampm
+                    
+                    saveProducts()
+                    return
+                }
             }
         }
-        print("adding product \(product.name)")
-        let usedActivity = UsedActivity(date: todaysDate, ampm: product.ampm)
+
+        let usedActivity = UsedActivity(date: todaysDate, ampm: ampm)
         
         product.usedActivities.append(usedActivity!)
         
         saveProducts()
     }
     
-    func removeUsedActivity(product: Product) {
-        print("removing product: \(product.name)")
+    func removeUsedActivity(product: Product, ampm: Int) {
         
         for (index, act) in product.usedActivities.enumerated() {
             if(act.date == todaysDate) {
-                product.usedActivities.remove(at: index)
-                saveProducts()
-                return
-            } else {
-                
+                if(act.ampm == ampm) {
+                    product.usedActivities.remove(at: index)
+                    saveProducts()
+                } else {
+                    if(act.ampm == 0) {
+                        if(ampm == 1) {
+                            act.ampm = 2
+                        } else {
+                            act.ampm = 1
+                        }
+                        
+                        product.usedActivities[index].ampm = act.ampm
+                        
+                        saveProducts()
+                        return
+                    }
+                }
             }
         }
     }
@@ -303,22 +329,16 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
                 }
         }
         
-//        var checked = false
-//        for usedProd in usedProducts {
-//            if(products[indexPath.row].name == usedProd.productName){
-//                checked = true
-//            }
-//        }
-        var checked = false
-        for usedProductDates in products[indexPath.row].usedActivities {
-            if(usedProductDates.date == todaysDate) {
-                checked = true
-            }
-        }
-
-        
         if(tableView == mTableView) {
             if((products[indexPath.row].ampm == 1 || products[indexPath.row].ampm == 0) && productValidForDay) {
+                
+                var checked = false
+                for usedProductDates in products[indexPath.row].usedActivities {
+                    if(usedProductDates.date == todaysDate && (usedProductDates.ampm == 1 || usedProductDates.ampm == 0)) {
+                        checked = true
+                    }
+                }
+                
                 let productName = products[indexPath.row].name
                 cell.textLabel?.text = productName
                 if(checked) {
@@ -332,6 +352,14 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
             }
         } else {
             if((products[indexPath.row].ampm == 2 || products[indexPath.row].ampm == 0)  && productValidForDay) {
+                
+                var checked = false
+                for usedProductDates in products[indexPath.row].usedActivities {
+                    if(usedProductDates.date == todaysDate && (usedProductDates.ampm == 2 || usedProductDates.ampm == 0)) {
+                        checked = true
+                    }
+                }
+                
                 let productName = products[indexPath.row].name
                 cell.textLabel?.text = productName
                 if(checked) {
@@ -414,22 +442,28 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         var mySelectedCell:UITableViewCell = tableView.cellForRow(at: indexPath)!
+        var ampm = 3
+        if(tableView == mTableView) {
+            ampm = 1
+        } else {
+            ampm = 2
+        }
         
         if(mySelectedCell.backgroundColor == green) {
             
-            for prod in selectedProducts {
-                if(prod.name == mySelectedCell.textLabel!.text) {
-                    if let index = selectedProducts.index(of: prod) {
-                        removeUsedActivity(product: products[indexPath.row])
-                        selectedProducts.remove(at: index)
-                    }
-                }
-            }
+//            for prod in selectedProducts {
+//                if(prod.name == mySelectedCell.textLabel!.text) {
+//                    if let index = selectedProducts.index(of: prod) {
+                        removeUsedActivity(product: products[indexPath.row], ampm: ampm)
+//                        selectedProducts.remove(at: index)
+//                    }
+//                }
+//            }
 
             mySelectedCell = setCellUnchecked(cell: mySelectedCell)
         } else {
-            selectedProducts.append(products[indexPath.row])
-            addUsedActivity(product: products[indexPath.row])
+            //selectedProducts.append(products[indexPath.row])
+            addUsedActivity(product: products[indexPath.row], ampm: ampm)
             mySelectedCell = setCellChecked(cell: mySelectedCell)
         }
     }
