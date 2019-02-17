@@ -22,7 +22,6 @@ class homeViewController: UIViewController {
     @IBOutlet weak var gettingStartedBackground: UIImageView!
     
     var products = [Product]()
-    var selectedProducts = [Product]()
     
     var todaysDate: String = ""
     
@@ -53,8 +52,6 @@ class homeViewController: UIViewController {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         todaysDate = formatter.string(from: date)
-        
-        //to-do update UsedActivity to accept AM/PM & check for each
         
         let rightBarButton = UIBarButtonItem(title: "PRODUCTS", style: UIBarButtonItemStyle.plain, target: self, action: #selector(goToProdList))
         self.navigationItem.rightBarButtonItem = rightBarButton
@@ -450,19 +447,9 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         if(mySelectedCell.backgroundColor == green) {
-            
-//            for prod in selectedProducts {
-//                if(prod.name == mySelectedCell.textLabel!.text) {
-//                    if let index = selectedProducts.index(of: prod) {
-                        removeUsedActivity(product: products[indexPath.row], ampm: ampm)
-//                        selectedProducts.remove(at: index)
-//                    }
-//                }
-//            }
-
+            removeUsedActivity(product: products[indexPath.row], ampm: ampm)
             mySelectedCell = setCellUnchecked(cell: mySelectedCell)
         } else {
-            //selectedProducts.append(products[indexPath.row])
             addUsedActivity(product: products[indexPath.row], ampm: ampm)
             mySelectedCell = setCellChecked(cell: mySelectedCell)
         }
