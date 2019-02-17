@@ -25,6 +25,7 @@ class Product: NSObject, NSCoding {
     var onThursday: Int
     var onFriday: Int
     var onSaturday: Int
+    var usedActivities:[UsedActivity] = [UsedActivity]()
     
     //MARK: Archiving Paths
     static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
@@ -45,9 +46,10 @@ class Product: NSObject, NSCoding {
         static let onThursday = "onThursday"
         static let onFriday = "onFriday"
         static let onSaturday = "onSaturday"
+        static let usedActivities = "usedActivities"
     }
     
-    init?(name: String, daily: Bool, rating: Int, ampm: Int, cat: String, onSunday: Int, onMonday: Int, onTuesday: Int, onWednesday: Int, onThursday: Int, onFriday: Int, onSaturday: Int) {
+    init?(name: String, daily: Bool, rating: Int, ampm: Int, cat: String, onSunday: Int, onMonday: Int, onTuesday: Int, onWednesday: Int, onThursday: Int, onFriday: Int, onSaturday: Int, usedActivities: [UsedActivity]) {
         
         // The name must not be empty
         guard !name.isEmpty else {
@@ -81,6 +83,7 @@ class Product: NSObject, NSCoding {
         self.onThursday = onThursday
         self.onFriday = onFriday
         self.onSaturday = onSaturday
+        self.usedActivities = usedActivities
     }
     
     //MARK: NSCoding
@@ -98,6 +101,7 @@ class Product: NSObject, NSCoding {
         aCoder.encode(onThursday, forKey: PropertyKey.onThursday)
         aCoder.encode(onFriday, forKey: PropertyKey.onFriday)
         aCoder.encode(onSaturday, forKey: PropertyKey.onSaturday)
+        aCoder.encode(usedActivities, forKey: PropertyKey.usedActivities)
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
@@ -126,8 +130,9 @@ class Product: NSObject, NSCoding {
         let onThursday = aDecoder.decodeInteger(forKey: PropertyKey.onThursday)
         let onFriday = aDecoder.decodeInteger(forKey: PropertyKey.onFriday)
         let onSaturday = aDecoder.decodeInteger(forKey: PropertyKey.onSaturday)
+        let usedActivities = aDecoder.decodeObject(forKey: PropertyKey.usedActivities)
         
         // Must call designated initializer.
-        self.init(name: name, daily: daily, rating: rating, ampm: ampm, cat: cat, onSunday: onSunday, onMonday: onMonday, onTuesday: onTuesday, onWednesday: onWednesday, onThursday: onThursday, onFriday: onFriday, onSaturday: onSaturday)
+        self.init(name: name, daily: daily, rating: rating, ampm: ampm, cat: cat, onSunday: onSunday, onMonday: onMonday, onTuesday: onTuesday, onWednesday: onWednesday, onThursday: onThursday, onFriday: onFriday, onSaturday: onSaturday, usedActivities: usedActivities as! [UsedActivity])
     }
 }

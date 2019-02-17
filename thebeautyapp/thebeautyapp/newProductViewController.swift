@@ -29,6 +29,8 @@ class newProductViewController: UIViewController {
     
     var daysOfWeek = [0,0,0,0,0,0,0]
     
+    var usedActivities: [UsedActivity] = []
+    
     let gradientLayer = CAGradientLayer()
     var sunSelected = 0
     var moonSelected = 0
@@ -52,6 +54,8 @@ class newProductViewController: UIViewController {
             // editing an existing product
             navigationItem.title = product.name
             newProductField.text = product.name
+            
+            usedActivities = product.usedActivities
             
             if(product.ampm == 0) {
                 sunSelected = 1;
@@ -145,7 +149,7 @@ class newProductViewController: UIViewController {
        
         
         // Set the meal to be passed to MealTableViewController after the unwind segue.
-        product = Product(name: name, daily: daily, rating: 1, ampm: timeOfDay, cat: "mine", onSunday: daysOfWeek[0], onMonday: daysOfWeek[1], onTuesday: daysOfWeek[2], onWednesday: daysOfWeek[3], onThursday: daysOfWeek[4], onFriday: daysOfWeek[5], onSaturday: daysOfWeek[6])
+        product = Product(name: name, daily: daily, rating: 1, ampm: timeOfDay, cat: "mine", onSunday: daysOfWeek[0], onMonday: daysOfWeek[1], onTuesday: daysOfWeek[2], onWednesday: daysOfWeek[3], onThursday: daysOfWeek[4], onFriday: daysOfWeek[5], onSaturday: daysOfWeek[6], usedActivities: usedActivities)
     }
     
     func setGradientBackground(indicator: String) {

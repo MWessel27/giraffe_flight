@@ -1,10 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14315.18" systemVersion="17G3025" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="UsedProducts" representedClassName="UsedProducts" syncable="YES" codeGenerationType="class">
-        <attribute name="added" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="productName" optional="YES" attributeType="String" syncable="YES"/>
-    </entity>
-    <elements>
-        <element name="UsedProducts" positionX="-63" positionY="-18" width="128" height="75"/>
-    </elements>
+    <elements/>
 </model>

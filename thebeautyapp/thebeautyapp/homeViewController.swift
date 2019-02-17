@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import os.log
 
 class homeViewController: UIViewController {
     
@@ -23,11 +24,6 @@ class homeViewController: UIViewController {
     var products = [Product]()
     var selectedProducts = [Product]()
     
-    // saving used products array to use on calendar
-    var usedProducts = [UsedProducts]()
-
-    var moc:NSManagedObjectContext!
-    let appDelegate = UIApplication.shared.delegate as? AppDelegate
     var todaysDate: String = ""
     
     var dayOfWeek = 0
@@ -53,12 +49,10 @@ class homeViewController: UIViewController {
             products += savedProds
         }
         
-        moc = appDelegate?.persistentContainer.viewContext
         let date = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         todaysDate = formatter.string(from: date)
-        usedProducts = [loadData()]
         
         let rightBarButton = UIBarButtonItem(title: "PRODUCTS", style: UIBarButtonItemStyle.plain, target: self, action: #selector(goToProdList))
         self.navigationItem.rightBarButtonItem = rightBarButton
@@ -179,45 +173,44 @@ class homeViewController: UIViewController {
 
 extension homeViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func loadData() -> UsedProducts {
-        let dayRequest:NSFetchRequest<UsedProducts> = UsedProducts.fetchRequest()
-        
-        let sortDescriptor = NSSortDescriptor(key: "added", ascending: false)
-        dayRequest.sortDescriptors = [sortDescriptor]
-        
-        do {
-            try usedProducts = moc.fetch(dayRequest)
-        } catch {
-            print("Could not load data")
+    private func saveProducts() {
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(products, toFile: Product.ArchiveURL.path)
+        if isSuccessfulSave {
+            os_log("Products successfully saved.", log: OSLog.default, type: .debug)
+        } else {
+            os_log("Failed to save Products...", log: OSLog.default, type: .error)
         }
-        
-        // UsedProducts now adds 1 product to the right day
-        // need to change productName to an array of strings
-        // need to remove products for day when unchecked
-        for prod in usedProducts {
-            if(prod.added == todaysDate){
-//                print(prod.added)
-//                print(prod.productName)
-                return prod
-            }
-        }
-        let usedProd = UsedProducts(context: moc)
-        
-        return usedProd
     }
     
-    func addProductToDatabase(name: String) {
-        let todaysProd: UsedProducts
-        todaysProd = loadData()
-        if(todaysProd.added == todaysDate) {
-            todaysProd.productName = name
-            //usedProductList.append(todaysProd)
-            appDelegate?.saveContext()
-        } else {
-            let todaysUsedProducts = UsedProducts(context: moc)
-            todaysUsedProducts.added = todaysDate
-            todaysUsedProducts.productName = name
-            appDelegate?.saveContext()
+    func addUsedActivity(product: Product) {
+        print("used product \(product.name) on \(todaysDate)")
+        for act in product.usedActivities {
+            if(act.date == todaysDate) {
+                print("prod already used today")
+                return
+            } else {
+                
+            }
+        }
+        print("adding product \(product.name)")
+        let usedActivity = UsedActivity(date: todaysDate, ampm: product.ampm)
+        
+        product.usedActivities.append(usedActivity!)
+        
+        saveProducts()
+    }
+    
+    func removeUsedActivity(product: Product) {
+        print("removing product: \(product.name)")
+        
+        for (index, act) in product.usedActivities.enumerated() {
+            if(act.date == todaysDate) {
+                product.usedActivities.remove(at: index)
+                saveProducts()
+                return
+            } else {
+                
+            }
         }
     }
     
@@ -237,6 +230,8 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func setCellChecked(cell: UITableViewCell) -> UITableViewCell {
         let date = Date()
+        
+        cell.textLabel?.font = UIFont(name: "American Typewriter", size: 22)
         
         cell.detailTextLabel?.backgroundColor = green
         cell.detailTextLabel?.font = UIFont(name: "American Typewriter", size: 14)
@@ -308,12 +303,19 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
                 }
         }
         
+//        var checked = false
+//        for usedProd in usedProducts {
+//            if(products[indexPath.row].name == usedProd.productName){
+//                checked = true
+//            }
+//        }
         var checked = false
-        for usedProd in usedProducts {
-            if(products[indexPath.row].name == usedProd.productName){
+        for usedProductDates in products[indexPath.row].usedActivities {
+            if(usedProductDates.date == todaysDate) {
                 checked = true
             }
         }
+
         
         if(tableView == mTableView) {
             if((products[indexPath.row].ampm == 1 || products[indexPath.row].ampm == 0) && productValidForDay) {
@@ -418,6 +420,7 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
             for prod in selectedProducts {
                 if(prod.name == mySelectedCell.textLabel!.text) {
                     if let index = selectedProducts.index(of: prod) {
+                        removeUsedActivity(product: products[indexPath.row])
                         selectedProducts.remove(at: index)
                     }
                 }
@@ -426,7 +429,7 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
             mySelectedCell = setCellUnchecked(cell: mySelectedCell)
         } else {
             selectedProducts.append(products[indexPath.row])
-            addProductToDatabase(name: products[indexPath.row].name)
+            addUsedActivity(product: products[indexPath.row])
             mySelectedCell = setCellChecked(cell: mySelectedCell)
         }
     }
