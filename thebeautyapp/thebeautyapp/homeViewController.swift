@@ -204,8 +204,13 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
                 }
             }
         }
+        
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "h:mm a"
+        let currentTime = formatter.string(for: date)
 
-        let usedActivity = UsedActivity(date: todaysDate, ampm: ampm)
+        let usedActivity = UsedActivity(date: todaysDate, ampm: ampm, time: currentTime!)
         
         product.usedActivities.append(usedActivity!)
         
@@ -251,15 +256,38 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    func setCellChecked(cell: UITableViewCell) -> UITableViewCell {
-        let date = Date()
+    func setExistingCellChecked(cell: UITableViewCell, time: String) -> UITableViewCell {
         
         cell.textLabel?.font = UIFont(name: "American Typewriter", size: 22)
         
         cell.detailTextLabel?.backgroundColor = green
         cell.detailTextLabel?.font = UIFont(name: "American Typewriter", size: 14)
         cell.detailTextLabel?.textColor = UIColor.white
-        cell.detailTextLabel?.text = dateFormatter.string(for: date)
+        cell.detailTextLabel?.text = time
+        
+        var imageView : UIImageView
+        imageView  = UIImageView(frame:CGRect(x: 5, y: 5, width: 25, height: 25))
+        imageView.image = UIImage(named:"checkmark")
+        
+        cell.accessoryView = imageView
+        cell.tintColor = UIColor.white
+        cell.backgroundColor = green
+        return cell
+    }
+    
+    func setNewCellChecked(cell: UITableViewCell) -> UITableViewCell {
+        
+        cell.textLabel?.font = UIFont(name: "American Typewriter", size: 22)
+        
+        cell.detailTextLabel?.backgroundColor = green
+        cell.detailTextLabel?.font = UIFont(name: "American Typewriter", size: 14)
+        cell.detailTextLabel?.textColor = UIColor.white
+        
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "h:mm a"
+        let currentTime = formatter.string(for: date)
+        cell.detailTextLabel?.text = currentTime
         
         var imageView : UIImageView
         imageView  = UIImageView(frame:CGRect(x: 5, y: 5, width: 25, height: 25))
@@ -330,8 +358,10 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
             if((products[indexPath.row].ampm == 1 || products[indexPath.row].ampm == 0) && productValidForDay) {
                 
                 var checked = false
+                var timeStamp = ""
                 for usedProductDates in products[indexPath.row].usedActivities {
                     if(usedProductDates.date == todaysDate && (usedProductDates.ampm == 1 || usedProductDates.ampm == 0)) {
+                        timeStamp = usedProductDates.time
                         checked = true
                     }
                 }
@@ -339,7 +369,7 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
                 let productName = products[indexPath.row].name
                 cell.textLabel?.text = productName
                 if(checked) {
-                    cell = setCellChecked(cell: cell)
+                    cell = setExistingCellChecked(cell: cell, time: timeStamp)
                 } else {
                     cell = setCellUnchecked(cell: cell)
                 }
@@ -351,8 +381,10 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
             if((products[indexPath.row].ampm == 2 || products[indexPath.row].ampm == 0)  && productValidForDay) {
                 
                 var checked = false
+                var timeStamp = ""
                 for usedProductDates in products[indexPath.row].usedActivities {
                     if(usedProductDates.date == todaysDate && (usedProductDates.ampm == 2 || usedProductDates.ampm == 0)) {
+                        timeStamp = usedProductDates.time
                         checked = true
                     }
                 }
@@ -360,7 +392,7 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
                 let productName = products[indexPath.row].name
                 cell.textLabel?.text = productName
                 if(checked) {
-                    cell = setCellChecked(cell: cell)
+                    cell = setExistingCellChecked(cell: cell, time: timeStamp)
                 } else {
                     cell = setCellUnchecked(cell: cell)
                 }
@@ -451,7 +483,7 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
             mySelectedCell = setCellUnchecked(cell: mySelectedCell)
         } else {
             addUsedActivity(product: products[indexPath.row], ampm: ampm)
-            mySelectedCell = setCellChecked(cell: mySelectedCell)
+            mySelectedCell = setNewCellChecked(cell: mySelectedCell)
         }
     }
     

@@ -156,12 +156,14 @@ extension statsViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "statsProductCell")
         
         var timeOfDay = 0
+        var timeStamp: String = ""
         if(!(indexPath.row > usedProducts.count - 1)) {
             let productName = usedProducts[indexPath.row].name
             
             for usedActivity in usedProducts[indexPath.row].usedActivities {
                 if(selectedDate == usedActivity.date) {
                     timeOfDay = usedActivity.ampm
+                    timeStamp = usedActivity.time
                 }
             }
             
@@ -173,11 +175,9 @@ extension statsViewController: UITableViewDelegate, UITableViewDataSource {
             }
             
             cell.imageView?.image = image
-            let date = Date()
-            dateFormatterGet.dateFormat = "h:mm a"
             
             cell.detailTextLabel?.textColor = UIColor.gray
-            cell.detailTextLabel?.text = dateFormatterGet.string(for: date)
+            cell.detailTextLabel?.text = timeStamp
             
             var imageView : UIImageView
             imageView  = UIImageView(frame:CGRect(x: 5, y: 5, width: 25, height: 25))

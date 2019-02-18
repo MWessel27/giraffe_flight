@@ -14,6 +14,7 @@ class UsedActivity: NSObject, NSCoding {
     //MARK: Properties
     var date: String
     var ampm: Int
+    var time: String
     
     //MARK: Archiving Paths
     static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
@@ -22,9 +23,10 @@ class UsedActivity: NSObject, NSCoding {
     struct PropertyKey {
         static let date = "name"
         static let ampm = "ampm"
+        static let time = "time"
     }
     
-    init?(date: String, ampm: Int) {
+    init?(date: String, ampm: Int, time: String) {
         
         // Initialization should fail if ampm is greater than 2 or less than 0
         guard (ampm >= 0) && (ampm <= 3) else {
@@ -33,6 +35,7 @@ class UsedActivity: NSObject, NSCoding {
         
         self.date = date
         self.ampm = ampm
+        self.time = time
     }
     
     //MARK: NSCoding
@@ -40,6 +43,7 @@ class UsedActivity: NSObject, NSCoding {
     func encode(with aCoder: NSCoder) {
         aCoder.encode(date, forKey: PropertyKey.date)
         aCoder.encode(ampm, forKey: PropertyKey.ampm)
+        aCoder.encode(time, forKey: PropertyKey.time)
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
@@ -50,9 +54,14 @@ class UsedActivity: NSObject, NSCoding {
             return nil
         }
         
+        guard let time = aDecoder.decodeObject(forKey: PropertyKey.time) as? String else {
+            os_log("Unable to decode the time for usedActivity object.", log: OSLog.default, type: .debug)
+            return nil
+        }
+        
         let ampm = aDecoder.decodeInteger(forKey: PropertyKey.ampm)
         
         // Must call designated initializer.
-        self.init(date: date, ampm: ampm)
+        self.init(date: date, ampm: ampm, time: time)
     }
 }
