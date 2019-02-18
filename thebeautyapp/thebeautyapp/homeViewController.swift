@@ -183,25 +183,10 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func addUsedActivity(product: Product, ampm: Int) {
         
-        for (index, act) in product.usedActivities.enumerated() {
-            if(act.date == todaysDate) {
-                if(act.ampm == ampm) {
-                    print("prod already used today")
-                    return
-                } else {
-                    if(ampm == 1 && act.ampm == 2) {
-                        act.ampm = 0
-                    } else if(ampm == 2 && act.ampm == 1) {
-                        act.ampm = 0
-                    } else {
-                        act.ampm = ampm
-                    }
-                    
-                    product.usedActivities[index].ampm = act.ampm
-                    
-                    saveProducts()
-                    return
-                }
+        for act in product.usedActivities {
+            if(act.date == todaysDate && act.ampm == ampm) {
+                print("prod already used today")
+                return
             }
         }
         
@@ -210,7 +195,7 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
         formatter.dateFormat = "h:mm a"
         let currentTime = formatter.string(for: date)
 
-        let usedActivity = UsedActivity(date: todaysDate, ampm: ampm, time: currentTime!)
+        let usedActivity = UsedActivity(productName: product.name , date: todaysDate, ampm: ampm, time: currentTime!)
         
         product.usedActivities.append(usedActivity!)
         
@@ -220,24 +205,9 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
     func removeUsedActivity(product: Product, ampm: Int) {
         
         for (index, act) in product.usedActivities.enumerated() {
-            if(act.date == todaysDate) {
-                if(act.ampm == ampm) {
-                    product.usedActivities.remove(at: index)
-                    saveProducts()
-                } else {
-                    if(act.ampm == 0) {
-                        if(ampm == 1) {
-                            act.ampm = 2
-                        } else {
-                            act.ampm = 1
-                        }
-                        
-                        product.usedActivities[index].ampm = act.ampm
-                        
-                        saveProducts()
-                        return
-                    }
-                }
+            if(act.date == todaysDate && act.ampm == ampm) {
+                product.usedActivities.remove(at: index)
+                saveProducts()
             }
         }
     }

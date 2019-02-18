@@ -12,6 +12,7 @@ import os.log
 class UsedActivity: NSObject, NSCoding {
     
     //MARK: Properties
+    var productName: String
     var date: String
     var ampm: Int
     var time: String
@@ -21,18 +22,20 @@ class UsedActivity: NSObject, NSCoding {
     static let ArchiveURL = DocumentsDirectory.appendingPathComponent("usedActivities")
 
     struct PropertyKey {
+        static let productName = "productName"
         static let date = "name"
         static let ampm = "ampm"
         static let time = "time"
     }
     
-    init?(date: String, ampm: Int, time: String) {
+    init?(productName: String, date: String, ampm: Int, time: String) {
         
         // Initialization should fail if ampm is greater than 2 or less than 0
         guard (ampm >= 0) && (ampm <= 3) else {
             return nil
         }
         
+        self.productName = productName
         self.date = date
         self.ampm = ampm
         self.time = time
@@ -41,6 +44,7 @@ class UsedActivity: NSObject, NSCoding {
     //MARK: NSCoding
     
     func encode(with aCoder: NSCoder) {
+        aCoder.encode(productName, forKey: PropertyKey.productName)
         aCoder.encode(date, forKey: PropertyKey.date)
         aCoder.encode(ampm, forKey: PropertyKey.ampm)
         aCoder.encode(time, forKey: PropertyKey.time)
@@ -59,9 +63,14 @@ class UsedActivity: NSObject, NSCoding {
             return nil
         }
         
+        guard let productName = aDecoder.decodeObject(forKey: PropertyKey.productName) as? String else {
+            os_log("Unable to decode the productName for usedActivity object.", log: OSLog.default, type: .debug)
+            return nil
+        }
+        
         let ampm = aDecoder.decodeInteger(forKey: PropertyKey.ampm)
         
         // Must call designated initializer.
-        self.init(date: date, ampm: ampm, time: time)
+        self.init(productName: productName, date: date, ampm: ampm, time: time)
     }
 }
