@@ -17,7 +17,12 @@ class statsViewController: UIViewController, FSCalendarDataSource, FSCalendarDel
     
     var products = [Product]()
     
-    var datesWithEvent = ["2018-06-03", "2018-06-06", "2018-06-12", "2018-06-25"]
+    var usedProducts = [Product]()
+    
+    var datesWithEvent = [String]()
+    
+    var todaysDate: String = ""
+    var selectedDate: String = ""
     
     fileprivate lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -26,6 +31,31 @@ class statsViewController: UIViewController, FSCalendarDataSource, FSCalendarDel
     }()
     
     let dateFormatterGet = DateFormatter()
+    
+    func getDatesWithEvent() {
+        for prod in products {
+            for datesUsed in prod.usedActivities {
+                datesWithEvent.append(datesUsed.date)
+            }
+        }
+    }
+    
+    func getSelectedDaysProducts(date: String) {
+        
+        selectedDate = date
+        
+        usedProducts.removeAll()
+        
+        for prod in products {
+            for datesUsed in prod.usedActivities {
+                if(date == datesUsed.date) {
+                    usedProducts.append(prod)
+                }
+            }
+        }
+        
+        statsProductList.reloadData()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +63,16 @@ class statsViewController: UIViewController, FSCalendarDataSource, FSCalendarDel
         if let savedProds = loadProducts() {
             products += savedProds
         }
+        
+        getDatesWithEvent()
+        
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        todaysDate = formatter.string(from: date)
+        selectedDate = todaysDate
+        
+        getSelectedDaysProducts(date: todaysDate)
         
         statsProductList.tableFooterView = UIView(frame: CGRect.zero)
         
@@ -45,6 +85,22 @@ class statsViewController: UIViewController, FSCalendarDataSource, FSCalendarDel
         self.calendar = calendar
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated);
+        
+        getSelectedDaysProducts(date: selectedDate)
+
+        statsProductList.reloadData()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated);
+
+        getSelectedDaysProducts(date: selectedDate)
+        
+        statsProductList.reloadData()
     }
     
     private func loadProducts() -> [Product]? {
@@ -62,6 +118,15 @@ class statsViewController: UIViewController, FSCalendarDataSource, FSCalendarDel
             return 1
         }
         return 0
+    }
+    
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let selectedDate = formatter.string(from: date)
+        
+        getSelectedDaysProducts(date: selectedDate)
     }
     
 
@@ -90,32 +155,40 @@ extension statsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "statsProductCell")
         
-        let productName = products[indexPath.row].name
-        let timeOfDay = products[indexPath.row].ampm
-        
-        var image : UIImage = UIImage(named: "sunMoonIcon.png")!
-        if(timeOfDay == 1) {
-            image = UIImage(named: "sunIconSmall.png")!
-        } else if(timeOfDay == 2) {
-            image = UIImage(named: "moonIconSmall.png")!
+        var timeOfDay = 0
+        if(!(indexPath.row > usedProducts.count - 1)) {
+            let productName = usedProducts[indexPath.row].name
+            
+            for usedActivity in usedProducts[indexPath.row].usedActivities {
+                if(selectedDate == usedActivity.date) {
+                    timeOfDay = usedActivity.ampm
+                }
+            }
+            
+            var image : UIImage = UIImage(named: "sunMoonIcon.png")!
+            if(timeOfDay == 1) {
+                image = UIImage(named: "sunIconSmall.png")!
+            } else if(timeOfDay == 2) {
+                image = UIImage(named: "moonIconSmall.png")!
+            }
+            
+            cell.imageView?.image = image
+            let date = Date()
+            dateFormatterGet.dateFormat = "h:mm a"
+            
+            cell.detailTextLabel?.textColor = UIColor.gray
+            cell.detailTextLabel?.text = dateFormatterGet.string(for: date)
+            
+            var imageView : UIImageView
+            imageView  = UIImageView(frame:CGRect(x: 5, y: 5, width: 25, height: 25))
+            imageView.image = UIImage(named:"checkmark")
+            
+            cell.accessoryView = imageView
+            
+            cell.textLabel?.text = productName
+            cell.textLabel?.font = UIFont(name: "American Typewriter", size: 16)
+            cell.backgroundColor = UIColor.clear
         }
-        
-        cell.imageView?.image = image
-        let date = Date()
-        dateFormatterGet.dateFormat = "h:mm a"
-        
-        cell.detailTextLabel?.textColor = UIColor.gray
-        cell.detailTextLabel?.text = dateFormatterGet.string(for: date)
-        
-        var imageView : UIImageView
-        imageView  = UIImageView(frame:CGRect(x: 5, y: 5, width: 25, height: 25))
-        imageView.image = UIImage(named:"checkmark")
-        
-        cell.accessoryView = imageView
-        
-        cell.textLabel?.text = productName
-        cell.textLabel?.font = UIFont(name: "American Typewriter", size: 16)
-        cell.backgroundColor = UIColor.clear
         
         return cell
     }
