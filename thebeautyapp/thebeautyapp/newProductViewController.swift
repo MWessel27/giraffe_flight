@@ -39,6 +39,8 @@ class newProductViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
+        
         let colorTop, colorBottom: CGColor
         
         colorTop =  UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1.0).cgColor

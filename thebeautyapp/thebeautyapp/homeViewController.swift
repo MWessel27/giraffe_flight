@@ -76,7 +76,6 @@ class homeViewController: UIViewController {
             
             gettingStartedBackground.isHidden = false;
         }
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -230,9 +229,9 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.textLabel?.font = UIFont(name: "American Typewriter", size: 22)
         
-        cell.detailTextLabel?.backgroundColor = green
+        cell.detailTextLabel?.backgroundColor = UIColor.clear
         cell.detailTextLabel?.font = UIFont(name: "American Typewriter", size: 14)
-        cell.detailTextLabel?.textColor = UIColor.white
+        cell.detailTextLabel?.textColor = UIColor.gray
         cell.detailTextLabel?.text = time
         
         var imageView : UIImageView
@@ -241,7 +240,7 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.accessoryView = imageView
         cell.tintColor = UIColor.white
-        cell.backgroundColor = green
+        cell.backgroundColor = UIColor.clear
         return cell
     }
     
@@ -249,9 +248,9 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.textLabel?.font = UIFont(name: "American Typewriter", size: 22)
         
-        cell.detailTextLabel?.backgroundColor = green
+        cell.detailTextLabel?.backgroundColor = UIColor.clear
         cell.detailTextLabel?.font = UIFont(name: "American Typewriter", size: 14)
-        cell.detailTextLabel?.textColor = UIColor.white
+        cell.detailTextLabel?.textColor = UIColor.gray
         
         let date = Date()
         let formatter = DateFormatter()
@@ -265,7 +264,7 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.accessoryView = imageView
         cell.tintColor = UIColor.white
-        cell.backgroundColor = green
+        cell.backgroundColor = UIColor.clear
         return cell
     }
     
@@ -448,21 +447,13 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
             ampm = 2
         }
         
-        if(mySelectedCell.backgroundColor == green) {
+        // need to change this to cells having a selected state
+        if(mySelectedCell.detailTextLabel?.text != "") {
             removeUsedActivity(product: products[indexPath.row], ampm: ampm)
             mySelectedCell = setCellUnchecked(cell: mySelectedCell)
         } else {
             addUsedActivity(product: products[indexPath.row], ampm: ampm)
             mySelectedCell = setNewCellChecked(cell: mySelectedCell)
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
-        let myHighlightedCell:UITableViewCell = tableView.cellForRow(at: indexPath)!
-        if(myHighlightedCell.backgroundColor == green){
-            myHighlightedCell.detailTextLabel?.backgroundColor = UIColor.white
-        } else {
-            myHighlightedCell.detailTextLabel?.backgroundColor = green
         }
     }
 }
