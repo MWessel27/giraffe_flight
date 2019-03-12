@@ -19,7 +19,7 @@ class homeViewController: UIViewController {
     
     @IBOutlet weak var sunImage: UIImageView!
     @IBOutlet weak var moonImage: UIImageView!
-    @IBOutlet weak var gettingStartedBackground: UIImageView!
+//    @IBOutlet weak var gettingStartedBackground: UIImageView!
     
     var products = [Product]()
     
@@ -74,7 +74,7 @@ class homeViewController: UIViewController {
             mTableView.isHidden = true;
             pmTableView.isHidden = true;
             
-            gettingStartedBackground.isHidden = false;
+//            gettingStartedBackground.isHidden = false;
         }
     }
     
@@ -86,7 +86,7 @@ class homeViewController: UIViewController {
         }
         
         if(products.count != 0) {
-            gettingStartedBackground.isHidden = true;
+//            gettingStartedBackground.isHidden = true;
             sunImage.isHidden = false;
             moonImage.isHidden = false;
             mTableView.isHidden = false;
@@ -106,7 +106,7 @@ class homeViewController: UIViewController {
             mTableView.isHidden = true;
             pmTableView.isHidden = true;
             
-            gettingStartedBackground.isHidden = false;
+//            gettingStartedBackground.isHidden = false;
         }
         
         self.mTableView.reloadData();
@@ -121,7 +121,7 @@ class homeViewController: UIViewController {
         }
         
         if(products.count != 0) {
-            gettingStartedBackground.isHidden = true;
+//            gettingStartedBackground.isHidden = true;
             sunImage.isHidden = false;
             moonImage.isHidden = false;
             mTableView.isHidden = false;
@@ -141,7 +141,7 @@ class homeViewController: UIViewController {
             mTableView.isHidden = true;
             pmTableView.isHidden = true;
             
-            gettingStartedBackground.isHidden = false;
+//            gettingStartedBackground.isHidden = false;
         }
         
         self.mTableView.reloadData();
