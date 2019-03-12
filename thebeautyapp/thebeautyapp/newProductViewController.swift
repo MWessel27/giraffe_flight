@@ -36,8 +36,20 @@ class newProductViewController: UIViewController {
     var moonSelected = 0
     var product: Product?
     
+    let purple:UIColor = UIColor(red: 156.0/255.0, green: 149.0/255.0, blue: 220.0/255.0, alpha: 1)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        sundayButton.setBackgroundColor(color: purple, forState: .selected)
+        mondayButton.setBackgroundColor(color: purple, forState: .selected)
+        tuesdayButton.setBackgroundColor(color: purple, forState: .selected)
+        wednesdayButton.setBackgroundColor(color: purple, forState: .selected)
+        thursdayButton.setBackgroundColor(color: purple, forState: .selected)
+        fridayButton.setBackgroundColor(color: purple, forState: .selected)
+        saturdayButton.setBackgroundColor(color: purple, forState: .selected)
+        
+        everyDayButton.setBackgroundColor(color: purple, forState: .selected)
         
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
         
@@ -223,6 +235,10 @@ class newProductViewController: UIViewController {
         }
     }
     
+    func buttonTapped() {
+        print("test")
+    }
+    
     // day of week button functions
     
     func resetAllButtons() {
@@ -322,5 +338,20 @@ class newProductViewController: UIViewController {
             saturdayButton.isSelected = true
             daysOfWeek[6] = 1
         }
+    }
+}
+
+extension UIButton {
+    
+    func setBackgroundColor(color: UIColor, forState: UIControlState) {
+        
+        UIGraphicsBeginImageContext(CGSize(width: 1, height: 1))
+        UIGraphicsGetCurrentContext()!.setFillColor(color.cgColor)
+        UIGraphicsGetCurrentContext()!.fill(CGRect(x: 0, y: 0, width: 1, height: 1))
+        let colorImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        self.setTitleColor(UIColor.white, for: forState)
+        self.setBackgroundImage(colorImage, for: forState)
     }
 }

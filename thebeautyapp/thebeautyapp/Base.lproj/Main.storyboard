@@ -80,7 +80,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lxy-HD-6IR">
                                 <rect key="frame" x="65" y="720" width="245" height="50"/>
-                                <color key="backgroundColor" red="0.32941176470588235" green="0.87058823529411766" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.19215686274509802" green="0.68627450980392157" blue="0.56862745098039214" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="dp5-MY-Flj"/>
                                     <constraint firstAttribute="width" constant="245" id="hFt-Uf-SWz"/>
