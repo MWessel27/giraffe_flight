@@ -34,7 +34,6 @@
 		959D89AA20B393B300E17F2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 959D89A820B393B300E17F2E /* Main.storyboard */; };
 		959D89AD20B393B300E17F2E /* thebeautyapp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 959D89AB20B393B300E17F2E /* thebeautyapp.xcdatamodeld */; };
 		959D89AF20B393B400E17F2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 959D89AE20B393B400E17F2E /* Assets.xcassets */; };
-		959D89B220B393B400E17F2E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 959D89B020B393B400E17F2E /* LaunchScreen.storyboard */; };
 		959D89BD20B393B500E17F2E /* thebeautyappTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959D89BC20B393B500E17F2E /* thebeautyappTests.swift */; };
 		959D89C820B393B500E17F2E /* thebeautyappUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959D89C720B393B500E17F2E /* thebeautyappUITests.swift */; };
 		D755BF1720E0040C00FD77F1 /* product.swift in Sources */ = {isa = PBXBuildFile; fileRef = D755BF1620E0040C00FD77F1 /* product.swift */; };
@@ -104,7 +103,6 @@
 		959D89A920B393B300E17F2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		959D89AC20B393B300E17F2E /* thebeautyapp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = thebeautyapp.xcdatamodel; sourceTree = "<group>"; };
 		959D89AE20B393B400E17F2E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		959D89B120B393B400E17F2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		959D89B320B393B400E17F2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		959D89B820B393B500E17F2E /* thebeautyappTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = thebeautyappTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		959D89BC20B393B500E17F2E /* thebeautyappTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = thebeautyappTests.swift; sourceTree = "<group>"; };
@@ -208,7 +206,6 @@
 				959D89A820B393B300E17F2E /* Main.storyboard */,
 				953958CD20C469BE00DD069A /* FSCalendar */,
 				959D89AE20B393B400E17F2E /* Assets.xcassets */,
-				959D89B020B393B400E17F2E /* LaunchScreen.storyboard */,
 				959D89B320B393B400E17F2E /* Info.plist */,
 				959D89AB20B393B300E17F2E /* thebeautyapp.xcdatamodeld */,
 				954D191E20C448650051AE9A /* splashViewController.swift */,
@@ -309,13 +306,16 @@
 				TargetAttributes = {
 					959D89A020B393B300E17F2E = {
 						CreatedOnToolsVersion = 9.3.1;
+						LastSwiftMigration = 1000;
 					};
 					959D89B720B393B500E17F2E = {
 						CreatedOnToolsVersion = 9.3.1;
+						LastSwiftMigration = 1000;
 						TestTargetID = 959D89A020B393B300E17F2E;
 					};
 					959D89C220B393B500E17F2E = {
 						CreatedOnToolsVersion = 9.3.1;
+						LastSwiftMigration = 1000;
 						TestTargetID = 959D89A020B393B300E17F2E;
 					};
 				};
@@ -345,7 +345,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				959D89B220B393B400E17F2E /* LaunchScreen.storyboard in Resources */,
 				959D89AF20B393B400E17F2E /* Assets.xcassets in Resources */,
 				959D89AA20B393B300E17F2E /* Main.storyboard in Resources */,
 			);
@@ -439,14 +438,6 @@
 				959D89A920B393B300E17F2E /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		959D89B020B393B400E17F2E /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				959D89B120B393B400E17F2E /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -580,8 +571,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = gf.thebeautyapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "thebeautyapp/giraffe_flight-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -599,8 +590,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = gf.thebeautyapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "thebeautyapp/giraffe_flight-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -618,7 +609,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = gf.thebeautyappTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/thebeautyapp.app/thebeautyapp";
 			};
@@ -638,7 +629,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = gf.thebeautyappTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/thebeautyapp.app/thebeautyapp";
 			};
@@ -657,7 +648,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = gf.thebeautyappUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = thebeautyapp;
 			};
@@ -676,7 +667,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = gf.thebeautyappUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = thebeautyapp;
 			};

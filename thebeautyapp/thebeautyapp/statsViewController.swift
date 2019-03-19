@@ -76,7 +76,7 @@ class statsViewController: UIViewController, FSCalendarDataSource, FSCalendarDel
         statsProductList.tableFooterView = UIView(frame: CGRect.zero)
         
         statsProductList.backgroundColor = UIColor.clear
-        statsProductList.separatorStyle = UITableViewCellSeparatorStyle.none
+        statsProductList.separatorStyle = UITableViewCell.SeparatorStyle.none
         
         let calendar = FSCalendar(frame: CGRect(x: 0, y: 0, width: 320, height: 300))
         calendar.dataSource = self as FSCalendarDataSource
@@ -152,7 +152,7 @@ extension statsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "statsProductCell")
+        let cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "statsProductCell")
 
         let productName = daysUsedActivities[indexPath.row].productName
         let timeOfDay = daysUsedActivities[indexPath.row].ampm

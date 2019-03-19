@@ -18,7 +18,7 @@ class ProductTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let rightBarButton = UIBarButtonItem(title: "ADD", style: UIBarButtonItemStyle.plain, target: self, action: #selector(addProdList))
+        let rightBarButton = UIBarButtonItem(title: "ADD", style: UIBarButtonItem.Style.plain, target: self, action: #selector(addProdList))
         self.navigationItem.rightBarButtonItem = rightBarButton
         
         if let savedProds = loadProducts() {
@@ -116,7 +116,7 @@ class ProductTableViewController: UITableViewController {
     }
     
     // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
             products.remove(at: indexPath.row)

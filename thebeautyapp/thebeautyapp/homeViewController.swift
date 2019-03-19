@@ -53,10 +53,10 @@ class homeViewController: UIViewController {
         formatter.dateFormat = "yyyy-MM-dd"
         todaysDate = formatter.string(from: date)
         
-        let rightBarButton = UIBarButtonItem(title: "PRODUCTS", style: UIBarButtonItemStyle.plain, target: self, action: #selector(goToProdList))
+        let rightBarButton = UIBarButtonItem(title: "PRODUCTS", style: UIBarButtonItem.Style.plain, target: self, action: #selector(goToProdList))
         self.navigationItem.rightBarButtonItem = rightBarButton
         
-        let leftBarButton = UIBarButtonItem(title: "STATS", style: UIBarButtonItemStyle.plain, target: self, action: #selector(goToStatsCal))
+        let leftBarButton = UIBarButtonItem(title: "STATS", style: UIBarButtonItem.Style.plain, target: self, action: #selector(goToStatsCal))
         self.navigationItem.leftBarButtonItem = leftBarButton
         
         if(products.count != 0) {
@@ -64,10 +64,10 @@ class homeViewController: UIViewController {
             pmTableView.tableFooterView = UIView(frame: CGRect.zero)
             
             mTableView.backgroundColor = UIColor.clear
-            mTableView.separatorStyle = UITableViewCellSeparatorStyle.none
+            mTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
             
             pmTableView.backgroundColor = UIColor.clear
-            pmTableView.separatorStyle = UITableViewCellSeparatorStyle.none
+            pmTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         } else {
             sunImage.isHidden = true;
             moonImage.isHidden = true;
@@ -96,10 +96,10 @@ class homeViewController: UIViewController {
             pmTableView.tableFooterView = UIView(frame: CGRect.zero)
             
             mTableView.backgroundColor = UIColor.clear
-            mTableView.separatorStyle = UITableViewCellSeparatorStyle.none
+            mTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
             
             pmTableView.backgroundColor = UIColor.clear
-            pmTableView.separatorStyle = UITableViewCellSeparatorStyle.none
+            pmTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         } else {
             sunImage.isHidden = true;
             moonImage.isHidden = true;
@@ -131,10 +131,10 @@ class homeViewController: UIViewController {
             pmTableView.tableFooterView = UIView(frame: CGRect.zero)
             
             mTableView.backgroundColor = UIColor.clear
-            mTableView.separatorStyle = UITableViewCellSeparatorStyle.none
+            mTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
             
             pmTableView.backgroundColor = UIColor.clear
-            pmTableView.separatorStyle = UITableViewCellSeparatorStyle.none
+            pmTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         } else {
             sunImage.isHidden = true;
             moonImage.isHidden = true;
@@ -158,7 +158,6 @@ class homeViewController: UIViewController {
     
     @objc func goToStatsCal() {
         let storyBoard : UIStoryboard = self.storyboard!
-        
         let nextViewController = storyBoard.instantiateViewController(withIdentifier: "statsViewController")
         self.navigationController?.pushViewController(nextViewController, animated: true)
     }
@@ -277,7 +276,7 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "ProductCell")
+        var cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "ProductCell")
         
         var productValidForDay = false
         

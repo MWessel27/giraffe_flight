@@ -160,8 +160,6 @@ class newProductViewController: UIViewController {
             timeOfDay = 2
         }
         
-       
-        
         // Set the meal to be passed to MealTableViewController after the unwind segue.
         product = Product(name: name, daily: daily, rating: 1, ampm: timeOfDay, cat: "mine", onSunday: daysOfWeek[0], onMonday: daysOfWeek[1], onTuesday: daysOfWeek[2], onWednesday: daysOfWeek[3], onThursday: daysOfWeek[4], onFriday: daysOfWeek[5], onSaturday: daysOfWeek[6], usedActivities: usedActivities)
     }
@@ -343,7 +341,7 @@ class newProductViewController: UIViewController {
 
 extension UIButton {
     
-    func setBackgroundColor(color: UIColor, forState: UIControlState) {
+    func setBackgroundColor(color: UIColor, forState: UIControl.State) {
         
         UIGraphicsBeginImageContext(CGSize(width: 1, height: 1))
         UIGraphicsGetCurrentContext()!.setFillColor(color.cgColor)
