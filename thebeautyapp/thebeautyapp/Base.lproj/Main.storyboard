@@ -83,6 +83,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" spellCheckingType="yes" returnKeyType="continue"/>
+                                <connections>
+                                    <action selector="prodNameFieldChanged:" destination="cEp-ob-1BY" eventType="editingChanged" id="vOi-Wq-2Uv"/>
+                                </connections>
                             </textField>
                             <stackView opaque="NO" contentMode="center" distribution="fillEqually" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="7KP-7C-5fq">
                                 <rect key="frame" x="46" y="524.33333333333337" width="282" height="33"/>
@@ -205,7 +208,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="22"/>
                                 <state key="normal" title="ADD PRODUCT">
-                                    <color key="titleColor" red="0.26179301035134872" green="0.26179301035134872" blue="0.26179301035134872" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
                                     <segue destination="QDD-wT-aIh" kind="unwind" unwindAction="unwindToProductListWithSender:" id="txS-XH-klO"/>

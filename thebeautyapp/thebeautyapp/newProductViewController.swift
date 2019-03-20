@@ -67,7 +67,7 @@ class newProductViewController: UIViewController {
         
         if let product = product {
             // editing an existing product
-            navigationItem.title = product.name
+            navigationItem.title = "Edit " + product.name
             newProductField.text = product.name
             
             usedActivities = product.usedActivities
@@ -129,6 +129,10 @@ class newProductViewController: UIViewController {
             }
         } else {
             // adding a new product
+            submitNewProductBtn.isEnabled = false
+            submitNewProductBtn.alpha = 0.4
+            
+            everyDayButton.isSelected = true
             sunSelected = 1
             setGradientBackground(indicator: "sun")
         }
@@ -136,23 +140,20 @@ class newProductViewController: UIViewController {
     
     // This method lets you configure a view controller before it's presented.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        super.prepare(for: segue, sender: sender)
-        
         // Configure the destination view controller only when the save button is pressed.
         guard let button = sender as? UIButton, button === submitNewProductBtn else {
             os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
             return
         }
-        
+    
         let name = newProductField.text ?? ""
         var timeOfDay = 0
         var daily = false
-        
-        if(everyDayButton.isSelected) {
+    
+        if(everyDayButton.isSelected || !daysOfWeek.contains(1)) {
             daily = true
         }
-        
+    
         if(sunSelected == 1 && moonSelected == 1) {
             timeOfDay = 0
         } else if(sunSelected == 1) {
@@ -160,7 +161,7 @@ class newProductViewController: UIViewController {
         } else if(moonSelected == 1) {
             timeOfDay = 2
         }
-        
+    
         // Set the meal to be passed to MealTableViewController after the unwind segue.
         product = Product(name: name, daily: daily, rating: 1, ampm: timeOfDay, cat: "mine", onSunday: daysOfWeek[0], onMonday: daysOfWeek[1], onTuesday: daysOfWeek[2], onWednesday: daysOfWeek[3], onThursday: daysOfWeek[4], onFriday: daysOfWeek[5], onSaturday: daysOfWeek[6], usedActivities: usedActivities)
     }
@@ -199,6 +200,16 @@ class newProductViewController: UIViewController {
         
 //        gradientLayer.colors = [colorTop, colorBottom]
     }
+
+    @IBAction func prodNameFieldChanged(_ sender: Any) {
+        if(newProductField.text?.isEmpty == false) {
+            submitNewProductBtn.isEnabled = true
+            submitNewProductBtn.alpha = 1.0
+        } else {
+            submitNewProductBtn.isEnabled = false
+            submitNewProductBtn.alpha = 0.5
+        }
+    }
     
     @IBAction func sunButtonClick(_ sender: Any) {
         if(sunSelected == 0) {
@@ -236,11 +247,18 @@ class newProductViewController: UIViewController {
         }
     }
     
-    func buttonTapped() {
-        print("test")
-    }
-    
     // day of week button functions
+    // TODO: Error after all days are selected manually, buttons no longer quick
+    // TODO: Onboarding/Landing Screen when no products
+    
+    func checkEveryday() {
+        if(!daysOfWeek.contains(0)) {
+            everyDayButton.isSelected = true
+            resetAllButtons()
+        } else {
+            everyDayButton.isSelected = false
+        }
+    }
     
     func resetAllButtons() {
         sundayButton.isSelected = false
@@ -265,7 +283,6 @@ class newProductViewController: UIViewController {
     }
     
     @IBAction func sundayButtonClick(_ sender: Any) {
-        everyDayButton.isSelected = false
         if(daysOfWeek[0] == 1) {
             sundayButton.isSelected = false
             daysOfWeek[0] = 0
@@ -273,10 +290,10 @@ class newProductViewController: UIViewController {
             sundayButton.isSelected = true
             daysOfWeek[0] = 1
         }
+        checkEveryday()
     }
     
     @IBAction func mondayButtonClick(_ sender: Any) {
-        everyDayButton.isSelected = false
         if(daysOfWeek[1] == 1) {
             mondayButton.isSelected = false
             daysOfWeek[1] = 0
@@ -284,10 +301,10 @@ class newProductViewController: UIViewController {
             mondayButton.isSelected = true
             daysOfWeek[1] = 1
         }
+        checkEveryday()
     }
     
     @IBAction func tuesdayButtonClick(_ sender: Any) {
-        everyDayButton.isSelected = false
         if(daysOfWeek[2] == 1) {
             tuesdayButton.isSelected = false
             daysOfWeek[2] = 0
@@ -295,10 +312,10 @@ class newProductViewController: UIViewController {
             tuesdayButton.isSelected = true
             daysOfWeek[2] = 1
         }
+        checkEveryday()
     }
     
     @IBAction func wednesdayButtonClick(_ sender: Any) {
-        everyDayButton.isSelected = false
         if(daysOfWeek[3] == 1) {
             wednesdayButton.isSelected = false
             daysOfWeek[3] = 0
@@ -306,10 +323,10 @@ class newProductViewController: UIViewController {
             wednesdayButton.isSelected = true
             daysOfWeek[3] = 1
         }
+        checkEveryday()
     }
     
     @IBAction func thursdayButtonClick(_ sender: Any) {
-        everyDayButton.isSelected = false
         if(daysOfWeek[4] == 1) {
             thursdayButton.isSelected = false
             daysOfWeek[4] = 0
@@ -317,10 +334,10 @@ class newProductViewController: UIViewController {
             thursdayButton.isSelected = true
             daysOfWeek[4] = 1
         }
+        checkEveryday()
     }
     
     @IBAction func fridayButtonClick(_ sender: Any) {
-        everyDayButton.isSelected = false
         if(daysOfWeek[5] == 1) {
             fridayButton.isSelected = false
             daysOfWeek[5] = 0
@@ -328,10 +345,10 @@ class newProductViewController: UIViewController {
             fridayButton.isSelected = true
             daysOfWeek[5] = 1
         }
+        checkEveryday()
     }
     
     @IBAction func saturdayButtonClick(_ sender: Any) {
-        everyDayButton.isSelected = false
         if(daysOfWeek[6] == 1) {
             saturdayButton.isSelected = false
             daysOfWeek[6] = 0
@@ -339,6 +356,7 @@ class newProductViewController: UIViewController {
             saturdayButton.isSelected = true
             daysOfWeek[6] = 1
         }
+        checkEveryday()
     }
 }
 
