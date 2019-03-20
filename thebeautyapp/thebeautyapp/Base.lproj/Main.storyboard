@@ -78,17 +78,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Product Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rM1-gG-WsL">
-                                <rect key="frame" x="62" y="104" width="251" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Product Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rM1-gG-WsL">
+                                <rect key="frame" x="62" y="243" width="251" height="30"/>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" spellCheckingType="yes" returnKeyType="continue"/>
                             </textField>
-                            <stackView opaque="NO" contentMode="center" distribution="fillEqually" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="7KP-7C-5fq">
-                                <rect key="frame" x="58" y="476" width="258" height="34"/>
+                            <stackView opaque="NO" contentMode="center" distribution="fillEqually" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="7KP-7C-5fq">
+                                <rect key="frame" x="46" y="524.33333333333337" width="282" height="33"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p22-af-guG">
-                                        <rect key="frame" x="0.0" y="0.0" width="31.666666666666668" height="34"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="30" height="33"/>
+                                        <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="18"/>
                                         <state key="normal" title="S">
                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -97,7 +98,8 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ibN-75-FAd">
-                                        <rect key="frame" x="37.666666666666671" y="0.0" width="31.666666666666671" height="34"/>
+                                        <rect key="frame" x="42" y="0.0" width="30" height="33"/>
+                                        <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="18"/>
                                         <state key="normal" title="M">
                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -106,7 +108,8 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IUn-dc-RPO">
-                                        <rect key="frame" x="75.333333333333343" y="0.0" width="31.666666666666671" height="34"/>
+                                        <rect key="frame" x="84" y="0.0" width="30" height="33"/>
+                                        <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="18"/>
                                         <state key="normal" title="T">
                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -115,7 +118,8 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jle-Co-miS">
-                                        <rect key="frame" x="113" y="0.0" width="32" height="34"/>
+                                        <rect key="frame" x="126" y="0.0" width="30" height="33"/>
+                                        <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="18"/>
                                         <state key="normal" title="W">
                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -124,7 +128,8 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5m5-yD-oma">
-                                        <rect key="frame" x="151" y="0.0" width="31.666666666666657" height="34"/>
+                                        <rect key="frame" x="168" y="0.0" width="30" height="33"/>
+                                        <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="18"/>
                                         <state key="normal" title="T">
                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -133,7 +138,8 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DK9-iB-zWp">
-                                        <rect key="frame" x="188.66666666666666" y="0.0" width="31.666666666666657" height="34"/>
+                                        <rect key="frame" x="210" y="0.0" width="30" height="33"/>
+                                        <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="18"/>
                                         <state key="normal" title="F">
                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -142,7 +148,8 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hEn-RF-KnO">
-                                        <rect key="frame" x="226.33333333333331" y="0.0" width="31.666666666666686" height="34"/>
+                                        <rect key="frame" x="252" y="0.0" width="30" height="33"/>
+                                        <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="18"/>
                                         <state key="normal" title="S">
                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -152,34 +159,25 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pxm-PV-ZNP">
-                                <rect key="frame" x="142" y="540" width="90" height="34"/>
-                                <state key="normal" title="Every Day">
-                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="everyDayButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="mx7-L8-WjR"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I use it in the:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zKD-q4-83B">
-                                <rect key="frame" x="40.000000000000007" y="194" width="101.66666666666669" height="20.333333333333343"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="45" y="308" width="155" height="25.666666666666686"/>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On these days:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MWb-eb-4gh">
-                                <rect key="frame" x="40" y="415.66666666666669" width="122" height="20.333333333333314"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="45" y="463.66666666666669" width="152" height="25.666666666666686"/>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="90" translatesAutoresizingMaskIntoConstraints="NO" id="rCk-S9-Ofv">
-                                <rect key="frame" x="82" y="274.33333333333331" width="211" height="60"/>
+                                <rect key="frame" x="82" y="368.66666666666669" width="210" height="60"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S6G-1V-zqs">
                                         <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                                         <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-80"/>
-                                        <state key="normal" title="DAY" backgroundImage="sunIcon">
+                                        <state key="normal" backgroundImage="sunIcon">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
                                         <connections>
@@ -187,9 +185,9 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nPb-6E-U6t">
-                                        <rect key="frame" x="151" y="0.0" width="60" height="60"/>
+                                        <rect key="frame" x="150" y="0.0" width="60" height="60"/>
                                         <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-80"/>
-                                        <state key="normal" title="NIGHT" backgroundImage="moonIcon">
+                                        <state key="normal" backgroundImage="moonIcon">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -199,39 +197,64 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lxy-HD-6IR">
-                                <rect key="frame" x="65" y="724" width="245" height="30"/>
-                                <color key="backgroundColor" red="0.19215686274509802" green="0.68627450980392157" blue="0.56862745098039214" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="ADD">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="0.0" y="724" width="375" height="88"/>
+                                <color key="backgroundColor" red="0.69411764710000001" green="0.99607843139999996" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="88" id="7sW-ld-oPK"/>
+                                    <constraint firstAttribute="width" constant="375" id="yAQ-gZ-HgM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="22"/>
+                                <state key="normal" title="ADD PRODUCT">
+                                    <color key="titleColor" red="0.26179301035134872" green="0.26179301035134872" blue="0.26179301035134872" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="QDD-wT-aIh" kind="unwind" unwindAction="unwindToProductListWithSender:" id="txS-XH-klO"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add_product_icon" translatesAutoresizingMaskIntoConstraints="NO" id="DYI-uC-CiQ">
+                                <rect key="frame" x="112" y="58" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="GWT-9x-21g"/>
+                                    <constraint firstAttribute="width" constant="150" id="Q3E-eX-D0Z"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pxm-PV-ZNP">
+                                <rect key="frame" x="139" y="581.33333333333337" width="97" height="33"/>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="18"/>
+                                <state key="normal" title="Every Day">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="everyDayButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="mx7-L8-WjR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="aQf-hH-jA4" firstAttribute="trailing" secondItem="7KP-7C-5fq" secondAttribute="trailing" constant="59" id="8e1-qP-ikV"/>
-                            <constraint firstItem="7KP-7C-5fq" firstAttribute="leading" secondItem="aQf-hH-jA4" secondAttribute="leading" constant="58" id="8mM-zY-JNW"/>
-                            <constraint firstItem="zKD-q4-83B" firstAttribute="top" secondItem="rM1-gG-WsL" secondAttribute="bottom" constant="60" id="9X2-cb-OWR"/>
-                            <constraint firstItem="rCk-S9-Ofv" firstAttribute="centerX" secondItem="rM1-gG-WsL" secondAttribute="centerX" id="BS2-TN-QKe"/>
-                            <constraint firstItem="7KP-7C-5fq" firstAttribute="top" secondItem="MWb-eb-4gh" secondAttribute="bottom" constant="40" id="DQC-Ex-Vxm"/>
-                            <constraint firstItem="lxy-HD-6IR" firstAttribute="top" secondItem="Pxm-PV-ZNP" secondAttribute="bottom" constant="150" id="EJ0-df-If9"/>
-                            <constraint firstItem="aQf-hH-jA4" firstAttribute="trailing" secondItem="rM1-gG-WsL" secondAttribute="trailing" constant="62" id="F5R-Ei-GbT"/>
-                            <constraint firstItem="Pxm-PV-ZNP" firstAttribute="leading" secondItem="aQf-hH-jA4" secondAttribute="leading" constant="142" id="HqZ-HW-R65"/>
-                            <constraint firstItem="rM1-gG-WsL" firstAttribute="leading" secondItem="aQf-hH-jA4" secondAttribute="leading" constant="62" id="Oxe-Nj-rut"/>
-                            <constraint firstItem="rM1-gG-WsL" firstAttribute="top" secondItem="aQf-hH-jA4" secondAttribute="top" constant="60" id="P0K-7f-KDP"/>
-                            <constraint firstItem="aQf-hH-jA4" firstAttribute="trailing" secondItem="MWb-eb-4gh" secondAttribute="trailing" constant="213" id="PmX-lX-wbP"/>
-                            <constraint firstItem="aQf-hH-jA4" firstAttribute="trailing" secondItem="lxy-HD-6IR" secondAttribute="trailing" constant="65" id="QmS-Is-CSR"/>
-                            <constraint firstItem="rCk-S9-Ofv" firstAttribute="top" secondItem="zKD-q4-83B" secondAttribute="bottom" constant="60" id="QpG-ap-keR"/>
-                            <constraint firstItem="MWb-eb-4gh" firstAttribute="leading" secondItem="aQf-hH-jA4" secondAttribute="leading" constant="40" id="Y2y-qj-Z2F"/>
-                            <constraint firstItem="Pxm-PV-ZNP" firstAttribute="top" secondItem="7KP-7C-5fq" secondAttribute="bottom" constant="30" id="av2-ws-Rlc"/>
-                            <constraint firstItem="lxy-HD-6IR" firstAttribute="leading" secondItem="aQf-hH-jA4" secondAttribute="leading" constant="65" id="cbz-GN-5sH"/>
-                            <constraint firstItem="aQf-hH-jA4" firstAttribute="trailing" secondItem="Pxm-PV-ZNP" secondAttribute="trailing" constant="143" id="h29-k4-ZTi"/>
-                            <constraint firstItem="aQf-hH-jA4" firstAttribute="trailing" secondItem="zKD-q4-83B" secondAttribute="trailing" constant="233.33000000000001" id="iSe-9C-xtZ"/>
-                            <constraint firstItem="zKD-q4-83B" firstAttribute="leading" secondItem="aQf-hH-jA4" secondAttribute="leading" constant="40" id="lJ8-My-apl"/>
-                            <constraint firstItem="aQf-hH-jA4" firstAttribute="bottom" secondItem="lxy-HD-6IR" secondAttribute="bottom" constant="24" id="ni7-aD-ePD"/>
-                            <constraint firstItem="rCk-S9-Ofv" firstAttribute="leading" secondItem="aQf-hH-jA4" secondAttribute="leading" constant="82" id="ujU-Uq-EVN"/>
+                            <constraint firstItem="rM1-gG-WsL" firstAttribute="top" secondItem="DYI-uC-CiQ" secondAttribute="bottom" constant="35" id="0dW-WD-F3g"/>
+                            <constraint firstItem="7KP-7C-5fq" firstAttribute="top" secondItem="MWb-eb-4gh" secondAttribute="bottom" constant="35" id="3hi-eN-n0f"/>
+                            <constraint firstItem="lxy-HD-6IR" firstAttribute="leading" secondItem="aQf-hH-jA4" secondAttribute="leading" id="4fJ-U5-HV1"/>
+                            <constraint firstItem="rCk-S9-Ofv" firstAttribute="top" secondItem="zKD-q4-83B" secondAttribute="bottom" constant="35" id="CBY-uq-Aj0"/>
+                            <constraint firstItem="DYI-uC-CiQ" firstAttribute="top" secondItem="aQf-hH-jA4" secondAttribute="top" constant="14" id="Ez4-k7-8xG"/>
+                            <constraint firstItem="MWb-eb-4gh" firstAttribute="leading" secondItem="aQf-hH-jA4" secondAttribute="leading" constant="45" id="F4E-dm-qlX"/>
+                            <constraint firstItem="aQf-hH-jA4" firstAttribute="trailing" secondItem="DYI-uC-CiQ" secondAttribute="trailing" constant="113" id="I0w-Kn-b0d"/>
+                            <constraint firstItem="lxy-HD-6IR" firstAttribute="trailing" secondItem="aQf-hH-jA4" secondAttribute="trailing" id="NPb-vq-Pg1"/>
+                            <constraint firstItem="lxy-HD-6IR" firstAttribute="top" secondItem="Pxm-PV-ZNP" secondAttribute="bottom" constant="109.67" id="SmA-uR-Kka"/>
+                            <constraint firstItem="aQf-hH-jA4" firstAttribute="trailing" secondItem="rCk-S9-Ofv" secondAttribute="trailing" constant="83" id="TEa-st-sMu"/>
+                            <constraint firstItem="aQf-hH-jA4" firstAttribute="trailing" secondItem="zKD-q4-83B" secondAttribute="trailing" constant="175" id="aK0-HS-6wq"/>
+                            <constraint firstItem="Pxm-PV-ZNP" firstAttribute="leading" secondItem="aQf-hH-jA4" secondAttribute="leading" constant="139" id="gnv-8y-3yW"/>
+                            <constraint firstItem="DYI-uC-CiQ" firstAttribute="leading" secondItem="aQf-hH-jA4" secondAttribute="leading" constant="112" id="j5k-KY-Cvh"/>
+                            <constraint firstItem="7KP-7C-5fq" firstAttribute="leading" secondItem="aQf-hH-jA4" secondAttribute="leading" constant="46" id="joh-1i-lIs"/>
+                            <constraint firstItem="rM1-gG-WsL" firstAttribute="leading" secondItem="aQf-hH-jA4" secondAttribute="leading" constant="62" id="k4U-hx-tpX"/>
+                            <constraint firstItem="aQf-hH-jA4" firstAttribute="trailing" secondItem="MWb-eb-4gh" secondAttribute="trailing" constant="178" id="luT-HP-kiW"/>
+                            <constraint firstItem="Pxm-PV-ZNP" firstAttribute="top" secondItem="7KP-7C-5fq" secondAttribute="bottom" constant="24" id="pHg-OC-Q7q"/>
+                            <constraint firstItem="zKD-q4-83B" firstAttribute="top" secondItem="rM1-gG-WsL" secondAttribute="bottom" constant="35" id="rxq-nV-X31"/>
+                            <constraint firstItem="aQf-hH-jA4" firstAttribute="trailing" secondItem="7KP-7C-5fq" secondAttribute="trailing" constant="47" id="tz8-sD-oYi"/>
+                            <constraint firstItem="aQf-hH-jA4" firstAttribute="trailing" secondItem="Pxm-PV-ZNP" secondAttribute="trailing" constant="139" id="xg8-Hq-Kcy"/>
+                            <constraint firstItem="zKD-q4-83B" firstAttribute="leading" secondItem="aQf-hH-jA4" secondAttribute="leading" constant="45" id="xm8-8s-ThU"/>
+                            <constraint firstItem="aQf-hH-jA4" firstAttribute="trailing" secondItem="rM1-gG-WsL" secondAttribute="trailing" constant="62" id="ySc-MF-gJe"/>
+                            <constraint firstItem="MWb-eb-4gh" firstAttribute="top" secondItem="rCk-S9-Ofv" secondAttribute="bottom" constant="35" id="zP1-Dj-i3s"/>
+                            <constraint firstItem="rCk-S9-Ofv" firstAttribute="leading" secondItem="aQf-hH-jA4" secondAttribute="leading" constant="82" id="za0-o2-tbc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aQf-hH-jA4"/>
                     </view>
@@ -302,7 +325,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="ozx-u2-fTS">
                         <rect key="frame" x="0.0" y="44" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.96470588239999999" green="0.89019607840000003" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.69411764705882351" green="0.99607843137254903" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="17"/>
                         </textAttributes>
@@ -474,6 +497,7 @@
         <image name="Logo" width="561" height="630"/>
         <image name="Moon" width="346" height="40"/>
         <image name="Sun" width="346" height="38"/>
+        <image name="add_product_icon" width="2492" height="2219"/>
         <image name="app_logo" width="138" height="175"/>
         <image name="background" width="375" height="812"/>
         <image name="moonIcon" width="60" height="60"/>

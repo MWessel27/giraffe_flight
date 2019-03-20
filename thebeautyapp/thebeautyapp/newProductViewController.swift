@@ -37,6 +37,7 @@ class newProductViewController: UIViewController {
     var product: Product?
     
     let purple:UIColor = UIColor(red: 156.0/255.0, green: 149.0/255.0, blue: 220.0/255.0, alpha: 1)
+    let mintgreen:UIColor = UIColor(red: 174.0/255.0, green: 255.0/255.0, blue: 216.0/255.0, alpha: 1)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -166,35 +167,37 @@ class newProductViewController: UIViewController {
     
     func setGradientBackground(indicator: String) {
         
-        let colorTop, colorBottom: CGColor
+//        let colorTop, colorBottom: CGColor
         
         if(indicator == "sun") {
             sunButton.layer.cornerRadius = 5
-            sunButton.backgroundColor = .white
+            sunButton.backgroundColor = mintgreen
             moonButton.layer.cornerRadius = 0
             moonButton.backgroundColor = .clear
-            colorTop =  UIColor(red: 255.0/255.0, green: 152.0/255.0, blue: 0.0/255.0, alpha: 1.0).cgColor
-            colorBottom = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1.0).cgColor
+//            colorTop =  UIColor(red: 255.0/255.0, green: 152.0/255.0, blue: 0.0/255.0, alpha: 1.0).cgColor
+//            colorBottom = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1.0).cgColor
         } else if (indicator == "moon"){
             moonButton.layer.cornerRadius = 5
-            moonButton.backgroundColor = .white
+            moonButton.backgroundColor = mintgreen
             sunButton.layer.cornerRadius = 0
             sunButton.backgroundColor = .clear
-            colorTop =  UIColor(red: 137.0/255.0, green: 137.0/255.0, blue: 137.0/255.0, alpha: 1.0).cgColor
-            colorBottom = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1.0).cgColor
-        } else if(indicator == "shared"){
-            sunButton.layer.cornerRadius = 5
-            sunButton.backgroundColor = .white
-            moonButton.layer.cornerRadius = 5
-            moonButton.backgroundColor = .white
-            colorTop =  UIColor(red: 255.0/255.0, green: 152.0/255.0, blue: 0.0/255.0, alpha: 1.0).cgColor
-            colorBottom = UIColor(red: 137.0/255.0, green: 137.0/255.0, blue: 137.0/255.0, alpha: 1.0).cgColor
+//            colorTop =  UIColor(red: 137.0/255.0, green: 137.0/255.0, blue: 137.0/255.0, alpha: 1.0).cgColor
+//            colorBottom = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1.0).cgColor
+//        } else if(indicator == "shared"){
         } else {
-            colorTop =  UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1.0).cgColor
-            colorBottom = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1.0).cgColor
+            sunButton.layer.cornerRadius = 5
+            sunButton.backgroundColor = mintgreen
+            moonButton.layer.cornerRadius = 5
+            moonButton.backgroundColor = mintgreen
+//            colorTop =  UIColor(red: 255.0/255.0, green: 152.0/255.0, blue: 0.0/255.0, alpha: 1.0).cgColor
+//            colorBottom = UIColor(red: 137.0/255.0, green: 137.0/255.0, blue: 137.0/255.0, alpha: 1.0).cgColor
+//        } else {
+//            colorTop =  UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1.0).cgColor
+//            colorBottom = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1.0).cgColor
+//        }
         }
         
-        gradientLayer.colors = [colorTop, colorBottom]
+//        gradientLayer.colors = [colorTop, colorBottom]
     }
     
     @IBAction func sunButtonClick(_ sender: Any) {
