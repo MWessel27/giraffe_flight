@@ -455,17 +455,11 @@
                                     <userDefinedRuntimeAttribute type="color" keyPath="eventDefaultColor">
                                         <color key="value" red="0.61176470589999998" green="0.58431372550000005" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="headerTitleColor">
-                                        <color key="value" cocoaTouchSystemColor="darkTextColor"/>
-                                    </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="selectionColor">
                                         <color key="value" red="0.63137254899999995" green="0.80392156859999997" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="eventSelectionColor">
                                         <color key="value" red="0.63137254899999995" green="0.80392156859999997" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="weekdayTextColor">
-                                        <color key="value" cocoaTouchSystemColor="darkTextColor"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
