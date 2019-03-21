@@ -248,7 +248,7 @@ class newProductViewController: UIViewController {
     }
     
     // day of week button functions
-    // TODO: Error after all days are selected manually, buttons no longer quick
+    // TODO: Error after all days are selected manually, buttons no longer click
     // TODO: Onboarding/Landing Screen when no products
     
     func checkEveryday() {
@@ -268,7 +268,8 @@ class newProductViewController: UIViewController {
         thursdayButton.isSelected = false
         fridayButton.isSelected = false
         saturdayButton.isSelected = false
-        for n in daysOfWeek {
+        
+        for n in 0 ..< daysOfWeek.count {
             daysOfWeek[n] = 0
         }
     }
