@@ -10,10 +10,68 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Get Started View Controller-->
+        <scene sceneID="rPV-U4-EDg">
+            <objects>
+                <viewController storyboardIdentifier="gsPopUpID" title="Get Started View Controller" id="bHK-c3-xdU" customClass="GettingStartedViewController" customModule="thebeautyapp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aHk-ta-cmw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="getting_started" translatesAutoresizingMaskIntoConstraints="NO" id="AIg-Tr-95H">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i1I-hK-uUo">
+                                <rect key="frame" x="0.0" y="724" width="375" height="88"/>
+                                <color key="backgroundColor" red="0.69411764710000001" green="0.99607843139999996" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="375" id="e82-1f-yb6"/>
+                                    <constraint firstAttribute="height" constant="88" id="pU3-hf-aAO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="22"/>
+                                <state key="normal" title="ADD PRODUCT">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="gsAddProduct:" destination="bHK-c3-xdU" eventType="touchUpInside" id="stw-YQ-1gC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mod-yA-7yK">
+                                <rect key="frame" x="16" y="48" width="24" height="23"/>
+                                <state key="normal" title="Close" image="close"/>
+                                <connections>
+                                    <action selector="dismissModal:" destination="bHK-c3-xdU" eventType="touchUpInside" id="cdS-P9-APs"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="i1I-hK-uUo" firstAttribute="trailing" secondItem="o19-9H-JP9" secondAttribute="trailing" id="03R-Sa-Qwu"/>
+                            <constraint firstItem="i1I-hK-uUo" firstAttribute="top" secondItem="Mod-yA-7yK" secondAttribute="bottom" constant="653" id="3WK-30-Yqd"/>
+                            <constraint firstItem="Mod-yA-7yK" firstAttribute="top" secondItem="o19-9H-JP9" secondAttribute="top" constant="4" id="Gqy-Ih-UGn"/>
+                            <constraint firstItem="AIg-Tr-95H" firstAttribute="trailing" secondItem="o19-9H-JP9" secondAttribute="trailing" id="If6-sL-p8C"/>
+                            <constraint firstAttribute="bottom" secondItem="i1I-hK-uUo" secondAttribute="bottom" id="POP-QH-ELm"/>
+                            <constraint firstItem="Mod-yA-7yK" firstAttribute="leading" secondItem="o19-9H-JP9" secondAttribute="leading" constant="16" id="e6p-Tm-NQ3"/>
+                            <constraint firstItem="i1I-hK-uUo" firstAttribute="leading" secondItem="o19-9H-JP9" secondAttribute="leading" id="l6K-6x-lv0"/>
+                            <constraint firstItem="AIg-Tr-95H" firstAttribute="leading" secondItem="o19-9H-JP9" secondAttribute="leading" id="nEC-tx-0d5"/>
+                            <constraint firstItem="AIg-Tr-95H" firstAttribute="top" secondItem="aHk-ta-cmw" secondAttribute="top" id="nIk-so-n0U"/>
+                            <constraint firstItem="o19-9H-JP9" firstAttribute="trailing" secondItem="Mod-yA-7yK" secondAttribute="trailing" constant="335" id="rx8-G0-Mar"/>
+                            <constraint firstAttribute="bottom" secondItem="AIg-Tr-95H" secondAttribute="bottom" id="xK5-y8-e2H"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="o19-9H-JP9"/>
+                    </view>
+                    <connections>
+                        <outlet property="gsAddProductButton" destination="i1I-hK-uUo" id="hI7-8Y-wo8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R97-NG-wUY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="148" y="-546.05911330049264"/>
+        </scene>
         <!--PRODUCTS-->
         <scene sceneID="nPI-ZP-kuh">
             <objects>
-                <tableViewController title="PRODUCTS" id="yNi-1X-of6" customClass="ProductTableViewController" customModule="thebeautyapp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="productTableViewController" title="PRODUCTS" id="yNi-1X-of6" customClass="ProductTableViewController" customModule="thebeautyapp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="75" sectionHeaderHeight="28" sectionFooterHeight="28" id="Pmp-s1-eFv" userLabel="Product Table">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -344,7 +402,7 @@
         <!--Home-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Home" id="BYZ-38-t0r" customClass="homeViewController" customModule="thebeautyapp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="homeViewController" title="Home" id="BYZ-38-t0r" customClass="homeViewController" customModule="thebeautyapp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -518,6 +576,8 @@
         <image name="add_product_icon" width="2492" height="2219"/>
         <image name="app_logo" width="138" height="175"/>
         <image name="background" width="375" height="812"/>
+        <image name="close" width="22" height="23"/>
+        <image name="getting_started" width="375" height="812"/>
         <image name="moonIcon" width="60" height="60"/>
         <image name="sunIcon" width="60" height="60"/>
     </resources>

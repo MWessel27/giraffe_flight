@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7B3483A52219CB2F004093DB /* UsedActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3483A42219CB2F004093DB /* UsedActivity.swift */; };
 		7B723B5221F00D95008605FB /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B723B5121F00D95008605FB /* ProductTableViewCell.swift */; };
+		7B9050B02243C210000F2FF5 /* GettingStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9050AF2243C210000F2FF5 /* GettingStartedViewController.swift */; };
 		7BA0191C21ECB4510078E61B /* newProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA0191B21ECB4510078E61B /* newProductViewController.swift */; };
 		7BD24D3121F207E500F2CBCE /* ProductTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD24D3021F207E500F2CBCE /* ProductTableViewController.swift */; };
 		953958EF20C469BE00DD069A /* FSCalendar+Deprecated.m in Sources */ = {isa = PBXBuildFile; fileRef = 953958CE20C469BE00DD069A /* FSCalendar+Deprecated.m */; };
@@ -59,6 +60,7 @@
 /* Begin PBXFileReference section */
 		7B3483A42219CB2F004093DB /* UsedActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsedActivity.swift; sourceTree = "<group>"; };
 		7B723B5121F00D95008605FB /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
+		7B9050AF2243C210000F2FF5 /* GettingStartedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettingStartedViewController.swift; sourceTree = "<group>"; };
 		7BA0191B21ECB4510078E61B /* newProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newProductViewController.swift; sourceTree = "<group>"; };
 		7BD24D3021F207E500F2CBCE /* ProductTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewController.swift; sourceTree = "<group>"; };
 		953958CE20C469BE00DD069A /* FSCalendar+Deprecated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FSCalendar+Deprecated.m"; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 				959D89A420B393B300E17F2E /* AppDelegate.swift */,
 				959D89A620B393B300E17F2E /* homeViewController.swift */,
 				959D89A820B393B300E17F2E /* Main.storyboard */,
+				7B9050AF2243C210000F2FF5 /* GettingStartedViewController.swift */,
 				953958CD20C469BE00DD069A /* FSCalendar */,
 				959D89AE20B393B400E17F2E /* Assets.xcassets */,
 				959D89B320B393B400E17F2E /* Info.plist */,
@@ -371,6 +374,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B9050B02243C210000F2FF5 /* GettingStartedViewController.swift in Sources */,
 				953958F620C469BE00DD069A /* FSCalendarConstants.m in Sources */,
 				D755BF1720E0040C00FD77F1 /* product.swift in Sources */,
 				954D192120C45DA10051AE9A /* statsViewController.swift in Sources */,

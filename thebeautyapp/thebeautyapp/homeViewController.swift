@@ -74,6 +74,21 @@ class homeViewController: UIViewController {
             mTableView.isHidden = true;
             pmTableView.isHidden = true;
             
+//            let gettingStartedVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "gsPopUpID") as! GettingStartedViewController
+//            self.navigationController?.addChild(gettingStartedVC)
+//            gettingStartedVC.view.frame = self.view.frame
+//            self.view.addSubview(gettingStartedVC)
+            
+            if let presentedViewController = self.storyboard?.instantiateViewController(withIdentifier: "gsPopUpID") {
+                presentedViewController.providesPresentationContextTransitionStyle = true
+                presentedViewController.definesPresentationContext = true
+                presentedViewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext;
+                presentedViewController.view.backgroundColor = UIColor.init(white: 0.4, alpha: 0.8)
+                self.present(presentedViewController, animated: true, completion: nil)
+            }
+//            let newViewController = GettingStartedViewController()
+//            self.navigationController?.pushViewController(newViewController, animated: true)
+            
 //            gettingStartedBackground.isHidden = false;
         }
     }
@@ -106,6 +121,20 @@ class homeViewController: UIViewController {
             mTableView.isHidden = true;
             pmTableView.isHidden = true;
             
+            if let presentedViewController = self.storyboard?.instantiateViewController(withIdentifier: "gsPopUpID") {
+                presentedViewController.providesPresentationContextTransitionStyle = true
+                presentedViewController.definesPresentationContext = true
+                presentedViewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext;
+                presentedViewController.view.backgroundColor = UIColor.init(white: 0.4, alpha: 0.8)
+                self.present(presentedViewController, animated: true, completion: nil)
+            }
+            
+//            let gettingStartedVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "gsPopUpID") as! GettingStartedViewController
+//            self.navigationController?.addChild(gettingStartedVC)
+            
+//            let newViewController = GettingStartedViewController()
+//            self.navigationController?.pushViewController(newViewController, animated: true)
+//
 //            gettingStartedBackground.isHidden = false;
         }
         
@@ -141,7 +170,21 @@ class homeViewController: UIViewController {
             mTableView.isHidden = true;
             pmTableView.isHidden = true;
             
+            if let presentedViewController = self.storyboard?.instantiateViewController(withIdentifier: "gsPopUpID") {
+                presentedViewController.providesPresentationContextTransitionStyle = true
+                presentedViewController.definesPresentationContext = true
+                presentedViewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext;
+                presentedViewController.view.backgroundColor = UIColor.init(white: 0.4, alpha: 0.8)
+                self.present(presentedViewController, animated: true, completion: nil)
+            
+//            let gettingStartedVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "gsPopUpID") as! GettingStartedViewController
+//            self.navigationController?.addChild(gettingStartedVC)
+            
+//            let newViewController = GettingStartedViewController()
+//            self.navigationController?.pushViewController(newViewController, animated: true)
+//
 //            gettingStartedBackground.isHidden = false;
+            }
         }
         
         self.mTableView.reloadData();
