@@ -74,11 +74,6 @@ class homeViewController: UIViewController {
             mTableView.isHidden = true;
             pmTableView.isHidden = true;
             
-//            let gettingStartedVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "gsPopUpID") as! GettingStartedViewController
-//            self.navigationController?.addChild(gettingStartedVC)
-//            gettingStartedVC.view.frame = self.view.frame
-//            self.view.addSubview(gettingStartedVC)
-            
             if let presentedViewController = self.storyboard?.instantiateViewController(withIdentifier: "gsPopUpID") {
                 presentedViewController.providesPresentationContextTransitionStyle = true
                 presentedViewController.definesPresentationContext = true
@@ -86,10 +81,6 @@ class homeViewController: UIViewController {
                 presentedViewController.view.backgroundColor = UIColor.init(white: 0.4, alpha: 0.8)
                 self.present(presentedViewController, animated: true, completion: nil)
             }
-//            let newViewController = GettingStartedViewController()
-//            self.navigationController?.pushViewController(newViewController, animated: true)
-            
-//            gettingStartedBackground.isHidden = false;
         }
     }
     
@@ -101,7 +92,6 @@ class homeViewController: UIViewController {
         }
         
         if(products.count != 0) {
-//            gettingStartedBackground.isHidden = true;
             sunImage.isHidden = false;
             moonImage.isHidden = false;
             mTableView.isHidden = false;
@@ -128,14 +118,6 @@ class homeViewController: UIViewController {
                 presentedViewController.view.backgroundColor = UIColor.init(white: 0.4, alpha: 0.8)
                 self.present(presentedViewController, animated: true, completion: nil)
             }
-            
-//            let gettingStartedVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "gsPopUpID") as! GettingStartedViewController
-//            self.navigationController?.addChild(gettingStartedVC)
-            
-//            let newViewController = GettingStartedViewController()
-//            self.navigationController?.pushViewController(newViewController, animated: true)
-//
-//            gettingStartedBackground.isHidden = false;
         }
         
         self.mTableView.reloadData();
@@ -150,7 +132,6 @@ class homeViewController: UIViewController {
         }
         
         if(products.count != 0) {
-//            gettingStartedBackground.isHidden = true;
             sunImage.isHidden = false;
             moonImage.isHidden = false;
             mTableView.isHidden = false;
@@ -176,14 +157,6 @@ class homeViewController: UIViewController {
                 presentedViewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext;
                 presentedViewController.view.backgroundColor = UIColor.init(white: 0.4, alpha: 0.8)
                 self.present(presentedViewController, animated: true, completion: nil)
-            
-//            let gettingStartedVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "gsPopUpID") as! GettingStartedViewController
-//            self.navigationController?.addChild(gettingStartedVC)
-            
-//            let newViewController = GettingStartedViewController()
-//            self.navigationController?.pushViewController(newViewController, animated: true)
-//
-//            gettingStartedBackground.isHidden = false;
             }
         }
         
