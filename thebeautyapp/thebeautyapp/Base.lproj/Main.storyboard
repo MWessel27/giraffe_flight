@@ -140,7 +140,7 @@
                                 <rect key="frame" x="62" y="243" width="251" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" spellCheckingType="yes" returnKeyType="continue"/>
+                                <textInputTraits key="textInputTraits" spellCheckingType="yes" returnKeyType="next"/>
                                 <connections>
                                     <action selector="prodNameFieldChanged:" destination="cEp-ob-1BY" eventType="editingChanged" id="vOi-Wq-2Uv"/>
                                 </connections>

@@ -25,7 +25,23 @@ class GettingStartedViewController: UIViewController {
     }
     
     @IBAction func gsAddProduct(_ sender: Any) {
-
+        dismiss(animated: true, completion: nil)
+//        if let presentedViewController = self.storyboard?.instantiateViewController(withIdentifier: "newProductViewController") {
+//            presentedViewController.providesPresentationContextTransitionStyle = true
+//            presentedViewController.definesPresentationContext = true
+//            presentedViewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext;
+//            presentedViewController.view.backgroundColor = UIColor.init(white: 0.4, alpha: 0.8)
+//            self.present(presentedViewController, animated: true, completion: nil)
+//        }
+//        dismiss(animated: true, completion: {
+//            if let presentedViewController = self.storyboard?.instantiateViewController(withIdentifier: "newProductViewController") {
+//                presentedViewController.providesPresentationContextTransitionStyle = true
+//                presentedViewController.definesPresentationContext = true
+//                presentedViewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext;
+//                presentedViewController.view.backgroundColor = UIColor.init(white: 0.4, alpha: 0.8)
+//                self.present(presentedViewController, animated: true, completion: nil)
+//            }
+//        })
     }
     
     /*

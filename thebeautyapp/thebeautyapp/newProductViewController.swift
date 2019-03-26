@@ -9,7 +9,7 @@
 import UIKit
 import os.log
 
-class newProductViewController: UIViewController {
+class newProductViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var submitNewProductBtn: UIButton!
     @IBOutlet weak var newProductField: UITextField!
@@ -35,12 +35,21 @@ class newProductViewController: UIViewController {
     var sunSelected = 0
     var moonSelected = 0
     var product: Product?
+//    var products = [Product]()
     
     let purple:UIColor = UIColor(red: 156.0/255.0, green: 149.0/255.0, blue: 220.0/255.0, alpha: 1)
     let mintgreen:UIColor = UIColor(red: 174.0/255.0, green: 255.0/255.0, blue: 216.0/255.0, alpha: 1)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //
+        self.newProductField.delegate = self
+        self.newProductField.becomeFirstResponder()
+        
+//        if let savedProds = loadProducts() {
+//            products += savedProds
+//        }
         
         sundayButton.setBackgroundColor(color: purple, forState: .selected)
         mondayButton.setBackgroundColor(color: purple, forState: .selected)
@@ -138,8 +147,86 @@ class newProductViewController: UIViewController {
         }
     }
     
+//    private func loadProducts() -> [Product]? {
+//        return NSKeyedUnarchiver.unarchiveObject(withFile: Product.ArchiveURL.path) as? [Product]
+//    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
+    func dismissKeyboard() {
+//        textField.resignFirstResponder()
+        //or
+        self.view.endEditing(true)
+    }
+    
+//    private func saveProducts() {
+//        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(products, toFile: Product.ArchiveURL.path)
+//        if isSuccessfulSave {
+//            os_log("Products successfully saved.", log: OSLog.default, type: .debug)
+//        } else {
+//            os_log("Failed to save Products...", log: OSLog.default, type: .error)
+//        }
+//    }
+    
+//    @IBAction func addProduct(_ sender: Any) {
+//        if(isModal) {
+//            print("*****isModal")
+//            // Configure the destination view controller only when the save button is pressed.
+//            guard let button = sender as? UIButton, button === submitNewProductBtn else {
+//                os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
+//                return
+//            }
+//
+//            let name = newProductField.text ?? ""
+//            var timeOfDay = 0
+//            var daily = false
+//
+//            if(everyDayButton.isSelected || !daysOfWeek.contains(1)) {
+//                daily = true
+//            }
+//
+//            if(sunSelected == 1 && moonSelected == 1) {
+//                timeOfDay = 0
+//            } else if(sunSelected == 1) {
+//                timeOfDay = 1
+//            } else if(moonSelected == 1) {
+//                timeOfDay = 2
+//            }
+//
+//            // Set the meal to be passed to MealTableViewController after the unwind segue.
+//            product = Product(name: name, daily: daily, rating: 1, ampm: timeOfDay, cat: "mine", onSunday: daysOfWeek[0], onMonday: daysOfWeek[1], onTuesday: daysOfWeek[2], onWednesday: daysOfWeek[3], onThursday: daysOfWeek[4], onFriday: daysOfWeek[5], onSaturday: daysOfWeek[6], usedActivities: usedActivities)
+//
+//            products.append(product!)
+//            saveProducts()
+//
+//            let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+//            let nav = storyboard.instantiateViewController(withIdentifier: "homeViewController")
+//
+//            UIApplication.shared.keyWindow?.rootViewController = nav
+//            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//            let viewController = mainStoryboard.instantiateViewController(withIdentifier: "homeViewController")
+//            UIApplication.shared.keyWindow?.rootViewController = viewController
+//
+//            self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+//
+//            dismiss(animated: true, completion: nil)
+//        } else {
+//            print("*****NOTModal")
+//        }
+//    }
+    
+    var isModal: Bool {
+        return self.presentingViewController?.presentedViewController == self
+            || (self.navigationController != nil && self.navigationController?.presentingViewController?.presentedViewController == self.navigationController)
+            || self.tabBarController?.presentingViewController is UITabBarController
+    }
+    
     // This method lets you configure a view controller before it's presented.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         // Configure the destination view controller only when the save button is pressed.
         guard let button = sender as? UIButton, button === submitNewProductBtn else {
             os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
@@ -212,6 +299,7 @@ class newProductViewController: UIViewController {
     }
     
     @IBAction func sunButtonClick(_ sender: Any) {
+        dismissKeyboard()
         if(sunSelected == 0) {
             sunSelected = 1
             if(moonSelected == 1) {
@@ -230,6 +318,7 @@ class newProductViewController: UIViewController {
     }
     
     @IBAction func moonButtonClick(_ sender: Any) {
+        dismissKeyboard()
         if(moonSelected == 0) {
             moonSelected = 1
             if(sunSelected == 1) {
@@ -248,8 +337,6 @@ class newProductViewController: UIViewController {
     }
     
     // day of week button functions
-    // TODO: Error after all days are selected manually, buttons no longer click
-    // TODO: Onboarding/Landing Screen when no products
     
     func checkEveryday() {
         if(!daysOfWeek.contains(0)) {
