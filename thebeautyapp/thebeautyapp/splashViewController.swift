@@ -15,6 +15,10 @@ class splashViewController: UIViewController {
         _ = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(timeToMoveOn), userInfo: nil, repeats: false)
         // Do any additional setup after loading the view.
     }
+
+    override func viewDidAppear(_ animated: Bool) {
+        _ = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(timeToMoveOn), userInfo: nil, repeats: false)
+    }
     
     @objc func timeToMoveOn() {
         self.performSegue(withIdentifier: "goToMainUI", sender: self)

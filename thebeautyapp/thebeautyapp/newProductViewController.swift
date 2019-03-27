@@ -35,7 +35,7 @@ class newProductViewController: UIViewController, UITextFieldDelegate {
     var sunSelected = 0
     var moonSelected = 0
     var product: Product?
-//    var products = [Product]()
+    var products = [Product]()
     
     let purple:UIColor = UIColor(red: 156.0/255.0, green: 149.0/255.0, blue: 220.0/255.0, alpha: 1)
     let mintgreen:UIColor = UIColor(red: 174.0/255.0, green: 255.0/255.0, blue: 216.0/255.0, alpha: 1)
@@ -43,13 +43,17 @@ class newProductViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //
-        self.newProductField.delegate = self
-        self.newProductField.becomeFirstResponder()
+        self.view.addSubview(submitNewProductBtn)
         
-//        if let savedProds = loadProducts() {
-//            products += savedProds
-//        }
+        submitNewProductBtn.translatesAutoresizingMaskIntoConstraints = false
+        
+        submitNewProductBtn.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        submitNewProductBtn.heightAnchor.constraint(equalToConstant: 90).isActive = true
+        submitNewProductBtn.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0).isActive = true
+        
+        if let savedProds = loadProducts() {
+            products += savedProds
+        }
         
         sundayButton.setBackgroundColor(color: purple, forState: .selected)
         mondayButton.setBackgroundColor(color: purple, forState: .selected)
@@ -138,6 +142,10 @@ class newProductViewController: UIViewController, UITextFieldDelegate {
             }
         } else {
             // adding a new product
+            
+            self.newProductField.delegate = self
+            self.newProductField.becomeFirstResponder()
+            
             submitNewProductBtn.isEnabled = false
             submitNewProductBtn.alpha = 0.4
             
@@ -147,9 +155,9 @@ class newProductViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-//    private func loadProducts() -> [Product]? {
-//        return NSKeyedUnarchiver.unarchiveObject(withFile: Product.ArchiveURL.path) as? [Product]
-//    }
+    private func loadProducts() -> [Product]? {
+        return NSKeyedUnarchiver.unarchiveObject(withFile: Product.ArchiveURL.path) as? [Product]
+    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
@@ -157,66 +165,8 @@ class newProductViewController: UIViewController, UITextFieldDelegate {
     }
     
     func dismissKeyboard() {
-//        textField.resignFirstResponder()
-        //or
         self.view.endEditing(true)
     }
-    
-//    private func saveProducts() {
-//        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(products, toFile: Product.ArchiveURL.path)
-//        if isSuccessfulSave {
-//            os_log("Products successfully saved.", log: OSLog.default, type: .debug)
-//        } else {
-//            os_log("Failed to save Products...", log: OSLog.default, type: .error)
-//        }
-//    }
-    
-//    @IBAction func addProduct(_ sender: Any) {
-//        if(isModal) {
-//            print("*****isModal")
-//            // Configure the destination view controller only when the save button is pressed.
-//            guard let button = sender as? UIButton, button === submitNewProductBtn else {
-//                os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
-//                return
-//            }
-//
-//            let name = newProductField.text ?? ""
-//            var timeOfDay = 0
-//            var daily = false
-//
-//            if(everyDayButton.isSelected || !daysOfWeek.contains(1)) {
-//                daily = true
-//            }
-//
-//            if(sunSelected == 1 && moonSelected == 1) {
-//                timeOfDay = 0
-//            } else if(sunSelected == 1) {
-//                timeOfDay = 1
-//            } else if(moonSelected == 1) {
-//                timeOfDay = 2
-//            }
-//
-//            // Set the meal to be passed to MealTableViewController after the unwind segue.
-//            product = Product(name: name, daily: daily, rating: 1, ampm: timeOfDay, cat: "mine", onSunday: daysOfWeek[0], onMonday: daysOfWeek[1], onTuesday: daysOfWeek[2], onWednesday: daysOfWeek[3], onThursday: daysOfWeek[4], onFriday: daysOfWeek[5], onSaturday: daysOfWeek[6], usedActivities: usedActivities)
-//
-//            products.append(product!)
-//            saveProducts()
-//
-//            let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-//            let nav = storyboard.instantiateViewController(withIdentifier: "homeViewController")
-//
-//            UIApplication.shared.keyWindow?.rootViewController = nav
-//            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-//            let viewController = mainStoryboard.instantiateViewController(withIdentifier: "homeViewController")
-//            UIApplication.shared.keyWindow?.rootViewController = viewController
-//
-//            self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
-//
-//            dismiss(animated: true, completion: nil)
-//        } else {
-//            print("*****NOTModal")
-//        }
-//    }
     
     var isModal: Bool {
         return self.presentingViewController?.presentedViewController == self
@@ -255,37 +205,23 @@ class newProductViewController: UIViewController, UITextFieldDelegate {
     
     func setGradientBackground(indicator: String) {
         
-//        let colorTop, colorBottom: CGColor
-        
         if(indicator == "sun") {
             sunButton.layer.cornerRadius = 5
             sunButton.backgroundColor = mintgreen
             moonButton.layer.cornerRadius = 0
             moonButton.backgroundColor = .clear
-//            colorTop =  UIColor(red: 255.0/255.0, green: 152.0/255.0, blue: 0.0/255.0, alpha: 1.0).cgColor
-//            colorBottom = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1.0).cgColor
         } else if (indicator == "moon"){
             moonButton.layer.cornerRadius = 5
             moonButton.backgroundColor = mintgreen
             sunButton.layer.cornerRadius = 0
             sunButton.backgroundColor = .clear
-//            colorTop =  UIColor(red: 137.0/255.0, green: 137.0/255.0, blue: 137.0/255.0, alpha: 1.0).cgColor
-//            colorBottom = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1.0).cgColor
-//        } else if(indicator == "shared"){
         } else {
             sunButton.layer.cornerRadius = 5
             sunButton.backgroundColor = mintgreen
             moonButton.layer.cornerRadius = 5
             moonButton.backgroundColor = mintgreen
-//            colorTop =  UIColor(red: 255.0/255.0, green: 152.0/255.0, blue: 0.0/255.0, alpha: 1.0).cgColor
-//            colorBottom = UIColor(red: 137.0/255.0, green: 137.0/255.0, blue: 137.0/255.0, alpha: 1.0).cgColor
-//        } else {
-//            colorTop =  UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1.0).cgColor
-//            colorBottom = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1.0).cgColor
-//        }
         }
         
-//        gradientLayer.colors = [colorTop, colorBottom]
     }
 
     @IBAction func prodNameFieldChanged(_ sender: Any) {
