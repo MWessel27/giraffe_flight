@@ -5,6 +5,10 @@
 //  Created by Mikalangelo Wessel on 5/21/18.
 //  Copyright © 2018 giraffeflight. All rights reserved.
 //
+//  MW TODO
+//          - No products for current day
+//          - Constraints
+//
 
 import UIKit
 import CoreData
@@ -19,7 +23,10 @@ class homeViewController: UIViewController {
     
     @IBOutlet weak var sunImage: UIImageView!
     @IBOutlet weak var moonImage: UIImageView!
-//    @IBOutlet weak var gettingStartedBackground: UIImageView!
+    
+    @IBOutlet weak var noProductImage: UIImageView!
+    @IBOutlet weak var addProductButton: UIButton!
+    @IBOutlet weak var noProductLabel: UILabel!
     
     var products = [Product]()
     
@@ -60,6 +67,10 @@ class homeViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = leftBarButton
         
         if(products.count != 0) {
+            noProductLabel.isHidden = true
+            noProductImage.isHidden = true
+            addProductButton.isHidden = true
+            
             mTableView.tableFooterView = UIView(frame: CGRect.zero)
             pmTableView.tableFooterView = UIView(frame: CGRect.zero)
             
@@ -69,6 +80,10 @@ class homeViewController: UIViewController {
             pmTableView.backgroundColor = UIColor.clear
             pmTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         } else {
+            noProductLabel.isHidden = false
+            noProductImage.isHidden = false
+            addProductButton.isHidden = false
+            
             sunImage.isHidden = true;
             moonImage.isHidden = true;
             mTableView.isHidden = true;
@@ -86,7 +101,7 @@ class homeViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated);
-        //MW
+        
         let navBar: UINavigationBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: 320, height: 44))
         self.view.addSubview(navBar);
         
@@ -101,6 +116,10 @@ class homeViewController: UIViewController {
         }
         
         if(products.count != 0) {
+            noProductLabel.isHidden = true
+            noProductImage.isHidden = true
+            addProductButton.isHidden = true
+            
             sunImage.isHidden = false;
             moonImage.isHidden = false;
             mTableView.isHidden = false;
@@ -115,6 +134,10 @@ class homeViewController: UIViewController {
             pmTableView.backgroundColor = UIColor.clear
             pmTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         } else {
+            noProductLabel.isHidden = false
+            noProductImage.isHidden = false
+            addProductButton.isHidden = false
+            
             sunImage.isHidden = true;
             moonImage.isHidden = true;
             mTableView.isHidden = true;
@@ -141,6 +164,10 @@ class homeViewController: UIViewController {
         }
         
         if(products.count != 0) {
+            noProductLabel.isHidden = true
+            noProductImage.isHidden = true
+            addProductButton.isHidden = true
+            
             sunImage.isHidden = false;
             moonImage.isHidden = false;
             mTableView.isHidden = false;
@@ -155,6 +182,10 @@ class homeViewController: UIViewController {
             pmTableView.backgroundColor = UIColor.clear
             pmTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         } else {
+            noProductLabel.isHidden = false
+            noProductImage.isHidden = false
+            addProductButton.isHidden = false
+            
             sunImage.isHidden = true;
             moonImage.isHidden = true;
             mTableView.isHidden = true;
@@ -185,6 +216,24 @@ class homeViewController: UIViewController {
         let storyBoard : UIStoryboard = self.storyboard!
         let nextViewController = storyBoard.instantiateViewController(withIdentifier: "statsViewController")
         self.navigationController?.pushViewController(nextViewController, animated: true)
+    }
+    
+    @IBAction func addProductButtonClicked(_ sender: Any) {
+        if let presentedViewController = self.storyboard?.instantiateViewController(withIdentifier: "newProductViewController") {
+            presentedViewController.providesPresentationContextTransitionStyle = true
+            presentedViewController.definesPresentationContext = true
+            presentedViewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext;
+            presentedViewController.view.backgroundColor = UIColor.init(white: 0.4, alpha: 0.8)
+            self.present(presentedViewController, animated: true, completion: nil)
+        }
+    }
+    
+    @IBAction func unwindToProductList(sender: UIStoryboardSegue) {
+        self.view.window?.rootViewController?.dismiss(animated: false, completion: nil)
+        if let sourceViewController = sender.source as? newProductViewController, let product = sourceViewController.product {
+            products.append(product)
+            saveProducts()
+        }
     }
 
     override func didReceiveMemoryWarning() {
