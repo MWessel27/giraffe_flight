@@ -15,6 +15,7 @@ class newProductViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var newProductField: UITextField!
     @IBOutlet weak var sunButton: UIButton!
     @IBOutlet weak var moonButton: UIButton!
+    @IBOutlet weak var closeButton: UIButton!
     
     // days of week buttons
     @IBOutlet weak var sundayButton: UIButton!
@@ -42,6 +43,11 @@ class newProductViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        closeButton.isHidden = true
+        
+        if(presentingViewController == nil) {
+            closeButton.isHidden = false
+        }
         
         self.view.addSubview(submitNewProductBtn)
         
@@ -172,6 +178,10 @@ class newProductViewController: UIViewController, UITextFieldDelegate {
         return self.presentingViewController?.presentedViewController == self
             || (self.navigationController != nil && self.navigationController?.presentingViewController?.presentedViewController == self.navigationController)
             || self.tabBarController?.presentingViewController is UITabBarController
+    }
+    
+    @IBAction func dismissModal(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
     
     // This method lets you configure a view controller before it's presented.
