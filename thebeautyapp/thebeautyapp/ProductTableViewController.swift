@@ -100,7 +100,7 @@ class ProductTableViewController: UITableViewController {
             }
 
             guard let selectedProductCell = sender as? ProductTableViewCell else {
-                fatalError("Unexpected sender: \(sender)")
+                fatalError("Unexpected sender: \(sender as Optional)")
             }
 
             guard let indexPath = productTableView.indexPath(for: selectedProductCell) else {
@@ -111,7 +111,7 @@ class ProductTableViewController: UITableViewController {
             productDetailViewController.product = selectedProduct
             
         default:
-            fatalError("Unexpected Segue Identifier; \(segue.identifier)")
+            fatalError("Unexpected Segue Identifier; \(segue.identifier as Optional)")
         }
     }
     
