@@ -13,7 +13,7 @@
         <!--Get Started View Controller-->
         <scene sceneID="rPV-U4-EDg">
             <objects>
-                <viewController storyboardIdentifier="gsPopUpID" title="Get Started View Controller" id="bHK-c3-xdU" customClass="GettingStartedViewController" customModule="thebeautyapp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="gsPopUpID" title="Get Started View Controller" id="bHK-c3-xdU" customClass="GettingStartedViewController" customModule="Flawless" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aHk-ta-cmw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -25,7 +25,6 @@
                                 <rect key="frame" x="0.0" y="724" width="375" height="88"/>
                                 <color key="backgroundColor" red="0.69411764710000001" green="0.99607843139999996" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="375" id="e82-1f-yb6"/>
                                     <constraint firstAttribute="height" constant="88" id="pU3-hf-aAO"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="22"/>
@@ -71,13 +70,13 @@
         <!--PRODUCTS-->
         <scene sceneID="nPI-ZP-kuh">
             <objects>
-                <tableViewController storyboardIdentifier="productTableViewController" title="PRODUCTS" id="yNi-1X-of6" customClass="ProductTableViewController" customModule="thebeautyapp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="productTableViewController" title="PRODUCTS" id="yNi-1X-of6" customClass="ProductTableViewController" customModule="Flawless" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="75" sectionHeaderHeight="28" sectionFooterHeight="28" id="Pmp-s1-eFv" userLabel="Product Table">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProductTableViewCell" rowHeight="75" id="6eD-iZ-SBx" customClass="ProductTableViewCell" customModule="thebeautyapp" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProductTableViewCell" rowHeight="75" id="6eD-iZ-SBx" customClass="ProductTableViewCell" customModule="Flawless" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="75"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6eD-iZ-SBx" id="BSO-VU-jdG">
@@ -131,12 +130,12 @@
         <!--ADD PRODUCT-->
         <scene sceneID="Zde-f7-4jH">
             <objects>
-                <viewController storyboardIdentifier="newProductViewController" title="ADD PRODUCT" id="cEp-ob-1BY" customClass="newProductViewController" customModule="thebeautyapp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="newProductViewController" title="ADD PRODUCT" id="cEp-ob-1BY" customClass="newProductViewController" customModule="Flawless" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tJl-VK-Anp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Product Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rM1-gG-WsL">
+                            <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Product Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rM1-gG-WsL">
                                 <rect key="frame" x="62" y="309" width="251" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="20"/>
@@ -145,10 +144,10 @@
                                     <action selector="prodNameFieldChanged:" destination="cEp-ob-1BY" eventType="editingChanged" id="vOi-Wq-2Uv"/>
                                 </connections>
                             </textField>
-                            <stackView opaque="NO" contentMode="center" ambiguous="YES" distribution="fillEqually" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="7KP-7C-5fq">
+                            <stackView opaque="NO" contentMode="center" distribution="fillEqually" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="7KP-7C-5fq">
                                 <rect key="frame" x="47" y="590" width="282" height="33"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p22-af-guG">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p22-af-guG">
                                         <rect key="frame" x="0.0" y="0.0" width="30" height="33"/>
                                         <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="18"/>
                                         <state key="normal" title="S">
@@ -158,7 +157,7 @@
                                             <action selector="sundayButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="vDH-9W-bnk"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ibN-75-FAd">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ibN-75-FAd">
                                         <rect key="frame" x="42" y="0.0" width="30" height="33"/>
                                         <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="18"/>
                                         <state key="normal" title="M">
@@ -168,7 +167,7 @@
                                             <action selector="mondayButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="C3T-ZF-Zso"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IUn-dc-RPO">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IUn-dc-RPO">
                                         <rect key="frame" x="84" y="0.0" width="30" height="33"/>
                                         <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="18"/>
                                         <state key="normal" title="T">
@@ -178,7 +177,7 @@
                                             <action selector="tuesdayButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="ud4-sM-CtW"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jle-Co-miS">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jle-Co-miS">
                                         <rect key="frame" x="126" y="0.0" width="30" height="33"/>
                                         <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="18"/>
                                         <state key="normal" title="W">
@@ -188,7 +187,7 @@
                                             <action selector="wednesdayButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="UfJ-cH-P38"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5m5-yD-oma">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5m5-yD-oma">
                                         <rect key="frame" x="168" y="0.0" width="30" height="33"/>
                                         <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="18"/>
                                         <state key="normal" title="T">
@@ -198,7 +197,7 @@
                                             <action selector="thursdayButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="KkI-jx-37g"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DK9-iB-zWp">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DK9-iB-zWp">
                                         <rect key="frame" x="210" y="0.0" width="30" height="33"/>
                                         <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="18"/>
                                         <state key="normal" title="F">
@@ -208,7 +207,7 @@
                                             <action selector="fridayButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="qNE-Tq-8I7"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hEn-RF-KnO">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hEn-RF-KnO">
                                         <rect key="frame" x="252" y="0.0" width="30" height="33"/>
                                         <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="18"/>
                                         <state key="normal" title="S">
@@ -226,16 +225,16 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="On these days:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MWb-eb-4gh">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On these days:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MWb-eb-4gh">
                                 <rect key="frame" x="46" y="529" width="152" height="25.666666666666629"/>
                                 <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="equalSpacing" alignment="center" spacing="90" translatesAutoresizingMaskIntoConstraints="NO" id="rCk-S9-Ofv">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="90" translatesAutoresizingMaskIntoConstraints="NO" id="rCk-S9-Ofv">
                                 <rect key="frame" x="83" y="434" width="210" height="60"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S6G-1V-zqs">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S6G-1V-zqs">
                                         <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                                         <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-80"/>
                                         <state key="normal" backgroundImage="sunIcon">
@@ -245,7 +244,7 @@
                                             <action selector="sunButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="l6U-bd-eUt"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nPb-6E-U6t">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nPb-6E-U6t">
                                         <rect key="frame" x="150" y="0.0" width="60" height="60"/>
                                         <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-80"/>
                                         <state key="normal" backgroundImage="moonIcon">
@@ -261,8 +260,7 @@
                                 <rect key="frame" x="0.0" y="724" width="375" height="88"/>
                                 <color key="backgroundColor" red="0.69411764710000001" green="0.99607843139999996" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="88" id="7sW-ld-oPK"/>
-                                    <constraint firstAttribute="width" constant="375" id="yAQ-gZ-HgM"/>
+                                    <constraint firstAttribute="height" constant="88" id="c0M-Kr-0ms"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="22"/>
                                 <state key="normal" title="ADD PRODUCT">
@@ -272,13 +270,6 @@
                                     <segue destination="QDD-wT-aIh" kind="unwind" unwindAction="unwindToProductListWithSender:" id="txS-XH-klO"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add_product_icon" translatesAutoresizingMaskIntoConstraints="NO" id="DYI-uC-CiQ">
-                                <rect key="frame" x="112" y="131" width="150" height="150"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="8Bk-KV-gIY"/>
-                                    <constraint firstAttribute="width" constant="150" id="LuC-H8-4cY"/>
-                                </constraints>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pxm-PV-ZNP">
                                 <rect key="frame" x="139" y="647" width="97" height="33"/>
                                 <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="18"/>
@@ -297,37 +288,44 @@
                                     <action selector="dismissModal:" destination="cEp-ob-1BY" eventType="touchUpInside" id="fl2-ZU-dKQ"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add_product_icon" translatesAutoresizingMaskIntoConstraints="NO" id="DYI-uC-CiQ">
+                                <rect key="frame" x="112" y="107" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="axW-73-kF1"/>
+                                    <constraint firstAttribute="height" constant="150" id="y3m-WF-aPh"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="zKD-q4-83B" firstAttribute="top" secondItem="rM1-gG-WsL" secondAttribute="bottom" constant="35" id="292-Oc-ztb"/>
-                            <constraint firstItem="MWb-eb-4gh" firstAttribute="top" secondItem="rCk-S9-Ofv" secondAttribute="bottom" constant="35" id="3N0-uO-yld"/>
-                            <constraint firstItem="lxy-HD-6IR" firstAttribute="top" secondItem="an9-p8-SNq" secondAttribute="bottom" constant="657" id="3fG-1l-kOW"/>
-                            <constraint firstItem="an9-p8-SNq" firstAttribute="top" secondItem="aQf-hH-jA4" secondAttribute="top" id="3xS-pp-pH4"/>
-                            <constraint firstItem="lxy-HD-6IR" firstAttribute="leading" secondItem="aQf-hH-jA4" secondAttribute="leading" id="4fJ-U5-HV1"/>
-                            <constraint firstItem="7KP-7C-5fq" firstAttribute="top" secondItem="MWb-eb-4gh" secondAttribute="bottom" constant="35.329999999999998" id="6Qh-ns-8ov"/>
-                            <constraint firstItem="rM1-gG-WsL" firstAttribute="top" secondItem="DYI-uC-CiQ" secondAttribute="bottom" constant="28" id="9k8-2W-aU7"/>
-                            <constraint firstItem="aQf-hH-jA4" firstAttribute="trailing" secondItem="rCk-S9-Ofv" secondAttribute="trailing" constant="82" id="Cx8-Gh-tKW"/>
-                            <constraint firstItem="MWb-eb-4gh" firstAttribute="leading" secondItem="aQf-hH-jA4" secondAttribute="leading" constant="46" id="D7Z-LU-YuP"/>
-                            <constraint firstItem="DYI-uC-CiQ" firstAttribute="top" secondItem="aQf-hH-jA4" secondAttribute="top" constant="87" id="DiT-YL-8Ln"/>
-                            <constraint firstItem="Pxm-PV-ZNP" firstAttribute="leading" secondItem="aQf-hH-jA4" secondAttribute="leading" constant="139" id="EIt-7j-Tu8"/>
-                            <constraint firstItem="DYI-uC-CiQ" firstAttribute="leading" secondItem="aQf-hH-jA4" secondAttribute="leading" constant="112" id="H0g-We-cTa"/>
-                            <constraint firstItem="rM1-gG-WsL" firstAttribute="leading" secondItem="aQf-hH-jA4" secondAttribute="leading" constant="62" id="JkN-GM-gzv"/>
-                            <constraint firstItem="Pxm-PV-ZNP" firstAttribute="top" secondItem="7KP-7C-5fq" secondAttribute="bottom" constant="24" id="Lt3-Cg-Hgc"/>
-                            <constraint firstItem="lxy-HD-6IR" firstAttribute="trailing" secondItem="aQf-hH-jA4" secondAttribute="trailing" id="NPb-vq-Pg1"/>
-                            <constraint firstItem="aQf-hH-jA4" firstAttribute="trailing" secondItem="Pxm-PV-ZNP" secondAttribute="trailing" constant="139" id="T5j-Km-JJg"/>
-                            <constraint firstItem="aQf-hH-jA4" firstAttribute="trailing" secondItem="7KP-7C-5fq" secondAttribute="trailing" constant="46" id="Tp2-XH-DH5"/>
-                            <constraint firstItem="rCk-S9-Ofv" firstAttribute="top" secondItem="zKD-q4-83B" secondAttribute="bottom" constant="34.329999999999998" id="aKS-sl-VUE"/>
-                            <constraint firstItem="aQf-hH-jA4" firstAttribute="trailing" secondItem="rM1-gG-WsL" secondAttribute="trailing" constant="62" id="b7I-m7-uCI"/>
-                            <constraint firstItem="zKD-q4-83B" firstAttribute="leading" secondItem="aQf-hH-jA4" secondAttribute="leading" constant="46" id="cJD-qy-8FY"/>
-                            <constraint firstItem="aQf-hH-jA4" firstAttribute="trailing" secondItem="zKD-q4-83B" secondAttribute="trailing" constant="174" id="gPW-9Z-oR4"/>
-                            <constraint firstItem="rCk-S9-Ofv" firstAttribute="leading" secondItem="aQf-hH-jA4" secondAttribute="leading" constant="83" id="h4g-fA-t2K"/>
-                            <constraint firstItem="lxy-HD-6IR" firstAttribute="top" secondItem="Pxm-PV-ZNP" secondAttribute="bottom" constant="44" id="hV1-uE-qS6"/>
-                            <constraint firstItem="aQf-hH-jA4" firstAttribute="trailing" secondItem="MWb-eb-4gh" secondAttribute="trailing" constant="177" id="jJm-lG-6OR"/>
-                            <constraint firstItem="aQf-hH-jA4" firstAttribute="trailing" secondItem="DYI-uC-CiQ" secondAttribute="trailing" constant="113" id="kUY-HR-suO"/>
-                            <constraint firstItem="aQf-hH-jA4" firstAttribute="trailing" secondItem="an9-p8-SNq" secondAttribute="trailing" constant="335" id="mh3-S8-X66"/>
-                            <constraint firstItem="an9-p8-SNq" firstAttribute="leading" secondItem="aQf-hH-jA4" secondAttribute="leading" constant="16" id="qdP-FX-vXe"/>
-                            <constraint firstItem="7KP-7C-5fq" firstAttribute="leading" secondItem="aQf-hH-jA4" secondAttribute="leading" constant="47" id="xx2-Tt-aX5"/>
+                            <constraint firstAttribute="bottom" secondItem="lxy-HD-6IR" secondAttribute="bottom" id="16P-EV-EjY"/>
+                            <constraint firstItem="7KP-7C-5fq" firstAttribute="leading" secondItem="aQf-hH-jA4" secondAttribute="leading" constant="47" id="1ve-78-Bv3"/>
+                            <constraint firstItem="an9-p8-SNq" firstAttribute="top" secondItem="aQf-hH-jA4" secondAttribute="top" id="20y-Pj-J8d"/>
+                            <constraint firstItem="an9-p8-SNq" firstAttribute="leading" secondItem="aQf-hH-jA4" secondAttribute="leading" constant="16" id="2QA-ZO-eRa"/>
+                            <constraint firstItem="lxy-HD-6IR" firstAttribute="leading" secondItem="aQf-hH-jA4" secondAttribute="leading" id="6YQ-SQ-sUF"/>
+                            <constraint firstItem="rCk-S9-Ofv" firstAttribute="top" secondItem="zKD-q4-83B" secondAttribute="bottom" constant="34.329999999999998" id="7DI-Eb-Eg2"/>
+                            <constraint firstItem="zKD-q4-83B" firstAttribute="leading" secondItem="aQf-hH-jA4" secondAttribute="leading" constant="46" id="8oM-3X-LUg"/>
+                            <constraint firstItem="rCk-S9-Ofv" firstAttribute="leading" secondItem="aQf-hH-jA4" secondAttribute="leading" constant="83" id="BOd-tK-bY5"/>
+                            <constraint firstItem="lxy-HD-6IR" firstAttribute="trailing" secondItem="aQf-hH-jA4" secondAttribute="trailing" id="E5a-BN-2iQ"/>
+                            <constraint firstItem="Pxm-PV-ZNP" firstAttribute="leading" secondItem="aQf-hH-jA4" secondAttribute="leading" constant="139" id="FLq-3f-vta"/>
+                            <constraint firstItem="rM1-gG-WsL" firstAttribute="leading" secondItem="aQf-hH-jA4" secondAttribute="leading" constant="62" id="LYQ-fu-f1o"/>
+                            <constraint firstItem="lxy-HD-6IR" firstAttribute="top" secondItem="an9-p8-SNq" secondAttribute="bottom" constant="657" id="MHi-bH-42t"/>
+                            <constraint firstItem="lxy-HD-6IR" firstAttribute="top" secondItem="Pxm-PV-ZNP" secondAttribute="bottom" constant="44" id="PIN-UN-OIA"/>
+                            <constraint firstItem="aQf-hH-jA4" firstAttribute="trailing" secondItem="DYI-uC-CiQ" secondAttribute="trailing" constant="113" id="Pei-wx-rMb"/>
+                            <constraint firstItem="Pxm-PV-ZNP" firstAttribute="top" secondItem="7KP-7C-5fq" secondAttribute="bottom" constant="24" id="RDI-cv-XwC"/>
+                            <constraint firstItem="aQf-hH-jA4" firstAttribute="trailing" secondItem="7KP-7C-5fq" secondAttribute="trailing" constant="46" id="Srw-RN-lXX"/>
+                            <constraint firstItem="DYI-uC-CiQ" firstAttribute="leading" secondItem="aQf-hH-jA4" secondAttribute="leading" constant="112" id="US9-cy-KRn"/>
+                            <constraint firstItem="aQf-hH-jA4" firstAttribute="trailing" secondItem="rM1-gG-WsL" secondAttribute="trailing" constant="62" id="aJx-cH-S2A"/>
+                            <constraint firstItem="aQf-hH-jA4" firstAttribute="trailing" secondItem="zKD-q4-83B" secondAttribute="trailing" constant="174" id="dIe-iE-7LE"/>
+                            <constraint firstItem="aQf-hH-jA4" firstAttribute="trailing" secondItem="an9-p8-SNq" secondAttribute="trailing" constant="335" id="g8w-hY-6Z8"/>
+                            <constraint firstItem="7KP-7C-5fq" firstAttribute="top" secondItem="MWb-eb-4gh" secondAttribute="bottom" constant="35.329999999999998" id="hqo-Vv-fNc"/>
+                            <constraint firstItem="MWb-eb-4gh" firstAttribute="top" secondItem="rCk-S9-Ofv" secondAttribute="bottom" constant="35" id="mEE-9T-UZ6"/>
+                            <constraint firstItem="aQf-hH-jA4" firstAttribute="trailing" secondItem="Pxm-PV-ZNP" secondAttribute="trailing" constant="139" id="qMM-nt-2Ij"/>
+                            <constraint firstItem="aQf-hH-jA4" firstAttribute="trailing" secondItem="MWb-eb-4gh" secondAttribute="trailing" constant="177" id="uYs-Em-9uY"/>
+                            <constraint firstItem="MWb-eb-4gh" firstAttribute="leading" secondItem="aQf-hH-jA4" secondAttribute="leading" constant="46" id="vmB-Eq-DGa"/>
+                            <constraint firstItem="zKD-q4-83B" firstAttribute="top" secondItem="rM1-gG-WsL" secondAttribute="bottom" constant="35" id="wjI-H3-40z"/>
+                            <constraint firstItem="rM1-gG-WsL" firstAttribute="top" secondItem="DYI-uC-CiQ" secondAttribute="bottom" constant="52" id="x2c-Xi-1sL"/>
+                            <constraint firstItem="aQf-hH-jA4" firstAttribute="trailing" secondItem="rCk-S9-Ofv" secondAttribute="trailing" constant="82" id="xbZ-LN-Kwv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aQf-hH-jA4"/>
                     </view>
@@ -355,7 +353,7 @@
         <!--Splash View Controller-->
         <scene sceneID="z3z-95-zBG">
             <objects>
-                <viewController id="fie-WK-Hbt" customClass="splashViewController" customModule="thebeautyapp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="fie-WK-Hbt" customClass="splashViewController" customModule="Flawless" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TmN-fX-4hh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -415,7 +413,7 @@
         <!--Home-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="homeViewController" title="Home" id="BYZ-38-t0r" customClass="homeViewController" customModule="thebeautyapp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="homeViewController" title="Home" id="BYZ-38-t0r" customClass="homeViewController" customModule="Flawless" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -432,7 +430,6 @@
                                 <color key="backgroundColor" red="0.69411764710000001" green="0.99607843139999996" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="88" id="1XA-H8-g1P"/>
-                                    <constraint firstAttribute="width" constant="375" id="9mC-cw-NmP"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="22"/>
                                 <state key="normal" title="ADD PRODUCT">
@@ -446,7 +443,6 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Products Found" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cDa-B7-EEs">
                                 <rect key="frame" x="76.666666666666686" y="506" width="222" height="29"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="222" id="1LS-td-W4i"/>
                                     <constraint firstAttribute="height" constant="29" id="fUb-ex-qhh"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="23"/>
@@ -549,7 +545,7 @@
         <!--Data Source-->
         <scene sceneID="ofB-Uu-MkZ">
             <objects>
-                <viewController storyboardIdentifier="statsViewController" title="CALENDAR" id="JJD-8J-CQr" customClass="statsViewController" customModule="thebeautyapp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="statsViewController" title="CALENDAR" id="JJD-8J-CQr" customClass="statsViewController" customModule="Flawless" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FX1-ep-eMw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
