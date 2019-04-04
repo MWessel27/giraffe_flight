@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:thebeautyapp.xcodeproj">
+      location = "self:/Users/mikalangelowessel/Desktop/dev/giraffe_flight/thebeautyapp/Flawless.xcodeproj">
    </FileRef>
 </Workspace>

@@ -99,17 +99,17 @@
 		9539590020C4C2B500DD069A /* giraffe_flight-bridging-header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "giraffe_flight-bridging-header.h"; sourceTree = "<group>"; };
 		954D191E20C448650051AE9A /* splashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = splashViewController.swift; sourceTree = "<group>"; };
 		954D192020C45DA10051AE9A /* statsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = statsViewController.swift; sourceTree = "<group>"; };
-		959D89A120B393B300E17F2E /* thebeautyapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = thebeautyapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		959D89A120B393B300E17F2E /* Flawless.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flawless.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		959D89A420B393B300E17F2E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		959D89A620B393B300E17F2E /* homeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homeViewController.swift; sourceTree = "<group>"; };
 		959D89A920B393B300E17F2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		959D89AC20B393B300E17F2E /* thebeautyapp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = thebeautyapp.xcdatamodel; sourceTree = "<group>"; };
 		959D89AE20B393B400E17F2E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		959D89B320B393B400E17F2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		959D89B820B393B500E17F2E /* thebeautyappTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = thebeautyappTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		959D89B820B393B500E17F2E /* FlawlessTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlawlessTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		959D89BC20B393B500E17F2E /* thebeautyappTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = thebeautyappTests.swift; sourceTree = "<group>"; };
 		959D89BE20B393B500E17F2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		959D89C320B393B500E17F2E /* thebeautyappUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = thebeautyappUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		959D89C320B393B500E17F2E /* FlawlessUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlawlessUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		959D89C720B393B500E17F2E /* thebeautyappUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = thebeautyappUITests.swift; sourceTree = "<group>"; };
 		959D89C920B393B500E17F2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D755BF1620E0040C00FD77F1 /* product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = product.swift; sourceTree = "<group>"; };
@@ -193,9 +193,9 @@
 		959D89A220B393B300E17F2E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				959D89A120B393B300E17F2E /* thebeautyapp.app */,
-				959D89B820B393B500E17F2E /* thebeautyappTests.xctest */,
-				959D89C320B393B500E17F2E /* thebeautyappUITests.xctest */,
+				959D89A120B393B300E17F2E /* Flawless.app */,
+				959D89B820B393B500E17F2E /* FlawlessTests.xctest */,
+				959D89C320B393B500E17F2E /* FlawlessUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -244,9 +244,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		959D89A020B393B300E17F2E /* thebeautyapp */ = {
+		959D89A020B393B300E17F2E /* Flawless */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 959D89CC20B393B500E17F2E /* Build configuration list for PBXNativeTarget "thebeautyapp" */;
+			buildConfigurationList = 959D89CC20B393B500E17F2E /* Build configuration list for PBXNativeTarget "Flawless" */;
 			buildPhases = (
 				959D899D20B393B300E17F2E /* Sources */,
 				959D899E20B393B300E17F2E /* Frameworks */,
@@ -256,14 +256,14 @@
 			);
 			dependencies = (
 			);
-			name = thebeautyapp;
+			name = Flawless;
 			productName = thebeautyapp;
-			productReference = 959D89A120B393B300E17F2E /* thebeautyapp.app */;
+			productReference = 959D89A120B393B300E17F2E /* Flawless.app */;
 			productType = "com.apple.product-type.application";
 		};
-		959D89B720B393B500E17F2E /* thebeautyappTests */ = {
+		959D89B720B393B500E17F2E /* FlawlessTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 959D89CF20B393B500E17F2E /* Build configuration list for PBXNativeTarget "thebeautyappTests" */;
+			buildConfigurationList = 959D89CF20B393B500E17F2E /* Build configuration list for PBXNativeTarget "FlawlessTests" */;
 			buildPhases = (
 				959D89B420B393B500E17F2E /* Sources */,
 				959D89B520B393B500E17F2E /* Frameworks */,
@@ -274,14 +274,14 @@
 			dependencies = (
 				959D89BA20B393B500E17F2E /* PBXTargetDependency */,
 			);
-			name = thebeautyappTests;
+			name = FlawlessTests;
 			productName = thebeautyappTests;
-			productReference = 959D89B820B393B500E17F2E /* thebeautyappTests.xctest */;
+			productReference = 959D89B820B393B500E17F2E /* FlawlessTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		959D89C220B393B500E17F2E /* thebeautyappUITests */ = {
+		959D89C220B393B500E17F2E /* FlawlessUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 959D89D220B393B500E17F2E /* Build configuration list for PBXNativeTarget "thebeautyappUITests" */;
+			buildConfigurationList = 959D89D220B393B500E17F2E /* Build configuration list for PBXNativeTarget "FlawlessUITests" */;
 			buildPhases = (
 				959D89BF20B393B500E17F2E /* Sources */,
 				959D89C020B393B500E17F2E /* Frameworks */,
@@ -292,9 +292,9 @@
 			dependencies = (
 				959D89C520B393B500E17F2E /* PBXTargetDependency */,
 			);
-			name = thebeautyappUITests;
+			name = FlawlessUITests;
 			productName = thebeautyappUITests;
-			productReference = 959D89C320B393B500E17F2E /* thebeautyappUITests.xctest */;
+			productReference = 959D89C320B393B500E17F2E /* FlawlessUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -323,7 +323,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 959D899C20B393B300E17F2E /* Build configuration list for PBXProject "thebeautyapp" */;
+			buildConfigurationList = 959D899C20B393B300E17F2E /* Build configuration list for PBXProject "Flawless" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -336,9 +336,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				959D89A020B393B300E17F2E /* thebeautyapp */,
-				959D89B720B393B500E17F2E /* thebeautyappTests */,
-				959D89C220B393B500E17F2E /* thebeautyappUITests */,
+				959D89A020B393B300E17F2E /* Flawless */,
+				959D89B720B393B500E17F2E /* FlawlessTests */,
+				959D89C220B393B500E17F2E /* FlawlessUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -425,12 +425,12 @@
 /* Begin PBXTargetDependency section */
 		959D89BA20B393B500E17F2E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 959D89A020B393B300E17F2E /* thebeautyapp */;
+			target = 959D89A020B393B300E17F2E /* Flawless */;
 			targetProxy = 959D89B920B393B500E17F2E /* PBXContainerItemProxy */;
 		};
 		959D89C520B393B500E17F2E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 959D89A020B393B300E17F2E /* thebeautyapp */;
+			target = 959D89A020B393B300E17F2E /* Flawless */;
 			targetProxy = 959D89C420B393B500E17F2E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -615,7 +615,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/thebeautyapp.app/thebeautyapp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Flawless.app/Flawless";
 			};
 			name = Debug;
 		};
@@ -635,7 +635,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/thebeautyapp.app/thebeautyapp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Flawless.app/Flawless";
 			};
 			name = Release;
 		};
@@ -680,7 +680,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		959D899C20B393B300E17F2E /* Build configuration list for PBXProject "thebeautyapp" */ = {
+		959D899C20B393B300E17F2E /* Build configuration list for PBXProject "Flawless" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				959D89CA20B393B500E17F2E /* Debug */,
@@ -689,7 +689,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		959D89CC20B393B500E17F2E /* Build configuration list for PBXNativeTarget "thebeautyapp" */ = {
+		959D89CC20B393B500E17F2E /* Build configuration list for PBXNativeTarget "Flawless" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				959D89CD20B393B500E17F2E /* Debug */,
@@ -698,7 +698,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		959D89CF20B393B500E17F2E /* Build configuration list for PBXNativeTarget "thebeautyappTests" */ = {
+		959D89CF20B393B500E17F2E /* Build configuration list for PBXNativeTarget "FlawlessTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				959D89D020B393B500E17F2E /* Debug */,
@@ -707,7 +707,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		959D89D220B393B500E17F2E /* Build configuration list for PBXNativeTarget "thebeautyappUITests" */ = {
+		959D89D220B393B500E17F2E /* Build configuration list for PBXNativeTarget "FlawlessUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				959D89D320B393B500E17F2E /* Debug */,
