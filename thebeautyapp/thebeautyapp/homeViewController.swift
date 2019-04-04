@@ -13,6 +13,7 @@
 import UIKit
 import CoreData
 import os.log
+import Firebase
 
 class homeViewController: UIViewController {
     
@@ -266,6 +267,20 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
         let formatter = DateFormatter()
         formatter.dateFormat = "h:mm a"
         let currentTime = formatter.string(for: date)
+        var ampmReadable = "Unknown"
+        
+        if(ampm == 1) {
+            ampmReadable = "Morning"
+        } else {
+            ampmReadable = "Night"
+        }
+        
+        Analytics.logEvent("product_checked_for_day", parameters: [
+            "productName": product.name as NSObject,
+            "dateUsed": todaysDate as NSObject,
+            "timeUsed": currentTime! as NSObject,
+            "usedIn": ampmReadable as NSObject
+            ])
 
         let usedActivity = UsedActivity(productName: product.name , date: todaysDate, ampm: ampm, time: currentTime!)
         

@@ -8,6 +8,7 @@
 
 import UIKit
 import os.log
+import Firebase
 
 class newProductViewController: UIViewController, UITextFieldDelegate {
     
@@ -195,6 +196,7 @@ class newProductViewController: UIViewController, UITextFieldDelegate {
     
         let name = newProductField.text ?? ""
         var timeOfDay = 0
+        var timeOfDayReadable = "Morning & Night"
         var daily = false
     
         if(everyDayButton.isSelected || !daysOfWeek.contains(1)) {
@@ -205,9 +207,24 @@ class newProductViewController: UIViewController, UITextFieldDelegate {
             timeOfDay = 0
         } else if(sunSelected == 1) {
             timeOfDay = 1
+            timeOfDayReadable = "Morning"
         } else if(moonSelected == 1) {
             timeOfDay = 2
+            timeOfDayReadable = "Night"
         }
+        
+        Analytics.logEvent("add_product", parameters: [
+            "productName": name as NSObject,
+            "timeOfDayUsed": timeOfDayReadable as NSObject,
+            "daily": daily as NSObject,
+            "onSunday": daysOfWeek[0],
+            "onMonday": daysOfWeek[1],
+            "onTuesday": daysOfWeek[2],
+            "onWednesday": daysOfWeek[3],
+            "onThursday": daysOfWeek[4],
+            "onFriday": daysOfWeek[5],
+            "onSaturday": daysOfWeek[6]
+            ])
     
         // Set the meal to be passed to MealTableViewController after the unwind segue.
         product = Product(name: name, daily: daily, rating: 1, ampm: timeOfDay, cat: "mine", onSunday: daysOfWeek[0], onMonday: daysOfWeek[1], onTuesday: daysOfWeek[2], onWednesday: daysOfWeek[3], onThursday: daysOfWeek[4], onFriday: daysOfWeek[5], onSaturday: daysOfWeek[6], usedActivities: usedActivities)

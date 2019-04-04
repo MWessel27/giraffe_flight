@@ -8,6 +8,7 @@
 
 import UIKit
 import os.log
+import Firebase
 
 class ProductTableViewController: UITableViewController {
     
@@ -118,6 +119,9 @@ class ProductTableViewController: UITableViewController {
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            Analytics.logEvent("remove_product", parameters: [
+                "productName": products[indexPath.row].name as NSObject
+                ])
             // Delete the row from the data source
             products.remove(at: indexPath.row)
             saveProducts()
