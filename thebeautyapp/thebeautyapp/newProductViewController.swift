@@ -105,6 +105,7 @@ class newProductViewController: UIViewController, UITextFieldDelegate {
             }
             
             if(product.daily) {
+                everyDayButton.layer.cornerRadius = 5
                 everyDayButton.isSelected = true
                 
                 sundayButton.isSelected = false
@@ -157,6 +158,7 @@ class newProductViewController: UIViewController, UITextFieldDelegate {
             submitNewProductBtn.alpha = 0.4
             
             everyDayButton.isSelected = true
+            everyDayButton.layer.cornerRadius = 5
             sunSelected = 1
             setGradientBackground(indicator: "sun")
         }
@@ -303,6 +305,7 @@ class newProductViewController: UIViewController, UITextFieldDelegate {
     
     func checkEveryday() {
         if(!daysOfWeek.contains(0)) {
+            everyDayButton.layer.cornerRadius = 5
             everyDayButton.isSelected = true
             resetAllButtons()
         } else {
@@ -328,6 +331,7 @@ class newProductViewController: UIViewController, UITextFieldDelegate {
         if(everyDayButton.isSelected == true) {
             everyDayButton.isSelected = false
         } else {
+            everyDayButton.layer.cornerRadius = 5
             everyDayButton.isSelected = true
             resetAllButtons()
         }
