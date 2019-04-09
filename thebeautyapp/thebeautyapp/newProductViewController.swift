@@ -89,6 +89,7 @@ class newProductViewController: UIViewController, UITextFieldDelegate {
         
         if let product = product {
             // editing an existing product
+            self.newProductField.delegate = self
             navigationItem.title = "Edit " + product.name
             newProductField.text = product.name
             
