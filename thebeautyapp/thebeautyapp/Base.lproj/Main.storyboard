@@ -539,15 +539,6 @@
                             <constraint firstItem="r57-RE-DoE" firstAttribute="top" secondItem="mF2-Q4-kZi" secondAttribute="bottom" constant="17" id="mJ9-Vf-eak"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="26r-Zo-7y0"/>
-                                <exclude reference="wFh-dx-kNV"/>
-                                <exclude reference="uac-eT-E5f"/>
-                                <exclude reference="mF2-Q4-kZi"/>
-                                <exclude reference="r57-RE-DoE"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="TODAY" id="ahw-VM-grd"/>
                     <connections>
