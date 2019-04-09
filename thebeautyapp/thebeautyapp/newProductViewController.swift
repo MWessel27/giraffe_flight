@@ -29,6 +29,8 @@ class newProductViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var everyDayButton: UIButton!
     
+    let notification = UINotificationFeedbackGenerator()
+    
     var daysOfWeek = [0,0,0,0,0,0,0]
     
     var usedActivities: [UsedActivity] = []
@@ -195,6 +197,8 @@ class newProductViewController: UIViewController, UITextFieldDelegate {
             os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
             return
         }
+        
+        notification.notificationOccurred(.success)
     
         let name = newProductField.text ?? ""
         var timeOfDay = 0
