@@ -177,7 +177,6 @@
 				EF0D1B696FAB23FF67FD808E /* Pods-FlawlessUITests.debug.xcconfig */,
 				9D435A0E6FE78E449D276C10 /* Pods-FlawlessUITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -297,6 +296,7 @@
 				959D899E20B393B300E17F2E /* Frameworks */,
 				959D899F20B393B300E17F2E /* Resources */,
 				FD475604955CD330C3E47C60 /* [CP] Embed Pods Frameworks */,
+				0D142A79AF71D368191B73C2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -419,6 +419,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0D142A79AF71D368191B73C2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Flawless/Pods-Flawless-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseInAppMessagingDisplay/InAppMessagingDisplayResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/InAppMessagingDisplayResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Flawless/Pods-Flawless-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		154307BADCC2D8159133A026 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
