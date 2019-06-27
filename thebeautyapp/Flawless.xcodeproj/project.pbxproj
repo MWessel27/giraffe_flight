@@ -11,7 +11,6 @@
 		7B3483A52219CB2F004093DB /* UsedActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3483A42219CB2F004093DB /* UsedActivity.swift */; };
 		7B723B5221F00D95008605FB /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B723B5121F00D95008605FB /* ProductTableViewCell.swift */; };
 		7B9050B02243C210000F2FF5 /* GettingStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9050AF2243C210000F2FF5 /* GettingStartedViewController.swift */; };
-		7B9AA4FF22560B5300A97C8B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7B9AA4FE22560B5300A97C8B /* GoogleService-Info.plist */; };
 		7BA0191C21ECB4510078E61B /* newProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA0191B21ECB4510078E61B /* newProductViewController.swift */; };
 		7BD24D3121F207E500F2CBCE /* ProductTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD24D3021F207E500F2CBCE /* ProductTableViewController.swift */; };
 		870F034ECB23EA290F5944E1 /* Pods_Flawless.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE9D30E682FB220A11A2676A /* Pods_Flawless.framework */; };
@@ -65,9 +64,10 @@
 		302E9339782EAE2D916B49D3 /* Pods-FlawlessTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlawlessTests.release.xcconfig"; path = "Target Support Files/Pods-FlawlessTests/Pods-FlawlessTests.release.xcconfig"; sourceTree = "<group>"; };
 		63727D62FAC9D72A645A3B99 /* Pods_FlawlessTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlawlessTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B3483A42219CB2F004093DB /* UsedActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsedActivity.swift; sourceTree = "<group>"; };
+		7B3A998A22C1A73700A28343 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7B3A998C22C1A73700A28343 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7B723B5121F00D95008605FB /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
 		7B9050AF2243C210000F2FF5 /* GettingStartedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettingStartedViewController.swift; sourceTree = "<group>"; };
-		7B9AA4FE22560B5300A97C8B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7BA0191B21ECB4510078E61B /* newProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newProductViewController.swift; sourceTree = "<group>"; };
 		7BD24D3021F207E500F2CBCE /* ProductTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewController.swift; sourceTree = "<group>"; };
 		7D19A54CF3164C081373F3A5 /* Pods-Flawless.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flawless.debug.xcconfig"; path = "Target Support Files/Pods-Flawless/Pods-Flawless.debug.xcconfig"; sourceTree = "<group>"; };
@@ -180,6 +180,31 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		7B3A998822C1A73700A28343 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				7B3A998922C1A73700A28343 /* Prod */,
+				7B3A998B22C1A73700A28343 /* Dev */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		7B3A998922C1A73700A28343 /* Prod */ = {
+			isa = PBXGroup;
+			children = (
+				7B3A998A22C1A73700A28343 /* GoogleService-Info.plist */,
+			);
+			path = Prod;
+			sourceTree = "<group>";
+		};
+		7B3A998B22C1A73700A28343 /* Dev */ = {
+			isa = PBXGroup;
+			children = (
+				7B3A998C22C1A73700A28343 /* GoogleService-Info.plist */,
+			);
+			path = Dev;
+			sourceTree = "<group>";
+		};
 		953958CD20C469BE00DD069A /* FSCalendar */ = {
 			isa = PBXGroup;
 			children = (
@@ -245,7 +270,7 @@
 		959D89A320B393B300E17F2E /* thebeautyapp */ = {
 			isa = PBXGroup;
 			children = (
-				7B9AA4FE22560B5300A97C8B /* GoogleService-Info.plist */,
+				7B3A998822C1A73700A28343 /* Firebase */,
 				959D89A420B393B300E17F2E /* AppDelegate.swift */,
 				959D89A620B393B300E17F2E /* homeViewController.swift */,
 				959D89A820B393B300E17F2E /* Main.storyboard */,
@@ -294,6 +319,7 @@
 				154307BADCC2D8159133A026 /* [CP] Check Pods Manifest.lock */,
 				959D899D20B393B300E17F2E /* Sources */,
 				959D899E20B393B300E17F2E /* Frameworks */,
+				7B3A998F22C1A79C00A28343 /* Setup Firebase Environment GoogleService-Info.plist */,
 				959D899F20B393B300E17F2E /* Resources */,
 				FD475604955CD330C3E47C60 /* [CP] Embed Pods Frameworks */,
 				0D142A79AF71D368191B73C2 /* [CP] Copy Pods Resources */,
@@ -398,7 +424,6 @@
 			files = (
 				959D89AF20B393B400E17F2E /* Assets.xcassets in Resources */,
 				959D89AA20B393B300E17F2E /* Main.storyboard in Resources */,
-				7B9AA4FF22560B5300A97C8B /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,6 +509,24 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		7B3A998F22C1A79C00A28343 /* Setup Firebase Environment GoogleService-Info.plist */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Setup Firebase Environment GoogleService-Info.plist";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Name of the resource we're selectively copying\nGOOGLESERVICE_INFO_PLIST=GoogleService-Info.plist\n\n# Get references to dev and prod versions of the GoogleService-Info.plist\n# NOTE: These should only live on the file system and should NOT be part of the target (since we'll be adding them to the target manually)\nGOOGLESERVICE_INFO_DEV=${PROJECT_DIR}/thebeautyapp/Firebase/Dev/${GOOGLESERVICE_INFO_PLIST}\nGOOGLESERVICE_INFO_PROD=${PROJECT_DIR}/thebeautyapp/Firebase/Prod/${GOOGLESERVICE_INFO_PLIST}\n\n# Make sure the dev version of GoogleService-Info.plist exists\necho \"Looking for ${GOOGLESERVICE_INFO_PLIST} in ${GOOGLESERVICE_INFO_DEV}\"\nif [ ! -f $GOOGLESERVICE_INFO_DEV ]\nthen\necho \"No Development GoogleService-Info.plist found. Please ensure it's in the proper directory.\"\nexit 1\nfi\n\n# Make sure the prod version of GoogleService-Info.plist exists\necho \"Looking for ${GOOGLESERVICE_INFO_PLIST} in ${GOOGLESERVICE_INFO_PROD}\"\nif [ ! -f $GOOGLESERVICE_INFO_PROD ]\nthen\necho \"No Production GoogleService-Info.plist found. Please ensure it's in the proper directory.\"\nexit 1\nfi\n\n# Get a reference to the destination location for the GoogleService-Info.plist\nPLIST_DESTINATION=${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app\necho \"Will copy ${GOOGLESERVICE_INFO_PLIST} to final destination: ${PLIST_DESTINATION}\"\n\n# Copy over the prod GoogleService-Info.plist for Release builds\nif [ \"${CONFIGURATION}\" == \"Release\" ]\nthen\necho \"Using ${GOOGLESERVICE_INFO_PROD}\"\ncp \"${GOOGLESERVICE_INFO_PROD}\" \"${PLIST_DESTINATION}\"\nelse\necho \"Using ${GOOGLESERVICE_INFO_DEV}\"\ncp \"${GOOGLESERVICE_INFO_DEV}\" \"${PLIST_DESTINATION}\"\nfi\n";
 		};
 		A0F79BAC093B4E8F28447FE3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
