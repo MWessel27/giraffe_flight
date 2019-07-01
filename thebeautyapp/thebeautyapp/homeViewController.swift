@@ -29,6 +29,9 @@ class homeViewController: UIViewController {
     @IBOutlet weak var addProductButton: UIButton!
     @IBOutlet weak var noProductLabel: UILabel!
     
+    @IBOutlet weak var cellSelectionIcon: UIImageView!
+    @IBOutlet weak var cellLabel: UILabel!
+    
     var products = [Product]()
     
     var todaysDate: String = ""
@@ -299,63 +302,6 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func setCellUnchecked(cell: UITableViewCell) -> UITableViewCell {
-        cell.textLabel?.font = UIFont(name: "American Typewriter", size: 22)
-        cell.backgroundColor = UIColor.clear
-        cell.detailTextLabel?.backgroundColor = UIColor.clear
-        cell.detailTextLabel?.text = ""
-        
-        var imageView : UIImageView
-        imageView  = UIImageView(frame:CGRect(x: 5, y: 5, width: 25, height: 25))
-        imageView.image = UIImage(named:"checkmarkempty")
-        
-        cell.accessoryView = imageView
-        return cell
-    }
-    
-    func setExistingCellChecked(cell: UITableViewCell, time: String) -> UITableViewCell {
-        
-        cell.textLabel?.font = UIFont(name: "American Typewriter", size: 22)
-        
-        cell.detailTextLabel?.backgroundColor = UIColor.clear
-        cell.detailTextLabel?.font = UIFont(name: "American Typewriter", size: 14)
-        cell.detailTextLabel?.textColor = UIColor.gray
-        cell.detailTextLabel?.text = time
-        
-        var imageView : UIImageView
-        imageView  = UIImageView(frame:CGRect(x: 5, y: 5, width: 25, height: 25))
-        imageView.image = UIImage(named:"checkmark")
-        
-        cell.accessoryView = imageView
-        cell.tintColor = UIColor.white
-        cell.backgroundColor = UIColor.clear
-        return cell
-    }
-    
-    func setNewCellChecked(cell: UITableViewCell) -> UITableViewCell {
-        
-        cell.textLabel?.font = UIFont(name: "American Typewriter", size: 22)
-        
-        cell.detailTextLabel?.backgroundColor = UIColor.clear
-        cell.detailTextLabel?.font = UIFont(name: "American Typewriter", size: 14)
-        cell.detailTextLabel?.textColor = UIColor.gray
-        
-        let date = Date()
-        let formatter = DateFormatter()
-        formatter.dateFormat = "h:mm a"
-        let currentTime = formatter.string(for: date)
-        cell.detailTextLabel?.text = currentTime
-        
-        var imageView : UIImageView
-        imageView  = UIImageView(frame:CGRect(x: 5, y: 5, width: 25, height: 25))
-        imageView.image = UIImage(named:"checkmark")
-        
-        cell.accessoryView = imageView
-        cell.tintColor = UIColor.white
-        cell.backgroundColor = UIColor.clear
-        return cell
-    }
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -365,7 +311,10 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "ProductCell")
+        
+        let cellIdentifier = "HomeTableViewCell"
+        
+        let cell:HomeTableViewCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! HomeTableViewCell
         
         var productValidForDay = false
         
@@ -424,11 +373,25 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
                 }
                 
                 let productName = products[indexPath.row].name
-                cell.textLabel?.text = productName
+                cell.cellLabel.text = productName
+                
                 if(checked) {
-                    cell = setExistingCellChecked(cell: cell, time: timeStamp)
+                    cell.cellLabel.font = UIFont(name: "American Typewriter", size: 22)
+                    cell.productDetailTextLabel?.backgroundColor = UIColor.clear
+                    cell.productDetailTextLabel?.font = UIFont(name: "American Typewriter", size: 14)
+                    cell.productDetailTextLabel?.textColor = UIColor.gray
+                    cell.productDetailTextLabel?.text = timeStamp
+                    
+                    cell.tintColor = UIColor.white
+                    cell.backgroundColor = UIColor.clear
+                    
+                    cell.cellSelectedImage.image = UIImage(named: "checkmark.png")!
                 } else {
-                    cell = setCellUnchecked(cell: cell)
+                    cell.cellLabel.font = UIFont(name: "American Typewriter", size: 22)
+                    cell.cellLabel.backgroundColor = UIColor.clear
+                    cell.productDetailTextLabel?.backgroundColor = UIColor.clear
+                    cell.productDetailTextLabel?.text = ""
+                    cell.cellSelectedImage.image = UIImage(named: "checkmarkempty.png")!
                 }
                 return cell
             } else {
@@ -447,11 +410,25 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
                 }
                 
                 let productName = products[indexPath.row].name
-                cell.textLabel?.text = productName
+                cell.cellLabel.text = productName
+                
                 if(checked) {
-                    cell = setExistingCellChecked(cell: cell, time: timeStamp)
+                    cell.cellLabel.font = UIFont(name: "American Typewriter", size: 22)
+                    cell.productDetailTextLabel?.backgroundColor = UIColor.clear
+                    cell.productDetailTextLabel?.font = UIFont(name: "American Typewriter", size: 14)
+                    cell.productDetailTextLabel?.textColor = UIColor.gray
+                    cell.productDetailTextLabel?.text = timeStamp
+                    
+                    cell.tintColor = UIColor.white
+                    cell.backgroundColor = UIColor.clear
+                    
+                    cell.cellSelectedImage.image = UIImage(named: "checkmark.png")!
                 } else {
-                    cell = setCellUnchecked(cell: cell)
+                    cell.cellLabel.font = UIFont(name: "American Typewriter", size: 22)
+                    cell.cellLabel.backgroundColor = UIColor.clear
+                    cell.productDetailTextLabel?.backgroundColor = UIColor.clear
+                    cell.productDetailTextLabel?.text = ""
+                    cell.cellSelectedImage.image = UIImage(named: "checkmarkempty.png")!
                 }
                 return cell
             } else {
@@ -527,7 +504,8 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        var mySelectedCell:UITableViewCell = tableView.cellForRow(at: indexPath)!
+        let mySelectedCell = tableView.cellForRow(at: indexPath) as! HomeTableViewCell
+        
         var ampm = 3
         if(tableView == mTableView) {
             ampm = 1
@@ -536,13 +514,45 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         // need to change this to cells having a selected state
-        if(mySelectedCell.detailTextLabel?.text != "") {
+        if(mySelectedCell.productDetailTextLabel?.text != "") {
             removeUsedActivity(product: products[indexPath.row], ampm: ampm)
-            mySelectedCell = setCellUnchecked(cell: mySelectedCell)
+            mySelectedCell.cellLabel.font = UIFont(name: "American Typewriter", size: 22)
+            mySelectedCell.cellLabel.backgroundColor = UIColor.clear
+            mySelectedCell.productDetailTextLabel?.backgroundColor = UIColor.clear
+            mySelectedCell.productDetailTextLabel?.text = ""
+            mySelectedCell.cellSelectedImage.image = UIImage(named: "checkmarkempty.png")!
         } else {
             addUsedActivity(product: products[indexPath.row], ampm: ampm)
-            mySelectedCell = setNewCellChecked(cell: mySelectedCell)
+            mySelectedCell.cellLabel.font = UIFont(name: "American Typewriter", size: 22)
+            mySelectedCell.productDetailTextLabel?.backgroundColor = UIColor.clear
+            mySelectedCell.productDetailTextLabel?.font = UIFont(name: "American Typewriter", size: 14)
+            mySelectedCell.productDetailTextLabel?.textColor = UIColor.gray
+            
+            let date = Date()
+            let formatter = DateFormatter()
+            formatter.dateFormat = "h:mm a"
+            let currentTime = formatter.string(for: date)
+            mySelectedCell.productDetailTextLabel?.text = currentTime
+            
+            mySelectedCell.cellSelectedImage.image = UIImage(named: "checkmark.png")!
+            mySelectedCell.tintColor = UIColor.white
+            mySelectedCell.backgroundColor = UIColor.clear
         }
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let movedProduct = self.products[sourceIndexPath.row]
+        products.remove(at: sourceIndexPath.row)
+        products.insert(movedProduct, at: destinationIndexPath.row)
+        saveProducts()
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> HomeTableViewCell.EditingStyle {
+        return .none
+    }
+    
+    func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        return false
     }
 }
 
