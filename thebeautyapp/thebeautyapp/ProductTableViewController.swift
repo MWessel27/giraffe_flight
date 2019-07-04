@@ -9,12 +9,15 @@
 import UIKit
 import os.log
 import Firebase
+import UserNotifications
 
 class ProductTableViewController: UITableViewController {
     
     var products = [Product]()
     
     @IBOutlet var productTableView: UITableView!
+    @IBOutlet weak var reminderView: UIView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +28,12 @@ class ProductTableViewController: UITableViewController {
         if let savedProds = loadProducts() {
             products += savedProds
         }
+        
+        if(products.count == 0) {
+            reminderView.isHidden = true
+        } else {
+            reminderView.isHidden = false
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -34,6 +43,12 @@ class ProductTableViewController: UITableViewController {
         }
 
         productTableView.reloadData()
+        
+        if(products.count == 0) {
+            reminderView.isHidden = true
+        } else {
+            reminderView.isHidden = false
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,6 +58,12 @@ class ProductTableViewController: UITableViewController {
             products = savedProds
         }
         productTableView.reloadData()
+        
+        if(products.count == 0) {
+            reminderView.isHidden = true
+        } else {
+            reminderView.isHidden = false
+        }
     }
     
     
@@ -116,6 +137,19 @@ class ProductTableViewController: UITableViewController {
         }
     }
     
+    @IBAction func reminderToggle(_ sender: Any) {
+        let center = UNUserNotificationCenter.current()
+        
+        center.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
+            if granted {
+                print("Yay!")
+            } else {
+                print("D'oh")
+            }
+        }
+    }
+    
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
@@ -126,6 +160,11 @@ class ProductTableViewController: UITableViewController {
             products.remove(at: indexPath.row)
             saveProducts()
             productTableView.deleteRows(at: [indexPath], with: .fade)
+            if(products.count == 0) {
+                reminderView.isHidden = true
+            } else {
+                reminderView.isHidden = false
+            }
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }

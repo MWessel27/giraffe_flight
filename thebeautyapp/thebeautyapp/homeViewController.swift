@@ -22,6 +22,12 @@ class homeViewController: UIViewController {
     @IBOutlet weak var mTableView: UITableView!
     @IBOutlet weak var pmTableView: UITableView!
     
+    @IBOutlet weak var dayIcon: UIImageView!
+    @IBOutlet weak var nightIcon: UIImageView!
+    
+    @IBOutlet weak var dayLabel: UILabel!
+    @IBOutlet weak var nightLabel: UILabel!
+    
     @IBOutlet weak var dayProductEditButton: UIButton!
     @IBOutlet weak var nightProductEditButton: UIButton!
     
@@ -91,6 +97,13 @@ class homeViewController: UIViewController {
             noProductImage.isHidden = false
             addProductButton.isHidden = false
             
+            dayIcon.isHidden = true
+            nightIcon.isHidden = true
+            dayLabel.isHidden = true
+            nightLabel.isHidden = true
+            dayProductEditButton.isHidden = true
+            nightProductEditButton.isHidden = true
+            
 //            sunImage.isHidden = true;
 //            moonImage.isHidden = true;
             mTableView.isHidden = true;
@@ -127,6 +140,12 @@ class homeViewController: UIViewController {
             noProductImage.isHidden = true
             addProductButton.isHidden = true
             
+            dayIcon.isHidden = false
+            nightIcon.isHidden = false
+            dayLabel.isHidden = false
+            nightLabel.isHidden = false
+            dayProductEditButton.isHidden = false
+            nightProductEditButton.isHidden = false
 //            sunImage.isHidden = false;
 //            moonImage.isHidden = false;
             mTableView.isHidden = false;
@@ -145,6 +164,12 @@ class homeViewController: UIViewController {
             noProductImage.isHidden = false
             addProductButton.isHidden = false
             
+            dayIcon.isHidden = true
+            nightIcon.isHidden = true
+            dayLabel.isHidden = true
+            nightLabel.isHidden = true
+            dayProductEditButton.isHidden = true
+            nightProductEditButton.isHidden = true
 //            sunImage.isHidden = true;
 //            moonImage.isHidden = true;
             mTableView.isHidden = true;
@@ -175,6 +200,12 @@ class homeViewController: UIViewController {
             noProductImage.isHidden = true
             addProductButton.isHidden = true
             
+            dayIcon.isHidden = false
+            nightIcon.isHidden = false
+            dayLabel.isHidden = false
+            nightLabel.isHidden = false
+            dayProductEditButton.isHidden = false
+            nightProductEditButton.isHidden = false
 //            sunImage.isHidden = false;
 //            moonImage.isHidden = false;
             mTableView.isHidden = false;
@@ -193,6 +224,12 @@ class homeViewController: UIViewController {
             noProductImage.isHidden = false
             addProductButton.isHidden = false
             
+            dayIcon.isHidden = true
+            nightIcon.isHidden = true
+            dayLabel.isHidden = true
+            nightLabel.isHidden = true
+            dayProductEditButton.isHidden = true
+            nightProductEditButton.isHidden = true
 //            sunImage.isHidden = true;
 //            moonImage.isHidden = true;
             mTableView.isHidden = true;

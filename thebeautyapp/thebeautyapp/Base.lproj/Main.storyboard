@@ -76,6 +76,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="PtH-tD-VW5">
+                            <rect key="frame" x="0.0" y="103" width="414" height="203"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Bsb-wQ-4af">
+                                    <rect key="frame" x="357" y="7" width="51" height="189"/>
+                                    <connections>
+                                        <action selector="reminderToggle:" destination="yNi-1X-of6" eventType="valueChanged" id="nx2-Cx-1os"/>
+                                    </connections>
+                                </switch>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Reminder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ARO-p5-iXW">
+                                    <rect key="frame" x="8" y="12" width="132" height="24"/>
+                                    <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="20"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="y8F-Cq-AuH">
+                                    <rect key="frame" x="0.0" y="44" width="414" height="216"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <date key="date" timeIntervalSinceReferenceDate="583895988.33476806">
+                                        <!--2019-07-04 01:19:48 +0000-->
+                                    </date>
+                                </datePicker>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="Bsb-wQ-4af" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ARO-p5-iXW" secondAttribute="trailing" constant="8" symbolic="YES" id="7eM-C5-IRk"/>
+                                <constraint firstItem="Bsb-wQ-4af" firstAttribute="centerY" secondItem="PtH-tD-VW5" secondAttribute="centerY" id="Qv0-ho-pze"/>
+                                <constraint firstItem="ARO-p5-iXW" firstAttribute="leading" secondItem="PtH-tD-VW5" secondAttribute="leading" constant="8" id="Vdb-iH-Ucp"/>
+                                <constraint firstItem="ARO-p5-iXW" firstAttribute="top" secondItem="PtH-tD-VW5" secondAttribute="top" constant="12" id="kSD-41-aVR"/>
+                                <constraint firstItem="Bsb-wQ-4af" firstAttribute="top" secondItem="PtH-tD-VW5" secondAttribute="top" constant="7" id="vP3-aC-Tib"/>
+                                <constraint firstAttribute="trailing" secondItem="Bsb-wQ-4af" secondAttribute="trailing" constant="8" id="xbP-0I-OmY"/>
+                            </constraints>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProductTableViewCell" rowHeight="75" id="6eD-iZ-SBx" customClass="ProductTableViewCell" customModule="Flawless" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="75"/>
@@ -121,12 +155,13 @@
                     </tableView>
                     <connections>
                         <outlet property="productTableView" destination="Pmp-s1-eFv" id="Nr6-fl-wE2"/>
+                        <outlet property="reminderView" destination="PtH-tD-VW5" id="LvH-0K-ny1"/>
                         <segue destination="cEp-ob-1BY" kind="presentation" identifier="AddItem" id="0au-Ri-gpG"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P5r-HD-dU1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1357.5999999999999" y="-325.1231527093596"/>
+            <point key="canvasLocation" x="1356.521739130435" y="-325.44642857142856"/>
         </scene>
         <!--ADD PRODUCT-->
         <scene sceneID="Zde-f7-4jH">
@@ -152,7 +187,7 @@
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Fk-l6-QDx">
-                                <rect key="frame" x="0.0" y="44" width="414" height="618"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="522"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lGr-95-tds">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="675"/>
@@ -667,9 +702,13 @@
                     <navigationItem key="navigationItem" title="TODAY" id="ahw-VM-grd"/>
                     <connections>
                         <outlet property="addProductButton" destination="26r-Zo-7y0" id="qTe-i1-qYi"/>
+                        <outlet property="dayIcon" destination="M1h-kW-77N" id="JwA-l2-Aty"/>
+                        <outlet property="dayLabel" destination="SL8-Ly-5iR" id="lbi-jA-CSD"/>
                         <outlet property="dayProductEditButton" destination="7aG-fT-8Le" id="7LG-qf-BFT"/>
                         <outlet property="homeBackgroundView" destination="8bC-Xf-vdC" id="GmU-qn-VW0"/>
                         <outlet property="mTableView" destination="wFh-dx-kNV" id="7r9-Nr-Giq"/>
+                        <outlet property="nightIcon" destination="g3m-SU-p6O" id="lhy-kA-OJX"/>
+                        <outlet property="nightLabel" destination="QMx-Kf-FaI" id="7W8-pn-L2z"/>
                         <outlet property="nightProductEditButton" destination="71M-uo-k11" id="fNz-8k-aV7"/>
                         <outlet property="noProductImage" destination="qhj-5F-TAz" id="vLA-na-YGl"/>
                         <outlet property="noProductLabel" destination="cDa-B7-EEs" id="RjI-Gt-aKX"/>
@@ -772,6 +811,6 @@
         <image name="sunIcon" width="60" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="0au-Ri-gpG"/>
+        <segue reference="g5p-ZB-7VM"/>
     </inferredMetricsTieBreakers>
 </document>
