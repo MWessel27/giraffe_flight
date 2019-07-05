@@ -248,6 +248,9 @@ class ProductTableViewController: UITableViewController {
         let reminderDate = getDateFromPicker()
         
         let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH mm"
+        let reminderTime = dateFormatter.string(from: reminderDate)
+
         dateFormatter.dateFormat = "HH"
         let hour = dateFormatter.string(from: reminderDate)
         dateFormatter.dateFormat = "mm"
@@ -260,6 +263,10 @@ class ProductTableViewController: UITableViewController {
         dateComponents.minute = Int(minute)!
         
         if(getReminderSwitchState()) {
+            Analytics.logEvent("reminder_on", parameters: [
+                "time": reminderTime as NSObject
+                ])
+            
             let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
             
             let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
@@ -295,6 +302,7 @@ class ProductTableViewController: UITableViewController {
             self.scheduleNotification()
             defaults.set(true, forKey: "ReminderSwitchState")
         } else {
+            Analytics.logEvent("reminder_off", parameters: nil)
             print("Cleared notification")
             UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
             defaults.set(false, forKey: "ReminderSwitchState")
