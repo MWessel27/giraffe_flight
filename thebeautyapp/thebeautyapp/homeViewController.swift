@@ -31,9 +31,6 @@ class homeViewController: UIViewController {
     @IBOutlet weak var dayProductEditButton: UIButton!
     @IBOutlet weak var nightProductEditButton: UIButton!
     
-//    @IBOutlet weak var sunImage: UIImageView!
-//    @IBOutlet weak var moonImage: UIImageView!
-    
     @IBOutlet weak var noProductImage: UIImageView!
     @IBOutlet weak var addProductButton: UIButton!
     @IBOutlet weak var noProductLabel: UILabel!
@@ -104,8 +101,6 @@ class homeViewController: UIViewController {
             dayProductEditButton.isHidden = true
             nightProductEditButton.isHidden = true
             
-//            sunImage.isHidden = true;
-//            moonImage.isHidden = true;
             mTableView.isHidden = true;
             pmTableView.isHidden = true;
             
@@ -146,8 +141,7 @@ class homeViewController: UIViewController {
             nightLabel.isHidden = false
             dayProductEditButton.isHidden = false
             nightProductEditButton.isHidden = false
-//            sunImage.isHidden = false;
-//            moonImage.isHidden = false;
+
             mTableView.isHidden = false;
             pmTableView.isHidden = false;
             
@@ -170,8 +164,7 @@ class homeViewController: UIViewController {
             nightLabel.isHidden = true
             dayProductEditButton.isHidden = true
             nightProductEditButton.isHidden = true
-//            sunImage.isHidden = true;
-//            moonImage.isHidden = true;
+
             mTableView.isHidden = true;
             pmTableView.isHidden = true;
             
@@ -206,8 +199,7 @@ class homeViewController: UIViewController {
             nightLabel.isHidden = false
             dayProductEditButton.isHidden = false
             nightProductEditButton.isHidden = false
-//            sunImage.isHidden = false;
-//            moonImage.isHidden = false;
+
             mTableView.isHidden = false;
             pmTableView.isHidden = false;
             
@@ -230,8 +222,7 @@ class homeViewController: UIViewController {
             nightLabel.isHidden = true
             dayProductEditButton.isHidden = true
             nightProductEditButton.isHidden = true
-//            sunImage.isHidden = true;
-//            moonImage.isHidden = true;
+
             mTableView.isHidden = true;
             pmTableView.isHidden = true;
             

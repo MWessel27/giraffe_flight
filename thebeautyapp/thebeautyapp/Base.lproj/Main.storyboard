@@ -98,6 +98,9 @@
                                     <date key="date" timeIntervalSinceReferenceDate="583895988.33476806">
                                         <!--2019-07-04 01:19:48 +0000-->
                                     </date>
+                                    <connections>
+                                        <action selector="reminderTimePickerChanged:" destination="yNi-1X-of6" eventType="valueChanged" id="j1d-b5-mSE"/>
+                                    </connections>
                                 </datePicker>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -155,6 +158,8 @@
                     </tableView>
                     <connections>
                         <outlet property="productTableView" destination="Pmp-s1-eFv" id="Nr6-fl-wE2"/>
+                        <outlet property="reminderSwitch" destination="Bsb-wQ-4af" id="6NJ-oP-wcR"/>
+                        <outlet property="reminderTimePicker" destination="y8F-Cq-AuH" id="SMt-ol-wLa"/>
                         <outlet property="reminderView" destination="PtH-tD-VW5" id="LvH-0K-ny1"/>
                         <segue destination="cEp-ob-1BY" kind="presentation" identifier="AddItem" id="0au-Ri-gpG"/>
                     </connections>
