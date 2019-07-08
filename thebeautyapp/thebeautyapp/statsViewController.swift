@@ -7,11 +7,18 @@
 //
 
 import UIKit
+import os.log
+
+var selectedDate: String = ""
 
 class statsViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate {
     
+    static var sharedStatsInstance = statsViewController()
+    
     fileprivate weak var calendar: FSCalendar!
     @IBOutlet weak var statsProductList: UITableView!
+    @IBOutlet weak var ratingControl: RatingControl!
+    
     
     let green:UIColor = UIColor(red: 0.251, green: 0.831, blue: 0.494, alpha: 1)
     
@@ -19,11 +26,12 @@ class statsViewController: UIViewController, FSCalendarDataSource, FSCalendarDel
     
     var usedProducts = [Product]()
     var daysUsedActivities = [UsedActivity]()
+    var ratings = [Rating]()
+    var dayRating: Rating?
     
     var datesWithEvent = [String]()
     
     var todaysDate: String = ""
-    var selectedDate: String = ""
     
     fileprivate lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -31,13 +39,30 @@ class statsViewController: UIViewController, FSCalendarDataSource, FSCalendarDel
         return formatter
     }()
     
-    let dateFormatterGet = DateFormatter()
-    
     func getDatesWithEvent() {
         for prod in products {
             for datesUsed in prod.usedActivities {
                 datesWithEvent.append(datesUsed.date)
             }
+        }
+    }
+    
+    func setDayRating() {
+        ratings.removeAll()
+        if let savedRatings = loadRatings() {
+            ratings += savedRatings
+        }
+        
+        var curRating = false
+        for rating in ratings {
+            if(selectedDate == rating.date) {
+                ratingControl.rating = rating.rating
+                curRating = true
+            }
+        }
+        
+        if(!curRating) {
+            ratingControl.rating = 0
         }
     }
     
@@ -72,6 +97,7 @@ class statsViewController: UIViewController, FSCalendarDataSource, FSCalendarDel
         selectedDate = todaysDate
         
         getUsedActivities(date: todaysDate)
+        setDayRating()
         
         statsProductList.tableFooterView = UIView(frame: CGRect.zero)
         
@@ -90,6 +116,7 @@ class statsViewController: UIViewController, FSCalendarDataSource, FSCalendarDel
         super.viewDidAppear(animated);
         
         getUsedActivities(date: selectedDate)
+        setDayRating()
 
         statsProductList.reloadData()
     }
@@ -98,12 +125,21 @@ class statsViewController: UIViewController, FSCalendarDataSource, FSCalendarDel
         super.viewWillAppear(animated);
 
         getUsedActivities(date: selectedDate)
+        setDayRating()
         
         statsProductList.reloadData()
     }
     
+    func setSelectedRating(rating: Int) {
+        saveRating(rating: rating, date: selectedDate)
+    }
+    
     private func loadProducts() -> [Product]? {
         return NSKeyedUnarchiver.unarchiveObject(withFile: Product.ArchiveURL.path) as? [Product]
+    }
+    
+    private func loadRatings() -> [Rating]? {
+        return NSKeyedUnarchiver.unarchiveObject(withFile: Rating.ArchiveURL.path) as? [Rating]
     }
 
     override func didReceiveMemoryWarning() {
@@ -123,12 +159,13 @@ class statsViewController: UIViewController, FSCalendarDataSource, FSCalendarDel
         
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
-        let selectedDate = formatter.string(from: date)
+        selectedDate = formatter.string(from: date)
 
         getUsedActivities(date: selectedDate)
+
+        setDayRating()
     }
     
-
     /*
     // MARK: - Navigation
 
@@ -142,6 +179,47 @@ class statsViewController: UIViewController, FSCalendarDataSource, FSCalendarDel
 }
 
 extension statsViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    private func saveRating(rating: Int, date: String) {
+        print("Saving rating")
+        print(date)
+        print(rating)
+        guard !date.isEmpty else {
+            return
+        }
+        
+        // The rating must be between 0 and 5 inclusively
+        guard (rating >= 0) && (rating <= 5) else {
+            return
+        }
+        
+        var setRating = false
+        
+        ratings.removeAll()
+        
+        if let savedRatings = loadRatings() {
+            ratings += savedRatings
+        }
+        
+        for rate in ratings {
+            if(rate.date == date) {
+                rate.rating = rating
+                setRating = true
+            }
+        }
+        
+        if(!setRating) {
+            dayRating = Rating(date: date, rating: rating)
+            ratings.append(dayRating!)
+        }
+        
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(ratings, toFile: Rating.ArchiveURL.path)
+        if isSuccessfulSave {
+            os_log("Ratings successfully saved.", log: OSLog.default, type: .debug)
+        } else {
+            os_log("Failed to save Ratings...", log: OSLog.default, type: .error)
+        }
+    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -182,4 +260,5 @@ extension statsViewController: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
+    
 }

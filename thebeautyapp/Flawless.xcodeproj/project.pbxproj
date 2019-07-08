@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		03624F8F3CFBB42A2BC339ED /* Pods_FlawlessTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63727D62FAC9D72A645A3B99 /* Pods_FlawlessTests.framework */; };
 		7B3483A52219CB2F004093DB /* UsedActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3483A42219CB2F004093DB /* UsedActivity.swift */; };
+		7B45EF8B22D1527400A661F5 /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B45EF8A22D1527400A661F5 /* RatingControl.swift */; };
+		7B45EF8D22D23B9500A661F5 /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B45EF8C22D23B9500A661F5 /* Rating.swift */; };
 		7B723B5221F00D95008605FB /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B723B5121F00D95008605FB /* ProductTableViewCell.swift */; };
 		7B9050B02243C210000F2FF5 /* GettingStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9050AF2243C210000F2FF5 /* GettingStartedViewController.swift */; };
 		7BA0191C21ECB4510078E61B /* newProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA0191B21ECB4510078E61B /* newProductViewController.swift */; };
@@ -67,6 +69,8 @@
 		7B3483A42219CB2F004093DB /* UsedActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsedActivity.swift; sourceTree = "<group>"; };
 		7B3A998A22C1A73700A28343 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7B3A998C22C1A73700A28343 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7B45EF8A22D1527400A661F5 /* RatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
+		7B45EF8C22D23B9500A661F5 /* Rating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
 		7B723B5121F00D95008605FB /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
 		7B9050AF2243C210000F2FF5 /* GettingStartedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettingStartedViewController.swift; sourceTree = "<group>"; };
 		7BA0191B21ECB4510078E61B /* newProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newProductViewController.swift; sourceTree = "<group>"; };
@@ -276,6 +280,8 @@
 				959D89A420B393B300E17F2E /* AppDelegate.swift */,
 				959D89A620B393B300E17F2E /* homeViewController.swift */,
 				959D89A820B393B300E17F2E /* Main.storyboard */,
+				7B45EF8C22D23B9500A661F5 /* Rating.swift */,
+				7B45EF8A22D1527400A661F5 /* RatingControl.swift */,
 				7B9050AF2243C210000F2FF5 /* GettingStartedViewController.swift */,
 				953958CD20C469BE00DD069A /* FSCalendar */,
 				959D89AE20B393B400E17F2E /* Assets.xcassets */,
@@ -596,6 +602,7 @@
 				953958FC20C469BE00DD069A /* FSCalendarStickyHeader.m in Sources */,
 				959D89A720B393B300E17F2E /* homeViewController.swift in Sources */,
 				953958F820C469BE00DD069A /* FSCalendarDelegationProxy.m in Sources */,
+				7B45EF8D22D23B9500A661F5 /* Rating.swift in Sources */,
 				959D89AD20B393B300E17F2E /* thebeautyapp.xcdatamodeld in Sources */,
 				7BA0191C21ECB4510078E61B /* newProductViewController.swift in Sources */,
 				7BD24D3121F207E500F2CBCE /* ProductTableViewController.swift in Sources */,
@@ -610,6 +617,7 @@
 				953958F320C469BE00DD069A /* FSCalendarCell.m in Sources */,
 				953958F720C469BE00DD069A /* FSCalendarDelegationFactory.m in Sources */,
 				7B3483A52219CB2F004093DB /* UsedActivity.swift in Sources */,
+				7B45EF8B22D1527400A661F5 /* RatingControl.swift in Sources */,
 				953958FA20C469BE00DD069A /* FSCalendarHeaderView.m in Sources */,
 				959D89A520B393B300E17F2E /* AppDelegate.swift in Sources */,
 			);
