@@ -852,7 +852,7 @@
                                     <outlet property="delegate" destination="JJD-8J-CQr" id="5Kg-FR-oNB"/>
                                 </connections>
                             </tableView>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Df0-36-fAN" customClass="RatingControl" customModule="Flawless" customModuleProvider="target">
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Df0-36-fAN" customClass="RatingControl" customModule="Flawless" customModuleProvider="target">
                                 <rect key="frame" x="81" y="492" width="252" height="44"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="starCount">
