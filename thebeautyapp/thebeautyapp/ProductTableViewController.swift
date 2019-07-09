@@ -275,11 +275,13 @@ class ProductTableViewController: UITableViewController {
     }
     
     @IBAction func reminderTimePickerChanged(_ sender: Any) {
-        let defaults = UserDefaults.standard
-        print(self.reminderTimePicker.date)
-        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
-        self.scheduleNotification()
-        defaults.set(true, forKey: "ReminderSwitchState")
+        if(getReminderSwitchState()) {
+            let defaults = UserDefaults.standard
+            print(self.reminderTimePicker.date)
+            UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+            self.scheduleNotification()
+            defaults.set(true, forKey: "ReminderSwitchState")
+        }
     }
     
     
