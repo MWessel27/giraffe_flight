@@ -8,6 +8,7 @@
 
 import UIKit
 import os.log
+import Firebase
 
 var selectedDate: String = ""
 
@@ -203,12 +204,19 @@ extension statsViewController: UITableViewDelegate, UITableViewDataSource {
         
         for rate in ratings {
             if(rate.date == date) {
+                Analytics.logEvent("rating_changed", parameters: [
+                    "before_rating": rate.rating as NSObject,
+                    "after_rating": rating as NSObject
+                    ])
                 rate.rating = rating
                 setRating = true
             }
         }
         
         if(!setRating) {
+            Analytics.logEvent("set_rating", parameters: [
+                "rating": rating as NSObject
+                ])
             dayRating = Rating(date: date, rating: rating)
             ratings.append(dayRating!)
         }
