@@ -70,11 +70,11 @@ class homeViewController: UIViewController {
         formatter.dateFormat = "yyyy-MM-dd"
         todaysDate = formatter.string(from: date)
         
-        let rightBarButton = UIBarButtonItem(title: "PRODUCTS", style: UIBarButtonItem.Style.plain, target: self, action: #selector(goToProdList))
-        self.navigationItem.rightBarButtonItem = rightBarButton
-        
-        let leftBarButton = UIBarButtonItem(title: "STATS", style: UIBarButtonItem.Style.plain, target: self, action: #selector(goToStatsCal))
-        self.navigationItem.leftBarButtonItem = leftBarButton
+//        let rightBarButton = UIBarButtonItem(title: "PRODUCTS", style: UIBarButtonItem.Style.plain, target: self, action: #selector(goToProdList))
+//        self.navigationItem.rightBarButtonItem = rightBarButton
+//
+//        let leftBarButton = UIBarButtonItem(title: "STATS", style: UIBarButtonItem.Style.plain, target: self, action: #selector(goToStatsCal))
+//        self.navigationItem.leftBarButtonItem = leftBarButton
         
         if(products.count != 0) {
             noProductLabel.isHidden = true
@@ -127,11 +127,11 @@ class homeViewController: UIViewController {
         let navBar: UINavigationBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: 320, height: 44))
         self.view.addSubview(navBar);
         
-        let rightBarButton = UIBarButtonItem(title: "PRODUCTS", style: UIBarButtonItem.Style.plain, target: self, action: #selector(goToProdList))
-        self.navigationItem.rightBarButtonItem = rightBarButton
-        
-        let leftBarButton = UIBarButtonItem(title: "STATS", style: UIBarButtonItem.Style.plain, target: self, action: #selector(goToStatsCal))
-        self.navigationItem.leftBarButtonItem = leftBarButton
+//        let rightBarButton = UIBarButtonItem(title: "PRODUCTS", style: UIBarButtonItem.Style.plain, target: self, action: #selector(goToProdList))
+//        self.navigationItem.rightBarButtonItem = rightBarButton
+//
+//        let leftBarButton = UIBarButtonItem(title: "STATS", style: UIBarButtonItem.Style.plain, target: self, action: #selector(goToStatsCal))
+//        self.navigationItem.leftBarButtonItem = leftBarButton
         
         if let savedProds = loadProducts() {
             products = savedProds
@@ -250,15 +250,15 @@ class homeViewController: UIViewController {
         return NSKeyedUnarchiver.unarchiveObject(withFile: Product.ArchiveURL.path) as? [Product]
     }
     
-    @objc func goToProdList() {
-        performSegue(withIdentifier: "viewProdList", sender: IndexPath.self)
-    }
-    
-    @objc func goToStatsCal() {
-        let storyBoard : UIStoryboard = self.storyboard!
-        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "statsViewController")
-        self.navigationController?.pushViewController(nextViewController, animated: true)
-    }
+//    @objc func goToProdList() {
+//        performSegue(withIdentifier: "viewProdList", sender: IndexPath.self)
+//    }
+//
+//    @objc func goToStatsCal() {
+//        let storyBoard : UIStoryboard = self.storyboard!
+//        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "statsViewController")
+//        self.navigationController?.pushViewController(nextViewController, animated: true)
+//    }
     
     @IBAction func editDayProductButtonClicked(_ sender: Any) {
         if(mTableView.isEditing) {

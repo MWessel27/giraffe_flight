@@ -96,8 +96,6 @@ class statsViewController: UIViewController, FSCalendarDataSource, FSCalendarDel
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tabBarItem = UITabBarItem(title: "Calendar", image: UIImage(named: "icon-books"), tag: 2)
-        
         if let savedProds = loadProducts() {
             products += savedProds
         }
