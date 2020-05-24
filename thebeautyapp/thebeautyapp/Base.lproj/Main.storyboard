@@ -157,7 +157,6 @@
                         <outlet property="reminderSwitch" destination="Bsb-wQ-4af" id="6NJ-oP-wcR"/>
                         <outlet property="reminderTimePicker" destination="y8F-Cq-AuH" id="SMt-ol-wLa"/>
                         <outlet property="reminderView" destination="PtH-tD-VW5" id="LvH-0K-ny1"/>
-                        <segue destination="cEp-ob-1BY" kind="presentation" identifier="AddItem" id="0au-Ri-gpG"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P5r-HD-dU1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -167,7 +166,7 @@
         <!--ADD PRODUCT-->
         <scene sceneID="Zde-f7-4jH">
             <objects>
-                <viewController storyboardIdentifier="newProductViewController" title="ADD PRODUCT" id="cEp-ob-1BY" customClass="newProductViewController" customModule="Flawless" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="newProductViewController" title="ADD PRODUCT" modalPresentationStyle="pageSheet" id="cEp-ob-1BY" customClass="newProductViewController" customModule="Flawless" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tJl-VK-Anp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="750"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -407,7 +406,7 @@
                 <exit id="QDD-wT-aIh" userLabel="Exit" sceneMemberID="exit"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pbq-ts-TRr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6644.9275362318849" y="-325.44642857142856"/>
+            <point key="canvasLocation" x="4164" y="292"/>
         </scene>
         <!--Splash View Controller-->
         <scene sceneID="z3z-95-zBG">
@@ -962,7 +961,4 @@
         <image name="sunIcon" width="60" height="60"/>
         <image name="today-icon" width="25" height="25"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="g5p-ZB-7VM"/>
-    </inferredMetricsTieBreakers>
 </document>

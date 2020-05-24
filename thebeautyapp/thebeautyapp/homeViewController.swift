@@ -17,6 +17,8 @@ import Firebase
 
 class homeViewController: UIViewController {
     
+    private let imageView = UIImageView(image: UIImage(named: "notifications-icon"))
+    
     @IBOutlet var homeBackgroundView: UIView!
     
     @IBOutlet weak var mTableView: UITableView!
@@ -55,8 +57,21 @@ class homeViewController: UIViewController {
         return formatter
     }()
     
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        let tappedImage = tapGestureRecognizer.view as! UIImageView
+
+        // Your action
+        print("notifications tapped")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupUI()
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        imageView.isUserInteractionEnabled = true
+        imageView.addGestureRecognizer(tapGestureRecognizer)
         
         // returns an integer from 1 - 7, with 1 being Sunday and 7 being Saturday
         dayOfWeek = Date().dayNumberOfWeek()!
@@ -114,12 +129,12 @@ class homeViewController: UIViewController {
         }
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-         
-        // Initialize Tab Bar Item
-        tabBarItem = UITabBarItem(title: "Today", image: UIImage(named: "today-icon"), tag: 0)
-    }
+//    required init?(coder aDecoder: NSCoder) {
+//        super.init(coder: aDecoder)
+//         
+//        // Initialize Tab Bar Item
+//        tabBarItem = UITabBarItem(title: "Today", image: UIImage(named: "today-icon"), tag: 0)
+//    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated);
@@ -259,6 +274,25 @@ class homeViewController: UIViewController {
 //        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "statsViewController")
 //        self.navigationController?.pushViewController(nextViewController, animated: true)
 //    }
+    
+    private func setupUI() {
+        navigationController?.navigationBar.prefersLargeTitles = true
+
+        title = "Today"
+
+        // Initial setup for image for Large NavBar state since the the screen always has Large NavBar once it gets opened
+        guard let navigationBar = self.navigationController?.navigationBar else { return }
+        navigationBar.addSubview(imageView)
+        imageView.layer.cornerRadius = Const.ImageSizeForLargeState / 2
+        imageView.clipsToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            imageView.rightAnchor.constraint(equalTo: navigationBar.rightAnchor, constant: -Const.ImageRightMargin),
+            imageView.bottomAnchor.constraint(equalTo: navigationBar.bottomAnchor, constant: -Const.ImageBottomMarginForLargeState),
+            imageView.heightAnchor.constraint(equalToConstant: Const.ImageSizeForLargeState),
+            imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor)
+            ])
+    }
     
     @IBAction func editDayProductButtonClicked(_ sender: Any) {
         if(mTableView.isEditing) {
@@ -619,4 +653,21 @@ extension Date {
     func dayNumberOfWeek() -> Int? {
         return Calendar.current.dateComponents([.weekday], from: self).weekday
     }
+}
+
+private struct Const {
+    /// Image height/width for Large NavBar state
+    static let ImageSizeForLargeState: CGFloat = 40
+    /// Margin from right anchor of safe area to right anchor of Image
+    static let ImageRightMargin: CGFloat = 16
+    /// Margin from bottom anchor of NavBar to bottom anchor of Image for Large NavBar state
+    static let ImageBottomMarginForLargeState: CGFloat = 12
+    /// Margin from bottom anchor of NavBar to bottom anchor of Image for Small NavBar state
+    static let ImageBottomMarginForSmallState: CGFloat = 6
+    /// Image height/width for Small NavBar state
+    static let ImageSizeForSmallState: CGFloat = 32
+    /// Height of NavBar for Small state. Usually it's just 44
+    static let NavBarHeightSmallState: CGFloat = 44
+    /// Height of NavBar for Large state. Usually it's just 96.5 but if you have a custom font for the title, please make sure to edit this value since it changes the height for Large state of NavBar
+    static let NavBarHeightLargeState: CGFloat = 96.5
 }
