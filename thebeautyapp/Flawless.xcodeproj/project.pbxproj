@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		03624F8F3CFBB42A2BC339ED /* Pods_FlawlessTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63727D62FAC9D72A645A3B99 /* Pods_FlawlessTests.framework */; };
-		7B279192247A0DEC0038286E /* tabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B279191247A0DEC0038286E /* tabBarViewController.swift */; };
+		7B279194247AE00E0038286E /* uiTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B279193247AE00E0038286E /* uiTabBarController.swift */; };
 		7B3483A52219CB2F004093DB /* UsedActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3483A42219CB2F004093DB /* UsedActivity.swift */; };
 		7B45EF8B22D1527400A661F5 /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B45EF8A22D1527400A661F5 /* RatingControl.swift */; };
 		7B45EF8D22D23B9500A661F5 /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B45EF8C22D23B9500A661F5 /* Rating.swift */; };
@@ -67,7 +67,7 @@
 /* Begin PBXFileReference section */
 		302E9339782EAE2D916B49D3 /* Pods-FlawlessTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlawlessTests.release.xcconfig"; path = "Target Support Files/Pods-FlawlessTests/Pods-FlawlessTests.release.xcconfig"; sourceTree = "<group>"; };
 		63727D62FAC9D72A645A3B99 /* Pods_FlawlessTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlawlessTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7B279191247A0DEC0038286E /* tabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tabBarViewController.swift; sourceTree = "<group>"; };
+		7B279193247AE00E0038286E /* uiTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uiTabBarController.swift; sourceTree = "<group>"; };
 		7B3483A42219CB2F004093DB /* UsedActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsedActivity.swift; sourceTree = "<group>"; };
 		7B3A998A22C1A73700A28343 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7B3A998C22C1A73700A28343 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -280,9 +280,9 @@
 			children = (
 				7B3A998822C1A73700A28343 /* Firebase */,
 				959D89A420B393B300E17F2E /* AppDelegate.swift */,
-				7B279191247A0DEC0038286E /* tabBarViewController.swift */,
 				959D89A620B393B300E17F2E /* homeViewController.swift */,
 				959D89A820B393B300E17F2E /* Main.storyboard */,
+				7B279193247AE00E0038286E /* uiTabBarController.swift */,
 				7B45EF8C22D23B9500A661F5 /* Rating.swift */,
 				7B45EF8A22D1527400A661F5 /* RatingControl.swift */,
 				7B9050AF2243C210000F2FF5 /* GettingStartedViewController.swift */,
@@ -610,13 +610,13 @@
 				7BA0191C21ECB4510078E61B /* newProductViewController.swift in Sources */,
 				7BD24D3121F207E500F2CBCE /* ProductTableViewController.swift in Sources */,
 				7B723B5221F00D95008605FB /* ProductTableViewCell.swift in Sources */,
-				7B279192247A0DEC0038286E /* tabBarViewController.swift in Sources */,
 				953958FD20C469BE00DD069A /* FSCalendarTransitionCoordinator.m in Sources */,
 				953958F220C469BE00DD069A /* FSCalendarCalculator.m in Sources */,
 				953958F420C469BE00DD069A /* FSCalendarCollectionView.m in Sources */,
 				953958F920C469BE00DD069A /* FSCalendarExtensions.m in Sources */,
 				953958FE20C469BE00DD069A /* FSCalendarWeekdayView.m in Sources */,
 				953958EF20C469BE00DD069A /* FSCalendar+Deprecated.m in Sources */,
+				7B279194247AE00E0038286E /* uiTabBarController.swift in Sources */,
 				953958FB20C469BE00DD069A /* FSCalendarScopeHandle.m in Sources */,
 				953958F320C469BE00DD069A /* FSCalendarCell.m in Sources */,
 				953958F720C469BE00DD069A /* FSCalendarDelegationFactory.m in Sources */,

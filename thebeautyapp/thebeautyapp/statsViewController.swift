@@ -16,17 +16,6 @@ class statsViewController: UIViewController, FSCalendarDataSource, FSCalendarDel
     
     static var sharedStatsInstance = statsViewController()
     
-    init() {
-        super.init( coder: NSCoder() )!
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-         
-        // Initialize Tab Bar Item
-        tabBarItem = UITabBarItem(title: "Calendar", image: UIImage(named: "calendar-icon"), tag: 1)
-    }
-    
     fileprivate weak var calendar: FSCalendar!
     @IBOutlet weak var statsProductList: UITableView!
     @IBOutlet weak var ratingControl: RatingControl!
@@ -44,6 +33,56 @@ class statsViewController: UIViewController, FSCalendarDataSource, FSCalendarDel
     var datesWithEvent = [String]()
     
     var todaysDate: String = ""
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        if let savedProds = loadProducts() {
+            products += savedProds
+        }
+        
+        getDatesWithEvent()
+        
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        todaysDate = formatter.string(from: date)
+        selectedDate = todaysDate
+        
+        getUsedActivities(date: todaysDate)
+        setDayRating()
+        
+        statsProductList.tableFooterView = UIView(frame: CGRect.zero)
+        
+        statsProductList.backgroundColor = UIColor.clear
+        statsProductList.separatorStyle = UITableViewCell.SeparatorStyle.none
+        
+        let calendar = FSCalendar(frame: CGRect(x: 0, y: 0, width: 320, height: 300))
+        calendar.dataSource = self as FSCalendarDataSource
+        calendar.delegate = self as FSCalendarDelegate
+        self.calendar = calendar
+
+        // Do any additional setup after loading the view.
+        statsProductList.reloadData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated);
+        
+        getUsedActivities(date: selectedDate)
+        setDayRating()
+
+        statsProductList.reloadData()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated);
+
+        getUsedActivities(date: selectedDate)
+        setDayRating()
+        
+        statsProductList.reloadData()
+    }
     
     fileprivate lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -89,55 +128,6 @@ class statsViewController: UIViewController, FSCalendarDataSource, FSCalendarDel
                 }
             }
         }
-        
-        statsProductList.reloadData()
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        if let savedProds = loadProducts() {
-            products += savedProds
-        }
-        
-        getDatesWithEvent()
-        
-        let date = Date()
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        todaysDate = formatter.string(from: date)
-        selectedDate = todaysDate
-        
-        getUsedActivities(date: todaysDate)
-        setDayRating()
-        
-        statsProductList.tableFooterView = UIView(frame: CGRect.zero)
-        
-        statsProductList.backgroundColor = UIColor.clear
-        statsProductList.separatorStyle = UITableViewCell.SeparatorStyle.none
-        
-        let calendar = FSCalendar(frame: CGRect(x: 0, y: 0, width: 320, height: 300))
-        calendar.dataSource = self as FSCalendarDataSource
-        calendar.delegate = self as FSCalendarDelegate
-        self.calendar = calendar
-
-        // Do any additional setup after loading the view.
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated);
-        
-        getUsedActivities(date: selectedDate)
-        setDayRating()
-
-        statsProductList.reloadData()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated);
-
-        getUsedActivities(date: selectedDate)
-        setDayRating()
         
         statsProductList.reloadData()
     }
