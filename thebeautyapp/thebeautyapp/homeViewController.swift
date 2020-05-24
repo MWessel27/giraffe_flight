@@ -114,6 +114,13 @@ class homeViewController: UIViewController {
         }
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+         
+        // Initialize Tab Bar Item
+        tabBarItem = UITabBarItem(title: "Today", image: UIImage(named: "today-icon"), tag: 0)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated);
         

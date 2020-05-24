@@ -831,8 +831,8 @@
                                     <outlet property="delegate" destination="JJD-8J-CQr" id="5Kg-FR-oNB"/>
                                 </connections>
                             </tableView>
-                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Df0-36-fAN" customClass="RatingControl" customModule="Flawless" customModuleProvider="target">
-                                <rect key="frame" x="81" y="443" width="252" height="44"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Df0-36-fAN" customClass="RatingControl" customModule="Flawless" customModuleProvider="target">
+                                <rect key="frame" x="81" y="492" width="252" height="44"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="starCount">
                                         <integer key="value" value="5"/>
@@ -888,9 +888,9 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="JJD-8J-CQr" kind="relationship" relationship="viewControllers" id="LTn-oF-Qra"/>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="wB0-nQ-5R1"/>
-                        <segue destination="yNi-1X-of6" kind="relationship" relationship="viewControllers" id="3UX-zC-RXb"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="q3r-2Q-e62"/>
+                        <segue destination="JJD-8J-CQr" kind="relationship" relationship="viewControllers" id="rfH-Ro-Cef"/>
+                        <segue destination="yNi-1X-of6" kind="relationship" relationship="viewControllers" id="8D9-Ou-t0s"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fn0-d4-k7u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -16,6 +16,17 @@ class statsViewController: UIViewController, FSCalendarDataSource, FSCalendarDel
     
     static var sharedStatsInstance = statsViewController()
     
+    init() {
+        super.init( coder: NSCoder() )!
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+         
+        // Initialize Tab Bar Item
+        tabBarItem = UITabBarItem(title: "Calendar", image: UIImage(named: "calendar-icon"), tag: 1)
+    }
+    
     fileprivate weak var calendar: FSCalendar!
     @IBOutlet weak var statsProductList: UITableView!
     @IBOutlet weak var ratingControl: RatingControl!
@@ -84,6 +95,8 @@ class statsViewController: UIViewController, FSCalendarDataSource, FSCalendarDel
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tabBarItem = UITabBarItem(title: "Calendar", image: UIImage(named: "icon-books"), tag: 2)
         
         if let savedProds = loadProducts() {
             products += savedProds

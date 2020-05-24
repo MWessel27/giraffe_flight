@@ -62,6 +62,13 @@ class ProductTableViewController: UITableViewController {
         }
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+         
+        // Initialize Tab Bar Item
+        tabBarItem = UITabBarItem(title: "Products", image: UIImage(named: "products-icon"), tag: 2)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated);
         if let savedProds = loadProducts() {
