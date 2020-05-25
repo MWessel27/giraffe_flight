@@ -63,6 +63,20 @@ class homeViewController: UIViewController {
 
         // Your action
         print("notifications tapped")
+        guard let notificationsVC = storyboard?.instantiateViewController(withIdentifier: "NotificationsViewController")
+        as? NotificationsViewController else {
+            assertionFailure("No view controller ID NotificationsViewController in storyboard")
+            return
+        }
+        
+        // Delay the capture of snapshot by 0.1 seconds
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1 , execute: {
+          // take a snapshot of current view and set it as backingImage
+          notificationsVC.backingImage = self.tabBarController?.view.asImage()
+          
+          // present the view controller modally without animation
+          self.present(notificationsVC, animated: false, completion: nil)
+        })
     }
     
     override func viewDidLoad() {
@@ -264,16 +278,6 @@ class homeViewController: UIViewController {
     private func loadProducts() -> [Product]? {
         return NSKeyedUnarchiver.unarchiveObject(withFile: Product.ArchiveURL.path) as? [Product]
     }
-    
-//    @objc func goToProdList() {
-//        performSegue(withIdentifier: "viewProdList", sender: IndexPath.self)
-//    }
-//
-//    @objc func goToStatsCal() {
-//        let storyBoard : UIStoryboard = self.storyboard!
-//        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "statsViewController")
-//        self.navigationController?.pushViewController(nextViewController, animated: true)
-//    }
     
     private func setupUI() {
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -657,7 +661,7 @@ extension Date {
 
 private struct Const {
     /// Image height/width for Large NavBar state
-    static let ImageSizeForLargeState: CGFloat = 40
+    static let ImageSizeForLargeState: CGFloat = 32
     /// Margin from right anchor of safe area to right anchor of Image
     static let ImageRightMargin: CGFloat = 16
     /// Margin from bottom anchor of NavBar to bottom anchor of Image for Large NavBar state

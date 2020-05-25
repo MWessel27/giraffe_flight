@@ -17,10 +17,6 @@ class ProductTableViewController: UITableViewController {
     
     @IBOutlet var productTableView: UITableView!
     
-    @IBOutlet weak var reminderSwitch: UISwitch!
-    @IBOutlet weak var reminderView: UIView!
-    @IBOutlet weak var reminderTimePicker: UIDatePicker!
-    
 //    private var floatingButton: UIButton?
 //    // TODO: Replace image name with your own image:
 //    private let floatingButtonImageName = "add-icon"
@@ -114,35 +110,6 @@ class ProductTableViewController: UITableViewController {
         if let savedProds = loadProducts() {
             products += savedProds
         }
-        
-        if(products.count == 0) {
-            reminderView.isHidden = true
-        } else {
-            reminderView.isHidden = false
-            let defaults = UserDefaults.standard
-            
-            if (defaults.object(forKey: "ReminderSwitchState") != nil) {
-                reminderSwitch.isOn = defaults.bool(forKey: "ReminderSwitchState")
-            }
-            
-            let center = UNUserNotificationCenter.current()
-
-            center.getPendingNotificationRequests(completionHandler: { requests in
-                var nextTriggerDates: [Date] = []
-                for request in requests {
-                    print(request)
-                    if let trigger = request.trigger as? UNCalendarNotificationTrigger,
-                        let triggerDate = trigger.nextTriggerDate(){
-                        nextTriggerDates.append(triggerDate)
-                    }
-
-                    if let nextTriggerDate = nextTriggerDates.min() {
-                        print(nextTriggerDate)
-                        self.setDateForPicker(pickerDate: nextTriggerDate)
-                    }
-                }
-            })
-        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -154,35 +121,6 @@ class ProductTableViewController: UITableViewController {
         }
 
         productTableView.reloadData()
-        
-        if(products.count == 0) {
-            reminderView.isHidden = true
-        } else {
-            reminderView.isHidden = false
-            let defaults = UserDefaults.standard
-            
-            if (defaults.object(forKey: "ReminderSwitchState") != nil) {
-                reminderSwitch.isOn = defaults.bool(forKey: "ReminderSwitchState")
-            }
-            
-            let center = UNUserNotificationCenter.current()
-            
-            center.getPendingNotificationRequests(completionHandler: { requests in
-                var nextTriggerDates: [Date] = []
-                for request in requests {
-                    print(request)
-                    if let trigger = request.trigger as? UNCalendarNotificationTrigger,
-                        let triggerDate = trigger.nextTriggerDate(){
-                        nextTriggerDates.append(triggerDate)
-                    }
-                    
-                    if let nextTriggerDate = nextTriggerDates.min() {
-                        print(nextTriggerDate)
-                        self.setDateForPicker(pickerDate: nextTriggerDate)
-                    }
-                }
-            })
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -193,35 +131,6 @@ class ProductTableViewController: UITableViewController {
             products = savedProds
         }
         productTableView.reloadData()
-        
-        if(products.count == 0) {
-            reminderView.isHidden = true
-        } else {
-            reminderView.isHidden = false
-            let defaults = UserDefaults.standard
-            
-            if (defaults.object(forKey: "ReminderSwitchState") != nil) {
-                reminderSwitch.isOn = defaults.bool(forKey: "ReminderSwitchState")
-            }
-            
-            let center = UNUserNotificationCenter.current()
-            
-            center.getPendingNotificationRequests(completionHandler: { requests in
-                var nextTriggerDates: [Date] = []
-                for request in requests {
-                    print(request)
-                    if let trigger = request.trigger as? UNCalendarNotificationTrigger,
-                        let triggerDate = trigger.nextTriggerDate(){
-                        nextTriggerDates.append(triggerDate)
-                    }
-                    
-                    if let nextTriggerDate = nextTriggerDates.min() {
-                        print(nextTriggerDate)
-                        self.setDateForPicker(pickerDate: nextTriggerDate)
-                    }
-                }
-            })
-        }
     }
     
     
@@ -295,109 +204,6 @@ class ProductTableViewController: UITableViewController {
         }
     }
     
-    func getReminderSwitchState() -> Bool {
-        var reminderOnOff = false
-        
-        if(self.reminderSwitch.isOn) {
-            reminderOnOff = true
-        }
-        
-        return reminderOnOff
-    }
-    
-    func getDateFromPicker() -> Date {
-        var reminderDate = Date()
-
-        reminderDate = self.reminderTimePicker.date
-        
-        return reminderDate
-    }
-    
-    func setDateForPicker(pickerDate: Date) {
-        DispatchQueue.global().async(execute: {
-            DispatchQueue.main.sync{
-                self.reminderTimePicker.date = pickerDate
-            }
-        })
-    }
-    
-    func scheduleNotification() {
-        let center = UNUserNotificationCenter.current()
-        
-        let content = UNMutableNotificationContent()
-        content.title = "Skin Care Reminder"
-        content.body = "Time to complete your daily skin care routine."
-        content.categoryIdentifier = "alarm"
-        content.userInfo = ["customData": "fizzbuzz"]
-        content.sound = UNNotificationSound.default
-        
-        let reminderDate = getDateFromPicker()
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH mm"
-        let reminderTime = dateFormatter.string(from: reminderDate)
-
-        dateFormatter.dateFormat = "HH"
-        let hour = dateFormatter.string(from: reminderDate)
-        dateFormatter.dateFormat = "mm"
-        let minute = dateFormatter.string(from: reminderDate)
-        print(hour)
-        print(minute)
-        
-        var dateComponents = DateComponents()
-        dateComponents.hour = Int(hour)!
-        dateComponents.minute = Int(minute)!
-        
-        if(getReminderSwitchState()) {
-            Analytics.logEvent("reminder_on", parameters: [
-                "time": reminderTime as NSObject
-                ])
-            
-            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-            
-            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-            center.add(request)
-        }
-    }
-    
-    @IBAction func reminderTimePickerChanged(_ sender: Any) {
-        if(getReminderSwitchState()) {
-            let defaults = UserDefaults.standard
-            print(self.reminderTimePicker.date)
-            UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
-            self.scheduleNotification()
-            defaults.set(true, forKey: "ReminderSwitchState")
-        }
-    }
-    
-    
-    @IBAction func reminderToggle(_ sender: Any) {
-        
-        let defaults = UserDefaults.standard
-        
-        let center = UNUserNotificationCenter.current()
-        
-        center.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
-            if granted {
-                print("Notification Permissions On")
-            } else {
-                print("Notification Permissions Off")
-            }
-        }
-        
-        if reminderSwitch.isOn {
-            print("Scheduling notification")
-            self.scheduleNotification()
-            defaults.set(true, forKey: "ReminderSwitchState")
-        } else {
-            Analytics.logEvent("reminder_off", parameters: nil)
-            print("Cleared notification")
-            UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
-            defaults.set(false, forKey: "ReminderSwitchState")
-        }
-    }
-    
-    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
@@ -408,40 +214,6 @@ class ProductTableViewController: UITableViewController {
             products.remove(at: indexPath.row)
             saveProducts()
             productTableView.deleteRows(at: [indexPath], with: .fade)
-            if(products.count == 0) {
-                let defaults = UserDefaults.standard
-                UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
-
-                defaults.set(false, forKey: "ReminderSwitchState")
-                reminderView.isHidden = true
-            } else {
-                let defaults = UserDefaults.standard
-                
-                if (defaults.object(forKey: "ReminderSwitchState") != nil) {
-                    reminderSwitch.isOn = defaults.bool(forKey: "ReminderSwitchState")
-                }
-                
-                let center = UNUserNotificationCenter.current()
-                
-                center.getPendingNotificationRequests(completionHandler: { requests in
-                    var nextTriggerDates: [Date] = []
-                    for request in requests {
-                        print(request)
-                        if let trigger = request.trigger as? UNCalendarNotificationTrigger,
-                            let triggerDate = trigger.nextTriggerDate(){
-                            nextTriggerDates.append(triggerDate)
-                        }
-                        
-                        if let nextTriggerDate = nextTriggerDates.min() {
-                            print(nextTriggerDate)
-                            self.setDateForPicker(pickerDate: nextTriggerDate)
-                        }
-                    }
-                })
-                reminderView.isHidden = false
-            }
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
     }
     
