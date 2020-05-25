@@ -959,7 +959,20 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QBN-Qb-t6f">
                                 <rect key="frame" x="0.0" y="60" width="414" height="836"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add-product-icon" translatesAutoresizingMaskIntoConstraints="NO" id="1Bi-Ef-HDa">
+                                        <rect key="frame" x="144.5" y="27" width="125" height="125"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="125" id="0Bt-i0-fzH"/>
+                                            <constraint firstAttribute="width" constant="125" id="TLf-Se-Cl5"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="1Bi-Ef-HDa" firstAttribute="top" secondItem="QBN-Qb-t6f" secondAttribute="top" constant="27" id="48L-sb-eXf"/>
+                                    <constraint firstItem="1Bi-Ef-HDa" firstAttribute="centerX" secondItem="QBN-Qb-t6f" secondAttribute="centerX" id="MRj-CJ-OwU"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -1077,6 +1090,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="add-product-icon" width="24" height="24"/>
         <image name="add_product_icon" width="2492" height="2219"/>
         <image name="app_logo" width="138" height="175"/>
         <image name="background" width="375" height="812"/>
