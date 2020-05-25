@@ -933,6 +933,71 @@
             </objects>
             <point key="canvasLocation" x="1989.8550724637682" y="-1162.5"/>
         </scene>
+        <!--Add Product View Controller-->
+        <scene sceneID="b76-es-T4B">
+            <objects>
+                <viewController storyboardIdentifier="AddProductViewController" modalPresentationStyle="fullScreen" id="4NI-uD-buA" customClass="AddProductViewController" customModule="Flawless" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LUc-KH-cLK">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="D1Z-cY-HsJ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <view alpha="0.69999999999999996" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2YP-GW-cY6">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RAT-uh-kN5">
+                                <rect key="frame" x="182" y="44" width="50" height="6"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="FAu-2W-X85"/>
+                                    <constraint firstAttribute="height" constant="6" id="oHk-h5-SJe"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QBN-Qb-t6f">
+                                <rect key="frame" x="0.0" y="60" width="414" height="836"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="D1Z-cY-HsJ" firstAttribute="top" secondItem="LUc-KH-cLK" secondAttribute="top" id="Gjm-zD-TAH"/>
+                            <constraint firstItem="QBN-Qb-t6f" firstAttribute="top" secondItem="LUc-KH-cLK" secondAttribute="top" constant="60" id="IkG-Ya-zvB"/>
+                            <constraint firstItem="QBN-Qb-t6f" firstAttribute="leading" secondItem="2bk-5R-Jc9" secondAttribute="leading" id="Jfa-Hx-fJZ"/>
+                            <constraint firstAttribute="bottom" secondItem="QBN-Qb-t6f" secondAttribute="bottom" id="StV-8T-i2m"/>
+                            <constraint firstItem="RAT-uh-kN5" firstAttribute="centerX" secondItem="LUc-KH-cLK" secondAttribute="centerX" id="VVz-Hh-NHp"/>
+                            <constraint firstAttribute="bottom" secondItem="D1Z-cY-HsJ" secondAttribute="bottom" id="Ylz-C8-dVl"/>
+                            <constraint firstItem="D1Z-cY-HsJ" firstAttribute="leading" secondItem="2bk-5R-Jc9" secondAttribute="leading" id="eog-Oi-MIo"/>
+                            <constraint firstItem="QBN-Qb-t6f" firstAttribute="top" secondItem="RAT-uh-kN5" secondAttribute="bottom" constant="10" id="gfH-Og-FNs"/>
+                            <constraint firstItem="QBN-Qb-t6f" firstAttribute="trailing" secondItem="2bk-5R-Jc9" secondAttribute="trailing" id="j4R-d0-obv"/>
+                            <constraint firstItem="D1Z-cY-HsJ" firstAttribute="trailing" secondItem="2bk-5R-Jc9" secondAttribute="trailing" id="yed-rr-D0L"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="2bk-5R-Jc9"/>
+                    </view>
+                    <connections>
+                        <outlet property="backingImageView" destination="D1Z-cY-HsJ" id="Qi2-p8-kNF"/>
+                        <outlet property="cardView" destination="QBN-Qb-t6f" id="IrN-T8-LUX"/>
+                        <outlet property="cardViewTopConstraint" destination="IkG-Ya-zvB" id="fCY-iF-LC2"/>
+                        <outlet property="dimmerView" destination="2YP-GW-cY6" id="nHw-Em-T3u"/>
+                        <outlet property="handleView" destination="RAT-uh-kN5" id="TmB-16-CdT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JKy-9z-15g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uG3-Gy-yO2">
+                    <rect key="frame" x="0.0" y="0.0" width="50" height="6"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="6" id="CEu-zF-DpT"/>
+                        <constraint firstAttribute="width" constant="50" id="XvG-e9-RIi"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="DuZ-iE-AQT"/>
+                </view>
+            </objects>
+            <point key="canvasLocation" x="2886.9565217391305" y="-1163.1696428571429"/>
+        </scene>
         <!--Today-->
         <scene sceneID="Lr5-AG-EPY">
             <objects>

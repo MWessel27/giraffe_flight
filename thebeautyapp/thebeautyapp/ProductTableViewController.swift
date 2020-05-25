@@ -106,8 +106,20 @@ class ProductTableViewController: UITableViewController {
     {
         let tappedImage = tapGestureRecognizer.view as! UIImageView
 
-        // Your action
-        print("notifications tapped")
+        guard let addProductVC = storyboard?.instantiateViewController(withIdentifier: "AddProductViewController")
+        as? AddProductViewController else {
+            assertionFailure("No view controller ID AddProductViewController in storyboard")
+            return
+        }
+        
+        // Delay the capture of snapshot by 0.1 seconds
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1 , execute: {
+          // take a snapshot of current view and set it as backingImage
+          addProductVC.backingImage = self.tabBarController?.view.asImage()
+          
+          // present the view controller modally without animation
+          self.present(addProductVC, animated: false, completion: nil)
+        })
     }
     
     private func setupUI() {
