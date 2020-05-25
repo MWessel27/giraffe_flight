@@ -473,9 +473,9 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.cellLabel.text = productName
                 
                 if(checked) {
-                    cell.cellLabel.font = UIFont(name: "American Typewriter", size: 22)
+                    cell.cellLabel.font = UIFont(name: "System", size: 24)
                     cell.productDetailTextLabel?.backgroundColor = UIColor.clear
-                    cell.productDetailTextLabel?.font = UIFont(name: "American Typewriter", size: 14)
+                    cell.productDetailTextLabel?.font = UIFont(name: "System", size: 10)
                     cell.productDetailTextLabel?.textColor = UIColor.gray
                     cell.productDetailTextLabel?.text = timeStamp
                     
@@ -484,7 +484,7 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
                     
                     cell.cellSelectedImage.image = UIImage(named: "checkmark.png")!
                 } else {
-                    cell.cellLabel.font = UIFont(name: "American Typewriter", size: 22)
+                    cell.cellLabel.font = UIFont(name: "System", size: 24)
                     cell.cellLabel.backgroundColor = UIColor.clear
                     cell.productDetailTextLabel?.backgroundColor = UIColor.clear
                     cell.productDetailTextLabel?.text = ""
@@ -510,9 +510,9 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.cellLabel.text = productName
                 
                 if(checked) {
-                    cell.cellLabel.font = UIFont(name: "American Typewriter", size: 22)
+                    cell.cellLabel.font = UIFont(name: "System", size: 24)
                     cell.productDetailTextLabel?.backgroundColor = UIColor.clear
-                    cell.productDetailTextLabel?.font = UIFont(name: "American Typewriter", size: 14)
+                    cell.productDetailTextLabel?.font = UIFont(name: "System", size: 10)
                     cell.productDetailTextLabel?.textColor = UIColor.gray
                     cell.productDetailTextLabel?.text = timeStamp
                     
@@ -521,7 +521,7 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
                     
                     cell.cellSelectedImage.image = UIImage(named: "checkmark.png")!
                 } else {
-                    cell.cellLabel.font = UIFont(name: "American Typewriter", size: 22)
+                    cell.cellLabel.font = UIFont(name: "System", size: 24)
                     cell.cellLabel.backgroundColor = UIColor.clear
                     cell.productDetailTextLabel?.backgroundColor = UIColor.clear
                     cell.productDetailTextLabel?.text = ""
@@ -613,16 +613,16 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
         // need to change this to cells having a selected state
         if(mySelectedCell.productDetailTextLabel?.text != "") {
             removeUsedActivity(product: products[indexPath.row], ampm: ampm)
-            mySelectedCell.cellLabel.font = UIFont(name: "American Typewriter", size: 22)
+            mySelectedCell.cellLabel.font = UIFont(name: "System", size: 24)
             mySelectedCell.cellLabel.backgroundColor = UIColor.clear
             mySelectedCell.productDetailTextLabel?.backgroundColor = UIColor.clear
             mySelectedCell.productDetailTextLabel?.text = ""
             mySelectedCell.cellSelectedImage.image = UIImage(named: "checkmarkempty.png")!
         } else {
             addUsedActivity(product: products[indexPath.row], ampm: ampm)
-            mySelectedCell.cellLabel.font = UIFont(name: "American Typewriter", size: 22)
+            mySelectedCell.cellLabel.font = UIFont(name: "System", size: 24)
             mySelectedCell.productDetailTextLabel?.backgroundColor = UIColor.clear
-            mySelectedCell.productDetailTextLabel?.font = UIFont(name: "American Typewriter", size: 14)
+            mySelectedCell.productDetailTextLabel?.font = UIFont(name: "System", size: 10)
             mySelectedCell.productDetailTextLabel?.textColor = UIColor.gray
             
             let date = Date()

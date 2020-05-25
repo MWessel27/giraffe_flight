@@ -264,7 +264,7 @@ extension statsViewController: UITableViewDelegate, UITableViewDataSource {
         cell.accessoryView = imageView
         
         cell.textLabel?.text = productName
-        cell.textLabel?.font = UIFont(name: "American Typewriter", size: 16)
+        cell.textLabel?.font = UIFont(name: "System", size: 16)
         cell.backgroundColor = UIColor.clear
         
         return cell

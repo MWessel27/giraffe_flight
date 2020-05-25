@@ -242,7 +242,7 @@ class ProductTableViewController: UITableViewController {
         let product = products[indexPath.row]
         
         cell.productLabel.text = product.name
-        cell.productLabel.font = UIFont(name: "American Typewriter", size: 22)
+        cell.productLabel.font = UIFont(name: "System", size: 22)
         
         let timeOfDay = products[indexPath.row].ampm
         
