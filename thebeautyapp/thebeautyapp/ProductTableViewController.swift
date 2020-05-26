@@ -293,11 +293,11 @@ class ProductTableViewController: UITableViewController {
         let timeOfDay = products[indexPath.row].ampm
         
         if(timeOfDay == 1) {
-            cell.photoImageView.image = UIImage(named: "sunIconSmall.png")!
+            cell.photoImageView.image = UIImage(named: "sun-icon.png")!
         } else if(timeOfDay == 2) {
-            cell.photoImageView.image = UIImage(named: "moonIconSmall.png")!
+            cell.photoImageView.image = UIImage(named: "moon-icon.png")!
         } else {
-            cell.photoImageView.image = UIImage(named: "sunMoonIcon.png")!
+            cell.photoImageView.image = UIImage(named: "sun-moon-icon.png")!
         }
         cell.backgroundColor = UIColor.clear
         

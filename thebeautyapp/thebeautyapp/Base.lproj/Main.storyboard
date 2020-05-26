@@ -509,7 +509,7 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="41k-nH-K36"/>
                                 </connections>
                             </tableView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sunIcon" translatesAutoresizingMaskIntoConstraints="NO" id="M1h-kW-77N">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sun-icon" translatesAutoresizingMaskIntoConstraints="NO" id="M1h-kW-77N">
                                 <rect key="frame" x="10" y="142" width="75" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="75" id="Iy6-1p-JU3"/>
@@ -595,7 +595,7 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="xua-Qr-Da7"/>
                                 </connections>
                             </tableView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="moonIcon" translatesAutoresizingMaskIntoConstraints="NO" id="g3m-SU-p6O">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="moon-icon" translatesAutoresizingMaskIntoConstraints="NO" id="g3m-SU-p6O">
                                 <rect key="frame" x="13" y="480.5" width="75" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="75" id="GFf-d9-KFq"/>
@@ -1127,8 +1127,10 @@
         <image name="checkmarkempty" width="30" height="30"/>
         <image name="close" width="22" height="23"/>
         <image name="getting_started" width="375" height="812"/>
+        <image name="moon-icon" width="75" height="75"/>
         <image name="moonIcon" width="60" height="60"/>
         <image name="products-icon" width="25" height="25"/>
+        <image name="sun-icon" width="75" height="75"/>
         <image name="sunIcon" width="60" height="60"/>
         <image name="today-icon" width="25" height="25"/>
     </resources>

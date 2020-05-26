@@ -245,11 +245,11 @@ extension statsViewController: UITableViewDelegate, UITableViewDataSource {
         let timeOfDay = daysUsedActivities[indexPath.row].ampm
         let timeStamp = daysUsedActivities[indexPath.row].time
     
-        var image : UIImage = UIImage(named: "sunMoonIcon.png")!
+        var image : UIImage = UIImage(named: "sun-moon-icon.png")!
         if(timeOfDay == 1) {
-            image = UIImage(named: "sunIconSmall.png")!
+            image = UIImage(named: "sun-icon.png")!
         } else if(timeOfDay == 2) {
-            image = UIImage(named: "moonIconSmall.png")!
+            image = UIImage(named: "moon-icon.png")!
         }
         
         cell.imageView?.image = image
