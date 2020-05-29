@@ -788,7 +788,7 @@
                                     <outlet property="delegate" destination="JJD-8J-CQr" id="5Kg-FR-oNB"/>
                                 </connections>
                             </tableView>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Df0-36-fAN" customClass="RatingControl" customModule="Flawless" customModuleProvider="target">
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Df0-36-fAN" customClass="RatingControl" customModule="Flawless" customModuleProvider="target">
                                 <rect key="frame" x="81" y="448" width="252" height="44"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="starCount">
@@ -986,6 +986,14 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o4y-pX-C63">
+                                        <rect key="frame" x="32" y="753" width="350" height="41"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="24"/>
+                                        <state key="normal" title="ADD">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
@@ -993,6 +1001,8 @@
                                     <constraint firstItem="1Bi-Ef-HDa" firstAttribute="centerX" secondItem="QBN-Qb-t6f" secondAttribute="centerX" id="5Hd-H1-HeA"/>
                                     <constraint firstItem="rkA-ey-uF5" firstAttribute="top" secondItem="1Bi-Ef-HDa" secondAttribute="bottom" constant="40" id="E6N-kO-dsY"/>
                                     <constraint firstAttribute="trailing" secondItem="jPZ-fl-IRH" secondAttribute="trailing" constant="101" id="FNP-cC-CCU"/>
+                                    <constraint firstAttribute="trailing" secondItem="o4y-pX-C63" secondAttribute="trailing" constant="32" id="GHi-KJ-lWZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="o4y-pX-C63" secondAttribute="bottom" constant="42" id="HDB-Dp-Dqt"/>
                                     <constraint firstItem="jPZ-fl-IRH" firstAttribute="top" secondItem="rkA-ey-uF5" secondAttribute="bottom" constant="40" id="IgE-iq-xWF"/>
                                     <constraint firstItem="MHE-WT-cxC" firstAttribute="top" secondItem="QBN-Qb-t6f" secondAttribute="top" constant="20" id="Pmg-EQ-o8w"/>
                                     <constraint firstItem="1Bi-Ef-HDa" firstAttribute="top" secondItem="QBN-Qb-t6f" secondAttribute="top" constant="54" id="U0w-Fd-xcp"/>
@@ -1001,6 +1011,7 @@
                                     <constraint firstItem="jPZ-fl-IRH" firstAttribute="leading" secondItem="QBN-Qb-t6f" secondAttribute="leading" constant="101" id="iLi-3i-7bA"/>
                                     <constraint firstItem="rkA-ey-uF5" firstAttribute="leading" secondItem="QBN-Qb-t6f" secondAttribute="leading" constant="77" id="kdp-ry-f3r"/>
                                     <constraint firstItem="MHE-WT-cxC" firstAttribute="leading" secondItem="QBN-Qb-t6f" secondAttribute="leading" constant="12" id="nfD-hx-Xbb"/>
+                                    <constraint firstItem="o4y-pX-C63" firstAttribute="leading" secondItem="QBN-Qb-t6f" secondAttribute="leading" constant="32" id="uFN-62-LJC"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1020,6 +1031,7 @@
                         <viewLayoutGuide key="safeArea" id="2bk-5R-Jc9"/>
                     </view>
                     <connections>
+                        <outlet property="addProductButton" destination="o4y-pX-C63" id="fdy-q8-7vd"/>
                         <outlet property="backingImageView" destination="D1Z-cY-HsJ" id="Qi2-p8-kNF"/>
                         <outlet property="cardView" destination="QBN-Qb-t6f" id="IrN-T8-LUX"/>
                         <outlet property="cardViewTopConstraint" destination="IkG-Ya-zvB" id="fCY-iF-LC2"/>

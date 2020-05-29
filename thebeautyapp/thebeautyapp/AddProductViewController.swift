@@ -21,6 +21,11 @@ class AddProductViewController: UIViewController {
     
     @IBOutlet weak var handleView: UIView!
     
+    
+    @IBOutlet weak var addProductButton: UIButton!
+    
+    
+    
     enum CardViewState {
         case expanded
         case normal
@@ -38,6 +43,11 @@ class AddProductViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // setup bottom button
+        addProductButton.clipsToBounds = true
+        addProductButton.layer.cornerRadius = 5
+        addProductButton.layer.borderWidth = 1
 
         // update the backing image view
         backingImageView.image = backingImage
