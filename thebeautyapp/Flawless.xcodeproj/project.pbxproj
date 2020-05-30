@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		03624F8F3CFBB42A2BC339ED /* Pods_FlawlessTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63727D62FAC9D72A645A3B99 /* Pods_FlawlessTests.framework */; };
+		7B0C9E2D2482926D005198CC /* DayOfWeekButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0C9E2C2482926D005198CC /* DayOfWeekButton.swift */; };
 		7B279194247AE00E0038286E /* uiTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B279193247AE00E0038286E /* uiTabBarController.swift */; };
 		7B279196247B24CB0038286E /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B279195247B24CB0038286E /* NotificationsViewController.swift */; };
 		7B279198247B25890038286E /* UIViewSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B279197247B25890038286E /* UIViewSnapshot.swift */; };
@@ -70,6 +71,7 @@
 /* Begin PBXFileReference section */
 		302E9339782EAE2D916B49D3 /* Pods-FlawlessTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlawlessTests.release.xcconfig"; path = "Target Support Files/Pods-FlawlessTests/Pods-FlawlessTests.release.xcconfig"; sourceTree = "<group>"; };
 		63727D62FAC9D72A645A3B99 /* Pods_FlawlessTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlawlessTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B0C9E2C2482926D005198CC /* DayOfWeekButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeekButton.swift; sourceTree = "<group>"; };
 		7B279193247AE00E0038286E /* uiTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uiTabBarController.swift; sourceTree = "<group>"; };
 		7B279195247B24CB0038286E /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		7B279197247B25890038286E /* UIViewSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewSnapshot.swift; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 				959D89A420B393B300E17F2E /* AppDelegate.swift */,
 				959D89A620B393B300E17F2E /* homeViewController.swift */,
 				959D89A820B393B300E17F2E /* Main.storyboard */,
+				7B0C9E2C2482926D005198CC /* DayOfWeekButton.swift */,
 				7B364F8B247C34360088CC5B /* AddProductViewController.swift */,
 				7B279197247B25890038286E /* UIViewSnapshot.swift */,
 				7B279195247B24CB0038286E /* NotificationsViewController.swift */,
@@ -606,6 +609,7 @@
 				953958F620C469BE00DD069A /* FSCalendarConstants.m in Sources */,
 				7BF2678422C97FA900F92263 /* HomeTableViewCell.swift in Sources */,
 				D755BF1720E0040C00FD77F1 /* product.swift in Sources */,
+				7B0C9E2D2482926D005198CC /* DayOfWeekButton.swift in Sources */,
 				954D192120C45DA10051AE9A /* statsViewController.swift in Sources */,
 				954D191F20C448650051AE9A /* splashViewController.swift in Sources */,
 				953958F020C469BE00DD069A /* FSCalendar.m in Sources */,

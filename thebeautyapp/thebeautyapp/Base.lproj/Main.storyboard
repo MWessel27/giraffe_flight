@@ -108,7 +108,6 @@
                                 <connections>
                                     <outlet property="photoImageView" destination="trX-Sw-Esu" id="4Mb-RN-tei"/>
                                     <outlet property="productLabel" destination="ezK-ie-YBM" id="hPX-ss-Y5l"/>
-                                    <segue destination="cEp-ob-1BY" kind="show" identifier="ShowDetail" id="g5p-ZB-7VM"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -150,7 +149,7 @@
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Fk-l6-QDx">
-                                <rect key="frame" x="0.0" y="140" width="414" height="522"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="618"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lGr-95-tds">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="675"/>
@@ -293,7 +292,7 @@
                                                 </subviews>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="an9-p8-SNq">
-                                                <rect key="frame" x="16" y="0.0" width="68" height="23"/>
+                                                <rect key="frame" x="16" y="86" width="68" height="0.0"/>
                                                 <state key="normal" title="Close" image="close"/>
                                                 <connections>
                                                     <action selector="dismissModal:" destination="bHK-c3-xdU" eventType="touchUpInside" id="9UZ-Nx-tc0"/>
@@ -788,7 +787,7 @@
                                     <outlet property="delegate" destination="JJD-8J-CQr" id="5Kg-FR-oNB"/>
                                 </connections>
                             </tableView>
-                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Df0-36-fAN" customClass="RatingControl" customModule="Flawless" customModuleProvider="target">
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Df0-36-fAN" customClass="RatingControl" customModule="Flawless" customModuleProvider="target">
                                 <rect key="frame" x="81" y="448" width="252" height="44"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="starCount">
@@ -971,8 +970,11 @@
                                         <rect key="frame" x="77" y="219" width="260" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                        <connections>
+                                            <action selector="prodNameChanged:" destination="4NI-uD-buA" eventType="editingChanged" id="7wT-IC-2h9"/>
+                                        </connections>
                                     </textField>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="jPZ-fl-IRH">
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="2" translatesAutoresizingMaskIntoConstraints="NO" id="jPZ-fl-IRH">
                                         <rect key="frame" x="101" y="293" width="212" height="32"/>
                                         <segments>
                                             <segment title="Morning"/>
@@ -993,12 +995,103 @@
                                         <state key="normal" title="ADD">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="addProductButtonTapped:" destination="4NI-uD-buA" eventType="touchUpInside" id="ZdJ-v5-1sM"/>
+                                        </connections>
+                                    </button>
+                                    <stackView opaque="NO" contentMode="center" distribution="fillEqually" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="GNq-ek-vJH">
+                                        <rect key="frame" x="66" y="360" width="282" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PuK-wL-rJ2" customClass="DayOfWeekButton" customModule="Flawless" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <state key="normal" title="S">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="sundayButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="Ibb-5u-NXa"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bro-ou-Idb" customClass="DayOfWeekButton" customModule="Flawless" customModuleProvider="target">
+                                                <rect key="frame" x="42" y="0.0" width="30" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <state key="normal" title="M">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="mondayButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="DmX-sH-u4i"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LRX-Xr-CsF" customClass="DayOfWeekButton" customModule="Flawless" customModuleProvider="target">
+                                                <rect key="frame" x="84" y="0.0" width="30" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <state key="normal" title="T">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="tuesdayButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="PcE-fy-Nca"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zAO-Lx-hja" customClass="DayOfWeekButton" customModule="Flawless" customModuleProvider="target">
+                                                <rect key="frame" x="126" y="0.0" width="30" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <state key="normal" title="W">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="wednesdayButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="LTJ-eA-HQn"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iet-Bn-XBY" customClass="DayOfWeekButton" customModule="Flawless" customModuleProvider="target">
+                                                <rect key="frame" x="168" y="0.0" width="30" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <state key="normal" title="T">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="thursdayButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="P2m-O5-9bE"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ghm-X3-Kor" customClass="DayOfWeekButton" customModule="Flawless" customModuleProvider="target">
+                                                <rect key="frame" x="210" y="0.0" width="30" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <state key="normal" title="F">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="fridayButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="YvF-6t-kod"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bzh-Gh-t7T" customClass="DayOfWeekButton" customModule="Flawless" customModuleProvider="target">
+                                                <rect key="frame" x="252" y="0.0" width="30" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <state key="normal" title="S">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="saturdayButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="lPZ-bv-E8z"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uoz-GW-8Th">
+                                        <rect key="frame" x="148" y="413" width="118" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" title="Every Day">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="everyDayButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="aw0-SF-zwG"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
+                                    <constraint firstItem="Uoz-GW-8Th" firstAttribute="leading" secondItem="QBN-Qb-t6f" secondAttribute="leading" constant="148" id="0Ue-eI-Dtm"/>
+                                    <constraint firstItem="Uoz-GW-8Th" firstAttribute="top" secondItem="GNq-ek-vJH" secondAttribute="bottom" constant="23" id="2dk-VH-0FR"/>
                                     <constraint firstItem="1Bi-Ef-HDa" firstAttribute="top" secondItem="MHE-WT-cxC" secondAttribute="bottom" id="3aj-hb-oYq"/>
                                     <constraint firstItem="1Bi-Ef-HDa" firstAttribute="centerX" secondItem="QBN-Qb-t6f" secondAttribute="centerX" id="5Hd-H1-HeA"/>
+                                    <constraint firstItem="GNq-ek-vJH" firstAttribute="leading" secondItem="QBN-Qb-t6f" secondAttribute="leading" constant="66" id="7yQ-C5-Uyw"/>
                                     <constraint firstItem="rkA-ey-uF5" firstAttribute="top" secondItem="1Bi-Ef-HDa" secondAttribute="bottom" constant="40" id="E6N-kO-dsY"/>
                                     <constraint firstAttribute="trailing" secondItem="jPZ-fl-IRH" secondAttribute="trailing" constant="101" id="FNP-cC-CCU"/>
                                     <constraint firstAttribute="trailing" secondItem="o4y-pX-C63" secondAttribute="trailing" constant="32" id="GHi-KJ-lWZ"/>
@@ -1007,11 +1100,14 @@
                                     <constraint firstItem="MHE-WT-cxC" firstAttribute="top" secondItem="QBN-Qb-t6f" secondAttribute="top" constant="20" id="Pmg-EQ-o8w"/>
                                     <constraint firstItem="1Bi-Ef-HDa" firstAttribute="top" secondItem="QBN-Qb-t6f" secondAttribute="top" constant="54" id="U0w-Fd-xcp"/>
                                     <constraint firstAttribute="trailing" secondItem="MHE-WT-cxC" secondAttribute="trailing" constant="239" id="YWY-6d-TkN"/>
+                                    <constraint firstItem="GNq-ek-vJH" firstAttribute="top" secondItem="jPZ-fl-IRH" secondAttribute="bottom" constant="36" id="acR-5e-43s"/>
                                     <constraint firstAttribute="trailing" secondItem="rkA-ey-uF5" secondAttribute="trailing" constant="77" id="iDD-TS-Vl5"/>
                                     <constraint firstItem="jPZ-fl-IRH" firstAttribute="leading" secondItem="QBN-Qb-t6f" secondAttribute="leading" constant="101" id="iLi-3i-7bA"/>
                                     <constraint firstItem="rkA-ey-uF5" firstAttribute="leading" secondItem="QBN-Qb-t6f" secondAttribute="leading" constant="77" id="kdp-ry-f3r"/>
                                     <constraint firstItem="MHE-WT-cxC" firstAttribute="leading" secondItem="QBN-Qb-t6f" secondAttribute="leading" constant="12" id="nfD-hx-Xbb"/>
+                                    <constraint firstAttribute="trailing" secondItem="GNq-ek-vJH" secondAttribute="trailing" constant="66" id="qmn-B3-zEn"/>
                                     <constraint firstItem="o4y-pX-C63" firstAttribute="leading" secondItem="QBN-Qb-t6f" secondAttribute="leading" constant="32" id="uFN-62-LJC"/>
+                                    <constraint firstAttribute="trailing" secondItem="Uoz-GW-8Th" secondAttribute="trailing" constant="148" id="y82-ub-xRy"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1035,8 +1131,20 @@
                         <outlet property="backingImageView" destination="D1Z-cY-HsJ" id="Qi2-p8-kNF"/>
                         <outlet property="cardView" destination="QBN-Qb-t6f" id="IrN-T8-LUX"/>
                         <outlet property="cardViewTopConstraint" destination="IkG-Ya-zvB" id="fCY-iF-LC2"/>
+                        <outlet property="daySelectStackView" destination="GNq-ek-vJH" id="P4x-jC-OaI"/>
                         <outlet property="dimmerView" destination="2YP-GW-cY6" id="nHw-Em-T3u"/>
+                        <outlet property="everyDayButton" destination="Uoz-GW-8Th" id="twN-Rv-xal"/>
+                        <outlet property="fridayButton" destination="ghm-X3-Kor" id="Zys-Uz-ZIm"/>
                         <outlet property="handleView" destination="RAT-uh-kN5" id="TmB-16-CdT"/>
+                        <outlet property="mondayButton" destination="bro-ou-Idb" id="Be2-55-McK"/>
+                        <outlet property="newProductField" destination="rkA-ey-uF5" id="YBe-NB-N8Y"/>
+                        <outlet property="saturdayButton" destination="Bzh-Gh-t7T" id="bc1-CF-IZT"/>
+                        <outlet property="sundayButton" destination="PuK-wL-rJ2" id="jj5-ql-DFw"/>
+                        <outlet property="thursdayButton" destination="Iet-Bn-XBY" id="uCK-ZB-qgZ"/>
+                        <outlet property="timeOfDaySelector" destination="jPZ-fl-IRH" id="UPR-OP-aY8"/>
+                        <outlet property="titleLabel" destination="MHE-WT-cxC" id="GsU-3b-AWj"/>
+                        <outlet property="tuesdayButton" destination="LRX-Xr-CsF" id="sFc-aU-jP0"/>
+                        <outlet property="wednesdayButton" destination="zAO-Lx-hja" id="3Il-L2-jrl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JKy-9z-15g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
