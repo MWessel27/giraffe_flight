@@ -66,6 +66,14 @@ class AddProductViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Looks for single or multiple taps.
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+
+        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
+        //tap.cancelsTouchesInView = false
+
+        view.addGestureRecognizer(tap)
+        
         if let savedProds = loadProducts() {
             products += savedProds
         }
@@ -219,7 +227,7 @@ class AddProductViewController: UIViewController, UITextFieldDelegate {
             // adding a new product
 
             self.newProductField.delegate = self
-            self.newProductField.becomeFirstResponder()
+//            self.newProductField.becomeFirstResponder()
 
             addProductButton.isEnabled = false
             addProductButton.alpha = 0.4
@@ -230,6 +238,12 @@ class AddProductViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    //Calls this function when the tap is recognized.
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+    
     @IBAction func prodNameChanged(_ sender: Any) {
         if(newProductField.text?.isEmpty == false) {
             addProductButton.isEnabled = true
@@ -238,6 +252,15 @@ class AddProductViewController: UIViewController, UITextFieldDelegate {
             addProductButton.isEnabled = false
             addProductButton.alpha = 0.5
         }
+    }
+    
+    @IBAction func newProductFieldClick(_ sender: Any) {
+        showCard(atState: .expanded)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     
     @IBAction func sundayButtonClick(_ sender: Any) {

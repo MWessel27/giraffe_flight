@@ -971,6 +971,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                         <connections>
+                                            <action selector="newProductFieldClick:" destination="4NI-uD-buA" eventType="editingDidBegin" id="pnY-pe-QVR"/>
                                             <action selector="prodNameChanged:" destination="4NI-uD-buA" eventType="editingChanged" id="7wT-IC-2h9"/>
                                         </connections>
                                     </textField>
