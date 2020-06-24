@@ -34,7 +34,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mod-yA-7yK">
-                                <rect key="frame" x="16" y="48" width="63" height="23"/>
+                                <rect key="frame" x="16" y="48" width="63" height="46"/>
                                 <state key="normal" title="Close" image="close"/>
                                 <connections>
                                     <action selector="dismissModal:" destination="bHK-c3-xdU" eventType="touchUpInside" id="cdS-P9-APs"/>
@@ -155,7 +155,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="675"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pxm-PV-ZNP">
-                                                <rect key="frame" x="156.5" y="575" width="91" height="33"/>
+                                                <rect key="frame" x="156.5" y="635" width="91" height="33"/>
                                                 <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="18"/>
                                                 <state key="normal" title="Every Day">
                                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -171,7 +171,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="center" distribution="fillEqually" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="7KP-7C-5fq">
-                                                <rect key="frame" x="61" y="518" width="282" height="33"/>
+                                                <rect key="frame" x="61" y="578" width="282" height="33"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p22-af-guG">
                                                         <rect key="frame" x="0.0" y="0.0" width="30" height="33"/>
@@ -246,7 +246,7 @@
                                                 </subviews>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On these days:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MWb-eb-4gh">
-                                                <rect key="frame" x="36" y="457" width="151.5" height="25.5"/>
+                                                <rect key="frame" x="36" y="517" width="151.5" height="25.5"/>
                                                 <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -267,10 +267,10 @@
                                                 </connections>
                                             </textField>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="90" translatesAutoresizingMaskIntoConstraints="NO" id="rCk-S9-Ofv">
-                                                <rect key="frame" x="97" y="363" width="210" height="60"/>
+                                                <rect key="frame" x="37" y="363" width="330" height="120"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S6G-1V-zqs">
-                                                        <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                                         <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-80"/>
                                                         <state key="normal" backgroundImage="sunIcon">
                                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -280,7 +280,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nPb-6E-U6t">
-                                                        <rect key="frame" x="150" y="0.0" width="60" height="60"/>
+                                                        <rect key="frame" x="210" y="0.0" width="120" height="120"/>
                                                         <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-80"/>
                                                         <state key="normal" backgroundImage="moonIcon">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -292,7 +292,7 @@
                                                 </subviews>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="an9-p8-SNq">
-                                                <rect key="frame" x="16" y="86" width="68" height="0.0"/>
+                                                <rect key="frame" x="16" y="0.0" width="90" height="23"/>
                                                 <state key="normal" title="Close" image="close"/>
                                                 <connections>
                                                     <action selector="dismissModal:" destination="bHK-c3-xdU" eventType="touchUpInside" id="9UZ-Nx-tc0"/>
@@ -1002,7 +1002,7 @@
                                     <stackView opaque="NO" contentMode="center" distribution="fillEqually" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="GNq-ek-vJH">
                                         <rect key="frame" x="66" y="360" width="282" height="30"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PuK-wL-rJ2" customClass="DayOfWeekButton" customModule="Flawless" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PuK-wL-rJ2">
                                                 <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <state key="normal" title="S">
@@ -1010,19 +1010,21 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="sundayButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="Ibb-5u-NXa"/>
+                                                    <action selector="sundayButtonClick:" destination="4NI-uD-buA" eventType="touchUpInside" id="nU6-go-Qzs"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bro-ou-Idb" customClass="DayOfWeekButton" customModule="Flawless" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bro-ou-Idb">
                                                 <rect key="frame" x="42" y="0.0" width="30" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <state key="normal" title="M">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
+                                                    <action selector="mondayButtonClick:" destination="4NI-uD-buA" eventType="touchUpInside" id="9Km-IJ-ntY"/>
                                                     <action selector="mondayButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="DmX-sH-u4i"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LRX-Xr-CsF" customClass="DayOfWeekButton" customModule="Flawless" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LRX-Xr-CsF">
                                                 <rect key="frame" x="84" y="0.0" width="30" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <state key="normal" title="T">
@@ -1030,9 +1032,10 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="tuesdayButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="PcE-fy-Nca"/>
+                                                    <action selector="tuesdayButtonClick:" destination="4NI-uD-buA" eventType="touchUpInside" id="fQI-0y-sFa"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zAO-Lx-hja" customClass="DayOfWeekButton" customModule="Flawless" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zAO-Lx-hja">
                                                 <rect key="frame" x="126" y="0.0" width="30" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <state key="normal" title="W">
@@ -1040,9 +1043,10 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="wednesdayButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="LTJ-eA-HQn"/>
+                                                    <action selector="wednesdayButtonClick:" destination="4NI-uD-buA" eventType="touchUpInside" id="V44-44-XsS"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iet-Bn-XBY" customClass="DayOfWeekButton" customModule="Flawless" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iet-Bn-XBY">
                                                 <rect key="frame" x="168" y="0.0" width="30" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <state key="normal" title="T">
@@ -1050,9 +1054,10 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="thursdayButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="P2m-O5-9bE"/>
+                                                    <action selector="thursdayButtonClick:" destination="4NI-uD-buA" eventType="touchUpInside" id="Tpe-8K-Mco"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ghm-X3-Kor" customClass="DayOfWeekButton" customModule="Flawless" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ghm-X3-Kor">
                                                 <rect key="frame" x="210" y="0.0" width="30" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <state key="normal" title="F">
@@ -1060,15 +1065,17 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="fridayButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="YvF-6t-kod"/>
+                                                    <action selector="fridayButtonClick:" destination="4NI-uD-buA" eventType="touchUpInside" id="lGa-gj-jNv"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bzh-Gh-t7T" customClass="DayOfWeekButton" customModule="Flawless" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bzh-Gh-t7T">
                                                 <rect key="frame" x="252" y="0.0" width="30" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <state key="normal" title="S">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
+                                                    <action selector="saturdayButtonClick:" destination="4NI-uD-buA" eventType="touchUpInside" id="43t-Nr-DD7"/>
                                                     <action selector="saturdayButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="lPZ-bv-E8z"/>
                                                 </connections>
                                             </button>
@@ -1082,6 +1089,7 @@
                                         </state>
                                         <connections>
                                             <action selector="everyDayButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="aw0-SF-zwG"/>
+                                            <action selector="everyDayButtonClicked:" destination="4NI-uD-buA" eventType="touchUpInside" id="MAm-oe-LYG"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1092,6 +1100,7 @@
                                     <constraint firstItem="1Bi-Ef-HDa" firstAttribute="top" secondItem="MHE-WT-cxC" secondAttribute="bottom" id="3aj-hb-oYq"/>
                                     <constraint firstItem="1Bi-Ef-HDa" firstAttribute="centerX" secondItem="QBN-Qb-t6f" secondAttribute="centerX" id="5Hd-H1-HeA"/>
                                     <constraint firstItem="GNq-ek-vJH" firstAttribute="leading" secondItem="QBN-Qb-t6f" secondAttribute="leading" constant="66" id="7yQ-C5-Uyw"/>
+                                    <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="MHE-WT-cxC" secondAttribute="trailing" constant="239" id="9iN-xi-hkt"/>
                                     <constraint firstItem="rkA-ey-uF5" firstAttribute="top" secondItem="1Bi-Ef-HDa" secondAttribute="bottom" constant="40" id="E6N-kO-dsY"/>
                                     <constraint firstAttribute="trailing" secondItem="jPZ-fl-IRH" secondAttribute="trailing" constant="101" id="FNP-cC-CCU"/>
                                     <constraint firstAttribute="trailing" secondItem="o4y-pX-C63" secondAttribute="trailing" constant="32" id="GHi-KJ-lWZ"/>
@@ -1099,7 +1108,6 @@
                                     <constraint firstItem="jPZ-fl-IRH" firstAttribute="top" secondItem="rkA-ey-uF5" secondAttribute="bottom" constant="40" id="IgE-iq-xWF"/>
                                     <constraint firstItem="MHE-WT-cxC" firstAttribute="top" secondItem="QBN-Qb-t6f" secondAttribute="top" constant="20" id="Pmg-EQ-o8w"/>
                                     <constraint firstItem="1Bi-Ef-HDa" firstAttribute="top" secondItem="QBN-Qb-t6f" secondAttribute="top" constant="54" id="U0w-Fd-xcp"/>
-                                    <constraint firstAttribute="trailing" secondItem="MHE-WT-cxC" secondAttribute="trailing" constant="239" id="YWY-6d-TkN"/>
                                     <constraint firstItem="GNq-ek-vJH" firstAttribute="top" secondItem="jPZ-fl-IRH" secondAttribute="bottom" constant="36" id="acR-5e-43s"/>
                                     <constraint firstAttribute="trailing" secondItem="rkA-ey-uF5" secondAttribute="trailing" constant="77" id="iDD-TS-Vl5"/>
                                     <constraint firstItem="jPZ-fl-IRH" firstAttribute="leading" secondItem="QBN-Qb-t6f" secondAttribute="leading" constant="101" id="iLi-3i-7bA"/>

@@ -112,13 +112,49 @@ class AddProductViewController: UIViewController, UITextFieldDelegate {
         handleView.layer.cornerRadius = 3.0
         
         // setup day selection buttons
-//        everyDayButton.setBackgroundColor(color: UIColor.black, forState: .selected)
-//        everyDayButton.setTitleColor(UIColor.white, for: .selected)
+        everyDayButton.setBackgroundColor(color: UIColor.black, forState: .selected)
+        everyDayButton.setTitleColor(UIColor.white, for: .selected)
 //        everyDayButton.isSelected = true
-//        everyDayButton.layer.cornerRadius = 10
+        everyDayButton.layer.cornerRadius = 10
 //        if(everyDayButton.isSelected) {
 //            everyDayButton.titleLabel?.font = UIFont.systemFont(ofSize: 19.0, weight: UIFont.Weight.bold)
 //        }
+        
+        sundayButton.setBackgroundColor(color: UIColor.black, forState: .selected)
+        sundayButton.setTitleColor(UIColor.white, for: .selected)
+//        sundayButton.isSelected = false
+        sundayButton.layer.cornerRadius = 10
+        
+        mondayButton.setBackgroundColor(color: UIColor.black, forState: .selected)
+        mondayButton.setTitleColor(UIColor.white, for: .selected)
+//        mondayButton.isSelected = false
+        mondayButton.layer.cornerRadius = 10
+
+        tuesdayButton.setBackgroundColor(color: UIColor.black, forState: .selected)
+        tuesdayButton.setTitleColor(UIColor.white, for: .selected)
+//        tuesdayButton.isSelected = false
+        tuesdayButton.layer.cornerRadius = 10
+        
+        wednesdayButton.setBackgroundColor(color: UIColor.black, forState: .selected)
+        wednesdayButton.setTitleColor(UIColor.white, for: .selected)
+//        wednesdayButton.isSelected = false
+        wednesdayButton.layer.cornerRadius = 10
+        
+        thursdayButton.setBackgroundColor(color: UIColor.black, forState: .selected)
+        thursdayButton.setTitleColor(UIColor.white, for: .selected)
+//        thursdayButton.isSelected = false
+        thursdayButton.layer.cornerRadius = 10
+        
+        fridayButton.setBackgroundColor(color: UIColor.black, forState: .selected)
+        fridayButton.setTitleColor(UIColor.white, for: .selected)
+//        fridayButton.isSelected = false
+        fridayButton.layer.cornerRadius = 10
+        
+        saturdayButton.setBackgroundColor(color: UIColor.black, forState: .selected)
+        saturdayButton.setTitleColor(UIColor.white, for: .selected)
+//        saturdayButton.isSelected = false
+        saturdayButton.layer.cornerRadius = 10
+        
         if let product = product {
             // editing an existing product
             self.newProductField.delegate = self
@@ -204,8 +240,83 @@ class AddProductViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    @IBAction func sundayButtonClick(_ sender: Any) {
+        if(daysOfWeek[0] == 1) {
+            sundayButton.isSelected = false
+            daysOfWeek[0] = 0
+        } else {
+            sundayButton.isSelected = true
+            daysOfWeek[0] = 1
+        }
+        checkEveryday()
+    }
     
     
+    @IBAction func mondayButtonClick(_ sender: Any) {
+        if(daysOfWeek[1] == 1) {
+            mondayButton.isSelected = false
+            daysOfWeek[1] = 0
+        } else {
+            mondayButton.isSelected = true
+            daysOfWeek[1] = 1
+        }
+        checkEveryday()
+    }
+    
+    @IBAction func tuesdayButtonClick(_ sender: Any) {
+        if(daysOfWeek[2] == 1) {
+            tuesdayButton.isSelected = false
+            daysOfWeek[2] = 0
+        } else {
+            tuesdayButton.isSelected = true
+            daysOfWeek[2] = 1
+        }
+        checkEveryday()
+    }
+    
+    @IBAction func wednesdayButtonClick(_ sender: Any) {
+        if(daysOfWeek[3] == 1) {
+            wednesdayButton.isSelected = false
+            daysOfWeek[3] = 0
+        } else {
+            wednesdayButton.isSelected = true
+            daysOfWeek[3] = 1
+        }
+        checkEveryday()
+    }
+    
+    @IBAction func thursdayButtonClick(_ sender: Any) {
+        if(daysOfWeek[4] == 1) {
+            thursdayButton.isSelected = false
+            daysOfWeek[4] = 0
+        } else {
+            thursdayButton.isSelected = true
+            daysOfWeek[4] = 1
+        }
+        checkEveryday()
+    }
+    
+    @IBAction func fridayButtonClick(_ sender: Any) {
+        if(daysOfWeek[5] == 1) {
+            fridayButton.isSelected = false
+            daysOfWeek[5] = 0
+        } else {
+            fridayButton.isSelected = true
+            daysOfWeek[5] = 1
+        }
+        checkEveryday()
+    }
+    
+    @IBAction func saturdayButtonClick(_ sender: Any) {
+        if(daysOfWeek[6] == 1) {
+            saturdayButton.isSelected = false
+            daysOfWeek[6] = 0
+        } else {
+            saturdayButton.isSelected = true
+            daysOfWeek[6] = 1
+        }
+        checkEveryday()
+    }
     
     private func loadProducts() -> [Product]? {
         return NSKeyedUnarchiver.unarchiveObject(withFile: Product.ArchiveURL.path) as? [Product]
@@ -415,6 +526,43 @@ class AddProductViewController: UIViewController, UITextFieldDelegate {
         
         hideCardAndGoBack()
         self.delegate?.addProduct(product: product!)
+    }
+    
+    // day of week button functions
+    
+    func checkEveryday() {
+        if(!daysOfWeek.contains(0)) {
+            everyDayButton.layer.cornerRadius = 5
+            everyDayButton.isSelected = true
+            resetAllButtons()
+        } else {
+            everyDayButton.isSelected = false
+        }
+    }
+    
+    func resetAllButtons() {
+        sundayButton.isSelected = false
+        mondayButton.isSelected = false
+        tuesdayButton.isSelected = false
+        wednesdayButton.isSelected = false
+        thursdayButton.isSelected = false
+        fridayButton.isSelected = false
+        saturdayButton.isSelected = false
+        
+        for n in 0 ..< daysOfWeek.count {
+            daysOfWeek[n] = 0
+        }
+    }
+    
+    
+    @IBAction func everyDayButtonClicked(_ sender: Any) {
+        if(everyDayButton.isSelected == true) {
+            everyDayButton.isSelected = false
+        } else {
+            everyDayButton.layer.cornerRadius = 5
+            everyDayButton.isSelected = true
+            resetAllButtons()
+        }
     }
     
 }
