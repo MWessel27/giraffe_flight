@@ -15,9 +15,12 @@ import CoreData
 import os.log
 import Firebase
 
-class homeViewController: UIViewController {
+class homeViewController: UIViewController, addEditProduct {
     
     private let imageView = UIImageView(image: UIImage(named: "notifications-icon"))
+    
+    @IBOutlet weak var addIconImageView: UIImageView!
+    @IBOutlet weak var noProductIcon: UIImageView!
     
     @IBOutlet var homeBackgroundView: UIView!
     
@@ -32,10 +35,6 @@ class homeViewController: UIViewController {
     
     @IBOutlet weak var dayProductEditButton: UIButton!
     @IBOutlet weak var nightProductEditButton: UIButton!
-    
-    @IBOutlet weak var noProductImage: UIImageView!
-    @IBOutlet weak var addProductButton: UIButton!
-    @IBOutlet weak var noProductLabel: UILabel!
     
     @IBOutlet weak var cellSelectionIcon: UIImageView!
     @IBOutlet weak var cellLabel: UILabel!
@@ -79,6 +78,30 @@ class homeViewController: UIViewController {
         })
     }
     
+    @objc func addIconImageTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        let tappedImage = tapGestureRecognizer.view as! UIImageView
+
+        // Your action
+        print("notifications tapped")
+        guard let addProductVC = storyboard?.instantiateViewController(withIdentifier: "AddProductViewController")
+        as? AddProductViewController else {
+            assertionFailure("No view controller ID AddProductViewController in storyboard")
+            return
+        }
+        
+        addProductVC.delegate = self
+        
+        // Delay the capture of snapshot by 0.1 seconds
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1 , execute: {
+          // take a snapshot of current view and set it as backingImage
+          addProductVC.backingImage = self.tabBarController?.view.asImage()
+          
+          // present the view controller modally without animation
+          self.present(addProductVC, animated: false, completion: nil)
+        })
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -86,6 +109,10 @@ class homeViewController: UIViewController {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
         imageView.isUserInteractionEnabled = true
         imageView.addGestureRecognizer(tapGestureRecognizer)
+        
+        let addGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(addIconImageTapped(tapGestureRecognizer:)))
+        addIconImageView.isUserInteractionEnabled = true
+        addIconImageView.addGestureRecognizer(addGestureRecognizer)
         
         // returns an integer from 1 - 7, with 1 being Sunday and 7 being Saturday
         dayOfWeek = Date().dayNumberOfWeek()!
@@ -99,16 +126,9 @@ class homeViewController: UIViewController {
         formatter.dateFormat = "yyyy-MM-dd"
         todaysDate = formatter.string(from: date)
         
-//        let rightBarButton = UIBarButtonItem(title: "PRODUCTS", style: UIBarButtonItem.Style.plain, target: self, action: #selector(goToProdList))
-//        self.navigationItem.rightBarButtonItem = rightBarButton
-//
-//        let leftBarButton = UIBarButtonItem(title: "STATS", style: UIBarButtonItem.Style.plain, target: self, action: #selector(goToStatsCal))
-//        self.navigationItem.leftBarButtonItem = leftBarButton
-        
         if(products.count != 0) {
-            noProductLabel.isHidden = true
-            noProductImage.isHidden = true
-            addProductButton.isHidden = true
+            noProductIcon.isHidden = true
+            addIconImageView.isHidden = true
             
             mTableView.tableFooterView = UIView(frame: CGRect.zero)
             pmTableView.tableFooterView = UIView(frame: CGRect.zero)
@@ -119,10 +139,9 @@ class homeViewController: UIViewController {
             pmTableView.backgroundColor = UIColor.clear
             pmTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         } else {
-            noProductLabel.isHidden = false
-            noProductImage.isHidden = false
-            addProductButton.isHidden = false
-            
+            noProductIcon.isHidden = false
+            addIconImageView.isHidden = false
+
             dayIcon.isHidden = true
             nightIcon.isHidden = true
             dayLabel.isHidden = true
@@ -132,44 +151,19 @@ class homeViewController: UIViewController {
             
             mTableView.isHidden = true;
             pmTableView.isHidden = true;
-            
-            if let presentedViewController = self.storyboard?.instantiateViewController(withIdentifier: "gsPopUpID") {
-                presentedViewController.providesPresentationContextTransitionStyle = true
-                presentedViewController.definesPresentationContext = true
-                presentedViewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext;
-                presentedViewController.view.backgroundColor = UIColor.init(white: 0.4, alpha: 0.8)
-                self.present(presentedViewController, animated: true, completion: nil)
-            }
         }
     }
     
-//    required init?(coder aDecoder: NSCoder) {
-//        super.init(coder: aDecoder)
-//         
-//        // Initialize Tab Bar Item
-//        tabBarItem = UITabBarItem(title: "Today", image: UIImage(named: "today-icon"), tag: 0)
-//    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated);
-        
-//        let navBar: UINavigationBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: 320, height: 44))
-//        self.view.addSubview(navBar);
-        
-//        let rightBarButton = UIBarButtonItem(title: "PRODUCTS", style: UIBarButtonItem.Style.plain, target: self, action: #selector(goToProdList))
-//        self.navigationItem.rightBarButtonItem = rightBarButton
-//
-//        let leftBarButton = UIBarButtonItem(title: "STATS", style: UIBarButtonItem.Style.plain, target: self, action: #selector(goToStatsCal))
-//        self.navigationItem.leftBarButtonItem = leftBarButton
         
         if let savedProds = loadProducts() {
             products = savedProds
         }
         
         if(products.count != 0) {
-            noProductLabel.isHidden = true
-            noProductImage.isHidden = true
-            addProductButton.isHidden = true
+            noProductIcon.isHidden = true
+            addIconImageView.isHidden = true
             
             dayIcon.isHidden = false
             nightIcon.isHidden = false
@@ -190,9 +184,8 @@ class homeViewController: UIViewController {
             pmTableView.backgroundColor = UIColor.clear
             pmTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         } else {
-            noProductLabel.isHidden = false
-            noProductImage.isHidden = false
-            addProductButton.isHidden = false
+            noProductIcon.isHidden = false
+            addIconImageView.isHidden = false
             
             dayIcon.isHidden = true
             nightIcon.isHidden = true
@@ -203,14 +196,6 @@ class homeViewController: UIViewController {
 
             mTableView.isHidden = true;
             pmTableView.isHidden = true;
-            
-            if let presentedViewController = self.storyboard?.instantiateViewController(withIdentifier: "gsPopUpID") {
-                presentedViewController.providesPresentationContextTransitionStyle = true
-                presentedViewController.definesPresentationContext = true
-                presentedViewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext;
-                presentedViewController.view.backgroundColor = UIColor.init(white: 0.4, alpha: 0.8)
-                self.present(presentedViewController, animated: true, completion: nil)
-            }
         }
         
         self.mTableView.reloadData();
@@ -225,9 +210,8 @@ class homeViewController: UIViewController {
         }
         
         if(products.count != 0) {
-            noProductLabel.isHidden = true
-            noProductImage.isHidden = true
-            addProductButton.isHidden = true
+            noProductIcon.isHidden = true
+            addIconImageView.isHidden = true
             
             dayIcon.isHidden = false
             nightIcon.isHidden = false
@@ -248,9 +232,8 @@ class homeViewController: UIViewController {
             pmTableView.backgroundColor = UIColor.clear
             pmTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         } else {
-            noProductLabel.isHidden = false
-            noProductImage.isHidden = false
-            addProductButton.isHidden = false
+            noProductIcon.isHidden = false
+            addIconImageView.isHidden = false
             
             dayIcon.isHidden = true
             nightIcon.isHidden = true
@@ -261,14 +244,6 @@ class homeViewController: UIViewController {
 
             mTableView.isHidden = true;
             pmTableView.isHidden = true;
-            
-            if let presentedViewController = self.storyboard?.instantiateViewController(withIdentifier: "gsPopUpID") {
-                presentedViewController.providesPresentationContextTransitionStyle = true
-                presentedViewController.definesPresentationContext = true
-                presentedViewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext;
-                presentedViewController.view.backgroundColor = UIColor.init(white: 0.4, alpha: 0.8)
-                self.present(presentedViewController, animated: true, completion: nil)
-            }
         }
         
         self.mTableView.reloadData();
@@ -386,6 +361,11 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
         
         product.usedActivities.append(usedActivity!)
         
+        saveProducts()
+    }
+    
+    func addProduct(product: Product) {
+        products.append(product)
         saveProducts()
     }
     
