@@ -67,250 +67,6 @@
             </objects>
             <point key="canvasLocation" x="2913" y="292"/>
         </scene>
-        <!--ADD PRODUCT-->
-        <scene sceneID="Zde-f7-4jH">
-            <objects>
-                <viewController storyboardIdentifier="newProductViewController" title="ADD PRODUCT" modalPresentationStyle="pageSheet" id="cEp-ob-1BY" customClass="newProductViewController" customModule="Flawless" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="tJl-VK-Anp">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="750"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lxy-HD-6IR">
-                                <rect key="frame" x="0.0" y="670" width="414" height="80"/>
-                                <color key="backgroundColor" red="0.69411764710000001" green="0.99607843139999996" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="HIl-UY-yZ3"/>
-                                    <constraint firstAttribute="width" constant="414" id="z1D-Mt-zcq"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="22"/>
-                                <state key="normal" title="ADD PRODUCT">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <connections>
-                                    <segue destination="QDD-wT-aIh" kind="unwind" unwindAction="unwindToProductListWithSender:" id="txS-XH-klO"/>
-                                </connections>
-                            </button>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Fk-l6-QDx">
-                                <rect key="frame" x="0.0" y="44" width="414" height="618"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lGr-95-tds">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="675"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pxm-PV-ZNP">
-                                                <rect key="frame" x="156.5" y="635" width="91" height="33"/>
-                                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="18"/>
-                                                <state key="normal" title="Every Day">
-                                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="everyDayButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="mx7-L8-WjR"/>
-                                                </connections>
-                                            </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I use it in the:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zKD-q4-83B">
-                                                <rect key="frame" x="36" y="301" width="143.5" height="25.5"/>
-                                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="22"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <stackView opaque="NO" contentMode="center" distribution="fillEqually" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="7KP-7C-5fq">
-                                                <rect key="frame" x="61" y="578" width="282" height="33"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p22-af-guG">
-                                                        <rect key="frame" x="0.0" y="0.0" width="30" height="33"/>
-                                                        <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="18"/>
-                                                        <state key="normal" title="S">
-                                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="sundayButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="vDH-9W-bnk"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ibN-75-FAd">
-                                                        <rect key="frame" x="42" y="0.0" width="30" height="33"/>
-                                                        <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="18"/>
-                                                        <state key="normal" title="M">
-                                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="mondayButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="C3T-ZF-Zso"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IUn-dc-RPO">
-                                                        <rect key="frame" x="84" y="0.0" width="30" height="33"/>
-                                                        <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="18"/>
-                                                        <state key="normal" title="T">
-                                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="tuesdayButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="ud4-sM-CtW"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jle-Co-miS">
-                                                        <rect key="frame" x="126" y="0.0" width="30" height="33"/>
-                                                        <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="18"/>
-                                                        <state key="normal" title="W">
-                                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="wednesdayButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="UfJ-cH-P38"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5m5-yD-oma">
-                                                        <rect key="frame" x="168" y="0.0" width="30" height="33"/>
-                                                        <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="18"/>
-                                                        <state key="normal" title="T">
-                                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="thursdayButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="KkI-jx-37g"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DK9-iB-zWp">
-                                                        <rect key="frame" x="210" y="0.0" width="30" height="33"/>
-                                                        <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="18"/>
-                                                        <state key="normal" title="F">
-                                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="fridayButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="qNE-Tq-8I7"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hEn-RF-KnO">
-                                                        <rect key="frame" x="252" y="0.0" width="30" height="33"/>
-                                                        <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="18"/>
-                                                        <state key="normal" title="S">
-                                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="saturdayButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="MZL-8V-ldg"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On these days:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MWb-eb-4gh">
-                                                <rect key="frame" x="36" y="517" width="151.5" height="25.5"/>
-                                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="22"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add_product_icon" translatesAutoresizingMaskIntoConstraints="NO" id="DYI-uC-CiQ">
-                                                <rect key="frame" x="127" y="52" width="150" height="150"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="150" id="KNo-rX-Mcu"/>
-                                                    <constraint firstAttribute="height" constant="150" id="zJ8-Wq-F9T"/>
-                                                </constraints>
-                                            </imageView>
-                                            <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Product Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rM1-gG-WsL">
-                                                <rect key="frame" x="90" y="232" width="224" height="34"/>
-                                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="20"/>
-                                                <textInputTraits key="textInputTraits" spellCheckingType="yes" returnKeyType="next"/>
-                                                <connections>
-                                                    <action selector="prodNameFieldChanged:" destination="cEp-ob-1BY" eventType="editingChanged" id="vOi-Wq-2Uv"/>
-                                                </connections>
-                                            </textField>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="90" translatesAutoresizingMaskIntoConstraints="NO" id="rCk-S9-Ofv">
-                                                <rect key="frame" x="37" y="363" width="330" height="120"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S6G-1V-zqs">
-                                                        <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
-                                                        <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-80"/>
-                                                        <state key="normal" backgroundImage="sunIcon">
-                                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="sunButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="l6U-bd-eUt"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nPb-6E-U6t">
-                                                        <rect key="frame" x="210" y="0.0" width="120" height="120"/>
-                                                        <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-80"/>
-                                                        <state key="normal" backgroundImage="moonIcon">
-                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="moonButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="U5J-0H-I5V"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="an9-p8-SNq">
-                                                <rect key="frame" x="16" y="0.0" width="90" height="23"/>
-                                                <state key="normal" title="Close" image="close"/>
-                                                <connections>
-                                                    <action selector="dismissModal:" destination="cEp-ob-1BY" eventType="touchUpInside" id="fl2-ZU-dKQ"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstItem="rM1-gG-WsL" firstAttribute="top" secondItem="DYI-uC-CiQ" secondAttribute="bottom" constant="30" id="0GW-8w-Yhe"/>
-                                            <constraint firstItem="7KP-7C-5fq" firstAttribute="top" secondItem="MWb-eb-4gh" secondAttribute="bottom" constant="35.5" id="3Oe-C7-1d4"/>
-                                            <constraint firstItem="MWb-eb-4gh" firstAttribute="top" secondItem="rCk-S9-Ofv" secondAttribute="bottom" constant="34" id="4li-cr-f59"/>
-                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="an9-p8-SNq" secondAttribute="trailing" constant="20" symbolic="YES" id="EuN-Xm-gTn"/>
-                                            <constraint firstItem="an9-p8-SNq" firstAttribute="leading" secondItem="lGr-95-tds" secondAttribute="leading" constant="16" id="NO5-Zq-l8c"/>
-                                            <constraint firstAttribute="height" constant="675" id="UlY-i4-127"/>
-                                            <constraint firstItem="DYI-uC-CiQ" firstAttribute="top" secondItem="lGr-95-tds" secondAttribute="top" constant="52" id="V52-4t-f40"/>
-                                            <constraint firstItem="Pxm-PV-ZNP" firstAttribute="centerX" secondItem="DYI-uC-CiQ" secondAttribute="centerX" id="WiU-kf-DCm"/>
-                                            <constraint firstItem="rCk-S9-Ofv" firstAttribute="top" secondItem="zKD-q4-83B" secondAttribute="bottom" constant="36.5" id="YRb-fZ-Dc4"/>
-                                            <constraint firstItem="DYI-uC-CiQ" firstAttribute="centerX" secondItem="lGr-95-tds" secondAttribute="centerX" constant="-5" id="YVz-uo-LGT"/>
-                                            <constraint firstAttribute="bottom" secondItem="an9-p8-SNq" secondAttribute="bottom" constant="652" id="aXu-Ip-QS9"/>
-                                            <constraint firstItem="rCk-S9-Ofv" firstAttribute="centerX" secondItem="DYI-uC-CiQ" secondAttribute="centerX" id="bcT-Xz-6hz"/>
-                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="zKD-q4-83B" secondAttribute="trailing" constant="20" symbolic="YES" id="d5C-qn-syq"/>
-                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="MWb-eb-4gh" secondAttribute="trailing" constant="20" symbolic="YES" id="dNd-lc-Y5D"/>
-                                            <constraint firstItem="Pxm-PV-ZNP" firstAttribute="top" secondItem="7KP-7C-5fq" secondAttribute="bottom" constant="24" id="fm5-zm-0Jq"/>
-                                            <constraint firstItem="rM1-gG-WsL" firstAttribute="centerX" secondItem="DYI-uC-CiQ" secondAttribute="centerX" id="gTl-1s-H4x"/>
-                                            <constraint firstItem="zKD-q4-83B" firstAttribute="leading" secondItem="lGr-95-tds" secondAttribute="leading" constant="36" id="gxd-dw-ljK"/>
-                                            <constraint firstItem="7KP-7C-5fq" firstAttribute="centerX" secondItem="DYI-uC-CiQ" secondAttribute="centerX" id="iDC-9l-p3S"/>
-                                            <constraint firstItem="zKD-q4-83B" firstAttribute="top" secondItem="rM1-gG-WsL" secondAttribute="bottom" constant="35" id="jV3-NF-jhK"/>
-                                            <constraint firstItem="MWb-eb-4gh" firstAttribute="leading" secondItem="lGr-95-tds" secondAttribute="leading" constant="36" id="uNE-D1-VkL"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="lGr-95-tds" firstAttribute="top" secondItem="1Fk-l6-QDx" secondAttribute="top" id="3Hq-Cu-o07"/>
-                                    <constraint firstItem="lGr-95-tds" firstAttribute="leading" secondItem="1Fk-l6-QDx" secondAttribute="leading" id="JJx-vS-jD8"/>
-                                    <constraint firstAttribute="trailing" secondItem="lGr-95-tds" secondAttribute="trailing" id="mDw-pP-84O"/>
-                                    <constraint firstAttribute="bottom" secondItem="lGr-95-tds" secondAttribute="bottom" constant="-7" id="uka-WA-PF5"/>
-                                </constraints>
-                            </scrollView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="lxy-HD-6IR" firstAttribute="top" secondItem="1Fk-l6-QDx" secondAttribute="bottom" constant="8" id="HqV-Xk-YL5"/>
-                            <constraint firstItem="lGr-95-tds" firstAttribute="width" secondItem="tJl-VK-Anp" secondAttribute="width" id="Mop-qO-cUX"/>
-                            <constraint firstItem="lxy-HD-6IR" firstAttribute="trailing" secondItem="aQf-hH-jA4" secondAttribute="trailing" id="N8T-0J-gVk"/>
-                            <constraint firstItem="1Fk-l6-QDx" firstAttribute="trailing" secondItem="aQf-hH-jA4" secondAttribute="trailing" id="OwN-f5-AAR"/>
-                            <constraint firstItem="lxy-HD-6IR" firstAttribute="leading" secondItem="aQf-hH-jA4" secondAttribute="leading" id="V54-QK-3pW"/>
-                            <constraint firstItem="an9-p8-SNq" firstAttribute="top" secondItem="aQf-hH-jA4" secondAttribute="top" id="gjs-Hs-8Le"/>
-                            <constraint firstItem="1Fk-l6-QDx" firstAttribute="top" secondItem="aQf-hH-jA4" secondAttribute="top" id="h7j-bL-kOB"/>
-                            <constraint firstItem="1Fk-l6-QDx" firstAttribute="leading" secondItem="aQf-hH-jA4" secondAttribute="leading" id="spr-QX-tSN"/>
-                            <constraint firstAttribute="bottom" secondItem="lxy-HD-6IR" secondAttribute="bottom" id="x6M-Sw-3cc"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="aQf-hH-jA4"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="xIE-ER-SUo"/>
-                    <size key="freeformSize" width="414" height="750"/>
-                    <connections>
-                        <outlet property="closeButton" destination="an9-p8-SNq" id="RpJ-V1-K9l"/>
-                        <outlet property="everyDayButton" destination="Pxm-PV-ZNP" id="lal-yK-juM"/>
-                        <outlet property="fridayButton" destination="DK9-iB-zWp" id="96A-2k-v70"/>
-                        <outlet property="mondayButton" destination="ibN-75-FAd" id="Gzm-GF-c9W"/>
-                        <outlet property="moonButton" destination="nPb-6E-U6t" id="hyk-U0-lYR"/>
-                        <outlet property="newProductField" destination="rM1-gG-WsL" id="ymb-HI-iYG"/>
-                        <outlet property="saturdayButton" destination="hEn-RF-KnO" id="CaV-qf-82i"/>
-                        <outlet property="submitNewProductBtn" destination="lxy-HD-6IR" id="5vO-zf-GZi"/>
-                        <outlet property="sunButton" destination="S6G-1V-zqs" id="U9h-pn-hjT"/>
-                        <outlet property="sundayButton" destination="p22-af-guG" id="xNJ-PX-S7u"/>
-                        <outlet property="thursdayButton" destination="5m5-yD-oma" id="kDE-Jp-FJF"/>
-                        <outlet property="tuesdayButton" destination="IUn-dc-RPO" id="erz-li-Bud"/>
-                        <outlet property="wednesdayButton" destination="Jle-Co-miS" id="DhX-Ga-bwu"/>
-                    </connections>
-                </viewController>
-                <exit id="QDD-wT-aIh" userLabel="Exit" sceneMemberID="exit"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Pbq-ts-TRr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4164" y="292"/>
-        </scene>
         <!--Splash View Controller-->
         <scene sceneID="z3z-95-zBG">
             <objects>
@@ -365,10 +121,10 @@
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HomeTableViewCell" id="RWB-qV-bYH" customClass="HomeTableViewCell" customModule="Flawless" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="394" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="394" height="41"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RWB-qV-bYH" id="HUU-zr-bAt">
-                                            <rect key="frame" x="0.0" y="0.0" width="394" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="394" height="41"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmarkempty" translatesAutoresizingMaskIntoConstraints="NO" id="NlK-Af-IJb">
@@ -380,7 +136,7 @@
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Detail Text Label" textAlignment="natural" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5lt-2C-dPa" userLabel="detailTextLabel">
                                                     <rect key="frame" x="41" y="22" width="94" height="15"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -437,7 +193,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7aG-fT-8Le">
                                 <rect key="frame" x="364" y="110" width="35" height="35"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                                <state key="normal" title="Edit"/>
+                                <state key="normal" title="Edit">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="editDayProductButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JMh-DK-D1N"/>
                                 </connections>
@@ -452,10 +210,10 @@
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HomeTableViewCell" id="zmW-bj-QH3" customClass="HomeTableViewCell" customModule="Flawless" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="394" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="394" height="41"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zmW-bj-QH3" id="6Im-4I-Aum">
-                                            <rect key="frame" x="0.0" y="0.0" width="394" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="394" height="41"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmarkempty" translatesAutoresizingMaskIntoConstraints="NO" id="aDc-Sw-NK5">
@@ -467,7 +225,7 @@
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Detail Text Label" textAlignment="natural" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aCI-UW-zdX" userLabel="detailTextLabel">
                                                     <rect key="frame" x="41" y="22" width="94" height="15"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -523,7 +281,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="71M-uo-k11">
                                 <rect key="frame" x="366" y="477.5" width="35" height="35"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                                <state key="normal" title="Edit"/>
+                                <state key="normal" title="Edit">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="editNightProductButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8PE-kd-DSh"/>
                                 </connections>
@@ -607,32 +367,32 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="RlP-lO-GrZ"/>
                                 <exclude reference="1Yw-jk-TZ2"/>
                                 <exclude reference="VrH-N9-g7Z"/>
                                 <exclude reference="fWc-aq-f7l"/>
                                 <exclude reference="pip-Sr-cYG"/>
                                 <exclude reference="hzW-IF-qPs"/>
                                 <exclude reference="gdw-y0-0dW"/>
-                                <exclude reference="RlP-lO-GrZ"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="constraints">
+                                <exclude reference="FeU-Us-1VJ"/>
+                                <include reference="RlP-lO-GrZ"/>
+                                <exclude reference="ifS-sB-Afi"/>
                                 <include reference="1Yw-jk-TZ2"/>
                                 <exclude reference="Ce4-3z-0QO"/>
                                 <include reference="VrH-N9-g7Z"/>
                                 <include reference="fWc-aq-f7l"/>
                                 <include reference="pip-Sr-cYG"/>
-                                <include reference="hzW-IF-qPs"/>
                                 <exclude reference="las-He-6aj"/>
                                 <exclude reference="nZh-Mx-FRq"/>
+                                <include reference="hzW-IF-qPs"/>
                                 <exclude reference="Xkf-Rx-9Be"/>
                                 <exclude reference="jL6-SO-DAL"/>
-                                <include reference="gdw-y0-0dW"/>
                                 <exclude reference="aIo-hV-Ld3"/>
-                                <exclude reference="FeU-Us-1VJ"/>
-                                <include reference="RlP-lO-GrZ"/>
-                                <exclude reference="ifS-sB-Afi"/>
+                                <include reference="gdw-y0-0dW"/>
                             </mask>
                         </variation>
                     </view>
@@ -666,6 +426,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8PD-ad-g81" customClass="FSCalendar">
                                 <rect key="frame" x="0.0" y="140" width="414" height="271"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderDefaultColor">
                                         <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -674,19 +435,34 @@
                                         <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="todayColor">
-                                        <color key="value" red="0.69411764710000001" green="0.99607843139999996" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="titleTodayColor">
-                                        <color key="value" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="eventDefaultColor">
-                                        <color key="value" red="0.63137254899999995" green="0.80392156859999997" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="selectionColor">
-                                        <color key="value" red="0.61176470589999998" green="0.58431372550000005" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="eventSelectionColor">
-                                        <color key="value" red="0.61176470589999998" green="0.58431372550000005" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="titleDefaultColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="titleSelectionColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="headerTitleColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="weekdayTextColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="todaySelectionColor">
+                                        <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -712,7 +488,7 @@
                                     <outlet property="delegate" destination="JJD-8J-CQr" id="5Kg-FR-oNB"/>
                                 </connections>
                             </tableView>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Df0-36-fAN" customClass="RatingControl" customModule="Flawless" customModuleProvider="target">
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Df0-36-fAN" customClass="RatingControl" customModule="Flawless" customModuleProvider="target">
                                 <rect key="frame" x="81" y="448" width="252" height="44"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="starCount">
@@ -935,7 +711,6 @@
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="sundayButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="Ibb-5u-NXa"/>
                                                     <action selector="sundayButtonClick:" destination="4NI-uD-buA" eventType="touchUpInside" id="nU6-go-Qzs"/>
                                                 </connections>
                                             </button>
@@ -947,7 +722,6 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="mondayButtonClick:" destination="4NI-uD-buA" eventType="touchUpInside" id="9Km-IJ-ntY"/>
-                                                    <action selector="mondayButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="DmX-sH-u4i"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LRX-Xr-CsF">
@@ -957,7 +731,6 @@
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="tuesdayButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="PcE-fy-Nca"/>
                                                     <action selector="tuesdayButtonClick:" destination="4NI-uD-buA" eventType="touchUpInside" id="fQI-0y-sFa"/>
                                                 </connections>
                                             </button>
@@ -968,7 +741,6 @@
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="wednesdayButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="LTJ-eA-HQn"/>
                                                     <action selector="wednesdayButtonClick:" destination="4NI-uD-buA" eventType="touchUpInside" id="V44-44-XsS"/>
                                                 </connections>
                                             </button>
@@ -979,7 +751,6 @@
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="thursdayButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="P2m-O5-9bE"/>
                                                     <action selector="thursdayButtonClick:" destination="4NI-uD-buA" eventType="touchUpInside" id="Tpe-8K-Mco"/>
                                                 </connections>
                                             </button>
@@ -990,7 +761,6 @@
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="fridayButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="YvF-6t-kod"/>
                                                     <action selector="fridayButtonClick:" destination="4NI-uD-buA" eventType="touchUpInside" id="lGa-gj-jNv"/>
                                                 </connections>
                                             </button>
@@ -1002,7 +772,6 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="saturdayButtonClick:" destination="4NI-uD-buA" eventType="touchUpInside" id="43t-Nr-DD7"/>
-                                                    <action selector="saturdayButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="lPZ-bv-E8z"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -1014,7 +783,6 @@
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="everyDayButtonClick:" destination="cEp-ob-1BY" eventType="touchUpInside" id="aw0-SF-zwG"/>
                                             <action selector="everyDayButtonClicked:" destination="4NI-uD-buA" eventType="touchUpInside" id="MAm-oe-LYG"/>
                                         </connections>
                                     </button>
@@ -1122,6 +890,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="7tC-Aa-pI1" kind="relationship" relationship="viewControllers" id="hJX-Tn-3ln"/>
@@ -1175,18 +945,14 @@
     <resources>
         <image name="add-icon-large" width="200" height="200"/>
         <image name="add-product-icon-large" width="200" height="200"/>
-        <image name="add_product_icon" width="2492" height="2219"/>
         <image name="app_logo" width="138" height="175"/>
         <image name="background" width="375" height="812"/>
         <image name="calendar-icon" width="25" height="25"/>
         <image name="checkmarkempty" width="30" height="30"/>
-        <image name="close" width="22" height="23"/>
         <image name="moon-icon" width="75" height="75"/>
-        <image name="moonIcon" width="60" height="60"/>
         <image name="no_products_icon_light" width="500" height="500"/>
         <image name="products-icon" width="25" height="25"/>
         <image name="sun-icon" width="75" height="75"/>
-        <image name="sunIcon" width="60" height="60"/>
         <image name="today-icon" width="25" height="25"/>
     </resources>
 </document>

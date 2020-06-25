@@ -294,23 +294,23 @@ class homeViewController: UIViewController, addEditProduct {
     }
     
     
-    @IBAction func addProductButtonClicked(_ sender: Any) {
-        if let presentedViewController = self.storyboard?.instantiateViewController(withIdentifier: "newProductViewController") {
-            presentedViewController.providesPresentationContextTransitionStyle = true
-            presentedViewController.definesPresentationContext = true
-            presentedViewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext;
-            presentedViewController.view.backgroundColor = UIColor.init(white: 0.4, alpha: 0.8)
-            self.present(presentedViewController, animated: true, completion: nil)
-        }
-    }
-    
-    @IBAction func unwindToProductList(sender: UIStoryboardSegue) {
-        self.view.window?.rootViewController?.dismiss(animated: false, completion: nil)
-        if let sourceViewController = sender.source as? newProductViewController, let product = sourceViewController.product {
-            products.append(product)
-            saveProducts()
-        }
-    }
+//    @IBAction func addProductButtonClicked(_ sender: Any) {
+//        if let presentedViewController = self.storyboard?.instantiateViewController(withIdentifier: "newProductViewController") {
+//            presentedViewController.providesPresentationContextTransitionStyle = true
+//            presentedViewController.definesPresentationContext = true
+//            presentedViewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext;
+//            presentedViewController.view.backgroundColor = UIColor.init(white: 0.4, alpha: 0.8)
+//            self.present(presentedViewController, animated: true, completion: nil)
+//        }
+//    }
+//    
+//    @IBAction func unwindToProductList(sender: UIStoryboardSegue) {
+//        self.view.window?.rootViewController?.dismiss(animated: false, completion: nil)
+//        if let sourceViewController = sender.source as? newProductViewController, let product = sourceViewController.product {
+//            products.append(product)
+//            saveProducts()
+//        }
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -455,7 +455,7 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
                 if(checked) {
                     cell.cellLabel.font = UIFont(name: "System", size: 24)
                     cell.productDetailTextLabel?.backgroundColor = UIColor.clear
-                    cell.productDetailTextLabel?.font = UIFont(name: "System", size: 10)
+                    cell.productDetailTextLabel?.font = UIFont(name: "System", size: 8)
                     cell.productDetailTextLabel?.textColor = UIColor.gray
                     cell.productDetailTextLabel?.text = timeStamp
                     
@@ -492,7 +492,7 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
                 if(checked) {
                     cell.cellLabel.font = UIFont(name: "System", size: 24)
                     cell.productDetailTextLabel?.backgroundColor = UIColor.clear
-                    cell.productDetailTextLabel?.font = UIFont(name: "System", size: 10)
+                    cell.productDetailTextLabel?.font = UIFont(name: "System", size: 8)
                     cell.productDetailTextLabel?.textColor = UIColor.gray
                     cell.productDetailTextLabel?.text = timeStamp
                     
@@ -602,7 +602,7 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
             addUsedActivity(product: products[indexPath.row], ampm: ampm)
             mySelectedCell.cellLabel.font = UIFont(name: "System", size: 24)
             mySelectedCell.productDetailTextLabel?.backgroundColor = UIColor.clear
-            mySelectedCell.productDetailTextLabel?.font = UIFont(name: "System", size: 10)
+            mySelectedCell.productDetailTextLabel?.font = UIFont(name: "System", size: 8)
             mySelectedCell.productDetailTextLabel?.textColor = UIColor.gray
             
             let date = Date()
