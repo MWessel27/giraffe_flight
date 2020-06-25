@@ -65,20 +65,25 @@ class statsViewController: UIViewController, FSCalendarDataSource, FSCalendarDel
         // Do any additional setup after loading the view.
         statsProductList.reloadData()
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated);
-        
-        getUsedActivities(date: selectedDate)
-        setDayRating()
-
-        statsProductList.reloadData()
-    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
-
-        getUsedActivities(date: selectedDate)
+        
+        products = []
+        
+        if let savedProds = loadProducts() {
+            products += savedProds
+        }
+        
+        getDatesWithEvent()
+        
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        todaysDate = formatter.string(from: date)
+        selectedDate = todaysDate
+        
+        getUsedActivities(date: todaysDate)
         setDayRating()
         
         statsProductList.reloadData()
