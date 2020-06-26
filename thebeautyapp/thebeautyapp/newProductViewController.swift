@@ -47,12 +47,6 @@ class newProductViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if #available(iOS 13.0, *) {
-            overrideUserInterfaceStyle = .light
-        } else {
-            // Fallback on earlier versions
-        }
-        
         closeButton.isHidden = true
         
         if(presentingViewController == nil) {

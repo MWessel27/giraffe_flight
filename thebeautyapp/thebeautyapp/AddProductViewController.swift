@@ -66,12 +66,6 @@ class AddProductViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if #available(iOS 13.0, *) {
-            overrideUserInterfaceStyle = .light
-        } else {
-            // Fallback on earlier versions
-        }
-        
         //Looks for single or multiple taps.
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
 
@@ -125,48 +119,63 @@ class AddProductViewController: UIViewController, UITextFieldDelegate {
         handleView.clipsToBounds = true
         handleView.layer.cornerRadius = 3.0
         
-        // setup day selection buttons
-        everyDayButton.setBackgroundColor(color: UIColor.black, forState: .selected)
-        everyDayButton.setTitleColor(UIColor.white, for: .selected)
-//        everyDayButton.isSelected = true
-        everyDayButton.layer.cornerRadius = 10
-//        if(everyDayButton.isSelected) {
-//            everyDayButton.titleLabel?.font = UIFont.systemFont(ofSize: 19.0, weight: UIFont.Weight.bold)
-//        }
-        
-        sundayButton.setBackgroundColor(color: UIColor.black, forState: .selected)
-        sundayButton.setTitleColor(UIColor.white, for: .selected)
-//        sundayButton.isSelected = false
-        sundayButton.layer.cornerRadius = 10
-        
-        mondayButton.setBackgroundColor(color: UIColor.black, forState: .selected)
-        mondayButton.setTitleColor(UIColor.white, for: .selected)
-//        mondayButton.isSelected = false
-        mondayButton.layer.cornerRadius = 10
+        if #available(iOS 13.0, *) {
+            everyDayButton.setBackgroundColor(color: .label, forState: .selected)
+            everyDayButton.setTitleColor(.systemBackground, for: .selected)
+            
+            sundayButton.setBackgroundColor(color: .label, forState: .selected)
+            sundayButton.setTitleColor(.systemBackground, for: .selected)
+            
+            mondayButton.setBackgroundColor(color: .label, forState: .selected)
+            mondayButton.setTitleColor(.systemBackground, for: .selected)
+            
+            tuesdayButton.setBackgroundColor(color: .label, forState: .selected)
+            tuesdayButton.setTitleColor(.systemBackground, for: .selected)
+            
+            wednesdayButton.setBackgroundColor(color: .label, forState: .selected)
+            wednesdayButton.setTitleColor(.systemBackground, for: .selected)
+            
+            thursdayButton.setBackgroundColor(color: .label, forState: .selected)
+            thursdayButton.setTitleColor(.systemBackground, for: .selected)
+            
+            fridayButton.setBackgroundColor(color: .label, forState: .selected)
+            fridayButton.setTitleColor(.systemBackground, for: .selected)
+            
+            saturdayButton.setBackgroundColor(color: .label, forState: .selected)
+            saturdayButton.setTitleColor(.systemBackground, for: .selected)
+        } else {
+            // Fallback on earlier versions
+            everyDayButton.setBackgroundColor(color: UIColor.black, forState: .selected)
+            everyDayButton.setTitleColor(UIColor.white, for: .selected)
+            
+            sundayButton.setBackgroundColor(color: UIColor.black, forState: .selected)
+            sundayButton.setTitleColor(UIColor.white, for: .selected)
+            
+            mondayButton.setBackgroundColor(color: UIColor.black, forState: .selected)
+            mondayButton.setTitleColor(UIColor.white, for: .selected)
 
-        tuesdayButton.setBackgroundColor(color: UIColor.black, forState: .selected)
-        tuesdayButton.setTitleColor(UIColor.white, for: .selected)
-//        tuesdayButton.isSelected = false
+            tuesdayButton.setBackgroundColor(color: UIColor.black, forState: .selected)
+            tuesdayButton.setTitleColor(UIColor.white, for: .selected)
+            
+            wednesdayButton.setBackgroundColor(color: UIColor.black, forState: .selected)
+            wednesdayButton.setTitleColor(UIColor.white, for: .selected)
+            
+            thursdayButton.setBackgroundColor(color: UIColor.black, forState: .selected)
+            thursdayButton.setTitleColor(UIColor.white, for: .selected)
+            
+            fridayButton.setBackgroundColor(color: UIColor.black, forState: .selected)
+            fridayButton.setTitleColor(UIColor.white, for: .selected)
+            
+            saturdayButton.setBackgroundColor(color: UIColor.black, forState: .selected)
+            saturdayButton.setTitleColor(UIColor.white, for: .selected)
+        }
+        everyDayButton.layer.cornerRadius = 10
+        sundayButton.layer.cornerRadius = 10
+        mondayButton.layer.cornerRadius = 10
         tuesdayButton.layer.cornerRadius = 10
-        
-        wednesdayButton.setBackgroundColor(color: UIColor.black, forState: .selected)
-        wednesdayButton.setTitleColor(UIColor.white, for: .selected)
-//        wednesdayButton.isSelected = false
         wednesdayButton.layer.cornerRadius = 10
-        
-        thursdayButton.setBackgroundColor(color: UIColor.black, forState: .selected)
-        thursdayButton.setTitleColor(UIColor.white, for: .selected)
-//        thursdayButton.isSelected = false
         thursdayButton.layer.cornerRadius = 10
-        
-        fridayButton.setBackgroundColor(color: UIColor.black, forState: .selected)
-        fridayButton.setTitleColor(UIColor.white, for: .selected)
-//        fridayButton.isSelected = false
         fridayButton.layer.cornerRadius = 10
-        
-        saturdayButton.setBackgroundColor(color: UIColor.black, forState: .selected)
-        saturdayButton.setTitleColor(UIColor.white, for: .selected)
-//        saturdayButton.isSelected = false
         saturdayButton.layer.cornerRadius = 10
         
         if let product = product {

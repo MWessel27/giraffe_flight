@@ -38,12 +38,6 @@ class statsViewController: UIViewController, FSCalendarDataSource, FSCalendarDel
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if #available(iOS 13.0, *) {
-            overrideUserInterfaceStyle = .light
-        } else {
-            // Fallback on earlier versions
-        }
-        
         if let savedProds = loadProducts() {
             products += savedProds
         }
@@ -288,7 +282,13 @@ extension statsViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.imageView?.image = image
         
-        cell.detailTextLabel?.textColor = UIColor.gray
+        if #available(iOS 13.0, *) {
+            cell.detailTextLabel?.textColor = .secondaryLabel
+        } else {
+            // Fallback on earlier versions
+            cell.detailTextLabel?.textColor = UIColor.lightGray
+        }
+        
         cell.detailTextLabel?.text = timeStamp
         
         var imageView : UIImageView
