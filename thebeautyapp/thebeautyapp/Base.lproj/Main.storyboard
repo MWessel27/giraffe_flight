@@ -24,7 +24,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="app_logo" translatesAutoresizingMaskIntoConstraints="NO" id="trX-Sw-Esu">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add-product-icon" translatesAutoresizingMaskIntoConstraints="NO" id="trX-Sw-Esu">
                                             <rect key="frame" x="20" y="8" width="60" height="59"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="60" id="ZaX-dZ-Bgf"/>
@@ -66,41 +66,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P5r-HD-dU1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2913" y="292"/>
-        </scene>
-        <!--Splash View Controller-->
-        <scene sceneID="z3z-95-zBG">
-            <objects>
-                <viewController id="fie-WK-Hbt" customClass="splashViewController" customModule="Flawless" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="TmN-fX-4hh">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="tVR-yT-A93">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="app_logo" translatesAutoresizingMaskIntoConstraints="NO" id="jz2-oy-k20">
-                                <rect key="frame" x="136" y="342" width="142" height="212"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="142" id="2rz-Od-LdY"/>
-                                    <constraint firstAttribute="height" constant="212" id="DXG-M0-lU7"/>
-                                </constraints>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="jz2-oy-k20" firstAttribute="centerY" secondItem="TmN-fX-4hh" secondAttribute="centerY" id="659-cN-c3W"/>
-                            <constraint firstItem="tVR-yT-A93" firstAttribute="top" secondItem="TmN-fX-4hh" secondAttribute="top" id="J5i-Ml-TgB"/>
-                            <constraint firstItem="tVR-yT-A93" firstAttribute="trailing" secondItem="GT3-Gr-cD4" secondAttribute="trailing" id="P4G-1Q-5tX"/>
-                            <constraint firstItem="tVR-yT-A93" firstAttribute="leading" secondItem="GT3-Gr-cD4" secondAttribute="leading" id="axp-Qn-Sua"/>
-                            <constraint firstItem="jz2-oy-k20" firstAttribute="centerX" secondItem="TmN-fX-4hh" secondAttribute="centerX" id="eUx-IK-G7i"/>
-                            <constraint firstAttribute="bottom" secondItem="tVR-yT-A93" secondAttribute="bottom" id="i5F-S6-5Bm"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="GT3-Gr-cD4"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x1F-V1-hxC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1094" y="218"/>
         </scene>
         <!--Home-->
         <scene sceneID="tne-QT-ifu">
@@ -968,9 +933,8 @@
     </scenes>
     <resources>
         <image name="add-icon-large" width="200" height="200"/>
+        <image name="add-product-icon" width="24" height="24"/>
         <image name="add_product_icon" width="500" height="500"/>
-        <image name="app_logo" width="138" height="175"/>
-        <image name="background" width="375" height="812"/>
         <image name="calendar-icon" width="25" height="25"/>
         <image name="checkmarkempty" width="30" height="30"/>
         <image name="moon-icon" width="75" height="75"/>

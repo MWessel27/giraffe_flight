@@ -11,6 +11,8 @@ import os.log
 
 @IBDesignable class RatingControl: UIStackView {
     
+    let notification = UINotificationFeedbackGenerator()
+    
     //MARK: Properties
     private var ratingButtons = [UIButton]()
     
@@ -89,6 +91,8 @@ import os.log
     
     //MARK: Button Action
     @objc func ratingButtonTapped(button: UIButton) {
+        notification.notificationOccurred(.success)
+        
         guard let index = ratingButtons.index(of: button) else {
             fatalError("The button, \(button), is not in the ratingButtons array: \(ratingButtons)")
         }
