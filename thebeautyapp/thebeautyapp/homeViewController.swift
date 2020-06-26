@@ -39,6 +39,8 @@ class homeViewController: UIViewController, addEditProduct {
     @IBOutlet weak var cellSelectionIcon: UIImageView!
     @IBOutlet weak var cellLabel: UILabel!
     
+    let selection = UISelectionFeedbackGenerator()
+    
     var products = [Product]()
     
     var todaysDate: String = ""
@@ -292,25 +294,6 @@ class homeViewController: UIViewController, addEditProduct {
             nightProductEditButton.setTitle("Done", for: .normal)
         }
     }
-    
-    
-//    @IBAction func addProductButtonClicked(_ sender: Any) {
-//        if let presentedViewController = self.storyboard?.instantiateViewController(withIdentifier: "newProductViewController") {
-//            presentedViewController.providesPresentationContextTransitionStyle = true
-//            presentedViewController.definesPresentationContext = true
-//            presentedViewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext;
-//            presentedViewController.view.backgroundColor = UIColor.init(white: 0.4, alpha: 0.8)
-//            self.present(presentedViewController, animated: true, completion: nil)
-//        }
-//    }
-//    
-//    @IBAction func unwindToProductList(sender: UIStoryboardSegue) {
-//        self.view.window?.rootViewController?.dismiss(animated: false, completion: nil)
-//        if let sourceViewController = sender.source as? newProductViewController, let product = sourceViewController.product {
-//            products.append(product)
-//            saveProducts()
-//        }
-//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -580,6 +563,7 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selection.selectionChanged()
         
         let mySelectedCell = tableView.cellForRow(at: indexPath) as! HomeTableViewCell
         

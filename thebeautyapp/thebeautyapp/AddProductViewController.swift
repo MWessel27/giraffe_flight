@@ -41,6 +41,8 @@ class AddProductViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var fridayButton: UIButton!
     @IBOutlet weak var saturdayButton: UIButton!
     
+    let notify = UINotificationFeedbackGenerator()
+    
     var usedActivities: [UsedActivity] = []
     
     var daysOfWeek = [0,0,0,0,0,0,0]
@@ -527,6 +529,7 @@ class AddProductViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func addProductButtonTapped(_ sender: Any) {
+        notify.notificationOccurred(.success)
         let name = newProductField.text ?? ""
         var timeOfDay = 0
         var timeOfDayReadable = "Morning & Night"
