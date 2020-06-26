@@ -19,6 +19,7 @@ class statsViewController: UIViewController, FSCalendarDataSource, FSCalendarDel
     fileprivate weak var calendar: FSCalendar!
     @IBOutlet weak var statsProductList: UITableView!
     @IBOutlet weak var ratingControl: RatingControl!
+    @IBOutlet weak var statsEmptyImageView: UIImageView!
     
     
     let green:UIColor = UIColor(red: 0.251, green: 0.831, blue: 0.494, alpha: 1)
@@ -37,6 +38,12 @@ class statsViewController: UIViewController, FSCalendarDataSource, FSCalendarDel
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if #available(iOS 13.0, *) {
+            overrideUserInterfaceStyle = .light
+        } else {
+            // Fallback on earlier versions
+        }
+        
         if let savedProds = loadProducts() {
             products += savedProds
         }
@@ -52,18 +59,25 @@ class statsViewController: UIViewController, FSCalendarDataSource, FSCalendarDel
         getUsedActivities(date: todaysDate)
         setDayRating()
         
-        statsProductList.tableFooterView = UIView(frame: CGRect.zero)
-        
-        statsProductList.backgroundColor = UIColor.clear
-        statsProductList.separatorStyle = UITableViewCell.SeparatorStyle.none
-        
-        let calendar = FSCalendar(frame: CGRect(x: 0, y: 0, width: 320, height: 300))
-        calendar.dataSource = self as FSCalendarDataSource
-        calendar.delegate = self as FSCalendarDelegate
-        self.calendar = calendar
+        if(daysUsedActivities.count == 0) {
+            statsProductList.isHidden = true
+            statsEmptyImageView.isHidden = false
+        } else {
+            statsProductList.isHidden = false
+            statsEmptyImageView.isHidden = true
+            statsProductList.tableFooterView = UIView(frame: CGRect.zero)
+            
+            statsProductList.backgroundColor = UIColor.clear
+            statsProductList.separatorStyle = UITableViewCell.SeparatorStyle.none
+            
+            let calendar = FSCalendar(frame: CGRect(x: 0, y: 0, width: 320, height: 300))
+            calendar.dataSource = self as FSCalendarDataSource
+            calendar.delegate = self as FSCalendarDelegate
+            self.calendar = calendar
 
-        // Do any additional setup after loading the view.
-        statsProductList.reloadData()
+            // Do any additional setup after loading the view.
+            statsProductList.reloadData()
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -76,17 +90,24 @@ class statsViewController: UIViewController, FSCalendarDataSource, FSCalendarDel
         }
         
         getDatesWithEvent()
-        
-        let date = Date()
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        todaysDate = formatter.string(from: date)
-        selectedDate = todaysDate
-        
         getUsedActivities(date: todaysDate)
         setDayRating()
         
-        statsProductList.reloadData()
+        if(daysUsedActivities.count == 0) {
+            statsProductList.isHidden = true
+            statsEmptyImageView.isHidden = false
+        } else {
+            statsProductList.isHidden = false
+            statsEmptyImageView.isHidden = true
+        
+            let date = Date()
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd"
+            todaysDate = formatter.string(from: date)
+            selectedDate = todaysDate
+            
+            statsProductList.reloadData()
+        }
     }
     
     fileprivate lazy var dateFormatter: DateFormatter = {
@@ -171,6 +192,14 @@ class statsViewController: UIViewController, FSCalendarDataSource, FSCalendarDel
         getUsedActivities(date: selectedDate)
 
         setDayRating()
+        
+        if(daysUsedActivities.count == 0) {
+            statsProductList.isHidden = true
+            statsEmptyImageView.isHidden = false
+        } else {
+            statsProductList.isHidden = false
+            statsEmptyImageView.isHidden = true
+        }
     }
     
     /*

@@ -470,6 +470,13 @@
                                     <outlet property="delegate" destination="JJD-8J-CQr" id="JQ5-Uv-Lpc"/>
                                 </connections>
                             </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stats_empty_icon_light" translatesAutoresizingMaskIntoConstraints="NO" id="dSs-an-661">
+                                <rect key="frame" x="82" y="552" width="250" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="AGM-EP-qTm"/>
+                                    <constraint firstAttribute="height" constant="200" id="nOb-65-xuB"/>
+                                </constraints>
+                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="c35-LF-3Im">
                                 <rect key="frame" x="0.0" y="495" width="414" height="318"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -488,7 +495,7 @@
                                     <outlet property="delegate" destination="JJD-8J-CQr" id="5Kg-FR-oNB"/>
                                 </connections>
                             </tableView>
-                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Df0-36-fAN" customClass="RatingControl" customModule="Flawless" customModuleProvider="target">
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Df0-36-fAN" customClass="RatingControl" customModule="Flawless" customModuleProvider="target">
                                 <rect key="frame" x="81" y="448" width="252" height="44"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="starCount">
@@ -514,11 +521,15 @@
                             <constraint firstItem="Df0-36-fAN" firstAttribute="top" secondItem="x4g-og-BS7" secondAttribute="bottom" constant="5" id="7Zk-7v-Keg"/>
                             <constraint firstItem="c35-LF-3Im" firstAttribute="leading" secondItem="8PD-ad-g81" secondAttribute="leading" id="89k-lN-DQt"/>
                             <constraint firstItem="x4g-og-BS7" firstAttribute="top" secondItem="8PD-ad-g81" secondAttribute="bottom" constant="8" symbolic="YES" id="8as-Xy-GcG"/>
+                            <constraint firstItem="dSs-an-661" firstAttribute="top" secondItem="Df0-36-fAN" secondAttribute="bottom" constant="60" id="Luy-9d-s87"/>
+                            <constraint firstItem="dSs-an-661" firstAttribute="leading" secondItem="HpF-5a-tdU" secondAttribute="leading" constant="82" id="P6K-EH-Cvt"/>
                             <constraint firstItem="HpF-5a-tdU" firstAttribute="bottom" secondItem="8PD-ad-g81" secondAttribute="bottom" constant="402" id="P6K-Jt-L79"/>
                             <constraint firstItem="8PD-ad-g81" firstAttribute="top" secondItem="HpF-5a-tdU" secondAttribute="top" id="Xgi-9o-aw4"/>
                             <constraint firstItem="HpF-5a-tdU" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="x4g-og-BS7" secondAttribute="trailing" symbolic="YES" id="atM-Si-ehO"/>
                             <constraint firstItem="x4g-og-BS7" firstAttribute="leading" secondItem="FX1-ep-eMw" secondAttribute="leadingMargin" id="iK1-CJ-PZU"/>
                             <constraint firstItem="c35-LF-3Im" firstAttribute="trailing" secondItem="8PD-ad-g81" secondAttribute="trailing" id="inx-w8-tdk"/>
+                            <constraint firstItem="HpF-5a-tdU" firstAttribute="trailing" secondItem="dSs-an-661" secondAttribute="trailing" constant="82" id="mxo-u8-vcB"/>
+                            <constraint firstItem="HpF-5a-tdU" firstAttribute="bottom" secondItem="dSs-an-661" secondAttribute="bottom" constant="61" id="t4c-du-efO"/>
                             <constraint firstAttribute="trailing" secondItem="8PD-ad-g81" secondAttribute="trailing" id="ukP-vb-Vc3"/>
                             <constraint firstItem="8PD-ad-g81" firstAttribute="leading" secondItem="FX1-ep-eMw" secondAttribute="leading" id="wgA-mi-Ktf"/>
                         </constraints>
@@ -527,6 +538,7 @@
                     <navigationItem key="navigationItem" title="Calendar" id="DqJ-Mv-LKK"/>
                     <connections>
                         <outlet property="ratingControl" destination="Df0-36-fAN" id="HGy-9v-RNh"/>
+                        <outlet property="statsEmptyImageView" destination="dSs-an-661" id="Yim-wS-h2n"/>
                         <outlet property="statsProductList" destination="c35-LF-3Im" id="QhL-WU-Tlm"/>
                     </connections>
                 </viewController>
@@ -660,7 +672,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QBN-Qb-t6f">
                                 <rect key="frame" x="0.0" y="60" width="414" height="836"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add-product-icon-large" translatesAutoresizingMaskIntoConstraints="NO" id="1Bi-Ef-HDa">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add_product_icon_light" translatesAutoresizingMaskIntoConstraints="NO" id="1Bi-Ef-HDa">
                                         <rect key="frame" x="144.5" y="54" width="125" height="125"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="125" id="Ggr-Bx-Rix"/>
@@ -944,7 +956,7 @@
     </scenes>
     <resources>
         <image name="add-icon-large" width="200" height="200"/>
-        <image name="add-product-icon-large" width="200" height="200"/>
+        <image name="add_product_icon_light" width="500" height="500"/>
         <image name="app_logo" width="138" height="175"/>
         <image name="background" width="375" height="812"/>
         <image name="calendar-icon" width="25" height="25"/>
@@ -952,6 +964,7 @@
         <image name="moon-icon" width="75" height="75"/>
         <image name="no_products_icon_light" width="500" height="500"/>
         <image name="products-icon" width="25" height="25"/>
+        <image name="stats_empty_icon_light" width="500" height="500"/>
         <image name="sun-icon" width="75" height="75"/>
         <image name="today-icon" width="25" height="25"/>
     </resources>

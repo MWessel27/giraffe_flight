@@ -68,6 +68,13 @@ class ProductTableViewController: UITableViewController, addEditProduct {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if #available(iOS 13.0, *) {
+            overrideUserInterfaceStyle = .light
+        } else {
+            // Fallback on earlier versions
+        }
+        
+        
         setupUI()
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
         imageView.isUserInteractionEnabled = true
@@ -155,6 +162,14 @@ class ProductTableViewController: UITableViewController, addEditProduct {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if products.count == 0 {
+            tableView.setEmptyView()
+        }
+        else {
+            tableView.restore()
+        }
+        
         return products.count
     }
     
@@ -225,4 +240,18 @@ private struct Const {
     static let NavBarHeightSmallState: CGFloat = 44
     /// Height of NavBar for Large state. Usually it's just 96.5 but if you have a custom font for the title, please make sure to edit this value since it changes the height for Large state of NavBar
     static let NavBarHeightLargeState: CGFloat = 96.5
+}
+
+extension UITableView {
+    func setEmptyView() {
+        let emptyImageView = UIImageView(image: UIImage(named:  "product_empty_icon_light.png"))
+        emptyImageView.contentMode = .center
+        self.backgroundView = emptyImageView
+        self.separatorStyle = .none
+    }
+    
+    func restore() {
+        self.backgroundView = nil
+        self.separatorStyle = .singleLine
+    }
 }
