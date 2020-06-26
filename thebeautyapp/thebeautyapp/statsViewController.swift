@@ -21,6 +21,8 @@ class statsViewController: UIViewController, FSCalendarDataSource, FSCalendarDel
     @IBOutlet weak var ratingControl: RatingControl!
     @IBOutlet weak var statsEmptyImageView: UIImageView!
     
+    let selection = UISelectionFeedbackGenerator()
+    
     
     let green:UIColor = UIColor(red: 0.251, green: 0.831, blue: 0.494, alpha: 1)
     
@@ -178,6 +180,7 @@ class statsViewController: UIViewController, FSCalendarDataSource, FSCalendarDel
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        selection.selectionChanged()
         
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
