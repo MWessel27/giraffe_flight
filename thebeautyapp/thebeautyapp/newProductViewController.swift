@@ -46,6 +46,7 @@ class newProductViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         closeButton.isHidden = true
         
         if(presentingViewController == nil) {

@@ -11,93 +11,82 @@ import os.log
 import Firebase
 import UserNotifications
 
-class ProductTableViewController: UITableViewController {
+protocol addEditProduct {
+    func addProduct(product: Product)
+}
+
+class ProductTableViewController: UITableViewController, addEditProduct {
+    
+    private let imageView = UIImageView(image: UIImage(named: "add-icon"))
     
     var products = [Product]()
     
     @IBOutlet var productTableView: UITableView!
     
-    @IBOutlet weak var reminderSwitch: UISwitch!
-    @IBOutlet weak var reminderView: UIView!
-    @IBOutlet weak var reminderTimePicker: UIDatePicker!
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        let tappedImage = tapGestureRecognizer.view as! UIImageView
+
+        guard let addProductVC = storyboard?.instantiateViewController(withIdentifier: "AddProductViewController")
+        as? AddProductViewController else {
+            assertionFailure("No view controller ID AddProductViewController in storyboard")
+            return
+        }
+        
+        addProductVC.delegate = self
+        
+        // Delay the capture of snapshot by 0.1 seconds
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1 , execute: {
+          // take a snapshot of current view and set it as backingImage
+          addProductVC.backingImage = self.tabBarController?.view.asImage()
+          
+          // present the view controller modally without animation
+          self.present(addProductVC, animated: false, completion: nil)
+        })
+    }
+    
+    private func setupUI() {
+        navigationController?.navigationBar.prefersLargeTitles = true
+
+        title = "Products"
+
+        // Initial setup for image for Large NavBar state since the the screen always has Large NavBar once it gets opened
+        guard let navigationBar = self.navigationController?.navigationBar else { return }
+        navigationBar.addSubview(imageView)
+        imageView.layer.cornerRadius = Const.ImageSizeForLargeState / 2
+        imageView.clipsToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            imageView.rightAnchor.constraint(equalTo: navigationBar.rightAnchor, constant: -Const.ImageRightMargin),
+            imageView.bottomAnchor.constraint(equalTo: navigationBar.bottomAnchor, constant: -Const.ImageBottomMarginForLargeState),
+            imageView.heightAnchor.constraint(equalToConstant: Const.ImageSizeForLargeState),
+            imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor)
+            ])
+    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let rightBarButton = UIBarButtonItem(title: "ADD", style: UIBarButtonItem.Style.plain, target: self, action: #selector(addProdList))
-        self.navigationItem.rightBarButtonItem = rightBarButton
+        
+        setupUI()
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        imageView.isUserInteractionEnabled = true
+        imageView.addGestureRecognizer(tapGestureRecognizer)
         
         if let savedProds = loadProducts() {
             products += savedProds
-        }
-        
-        if(products.count == 0) {
-            reminderView.isHidden = true
-        } else {
-            reminderView.isHidden = false
-            let defaults = UserDefaults.standard
-            
-            if (defaults.object(forKey: "ReminderSwitchState") != nil) {
-                reminderSwitch.isOn = defaults.bool(forKey: "ReminderSwitchState")
-            }
-            
-            let center = UNUserNotificationCenter.current()
-
-            center.getPendingNotificationRequests(completionHandler: { requests in
-                var nextTriggerDates: [Date] = []
-                for request in requests {
-                    print(request)
-                    if let trigger = request.trigger as? UNCalendarNotificationTrigger,
-                        let triggerDate = trigger.nextTriggerDate(){
-                        nextTriggerDates.append(triggerDate)
-                    }
-
-                    if let nextTriggerDate = nextTriggerDates.min() {
-                        print(nextTriggerDate)
-                        self.setDateForPicker(pickerDate: nextTriggerDate)
-                    }
-                }
-            })
         }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated);
+        
         if let savedProds = loadProducts() {
             products = savedProds
         }
 
         productTableView.reloadData()
-        
-        if(products.count == 0) {
-            reminderView.isHidden = true
-        } else {
-            reminderView.isHidden = false
-            let defaults = UserDefaults.standard
-            
-            if (defaults.object(forKey: "ReminderSwitchState") != nil) {
-                reminderSwitch.isOn = defaults.bool(forKey: "ReminderSwitchState")
-            }
-            
-            let center = UNUserNotificationCenter.current()
-            
-            center.getPendingNotificationRequests(completionHandler: { requests in
-                var nextTriggerDates: [Date] = []
-                for request in requests {
-                    print(request)
-                    if let trigger = request.trigger as? UNCalendarNotificationTrigger,
-                        let triggerDate = trigger.nextTriggerDate(){
-                        nextTriggerDates.append(triggerDate)
-                    }
-                    
-                    if let nextTriggerDate = nextTriggerDates.min() {
-                        print(nextTriggerDate)
-                        self.setDateForPicker(pickerDate: nextTriggerDate)
-                    }
-                }
-            })
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -107,44 +96,8 @@ class ProductTableViewController: UITableViewController {
             products = savedProds
         }
         productTableView.reloadData()
-        
-        if(products.count == 0) {
-            reminderView.isHidden = true
-        } else {
-            reminderView.isHidden = false
-            let defaults = UserDefaults.standard
-            
-            if (defaults.object(forKey: "ReminderSwitchState") != nil) {
-                reminderSwitch.isOn = defaults.bool(forKey: "ReminderSwitchState")
-            }
-            
-            let center = UNUserNotificationCenter.current()
-            
-            center.getPendingNotificationRequests(completionHandler: { requests in
-                var nextTriggerDates: [Date] = []
-                for request in requests {
-                    print(request)
-                    if let trigger = request.trigger as? UNCalendarNotificationTrigger,
-                        let triggerDate = trigger.nextTriggerDate(){
-                        nextTriggerDates.append(triggerDate)
-                    }
-                    
-                    if let nextTriggerDate = nextTriggerDates.min() {
-                        print(nextTriggerDate)
-                        self.setDateForPicker(pickerDate: nextTriggerDate)
-                    }
-                }
-            })
-        }
     }
     
-    
-    @objc func addProdList() {
-        let storyBoard : UIStoryboard = self.storyboard!
-        
-        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "newProductViewController")
-        self.navigationController?.pushViewController(nextViewController, animated: true)
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -165,10 +118,8 @@ class ProductTableViewController: UITableViewController {
         return NSKeyedUnarchiver.unarchiveObject(withFile: Product.ArchiveURL.path) as? [Product]
     }
     
-    @IBAction func unwindToProductList(sender: UIStoryboardSegue) {
-        if let sourceViewController = sender.source as? newProductViewController, let product = sourceViewController.product {
-            
-            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+    func addProduct(product: Product) {
+        if let selectedIndexPath = tableView.indexPathForSelectedRow {
                 products[selectedIndexPath.row] = product
                 productTableView.reloadRows(at: [selectedIndexPath], with: .none)
             } else {
@@ -179,138 +130,7 @@ class ProductTableViewController: UITableViewController {
                 productTableView.insertRows(at: [newIndexPath], with: .automatic)
             }
             saveProducts()
-        }
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
-
-        switch(segue.identifier ?? "") {
-        case "AddItem":
-            os_log("Adding a new meal.", log: OSLog.default, type: .debug)
-        case "ShowDetail":
-            guard let productDetailViewController = segue.destination as? newProductViewController else {
-                fatalError("Unexpected destination: \(segue.destination)")
-            }
-
-            guard let selectedProductCell = sender as? ProductTableViewCell else {
-                fatalError("Unexpected sender: \(sender as Optional)")
-            }
-
-            guard let indexPath = productTableView.indexPath(for: selectedProductCell) else {
-                fatalError("The selected cell is not being displayed by the table")
-            }
-
-            let selectedProduct = products[indexPath.row]
-            productDetailViewController.product = selectedProduct
-            
-        default:
-            fatalError("Unexpected Segue Identifier; \(segue.identifier as Optional)")
-        }
-    }
-    
-    func getReminderSwitchState() -> Bool {
-        var reminderOnOff = false
-        
-        if(self.reminderSwitch.isOn) {
-            reminderOnOff = true
-        }
-        
-        return reminderOnOff
-    }
-    
-    func getDateFromPicker() -> Date {
-        var reminderDate = Date()
-
-        reminderDate = self.reminderTimePicker.date
-        
-        return reminderDate
-    }
-    
-    func setDateForPicker(pickerDate: Date) {
-        DispatchQueue.global().async(execute: {
-            DispatchQueue.main.sync{
-                self.reminderTimePicker.date = pickerDate
-            }
-        })
-    }
-    
-    func scheduleNotification() {
-        let center = UNUserNotificationCenter.current()
-        
-        let content = UNMutableNotificationContent()
-        content.title = "Skin Care Reminder"
-        content.body = "Time to complete your daily skin care routine."
-        content.categoryIdentifier = "alarm"
-        content.userInfo = ["customData": "fizzbuzz"]
-        content.sound = UNNotificationSound.default
-        
-        let reminderDate = getDateFromPicker()
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH mm"
-        let reminderTime = dateFormatter.string(from: reminderDate)
-
-        dateFormatter.dateFormat = "HH"
-        let hour = dateFormatter.string(from: reminderDate)
-        dateFormatter.dateFormat = "mm"
-        let minute = dateFormatter.string(from: reminderDate)
-        print(hour)
-        print(minute)
-        
-        var dateComponents = DateComponents()
-        dateComponents.hour = Int(hour)!
-        dateComponents.minute = Int(minute)!
-        
-        if(getReminderSwitchState()) {
-            Analytics.logEvent("reminder_on", parameters: [
-                "time": reminderTime as NSObject
-                ])
-            
-            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-            
-            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-            center.add(request)
-        }
-    }
-    
-    @IBAction func reminderTimePickerChanged(_ sender: Any) {
-        if(getReminderSwitchState()) {
-            let defaults = UserDefaults.standard
-            print(self.reminderTimePicker.date)
-            UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
-            self.scheduleNotification()
-            defaults.set(true, forKey: "ReminderSwitchState")
-        }
-    }
-    
-    
-    @IBAction func reminderToggle(_ sender: Any) {
-        
-        let defaults = UserDefaults.standard
-        
-        let center = UNUserNotificationCenter.current()
-        
-        center.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
-            if granted {
-                print("Notification Permissions On")
-            } else {
-                print("Notification Permissions Off")
-            }
-        }
-        
-        if reminderSwitch.isOn {
-            print("Scheduling notification")
-            self.scheduleNotification()
-            defaults.set(true, forKey: "ReminderSwitchState")
-        } else {
-            Analytics.logEvent("reminder_off", parameters: nil)
-            print("Cleared notification")
-            UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
-            defaults.set(false, forKey: "ReminderSwitchState")
-        }
-    }
-    
     
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -322,40 +142,6 @@ class ProductTableViewController: UITableViewController {
             products.remove(at: indexPath.row)
             saveProducts()
             productTableView.deleteRows(at: [indexPath], with: .fade)
-            if(products.count == 0) {
-                let defaults = UserDefaults.standard
-                UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
-
-                defaults.set(false, forKey: "ReminderSwitchState")
-                reminderView.isHidden = true
-            } else {
-                let defaults = UserDefaults.standard
-                
-                if (defaults.object(forKey: "ReminderSwitchState") != nil) {
-                    reminderSwitch.isOn = defaults.bool(forKey: "ReminderSwitchState")
-                }
-                
-                let center = UNUserNotificationCenter.current()
-                
-                center.getPendingNotificationRequests(completionHandler: { requests in
-                    var nextTriggerDates: [Date] = []
-                    for request in requests {
-                        print(request)
-                        if let trigger = request.trigger as? UNCalendarNotificationTrigger,
-                            let triggerDate = trigger.nextTriggerDate(){
-                            nextTriggerDates.append(triggerDate)
-                        }
-                        
-                        if let nextTriggerDate = nextTriggerDates.min() {
-                            print(nextTriggerDate)
-                            self.setDateForPicker(pickerDate: nextTriggerDate)
-                        }
-                    }
-                })
-                reminderView.isHidden = false
-            }
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
     }
     
@@ -370,6 +156,14 @@ class ProductTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if products.count == 0 {
+            tableView.setEmptyView()
+        }
+        else {
+            tableView.restore()
+        }
+        
         return products.count
     }
     
@@ -384,19 +178,74 @@ class ProductTableViewController: UITableViewController {
         let product = products[indexPath.row]
         
         cell.productLabel.text = product.name
-        cell.productLabel.font = UIFont(name: "American Typewriter", size: 22)
+        cell.productLabel.font = UIFont(name: "System", size: 22)
         
         let timeOfDay = products[indexPath.row].ampm
         
         if(timeOfDay == 1) {
-            cell.photoImageView.image = UIImage(named: "sunIconSmall.png")!
+            cell.photoImageView.image = UIImage(named: "sun-icon.png")!
         } else if(timeOfDay == 2) {
-            cell.photoImageView.image = UIImage(named: "moonIconSmall.png")!
+            cell.photoImageView.image = UIImage(named: "moon-icon.png")!
         } else {
-            cell.photoImageView.image = UIImage(named: "sunMoonIcon.png")!
+            cell.photoImageView.image = UIImage(named: "sun-moon-icon.png")!
         }
         cell.backgroundColor = UIColor.clear
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        guard let addProductVC = storyboard?.instantiateViewController(withIdentifier: "AddProductViewController")
+        as? AddProductViewController else {
+            assertionFailure("No view controller ID AddProductViewController in storyboard")
+            return
+        }
+        
+        addProductVC.delegate = self
+
+        let selectedProduct = products[indexPath.row]
+        addProductVC.product = selectedProduct
+        
+        // Delay the capture of snapshot by 0.1 seconds
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1 , execute: {
+          // take a snapshot of current view and set it as backingImage
+          addProductVC.backingImage = self.tabBarController?.view.asImage()
+          
+          // present the view controller modally without animation
+          self.present(addProductVC, animated: false, completion: nil)
+        })
+    }
+    
+}
+
+private struct Const {
+    /// Image height/width for Large NavBar state
+    static let ImageSizeForLargeState: CGFloat = 32
+    /// Margin from right anchor of safe area to right anchor of Image
+    static let ImageRightMargin: CGFloat = 16
+    /// Margin from bottom anchor of NavBar to bottom anchor of Image for Large NavBar state
+    static let ImageBottomMarginForLargeState: CGFloat = 12
+    /// Margin from bottom anchor of NavBar to bottom anchor of Image for Small NavBar state
+    static let ImageBottomMarginForSmallState: CGFloat = 6
+    /// Image height/width for Small NavBar state
+    static let ImageSizeForSmallState: CGFloat = 32
+    /// Height of NavBar for Small state. Usually it's just 44
+    static let NavBarHeightSmallState: CGFloat = 44
+    /// Height of NavBar for Large state. Usually it's just 96.5 but if you have a custom font for the title, please make sure to edit this value since it changes the height for Large state of NavBar
+    static let NavBarHeightLargeState: CGFloat = 96.5
+}
+
+extension UITableView {
+    func setEmptyView() {
+        let emptyImageView = UIImageView(image: UIImage(named:  "product_empty_icon.png"))
+        emptyImageView.contentMode = .center
+        self.backgroundView = emptyImageView
+        self.separatorStyle = .none
+    }
+    
+    func restore() {
+        self.backgroundView = nil
+        self.separatorStyle = .singleLine
     }
 }

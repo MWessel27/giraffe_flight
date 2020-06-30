@@ -12,6 +12,7 @@ class splashViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         _ = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(timeToMoveOn), userInfo: nil, repeats: false)
         // Do any additional setup after loading the view.
     }

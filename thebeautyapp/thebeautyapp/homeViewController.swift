@@ -15,7 +15,12 @@ import CoreData
 import os.log
 import Firebase
 
-class homeViewController: UIViewController {
+class homeViewController: UIViewController, addEditProduct {
+    
+    private let imageView = UIImageView(image: UIImage(named: "notifications-icon"))
+    
+    @IBOutlet weak var addIconImageView: UIImageView!
+    @IBOutlet weak var noProductIcon: UIImageView!
     
     @IBOutlet var homeBackgroundView: UIView!
     
@@ -31,12 +36,10 @@ class homeViewController: UIViewController {
     @IBOutlet weak var dayProductEditButton: UIButton!
     @IBOutlet weak var nightProductEditButton: UIButton!
     
-    @IBOutlet weak var noProductImage: UIImageView!
-    @IBOutlet weak var addProductButton: UIButton!
-    @IBOutlet weak var noProductLabel: UILabel!
-    
     @IBOutlet weak var cellSelectionIcon: UIImageView!
     @IBOutlet weak var cellLabel: UILabel!
+    
+    let selection = UISelectionFeedbackGenerator()
     
     var products = [Product]()
     
@@ -55,8 +58,63 @@ class homeViewController: UIViewController {
         return formatter
     }()
     
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        let tappedImage = tapGestureRecognizer.view as! UIImageView
+
+        // Your action
+        print("notifications tapped")
+        guard let notificationsVC = storyboard?.instantiateViewController(withIdentifier: "NotificationsViewController")
+        as? NotificationsViewController else {
+            assertionFailure("No view controller ID NotificationsViewController in storyboard")
+            return
+        }
+        
+        // Delay the capture of snapshot by 0.1 seconds
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1 , execute: {
+          // take a snapshot of current view and set it as backingImage
+          notificationsVC.backingImage = self.tabBarController?.view.asImage()
+          
+          // present the view controller modally without animation
+          self.present(notificationsVC, animated: false, completion: nil)
+        })
+    }
+    
+    @objc func addIconImageTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        let tappedImage = tapGestureRecognizer.view as! UIImageView
+
+        // Your action
+        print("notifications tapped")
+        guard let addProductVC = storyboard?.instantiateViewController(withIdentifier: "AddProductViewController")
+        as? AddProductViewController else {
+            assertionFailure("No view controller ID AddProductViewController in storyboard")
+            return
+        }
+        
+        addProductVC.delegate = self
+        
+        // Delay the capture of snapshot by 0.1 seconds
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1 , execute: {
+          // take a snapshot of current view and set it as backingImage
+          addProductVC.backingImage = self.tabBarController?.view.asImage()
+          
+          // present the view controller modally without animation
+          self.present(addProductVC, animated: false, completion: nil)
+        })
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+    
+        setupUI()
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        imageView.isUserInteractionEnabled = true
+        imageView.addGestureRecognizer(tapGestureRecognizer)
+        
+        let addGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(addIconImageTapped(tapGestureRecognizer:)))
+        addIconImageView.isUserInteractionEnabled = true
+        addIconImageView.addGestureRecognizer(addGestureRecognizer)
         
         // returns an integer from 1 - 7, with 1 being Sunday and 7 being Saturday
         dayOfWeek = Date().dayNumberOfWeek()!
@@ -70,16 +128,9 @@ class homeViewController: UIViewController {
         formatter.dateFormat = "yyyy-MM-dd"
         todaysDate = formatter.string(from: date)
         
-        let rightBarButton = UIBarButtonItem(title: "PRODUCTS", style: UIBarButtonItem.Style.plain, target: self, action: #selector(goToProdList))
-        self.navigationItem.rightBarButtonItem = rightBarButton
-        
-        let leftBarButton = UIBarButtonItem(title: "STATS", style: UIBarButtonItem.Style.plain, target: self, action: #selector(goToStatsCal))
-        self.navigationItem.leftBarButtonItem = leftBarButton
-        
         if(products.count != 0) {
-            noProductLabel.isHidden = true
-            noProductImage.isHidden = true
-            addProductButton.isHidden = true
+            noProductIcon.isHidden = true
+            addIconImageView.isHidden = true
             
             mTableView.tableFooterView = UIView(frame: CGRect.zero)
             pmTableView.tableFooterView = UIView(frame: CGRect.zero)
@@ -90,10 +141,9 @@ class homeViewController: UIViewController {
             pmTableView.backgroundColor = UIColor.clear
             pmTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         } else {
-            noProductLabel.isHidden = false
-            noProductImage.isHidden = false
-            addProductButton.isHidden = false
-            
+            noProductIcon.isHidden = false
+            addIconImageView.isHidden = false
+
             dayIcon.isHidden = true
             nightIcon.isHidden = true
             dayLabel.isHidden = true
@@ -103,37 +153,19 @@ class homeViewController: UIViewController {
             
             mTableView.isHidden = true;
             pmTableView.isHidden = true;
-            
-            if let presentedViewController = self.storyboard?.instantiateViewController(withIdentifier: "gsPopUpID") {
-                presentedViewController.providesPresentationContextTransitionStyle = true
-                presentedViewController.definesPresentationContext = true
-                presentedViewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext;
-                presentedViewController.view.backgroundColor = UIColor.init(white: 0.4, alpha: 0.8)
-                self.present(presentedViewController, animated: true, completion: nil)
-            }
         }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated);
         
-        let navBar: UINavigationBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: 320, height: 44))
-        self.view.addSubview(navBar);
-        
-        let rightBarButton = UIBarButtonItem(title: "PRODUCTS", style: UIBarButtonItem.Style.plain, target: self, action: #selector(goToProdList))
-        self.navigationItem.rightBarButtonItem = rightBarButton
-        
-        let leftBarButton = UIBarButtonItem(title: "STATS", style: UIBarButtonItem.Style.plain, target: self, action: #selector(goToStatsCal))
-        self.navigationItem.leftBarButtonItem = leftBarButton
-        
         if let savedProds = loadProducts() {
             products = savedProds
         }
         
         if(products.count != 0) {
-            noProductLabel.isHidden = true
-            noProductImage.isHidden = true
-            addProductButton.isHidden = true
+            noProductIcon.isHidden = true
+            addIconImageView.isHidden = true
             
             dayIcon.isHidden = false
             nightIcon.isHidden = false
@@ -154,9 +186,8 @@ class homeViewController: UIViewController {
             pmTableView.backgroundColor = UIColor.clear
             pmTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         } else {
-            noProductLabel.isHidden = false
-            noProductImage.isHidden = false
-            addProductButton.isHidden = false
+            noProductIcon.isHidden = false
+            addIconImageView.isHidden = false
             
             dayIcon.isHidden = true
             nightIcon.isHidden = true
@@ -167,14 +198,6 @@ class homeViewController: UIViewController {
 
             mTableView.isHidden = true;
             pmTableView.isHidden = true;
-            
-            if let presentedViewController = self.storyboard?.instantiateViewController(withIdentifier: "gsPopUpID") {
-                presentedViewController.providesPresentationContextTransitionStyle = true
-                presentedViewController.definesPresentationContext = true
-                presentedViewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext;
-                presentedViewController.view.backgroundColor = UIColor.init(white: 0.4, alpha: 0.8)
-                self.present(presentedViewController, animated: true, completion: nil)
-            }
         }
         
         self.mTableView.reloadData();
@@ -189,9 +212,8 @@ class homeViewController: UIViewController {
         }
         
         if(products.count != 0) {
-            noProductLabel.isHidden = true
-            noProductImage.isHidden = true
-            addProductButton.isHidden = true
+            noProductIcon.isHidden = true
+            addIconImageView.isHidden = true
             
             dayIcon.isHidden = false
             nightIcon.isHidden = false
@@ -212,9 +234,8 @@ class homeViewController: UIViewController {
             pmTableView.backgroundColor = UIColor.clear
             pmTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         } else {
-            noProductLabel.isHidden = false
-            noProductImage.isHidden = false
-            addProductButton.isHidden = false
+            noProductIcon.isHidden = false
+            addIconImageView.isHidden = false
             
             dayIcon.isHidden = true
             nightIcon.isHidden = true
@@ -225,14 +246,6 @@ class homeViewController: UIViewController {
 
             mTableView.isHidden = true;
             pmTableView.isHidden = true;
-            
-            if let presentedViewController = self.storyboard?.instantiateViewController(withIdentifier: "gsPopUpID") {
-                presentedViewController.providesPresentationContextTransitionStyle = true
-                presentedViewController.definesPresentationContext = true
-                presentedViewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext;
-                presentedViewController.view.backgroundColor = UIColor.init(white: 0.4, alpha: 0.8)
-                self.present(presentedViewController, animated: true, completion: nil)
-            }
         }
         
         self.mTableView.reloadData();
@@ -243,14 +256,23 @@ class homeViewController: UIViewController {
         return NSKeyedUnarchiver.unarchiveObject(withFile: Product.ArchiveURL.path) as? [Product]
     }
     
-    @objc func goToProdList() {
-        performSegue(withIdentifier: "viewProdList", sender: IndexPath.self)
-    }
-    
-    @objc func goToStatsCal() {
-        let storyBoard : UIStoryboard = self.storyboard!
-        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "statsViewController")
-        self.navigationController?.pushViewController(nextViewController, animated: true)
+    private func setupUI() {
+        navigationController?.navigationBar.prefersLargeTitles = true
+
+        title = "Today"
+
+        // Initial setup for image for Large NavBar state since the the screen always has Large NavBar once it gets opened
+        guard let navigationBar = self.navigationController?.navigationBar else { return }
+        navigationBar.addSubview(imageView)
+        imageView.layer.cornerRadius = Const.ImageSizeForLargeState / 2
+        imageView.clipsToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            imageView.rightAnchor.constraint(equalTo: navigationBar.rightAnchor, constant: -Const.ImageRightMargin),
+            imageView.bottomAnchor.constraint(equalTo: navigationBar.bottomAnchor, constant: -Const.ImageBottomMarginForLargeState),
+            imageView.heightAnchor.constraint(equalToConstant: Const.ImageSizeForLargeState),
+            imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor)
+            ])
     }
     
     @IBAction func editDayProductButtonClicked(_ sender: Any) {
@@ -270,25 +292,6 @@ class homeViewController: UIViewController {
         } else {
             pmTableView.isEditing = true
             nightProductEditButton.setTitle("Done", for: .normal)
-        }
-    }
-    
-    
-    @IBAction func addProductButtonClicked(_ sender: Any) {
-        if let presentedViewController = self.storyboard?.instantiateViewController(withIdentifier: "newProductViewController") {
-            presentedViewController.providesPresentationContextTransitionStyle = true
-            presentedViewController.definesPresentationContext = true
-            presentedViewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext;
-            presentedViewController.view.backgroundColor = UIColor.init(white: 0.4, alpha: 0.8)
-            self.present(presentedViewController, animated: true, completion: nil)
-        }
-    }
-    
-    @IBAction func unwindToProductList(sender: UIStoryboardSegue) {
-        self.view.window?.rootViewController?.dismiss(animated: false, completion: nil)
-        if let sourceViewController = sender.source as? newProductViewController, let product = sourceViewController.product {
-            products.append(product)
-            saveProducts()
         }
     }
 
@@ -341,6 +344,11 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
         
         product.usedActivities.append(usedActivity!)
         
+        saveProducts()
+    }
+    
+    func addProduct(product: Product) {
+        products.append(product)
         saveProducts()
     }
     
@@ -428,9 +436,9 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.cellLabel.text = productName
                 
                 if(checked) {
-                    cell.cellLabel.font = UIFont(name: "American Typewriter", size: 22)
+                    cell.cellLabel.font = UIFont(name: "System", size: 24)
                     cell.productDetailTextLabel?.backgroundColor = UIColor.clear
-                    cell.productDetailTextLabel?.font = UIFont(name: "American Typewriter", size: 14)
+                    cell.productDetailTextLabel?.font = UIFont(name: "System", size: 8)
                     cell.productDetailTextLabel?.textColor = UIColor.gray
                     cell.productDetailTextLabel?.text = timeStamp
                     
@@ -439,7 +447,7 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
                     
                     cell.cellSelectedImage.image = UIImage(named: "checkmark.png")!
                 } else {
-                    cell.cellLabel.font = UIFont(name: "American Typewriter", size: 22)
+                    cell.cellLabel.font = UIFont(name: "System", size: 24)
                     cell.cellLabel.backgroundColor = UIColor.clear
                     cell.productDetailTextLabel?.backgroundColor = UIColor.clear
                     cell.productDetailTextLabel?.text = ""
@@ -465,9 +473,9 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.cellLabel.text = productName
                 
                 if(checked) {
-                    cell.cellLabel.font = UIFont(name: "American Typewriter", size: 22)
+                    cell.cellLabel.font = UIFont(name: "System", size: 24)
                     cell.productDetailTextLabel?.backgroundColor = UIColor.clear
-                    cell.productDetailTextLabel?.font = UIFont(name: "American Typewriter", size: 14)
+                    cell.productDetailTextLabel?.font = UIFont(name: "System", size: 8)
                     cell.productDetailTextLabel?.textColor = UIColor.gray
                     cell.productDetailTextLabel?.text = timeStamp
                     
@@ -476,7 +484,7 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
                     
                     cell.cellSelectedImage.image = UIImage(named: "checkmark.png")!
                 } else {
-                    cell.cellLabel.font = UIFont(name: "American Typewriter", size: 22)
+                    cell.cellLabel.font = UIFont(name: "System", size: 24)
                     cell.cellLabel.backgroundColor = UIColor.clear
                     cell.productDetailTextLabel?.backgroundColor = UIColor.clear
                     cell.productDetailTextLabel?.text = ""
@@ -555,6 +563,7 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selection.selectionChanged()
         
         let mySelectedCell = tableView.cellForRow(at: indexPath) as! HomeTableViewCell
         
@@ -568,16 +577,16 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
         // need to change this to cells having a selected state
         if(mySelectedCell.productDetailTextLabel?.text != "") {
             removeUsedActivity(product: products[indexPath.row], ampm: ampm)
-            mySelectedCell.cellLabel.font = UIFont(name: "American Typewriter", size: 22)
+            mySelectedCell.cellLabel.font = UIFont(name: "System", size: 24)
             mySelectedCell.cellLabel.backgroundColor = UIColor.clear
             mySelectedCell.productDetailTextLabel?.backgroundColor = UIColor.clear
             mySelectedCell.productDetailTextLabel?.text = ""
             mySelectedCell.cellSelectedImage.image = UIImage(named: "checkmarkempty.png")!
         } else {
             addUsedActivity(product: products[indexPath.row], ampm: ampm)
-            mySelectedCell.cellLabel.font = UIFont(name: "American Typewriter", size: 22)
+            mySelectedCell.cellLabel.font = UIFont(name: "System", size: 24)
             mySelectedCell.productDetailTextLabel?.backgroundColor = UIColor.clear
-            mySelectedCell.productDetailTextLabel?.font = UIFont(name: "American Typewriter", size: 14)
+            mySelectedCell.productDetailTextLabel?.font = UIFont(name: "System", size: 8)
             mySelectedCell.productDetailTextLabel?.textColor = UIColor.gray
             
             let date = Date()
@@ -612,4 +621,21 @@ extension Date {
     func dayNumberOfWeek() -> Int? {
         return Calendar.current.dateComponents([.weekday], from: self).weekday
     }
+}
+
+private struct Const {
+    /// Image height/width for Large NavBar state
+    static let ImageSizeForLargeState: CGFloat = 32
+    /// Margin from right anchor of safe area to right anchor of Image
+    static let ImageRightMargin: CGFloat = 16
+    /// Margin from bottom anchor of NavBar to bottom anchor of Image for Large NavBar state
+    static let ImageBottomMarginForLargeState: CGFloat = 12
+    /// Margin from bottom anchor of NavBar to bottom anchor of Image for Small NavBar state
+    static let ImageBottomMarginForSmallState: CGFloat = 6
+    /// Image height/width for Small NavBar state
+    static let ImageSizeForSmallState: CGFloat = 32
+    /// Height of NavBar for Small state. Usually it's just 44
+    static let NavBarHeightSmallState: CGFloat = 44
+    /// Height of NavBar for Large state. Usually it's just 96.5 but if you have a custom font for the title, please make sure to edit this value since it changes the height for Large state of NavBar
+    static let NavBarHeightLargeState: CGFloat = 96.5
 }

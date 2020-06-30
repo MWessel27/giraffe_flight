@@ -19,6 +19,9 @@ class statsViewController: UIViewController, FSCalendarDataSource, FSCalendarDel
     fileprivate weak var calendar: FSCalendar!
     @IBOutlet weak var statsProductList: UITableView!
     @IBOutlet weak var ratingControl: RatingControl!
+    @IBOutlet weak var statsEmptyImageView: UIImageView!
+    
+    let selection = UISelectionFeedbackGenerator()
     
     
     let green:UIColor = UIColor(red: 0.251, green: 0.831, blue: 0.494, alpha: 1)
@@ -33,6 +36,75 @@ class statsViewController: UIViewController, FSCalendarDataSource, FSCalendarDel
     var datesWithEvent = [String]()
     
     var todaysDate: String = ""
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        if let savedProds = loadProducts() {
+            products += savedProds
+        }
+        
+        getDatesWithEvent()
+        
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        todaysDate = formatter.string(from: date)
+        selectedDate = todaysDate
+        
+        getUsedActivities(date: todaysDate)
+        setDayRating()
+        
+        if(daysUsedActivities.count == 0) {
+            statsProductList.isHidden = true
+            statsEmptyImageView.isHidden = false
+        } else {
+            statsProductList.isHidden = false
+            statsEmptyImageView.isHidden = true
+            statsProductList.tableFooterView = UIView(frame: CGRect.zero)
+            
+            statsProductList.backgroundColor = UIColor.clear
+            statsProductList.separatorStyle = UITableViewCell.SeparatorStyle.none
+            
+            let calendar = FSCalendar(frame: CGRect(x: 0, y: 0, width: 320, height: 300))
+            calendar.dataSource = self as FSCalendarDataSource
+            calendar.delegate = self as FSCalendarDelegate
+            self.calendar = calendar
+
+            // Do any additional setup after loading the view.
+            statsProductList.reloadData()
+        }
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated);
+        
+        products = []
+        
+        if let savedProds = loadProducts() {
+            products += savedProds
+        }
+        
+        getDatesWithEvent()
+        getUsedActivities(date: todaysDate)
+        setDayRating()
+        
+        if(daysUsedActivities.count == 0) {
+            statsProductList.isHidden = true
+            statsEmptyImageView.isHidden = false
+        } else {
+            statsProductList.isHidden = false
+            statsEmptyImageView.isHidden = true
+        
+            let date = Date()
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd"
+            todaysDate = formatter.string(from: date)
+            selectedDate = todaysDate
+            
+            statsProductList.reloadData()
+        }
+    }
     
     fileprivate lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -81,55 +153,6 @@ class statsViewController: UIViewController, FSCalendarDataSource, FSCalendarDel
         
         statsProductList.reloadData()
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        if let savedProds = loadProducts() {
-            products += savedProds
-        }
-        
-        getDatesWithEvent()
-        
-        let date = Date()
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        todaysDate = formatter.string(from: date)
-        selectedDate = todaysDate
-        
-        getUsedActivities(date: todaysDate)
-        setDayRating()
-        
-        statsProductList.tableFooterView = UIView(frame: CGRect.zero)
-        
-        statsProductList.backgroundColor = UIColor.clear
-        statsProductList.separatorStyle = UITableViewCell.SeparatorStyle.none
-        
-        let calendar = FSCalendar(frame: CGRect(x: 0, y: 0, width: 320, height: 300))
-        calendar.dataSource = self as FSCalendarDataSource
-        calendar.delegate = self as FSCalendarDelegate
-        self.calendar = calendar
-
-        // Do any additional setup after loading the view.
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated);
-        
-        getUsedActivities(date: selectedDate)
-        setDayRating()
-
-        statsProductList.reloadData()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated);
-
-        getUsedActivities(date: selectedDate)
-        setDayRating()
-        
-        statsProductList.reloadData()
-    }
     
     func setSelectedRating(rating: Int) {
         saveRating(rating: rating, date: selectedDate)
@@ -157,6 +180,7 @@ class statsViewController: UIViewController, FSCalendarDataSource, FSCalendarDel
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        selection.selectionChanged()
         
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
@@ -165,6 +189,14 @@ class statsViewController: UIViewController, FSCalendarDataSource, FSCalendarDel
         getUsedActivities(date: selectedDate)
 
         setDayRating()
+        
+        if(daysUsedActivities.count == 0) {
+            statsProductList.isHidden = true
+            statsEmptyImageView.isHidden = false
+        } else {
+            statsProductList.isHidden = false
+            statsEmptyImageView.isHidden = true
+        }
     }
     
     /*
@@ -244,16 +276,22 @@ extension statsViewController: UITableViewDelegate, UITableViewDataSource {
         let timeOfDay = daysUsedActivities[indexPath.row].ampm
         let timeStamp = daysUsedActivities[indexPath.row].time
     
-        var image : UIImage = UIImage(named: "sunMoonIcon.png")!
+        var image : UIImage = UIImage(named: "sun-moon-icon.png")!
         if(timeOfDay == 1) {
-            image = UIImage(named: "sunIconSmall.png")!
+            image = UIImage(named: "sun-icon.png")!
         } else if(timeOfDay == 2) {
-            image = UIImage(named: "moonIconSmall.png")!
+            image = UIImage(named: "moon-icon.png")!
         }
         
         cell.imageView?.image = image
         
-        cell.detailTextLabel?.textColor = UIColor.gray
+        if #available(iOS 13.0, *) {
+            cell.detailTextLabel?.textColor = .secondaryLabel
+        } else {
+            // Fallback on earlier versions
+            cell.detailTextLabel?.textColor = UIColor.lightGray
+        }
+        
         cell.detailTextLabel?.text = timeStamp
         
         var imageView : UIImageView
@@ -263,7 +301,7 @@ extension statsViewController: UITableViewDelegate, UITableViewDataSource {
         cell.accessoryView = imageView
         
         cell.textLabel?.text = productName
-        cell.textLabel?.font = UIFont(name: "American Typewriter", size: 16)
+        cell.textLabel?.font = UIFont(name: "System", size: 16)
         cell.backgroundColor = UIColor.clear
         
         return cell
