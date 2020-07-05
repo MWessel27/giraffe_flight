@@ -26,6 +26,8 @@ class NotificationsViewController: UIViewController {
     @IBOutlet weak var reminderView: UIView!
     @IBOutlet weak var reminderTimePicker: UIDatePicker!
     
+    var reminderOnOff = false
+    
     enum CardViewState {
         case expanded
         case normal
@@ -164,7 +166,6 @@ class NotificationsViewController: UIViewController {
     }
     
     func getReminderSwitchState() -> Bool {
-        var reminderOnOff = false
         
         if(self.reminderSwitch.isOn) {
             reminderOnOff = true
@@ -197,10 +198,12 @@ class NotificationsViewController: UIViewController {
         }
         
         if reminderSwitch.isOn {
+            reminderOnOff = true
             print("Scheduling notification")
             self.scheduleNotification()
             defaults.set(true, forKey: "ReminderSwitchState")
         } else {
+            reminderOnOff = false
             Analytics.logEvent("reminder_off", parameters: nil)
             print("Cleared notification")
             UNUserNotificationCenter.current().removeAllPendingNotificationRequests()

@@ -5,10 +5,6 @@
 //  Created by Mikalangelo Wessel on 5/21/18.
 //  Copyright © 2018 giraffeflight. All rights reserved.
 //
-//  MW TODO
-//          - No products for current day
-//          - Constraints
-//
 
 import UIKit
 import CoreData
@@ -17,7 +13,7 @@ import Firebase
 
 class homeViewController: UIViewController, addEditProduct {
     
-    private let imageView = UIImageView(image: UIImage(named: "notifications-icon"))
+    private let notificationsImageView = UIImageView(image: UIImage(named: "notifications-icon"))
     
     @IBOutlet weak var addIconImageView: UIImageView!
     @IBOutlet weak var noProductIcon: UIImageView!
@@ -30,6 +26,8 @@ class homeViewController: UIViewController, addEditProduct {
     @IBOutlet weak var dayIcon: UIImageView!
     @IBOutlet weak var nightIcon: UIImageView!
     
+    @IBOutlet weak var progressBarView: UIView!
+    
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var nightLabel: UILabel!
     
@@ -39,6 +37,17 @@ class homeViewController: UIViewController, addEditProduct {
     @IBOutlet weak var cellSelectionIcon: UIImageView!
     @IBOutlet weak var cellLabel: UILabel!
     
+    @IBOutlet weak var morningProgressView: UIView!
+    @IBOutlet weak var eveningProgressView: UIView!
+    
+    var progressLyrMorning = CAShapeLayer()
+    var trackLyrMorning = CAShapeLayer()
+    @IBOutlet weak var morningProgressPercentageLabel: UILabel!
+    
+    var progressLyrEvening = CAShapeLayer()
+    var trackLyrEvening = CAShapeLayer()
+    @IBOutlet weak var eveningProgressPercentageLabel: UILabel!
+    
     let selection = UISelectionFeedbackGenerator()
     
     var products = [Product]()
@@ -46,6 +55,13 @@ class homeViewController: UIViewController, addEditProduct {
     var todaysDate: String = ""
     
     var dayOfWeek = 0
+    var morningProgressIndicatorCount = 0
+    var morningProductCount = 0
+    var morningProgressPercentage: Float = 0.0
+    
+    var eveningProgressIndicatorCount = 0
+    var eveningProductCount = 0
+    var eveningProgressPercentage: Float = 0.0
     
     let green:UIColor = UIColor(red: 0.251, green: 0.831, blue: 0.494, alpha: 1)
     
@@ -103,14 +119,100 @@ class homeViewController: UIViewController, addEditProduct {
           self.present(addProductVC, animated: false, completion: nil)
         })
     }
+
+    var progressClrMorning = UIColor.white {
+       didSet {
+          progressLyrMorning.strokeColor = progressClrMorning.cgColor
+       }
+    }
+    var trackClrMorning = UIColor.white {
+       didSet {
+          trackLyrMorning.strokeColor = trackClrMorning.cgColor
+       }
+    }
+    
+    var progressClrEvening = UIColor.white {
+       didSet {
+          progressLyrEvening.strokeColor = progressClrEvening.cgColor
+       }
+    }
+    var trackClrEvening = UIColor.white {
+       didSet {
+          trackLyrEvening.strokeColor = trackClrEvening.cgColor
+       }
+    }
+    
+    func makeCircularPathMorning(progressView: UIView) {
+        progressLyrMorning.lineCap = .round
+        progressView.backgroundColor = UIColor.clear
+        progressView.layer.cornerRadius = progressView.frame.size.width/2
+        let circlePath = UIBezierPath(arcCenter: CGPoint(x: progressView.frame.size.width/2, y: progressView.frame.size.height/2), radius: (progressView.frame.size.width - 15)/2, startAngle: CGFloat(-0.5 * .pi), endAngle: CGFloat(1.5 * .pi), clockwise: true)
+        trackLyrMorning.path = circlePath.cgPath
+        trackLyrMorning.fillColor = UIColor.clear.cgColor
+        trackLyrMorning.strokeColor = trackClrMorning.cgColor
+        trackLyrMorning.lineWidth = 12
+        trackLyrMorning.strokeEnd = 1.0
+        progressView.layer.addSublayer(trackLyrMorning)
+        progressLyrMorning.path = circlePath.cgPath
+        progressLyrMorning.fillColor = UIColor.clear.cgColor
+        progressLyrMorning.strokeColor = progressClrMorning.cgColor
+        progressLyrMorning.lineWidth = 14.5
+        progressLyrMorning.strokeEnd = 0.0
+        progressView.layer.addSublayer(progressLyrMorning)
+    }
+    
+    func makeCircularPathEvening(progressView: UIView) {
+        progressLyrEvening.lineCap = .round
+        progressView.backgroundColor = UIColor.clear
+        progressView.layer.cornerRadius = progressView.frame.size.width/2
+        let circlePath = UIBezierPath(arcCenter: CGPoint(x: progressView.frame.size.width/2, y: progressView.frame.size.height/2), radius: (progressView.frame.size.width - 15)/2, startAngle: CGFloat(-0.5 * .pi), endAngle: CGFloat(1.5 * .pi), clockwise: true)
+        trackLyrEvening.path = circlePath.cgPath
+        trackLyrEvening.fillColor = UIColor.clear.cgColor
+        trackLyrEvening.strokeColor = trackClrEvening.cgColor
+        trackLyrEvening.lineWidth = 12
+        trackLyrEvening.strokeEnd = 1.0
+        progressView.layer.addSublayer(trackLyrEvening)
+        progressLyrEvening.path = circlePath.cgPath
+        progressLyrEvening.fillColor = UIColor.clear.cgColor
+        progressLyrEvening.strokeColor = progressClrEvening.cgColor
+        progressLyrEvening.lineWidth = 14.5
+        progressLyrEvening.strokeEnd = 0.0
+        progressView.layer.addSublayer(progressLyrEvening)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        morningProgressIndicatorCount = 0
+        morningProductCount = 0
+        
+        eveningProgressIndicatorCount = 0
+        eveningProductCount = 0
+        
+        morningProgressView.isHidden = true
+        morningProgressPercentageLabel.isHidden = true
+        eveningProgressView.isHidden = true
+        eveningProgressPercentageLabel.isHidden = true
+        
+        if #available(iOS 13.0, *) {
+            trackClrMorning = UIColor.systemBackground
+            progressClrMorning = UIColor.label
+            
+            trackClrEvening = UIColor.systemBackground
+            progressClrEvening = UIColor.label
+        } else {
+            // Fallback on earlier versions
+            trackClrMorning = UIColor.white
+            progressClrMorning = UIColor.black
+            
+            trackClrEvening = UIColor.white
+            progressClrEvening = UIColor.black
+        }
     
         setupUI()
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
-        imageView.isUserInteractionEnabled = true
-        imageView.addGestureRecognizer(tapGestureRecognizer)
+        notificationsImageView.isUserInteractionEnabled = true
+        notificationsImageView.addGestureRecognizer(tapGestureRecognizer)
         
         let addGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(addIconImageTapped(tapGestureRecognizer:)))
         addIconImageView.isUserInteractionEnabled = true
@@ -156,8 +258,51 @@ class homeViewController: UIViewController, addEditProduct {
         }
     }
     
+    func setMorningProgressBar(percentage: Float) {
+        let percentageInt = Int(round((Float(morningProgressIndicatorCount)/Float(morningProductCount))*100))
+        makeCircularPathMorning(progressView: morningProgressView)
+        let animation = CABasicAnimation(keyPath: "strokeEnd")
+        animation.duration = 1.5
+        animation.fromValue = morningProgressPercentage
+        animation.toValue = percentage
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
+        progressLyrMorning.strokeEnd = CGFloat(percentage)
+        progressLyrMorning.add(animation, forKey: "animateprogress")
+
+        morningProgressPercentage = percentage
+        
+        morningProgressPercentageLabel.text = String(percentageInt) + "%"
+    }
+    
+    func setEveningProgressBar(percentage: Float) {
+        let percentageInt = Int(round((Float(eveningProgressIndicatorCount)/Float(eveningProductCount))*100))
+        makeCircularPathEvening(progressView: eveningProgressView)
+        let animation = CABasicAnimation(keyPath: "strokeEnd")
+        animation.duration = 1.5
+        animation.fromValue = eveningProgressPercentage
+        animation.toValue = percentage
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
+        progressLyrEvening.strokeEnd = CGFloat(percentage)
+        progressLyrEvening.add(animation, forKey: "animateprogress")
+
+        eveningProgressPercentage = percentage
+        
+        eveningProgressPercentageLabel.text = String(percentageInt) + "%"
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated);
+        morningProgressIndicatorCount = 0
+        morningProductCount = 0
+        
+        morningProgressView.isHidden = true
+        morningProgressPercentageLabel.isHidden = true
+        
+        eveningProgressIndicatorCount = 0
+        eveningProductCount = 0
+        
+        eveningProgressView.isHidden = true
+        eveningProgressPercentageLabel.isHidden = true
         
         if let savedProds = loadProducts() {
             products = savedProds
@@ -195,6 +340,12 @@ class homeViewController: UIViewController, addEditProduct {
             nightLabel.isHidden = true
             dayProductEditButton.isHidden = true
             nightProductEditButton.isHidden = true
+            
+            morningProgressView.isHidden = true
+            morningProgressPercentageLabel.isHidden = true
+            
+            eveningProgressView.isHidden = true
+            eveningProgressPercentageLabel.isHidden = true
 
             mTableView.isHidden = true;
             pmTableView.isHidden = true;
@@ -206,6 +357,17 @@ class homeViewController: UIViewController, addEditProduct {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
+        morningProgressIndicatorCount = 0
+        morningProductCount = 0
+        
+        morningProgressView.isHidden = true
+        morningProgressPercentageLabel.isHidden = true
+        
+        eveningProgressIndicatorCount = 0
+        eveningProductCount = 0
+        
+        eveningProgressView.isHidden = true
+        eveningProgressPercentageLabel.isHidden = true
         
         if let savedProds = loadProducts() {
             products = savedProds
@@ -243,6 +405,12 @@ class homeViewController: UIViewController, addEditProduct {
             nightLabel.isHidden = true
             dayProductEditButton.isHidden = true
             nightProductEditButton.isHidden = true
+            
+            morningProgressView.isHidden = true
+            morningProgressPercentageLabel.isHidden = true
+            
+            eveningProgressView.isHidden = true
+            eveningProgressPercentageLabel.isHidden = true
 
             mTableView.isHidden = true;
             pmTableView.isHidden = true;
@@ -258,21 +426,71 @@ class homeViewController: UIViewController, addEditProduct {
     
     private func setupUI() {
         navigationController?.navigationBar.prefersLargeTitles = true
-
+        
         title = "Today"
+        
+        let dateFormatter = DateFormatter()
+        // uncomment to enforce the US locale
+        // dateFormatter.locale = Locale(identifier: "en-US")
+        dateFormatter.setLocalizedDateFormatFromTemplate("EEEE MMMM d")
 
         // Initial setup for image for Large NavBar state since the the screen always has Large NavBar once it gets opened
         guard let navigationBar = self.navigationController?.navigationBar else { return }
-        navigationBar.addSubview(imageView)
-        imageView.layer.cornerRadius = Const.ImageSizeForLargeState / 2
-        imageView.clipsToBounds = true
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+        navigationBar.addSubview(setTitle(title: "Today", subtitle: dateFormatter.string(from: Date()).uppercased()))
+        navigationBar.addSubview(notificationsImageView)
+        notificationsImageView.layer.cornerRadius = Const.ImageSizeForLargeState / 2
+        notificationsImageView.clipsToBounds = true
+        notificationsImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            imageView.rightAnchor.constraint(equalTo: navigationBar.rightAnchor, constant: -Const.ImageRightMargin),
-            imageView.bottomAnchor.constraint(equalTo: navigationBar.bottomAnchor, constant: -Const.ImageBottomMarginForLargeState),
-            imageView.heightAnchor.constraint(equalToConstant: Const.ImageSizeForLargeState),
-            imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor)
+            notificationsImageView.rightAnchor.constraint(equalTo: navigationBar.rightAnchor, constant: -Const.ImageRightMargin),
+            notificationsImageView.bottomAnchor.constraint(equalTo: navigationBar.bottomAnchor, constant: -Const.ImageBottomMarginForLargeState),
+            notificationsImageView.heightAnchor.constraint(equalToConstant: Const.ImageSizeForLargeState),
+            notificationsImageView.widthAnchor.constraint(equalTo: notificationsImageView.heightAnchor)
             ])
+    }
+    
+    func setTitle(title:String, subtitle:String) -> UIView {
+
+        //Get navigation Bar Height and Width
+        let navigationBarHeight = Int(self.navigationController!.navigationBar.frame.height)
+        let navigationBarWidth = Int(self.navigationController!.navigationBar.frame.width)
+
+        //Y position for Title and Subtitle
+        let y_Title = 48.0
+        let y_SubTitle = 16.0
+
+        //Set Font size and weight for Title and Subtitle
+        let titleFont = UIFont.systemFont(ofSize: 33, weight: UIFont.Weight.bold)
+        let subTitleFont = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.semibold)
+
+        //Title label
+//        let titleLabel = UILabel(frame: CGRect(x: 16, y: y_Title, width: 0, height: 0))
+//        titleLabel.backgroundColor = UIColor.clear
+//        if #available(iOS 13.0, *) {
+//            titleLabel.textColor = .label
+//        } else {
+//            // Fallback on earlier versions
+//            titleLabel.textColor = UIColor.white
+//        }
+//        titleLabel.font = titleFont
+//        titleLabel.text = title
+//        titleLabel.sizeToFit()
+
+        //SubTitle label
+        let subtitleLabel = UILabel(frame: CGRect(x: 20, y: y_SubTitle, width: 0, height: 0))
+        subtitleLabel.backgroundColor = UIColor.clear
+        subtitleLabel.textColor = UIColor.gray
+        subtitleLabel.font = subTitleFont
+        subtitleLabel.text = subtitle
+        subtitleLabel.sizeToFit()
+
+        //Add Title and Subtitle to View
+        let titleView = UIView(frame: CGRect(x: 0, y: 0, width: navigationBarWidth, height: navigationBarHeight))
+//        titleView.addSubview(titleLabel)
+        titleView.addSubview(subtitleLabel)
+
+        return titleView
+
     }
     
     @IBAction func editDayProductButtonClicked(_ sender: Any) {
@@ -294,6 +512,22 @@ class homeViewController: UIViewController, addEditProduct {
             nightProductEditButton.setTitle("Done", for: .normal)
         }
     }
+    
+    static func requireUserAttention(on onView: UIImageView) {
+        let animation = CABasicAnimation(keyPath: "position")
+        animation.duration = 0.07
+        animation.repeatCount = 4
+        animation.autoreverses = true
+        animation.fromValue = NSValue(cgPoint: CGPoint(x: onView.center.x - 3, y: onView.center.y))
+        animation.toValue = NSValue(cgPoint: CGPoint(x: onView.center.x + 3, y: onView.center.y))
+        onView.layer.add(animation, forKey: "position")
+    }
+    
+    func getNotificationStatus() -> Bool {
+        let defaults = UserDefaults.standard
+        return defaults.bool(forKey: "ReminderSwitchState")
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -422,9 +656,9 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
         
         if(tableView == mTableView) {
             if((products[indexPath.row].ampm == 1 || products[indexPath.row].ampm == 0) && productValidForDay) {
-                
                 var checked = false
                 var timeStamp = ""
+                morningProductCount += 1
                 for usedProductDates in products[indexPath.row].usedActivities {
                     if(usedProductDates.date == todaysDate && (usedProductDates.ampm == 1 || usedProductDates.ampm == 0)) {
                         timeStamp = usedProductDates.time
@@ -446,6 +680,7 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
                     cell.backgroundColor = UIColor.clear
                     
                     cell.cellSelectedImage.image = UIImage(named: "checkmark.png")!
+                    morningProgressIndicatorCount += 1
                 } else {
                     cell.cellLabel.font = UIFont(name: "System", size: 24)
                     cell.cellLabel.backgroundColor = UIColor.clear
@@ -453,6 +688,15 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
                     cell.productDetailTextLabel?.text = ""
                     cell.cellSelectedImage.image = UIImage(named: "checkmarkempty.png")!
                 }
+                
+                if(morningProgressIndicatorCount > 0) {
+                    morningProgressView.isHidden = false
+                    morningProgressPercentageLabel.isHidden = false
+                    dayIcon.isHidden = true
+                }
+                
+                setMorningProgressBar(percentage: (Float(morningProgressIndicatorCount)/Float(morningProductCount)))
+                
                 return cell
             } else {
                 cell.isHidden = true
@@ -462,6 +706,7 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
                 
                 var checked = false
                 var timeStamp = ""
+                eveningProductCount += 1
                 for usedProductDates in products[indexPath.row].usedActivities {
                     if(usedProductDates.date == todaysDate && (usedProductDates.ampm == 2 || usedProductDates.ampm == 0)) {
                         timeStamp = usedProductDates.time
@@ -483,6 +728,7 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
                     cell.backgroundColor = UIColor.clear
                     
                     cell.cellSelectedImage.image = UIImage(named: "checkmark.png")!
+                    eveningProgressIndicatorCount += 1
                 } else {
                     cell.cellLabel.font = UIFont(name: "System", size: 24)
                     cell.cellLabel.backgroundColor = UIColor.clear
@@ -490,6 +736,15 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
                     cell.productDetailTextLabel?.text = ""
                     cell.cellSelectedImage.image = UIImage(named: "checkmarkempty.png")!
                 }
+                
+                if(eveningProgressIndicatorCount > 0) {
+                    eveningProgressView.isHidden = false
+                    eveningProgressPercentageLabel.isHidden = false
+                    nightIcon.isHidden = true
+                }
+                
+                setEveningProgressBar(percentage: (Float(eveningProgressIndicatorCount)/Float(eveningProductCount)))
+                
                 return cell
             } else {
                 cell.isHidden = true
@@ -565,6 +820,11 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selection.selectionChanged()
         
+        
+        if(!getNotificationStatus()) {
+            homeViewController.requireUserAttention(on: notificationsImageView)
+        }
+        
         let mySelectedCell = tableView.cellForRow(at: indexPath) as! HomeTableViewCell
         
         var ampm = 3
@@ -582,6 +842,11 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
             mySelectedCell.productDetailTextLabel?.backgroundColor = UIColor.clear
             mySelectedCell.productDetailTextLabel?.text = ""
             mySelectedCell.cellSelectedImage.image = UIImage(named: "checkmarkempty.png")!
+            if(tableView == mTableView) {
+                morningProgressIndicatorCount -= 1
+            } else {
+                eveningProgressIndicatorCount -= 1
+            }
         } else {
             addUsedActivity(product: products[indexPath.row], ampm: ampm)
             mySelectedCell.cellLabel.font = UIFont(name: "System", size: 24)
@@ -598,7 +863,27 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
             mySelectedCell.cellSelectedImage.image = UIImage(named: "checkmark.png")!
             mySelectedCell.tintColor = UIColor.white
             mySelectedCell.backgroundColor = UIColor.clear
+            if(tableView == mTableView) {
+                morningProgressIndicatorCount += 1
+            } else {
+                eveningProgressIndicatorCount += 1
+            }
         }
+        
+        if(morningProgressIndicatorCount > 0) {
+            morningProgressView.isHidden = false
+            morningProgressPercentageLabel.isHidden = false
+            dayIcon.isHidden = true
+        }
+        
+        if(eveningProgressIndicatorCount > 0) {
+            eveningProgressView.isHidden = false
+            eveningProgressPercentageLabel.isHidden = false
+            nightIcon.isHidden = true
+        }
+        
+        setMorningProgressBar(percentage: (Float(morningProgressIndicatorCount)/Float(morningProductCount)))
+        setEveningProgressBar(percentage: (Float(eveningProgressIndicatorCount)/Float(eveningProductCount)))
     }
     
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
