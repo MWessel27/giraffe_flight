@@ -190,7 +190,9 @@ class homeViewController: UIViewController, addEditProduct {
         eveningProductCount = 0
         
         morningProgressView.isHidden = true
+        morningProgressPercentageLabel.isHidden = true
         eveningProgressView.isHidden = true
+        eveningProgressPercentageLabel.isHidden = true
         
         if #available(iOS 13.0, *) {
             trackClrMorning = UIColor.systemBackground
@@ -294,11 +296,13 @@ class homeViewController: UIViewController, addEditProduct {
         morningProductCount = 0
         
         morningProgressView.isHidden = true
+        morningProgressPercentageLabel.isHidden = true
         
         eveningProgressIndicatorCount = 0
         eveningProductCount = 0
         
         eveningProgressView.isHidden = true
+        eveningProgressPercentageLabel.isHidden = true
         
         if let savedProds = loadProducts() {
             products = savedProds
@@ -357,11 +361,13 @@ class homeViewController: UIViewController, addEditProduct {
         morningProductCount = 0
         
         morningProgressView.isHidden = true
+        morningProgressPercentageLabel.isHidden = true
         
         eveningProgressIndicatorCount = 0
         eveningProductCount = 0
         
         eveningProgressView.isHidden = true
+        eveningProgressPercentageLabel.isHidden = true
         
         if let savedProds = loadProducts() {
             products = savedProds
@@ -421,6 +427,8 @@ class homeViewController: UIViewController, addEditProduct {
     private func setupUI() {
         navigationController?.navigationBar.prefersLargeTitles = true
         
+        title = "Today"
+        
         let dateFormatter = DateFormatter()
         // uncomment to enforce the US locale
         // dateFormatter.locale = Locale(identifier: "en-US")
@@ -449,27 +457,27 @@ class homeViewController: UIViewController, addEditProduct {
 
         //Y position for Title and Subtitle
         let y_Title = 48.0
-        let y_SubTitle = 22.0
+        let y_SubTitle = 16.0
 
         //Set Font size and weight for Title and Subtitle
         let titleFont = UIFont.systemFont(ofSize: 33, weight: UIFont.Weight.bold)
         let subTitleFont = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.semibold)
 
         //Title label
-        let titleLabel = UILabel(frame: CGRect(x: 16, y: y_Title, width: 0, height: 0))
-        titleLabel.backgroundColor = UIColor.clear
-        if #available(iOS 13.0, *) {
-            titleLabel.textColor = .label
-        } else {
-            // Fallback on earlier versions
-            titleLabel.textColor = UIColor.white
-        }
-        titleLabel.font = titleFont
-        titleLabel.text = title
-        titleLabel.sizeToFit()
+//        let titleLabel = UILabel(frame: CGRect(x: 16, y: y_Title, width: 0, height: 0))
+//        titleLabel.backgroundColor = UIColor.clear
+//        if #available(iOS 13.0, *) {
+//            titleLabel.textColor = .label
+//        } else {
+//            // Fallback on earlier versions
+//            titleLabel.textColor = UIColor.white
+//        }
+//        titleLabel.font = titleFont
+//        titleLabel.text = title
+//        titleLabel.sizeToFit()
 
         //SubTitle label
-        let subtitleLabel = UILabel(frame: CGRect(x: 16, y: y_SubTitle, width: 0, height: 0))
+        let subtitleLabel = UILabel(frame: CGRect(x: 20, y: y_SubTitle, width: 0, height: 0))
         subtitleLabel.backgroundColor = UIColor.clear
         subtitleLabel.textColor = UIColor.gray
         subtitleLabel.font = subTitleFont
@@ -478,7 +486,7 @@ class homeViewController: UIViewController, addEditProduct {
 
         //Add Title and Subtitle to View
         let titleView = UIView(frame: CGRect(x: 0, y: 0, width: navigationBarWidth, height: navigationBarHeight))
-        titleView.addSubview(titleLabel)
+//        titleView.addSubview(titleLabel)
         titleView.addSubview(subtitleLabel)
 
         return titleView
@@ -683,6 +691,7 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
                 
                 if(morningProgressIndicatorCount > 0) {
                     morningProgressView.isHidden = false
+                    morningProgressPercentageLabel.isHidden = false
                     dayIcon.isHidden = true
                 }
                 
@@ -730,6 +739,7 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
                 
                 if(eveningProgressIndicatorCount > 0) {
                     eveningProgressView.isHidden = false
+                    eveningProgressPercentageLabel.isHidden = false
                     nightIcon.isHidden = true
                 }
                 
@@ -862,11 +872,13 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
         
         if(morningProgressIndicatorCount > 0) {
             morningProgressView.isHidden = false
+            morningProgressPercentageLabel.isHidden = false
             dayIcon.isHidden = true
         }
         
         if(eveningProgressIndicatorCount > 0) {
             eveningProgressView.isHidden = false
+            eveningProgressPercentageLabel.isHidden = false
             nightIcon.isHidden = true
         }
         
