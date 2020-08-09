@@ -14,6 +14,8 @@ import Firebase
 class homeViewController: UIViewController, addEditProduct {
     
     private let notificationsImageView = UIImageView(image: UIImage(named: "notifications-icon"))
+    private var ratingImageView = UIImageView(image: UIImage(named: "emptyStar"))
+    private let ratingStreakLabel = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: 75.0, height: 30.0))
     
     @IBOutlet weak var addIconImageView: UIImageView!
     @IBOutlet weak var noProductIcon: UIImageView!
@@ -51,8 +53,13 @@ class homeViewController: UIViewController, addEditProduct {
     let selection = UISelectionFeedbackGenerator()
     
     var products = [Product]()
+    var currentStreak = [Streak]()
+    
+    var ratings = [Rating]()
+    var dayRating: Rating?
     
     var todaysDate: String = ""
+    var yesterdaysDate: String = ""
     
     var dayOfWeek = 0
     var morningProgressIndicatorCount = 0
@@ -76,7 +83,7 @@ class homeViewController: UIViewController, addEditProduct {
     
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
-        let tappedImage = tapGestureRecognizer.view as! UIImageView
+//        let tappedImage = tapGestureRecognizer.view as! UIImageView
 
         // Your action
         print("notifications tapped")
@@ -96,9 +103,46 @@ class homeViewController: UIViewController, addEditProduct {
         })
     }
     
+    @objc func ratingIconImageTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+//        let tappedImage = tapGestureRecognizer.view as! UIImageView
+
+        guard let ratingVC = storyboard?.instantiateViewController(withIdentifier: "RatingViewController")
+        as? RatingViewController else {
+            assertionFailure("No view controller ID RatingViewController in storyboard")
+            return
+        }
+        
+        // Delay the capture of snapshot by 0.1 seconds
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1 , execute: {
+          // take a snapshot of current view and set it as backingImage
+          ratingVC.backingImage = self.tabBarController?.view.asImage()
+          
+          // present the view controller modally without animation
+          self.present(ratingVC, animated: false, completion: nil)
+        })
+    }
+    
+    func showRatingViewController() {
+        guard let ratingVC = storyboard?.instantiateViewController(withIdentifier: "RatingViewController")
+        as? RatingViewController else {
+            assertionFailure("No view controller ID RatingViewController in storyboard")
+            return
+        }
+        
+        // Delay the capture of snapshot by 0.1 seconds
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1 , execute: {
+          // take a snapshot of current view and set it as backingImage
+          ratingVC.backingImage = self.tabBarController?.view.asImage()
+          
+          // present the view controller modally without animation
+          self.present(ratingVC, animated: false, completion: nil)
+        })
+    }
+    
     @objc func addIconImageTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
-        let tappedImage = tapGestureRecognizer.view as! UIImageView
+//        let tappedImage = tapGestureRecognizer.view as! UIImageView
 
         // Your action
         print("notifications tapped")
@@ -183,6 +227,8 @@ class homeViewController: UIViewController, addEditProduct {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        UIApplication.shared.applicationIconBadgeNumber = 0
+        
         morningProgressIndicatorCount = 0
         morningProductCount = 0
         
@@ -215,8 +261,16 @@ class homeViewController: UIViewController, addEditProduct {
         notificationsImageView.addGestureRecognizer(tapGestureRecognizer)
         
         let addGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(addIconImageTapped(tapGestureRecognizer:)))
+//        let streakGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ratingIconImageTapped(tapGestureRecognizer:)))
         addIconImageView.isUserInteractionEnabled = true
         addIconImageView.addGestureRecognizer(addGestureRecognizer)
+//        ratingStreakLabel.isUserInteractionEnabled = true
+//        ratingStreakLabel.addGestureRecognizer(streakGestureRecognizer)
+        
+        let ratingGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ratingIconImageTapped(tapGestureRecognizer:)))
+        ratingImageView.isUserInteractionEnabled = true
+        ratingImageView.addGestureRecognizer(ratingGestureRecognizer)
+        
         
         // returns an integer from 1 - 7, with 1 being Sunday and 7 being Saturday
         dayOfWeek = Date().dayNumberOfWeek()!
@@ -229,6 +283,9 @@ class homeViewController: UIViewController, addEditProduct {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         todaysDate = formatter.string(from: date)
+        yesterdaysDate = formatter.string(from: Date.yesterday)
+        
+        setStreak()
         
         if(products.count != 0) {
             noProductIcon.isHidden = true
@@ -357,6 +414,8 @@ class homeViewController: UIViewController, addEditProduct {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
+        setStreak()
+        
         morningProgressIndicatorCount = 0
         morningProductCount = 0
         
@@ -424,6 +483,14 @@ class homeViewController: UIViewController, addEditProduct {
         return NSKeyedUnarchiver.unarchiveObject(withFile: Product.ArchiveURL.path) as? [Product]
     }
     
+    private func loadStreak() -> [Streak]? {
+        return NSKeyedUnarchiver.unarchiveObject(withFile: Streak.ArchiveURL.path) as? [Streak]
+    }
+    
+    private func loadRatings() -> [Rating]? {
+        return NSKeyedUnarchiver.unarchiveObject(withFile: Rating.ArchiveURL.path) as? [Rating]
+    }
+    
     private func setupUI() {
         navigationController?.navigationBar.prefersLargeTitles = true
         
@@ -447,6 +514,27 @@ class homeViewController: UIViewController, addEditProduct {
             notificationsImageView.heightAnchor.constraint(equalToConstant: Const.ImageSizeForLargeState),
             notificationsImageView.widthAnchor.constraint(equalTo: notificationsImageView.heightAnchor)
             ])
+        
+        navigationBar.addSubview(ratingImageView)
+        ratingImageView.layer.cornerRadius = Const.ImageSizeForLargeState / 2
+        ratingImageView.clipsToBounds = true
+        ratingImageView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            ratingImageView.rightAnchor.constraint(equalTo: navigationBar.rightAnchor, constant: -Const.ImageRightMargin*5),
+            ratingImageView.bottomAnchor.constraint(equalTo: navigationBar.bottomAnchor, constant: -Const.ImageBottomMarginForLargeState),
+            ratingImageView.heightAnchor.constraint(equalToConstant: Const.ImageSizeForLargeState),
+            ratingImageView.widthAnchor.constraint(equalTo: ratingImageView.heightAnchor)
+            ])
+        
+        navigationBar.addSubview(ratingStreakLabel)
+//        ratingStreakLabel.text = "35"
+        ratingStreakLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            ratingStreakLabel.rightAnchor.constraint(equalTo: navigationBar.rightAnchor, constant: -Const.ImageRightMargin*2.75),
+            ratingStreakLabel.bottomAnchor.constraint(equalTo: navigationBar.bottomAnchor, constant: -Const.ImageBottomMarginForLargeState),
+            ratingStreakLabel.heightAnchor.constraint(equalToConstant: Const.ImageSizeForLargeState),
+            ratingStreakLabel.widthAnchor.constraint(equalTo: ratingImageView.heightAnchor)
+            ])
     }
     
     func setTitle(title:String, subtitle:String) -> UIView {
@@ -463,19 +551,6 @@ class homeViewController: UIViewController, addEditProduct {
         let titleFont = UIFont.systemFont(ofSize: 33, weight: UIFont.Weight.bold)
         let subTitleFont = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.semibold)
 
-        //Title label
-//        let titleLabel = UILabel(frame: CGRect(x: 16, y: y_Title, width: 0, height: 0))
-//        titleLabel.backgroundColor = UIColor.clear
-//        if #available(iOS 13.0, *) {
-//            titleLabel.textColor = .label
-//        } else {
-//            // Fallback on earlier versions
-//            titleLabel.textColor = UIColor.white
-//        }
-//        titleLabel.font = titleFont
-//        titleLabel.text = title
-//        titleLabel.sizeToFit()
-
         //SubTitle label
         let subtitleLabel = UILabel(frame: CGRect(x: 20, y: y_SubTitle, width: 0, height: 0))
         subtitleLabel.backgroundColor = UIColor.clear
@@ -486,7 +561,6 @@ class homeViewController: UIViewController, addEditProduct {
 
         //Add Title and Subtitle to View
         let titleView = UIView(frame: CGRect(x: 0, y: 0, width: navigationBarWidth, height: navigationBarHeight))
-//        titleView.addSubview(titleLabel)
         titleView.addSubview(subtitleLabel)
 
         return titleView
@@ -526,6 +600,100 @@ class homeViewController: UIViewController, addEditProduct {
     func getNotificationStatus() -> Bool {
         let defaults = UserDefaults.standard
         return defaults.bool(forKey: "ReminderSwitchState")
+    }
+    
+    //MARK: Rating Streak
+    func setStreak() {
+        ratings.removeAll()
+        if let savedRatings = loadRatings() {
+            ratings += savedRatings
+        }
+        
+        if let todaysStreak = loadStreak() {
+            currentStreak = todaysStreak
+        }
+        
+        var ratingYesterday = false
+        if(!currentStreak.isEmpty) {
+            currentStreak[0].setToday = false
+            for rating in ratings {
+                if(todaysDate == rating.date && rating.rating > 0) {
+                    currentStreak[0].setToday = true
+                }
+                if(yesterdaysDate == rating.date && rating.rating > 0) {
+                    ratingYesterday = true
+                }
+            }
+        }
+        
+        // current streak logic
+        if(currentStreak.isEmpty) {
+            // set empty star and zero. Save streak for a baseline
+            showSaveStreak(icon: false, streak: 0)
+        } else if(!currentStreak.isEmpty && !ratingYesterday && !currentStreak[0].setToday) {
+            //set empty star and zero out streak since its not empty
+            showSaveStreak(icon: false, streak: 0)
+        } else if(!currentStreak.isEmpty && !ratingYesterday && currentStreak[0].setToday) {
+            //set gold star and streak to 1 since its set today but not yesterdays
+            showSaveStreak(icon: true, streak: 1)
+        } else if(!currentStreak.isEmpty && ratingYesterday && !currentStreak[0].setToday) {
+            // rating yesterday, rating not set today
+            // set empty star with streak label
+            if(currentStreak[0].streak != 0) {
+                showSaveStreak(icon: false, streak: currentStreak[0].streak)
+            } else {
+                showSaveStreak(icon: false, streak: 1)
+            }
+        } else if(!currentStreak.isEmpty && ratingYesterday && currentStreak[0].setToday) {
+            // rating yesterday and today
+            // set gold star with current streak number
+            showSaveStreak(icon: true, streak: currentStreak[0].streak)
+        } else {
+            // gold star with streak # incremented
+            showSaveStreak(icon: true, streak: currentStreak[0].streak + 1)
+        }
+    }
+    
+    func showSaveStreak(icon: Bool, streak: Int) {
+        if(currentStreak.isEmpty) {
+            let tempStreak = Streak(setToday: icon, streak: streak)
+            currentStreak.append(tempStreak!)
+        } else {
+            currentStreak[0].setToday = icon
+            currentStreak[0].streak = streak
+        }
+        if(currentStreak[0].streak >= 2) {
+            Analytics.logEvent("request_review_attempt", parameters: [
+            "dateRequested": todaysDate as NSObject
+            ])
+            AppStoreReviewManager.requestReviewIfAppropriate()
+        }
+        saveStreak()
+        if(getNotificationStatus()) {
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "scheduleStreakNotification"), object: nil)
+        }
+        if(icon && streak > 0) {
+            ratingImageView.image = UIImage(named: "goldStar")
+            ratingStreakLabel.text = String(streak)
+            if #available(iOS 13.0, *) {
+                ratingStreakLabel.textColor = UIColor.label
+            } else {
+                ratingStreakLabel.textColor = UIColor.black
+            }
+        } else {
+            ratingImageView.image = UIImage(named: "emptyStar")
+            ratingStreakLabel.text = String(streak)
+            ratingStreakLabel.textColor = .systemGray
+        }
+    }
+    
+    private func saveStreak() {
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(currentStreak, toFile: Streak.ArchiveURL.path)
+        if isSuccessfulSave {
+            os_log("Streak successfully saved.", log: OSLog.default, type: .debug)
+        } else {
+            os_log("Failed to save streak...", log: OSLog.default, type: .error)
+        }
     }
     
 
@@ -882,6 +1050,12 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
             nightIcon.isHidden = true
         }
         
+        if((morningProgressIndicatorCount == morningProductCount || eveningProgressIndicatorCount == eveningProductCount) && !currentStreak[0].setToday) {
+            Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { (nil) in
+                self.showRatingViewController()
+            }
+        }
+        
         setMorningProgressBar(percentage: (Float(morningProgressIndicatorCount)/Float(morningProductCount)))
         setEveningProgressBar(percentage: (Float(eveningProgressIndicatorCount)/Float(eveningProductCount)))
     }
@@ -905,6 +1079,18 @@ extension homeViewController: UITableViewDelegate, UITableViewDataSource {
 extension Date {
     func dayNumberOfWeek() -> Int? {
         return Calendar.current.dateComponents([.weekday], from: self).weekday
+    }
+    static var yesterday: Date { return Date().dayBefore }
+    static var tomorrow:  Date { return Date().dayAfter }
+    static var dayAfterTomorrow: Date { return Date().twoDaysFromNow }
+    var dayBefore: Date {
+        return Calendar.current.date(byAdding: .day, value: -1, to: Date())!
+    }
+    var dayAfter: Date {
+        return Calendar.current.date(byAdding: .day, value: 1, to: Date())!
+    }
+    var twoDaysFromNow: Date {
+        return Calendar.current.date(byAdding: .day, value: 2, to: Date())!
     }
 }
 

@@ -26,6 +26,8 @@ class NotificationsViewController: UIViewController {
     @IBOutlet weak var reminderView: UIView!
     @IBOutlet weak var reminderTimePicker: UIDatePicker!
     
+    var currentStreak = [Streak]()
+    
     var reminderOnOff = false
     
     enum CardViewState {
@@ -45,6 +47,13 @@ class NotificationsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(scheduleStreakNotification(_:)), name: Notification.Name(rawValue: "disconnectPaxiSockets"), object: nil)
+
+        
+        if let todaysStreak = loadStreak() {
+            currentStreak = todaysStreak
+        }
 
         // update the backing image view
         backingImageView.image = backingImage
@@ -108,6 +117,10 @@ class NotificationsViewController: UIViewController {
             })
     }
     
+    private func loadStreak() -> [Streak]? {
+        return NSKeyedUnarchiver.unarchiveObject(withFile: Streak.ArchiveURL.path) as? [Streak]
+    }
+    
     func setDateForPicker(pickerDate: Date) {
         DispatchQueue.global().async(execute: {
             DispatchQueue.main.sync{
@@ -116,15 +129,36 @@ class NotificationsViewController: UIViewController {
         })
     }
     
+    @objc func scheduleStreakNotification(_ notification: Notification) {
+        scheduleNotification()
+    }
+    
     func scheduleNotification() {
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        
         let center = UNUserNotificationCenter.current()
         
-        let content = UNMutableNotificationContent()
-        content.title = "Skin Care Reminder"
-        content.body = "Time to complete your daily skin care routine."
-        content.categoryIdentifier = "alarm"
-        content.userInfo = ["customData": "fizzbuzz"]
-        content.sound = UNNotificationSound.default
+        let contentNoStreak = UNMutableNotificationContent()
+        let contentStreak = UNMutableNotificationContent()
+        
+        var streakNotification = false
+        
+        if(!currentStreak.isEmpty) {
+            if(currentStreak[0].streak > 0) {
+                streakNotification = true
+                contentStreak.title = "Keep your "  + String(currentStreak[0].streak) + " day streak alive!"
+                contentStreak.body = "A daily skin care routine is essential to achieving flawless skin. Complete your skin care routine to keep your streak going."
+                contentStreak.badge = 1
+                contentStreak.categoryIdentifier = "alarm"
+                contentStreak.userInfo = ["customData": "fizzbuzz"]
+                contentStreak.sound = UNNotificationSound.default
+            }
+        }
+        contentNoStreak.title = "Skin Care Reminder"
+        contentNoStreak.body = "Time to complete your daily skin care routine."
+        contentNoStreak.categoryIdentifier = "alarm"
+        contentNoStreak.userInfo = ["customData": "fizzbuzz"]
+        contentNoStreak.sound = UNNotificationSound.default
         
         let reminderDate = getDateFromPicker()
         
@@ -148,10 +182,28 @@ class NotificationsViewController: UIViewController {
                 "time": reminderTime as NSObject
                 ])
             
-            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+            if(streakNotification) {
+                // non repeating streak trigger
+                let tomorrowsDate = dateFormatter.string(from: Date.tomorrow)
+                dateComponents.day = Int(tomorrowsDate)!
+                let streakTrigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+                let streakNotificationRequest = UNNotificationRequest(identifier: UUID().uuidString, content: contentStreak, trigger: streakTrigger)
+                
+                // repeating trigger day after streak trigger
+                let dayAfterTomorrow = dateFormatter.string(from: Date.dayAfterTomorrow)
+                dateComponents.day = Int(dayAfterTomorrow)!
+                let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+                
+                let request = UNNotificationRequest(identifier: UUID().uuidString, content: contentNoStreak, trigger: trigger)
+                center.add(streakNotificationRequest)
+                center.add(request)
+            } else {
             
-            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-            center.add(request)
+                let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+                
+                let request = UNNotificationRequest(identifier: UUID().uuidString, content: contentNoStreak, trigger: trigger)
+                center.add(request)
+            }
         }
     }
     
@@ -159,7 +211,6 @@ class NotificationsViewController: UIViewController {
         if(getReminderSwitchState()) {
             let defaults = UserDefaults.standard
             print(self.reminderTimePicker.date)
-            UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
             self.scheduleNotification()
             defaults.set(true, forKey: "ReminderSwitchState")
         }
@@ -256,6 +307,10 @@ class NotificationsViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        if let todaysStreak = loadStreak() {
+            currentStreak = todaysStreak
+        }
 
         showCard()
         

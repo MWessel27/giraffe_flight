@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		03624F8F3CFBB42A2BC339ED /* Pods_FlawlessTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63727D62FAC9D72A645A3B99 /* Pods_FlawlessTests.framework */; };
 		7B0C9E2D2482926D005198CC /* DayOfWeekButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0C9E2C2482926D005198CC /* DayOfWeekButton.swift */; };
+		7B0F2B4E24D98B240031B305 /* RatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0F2B4D24D98B240031B305 /* RatingViewController.swift */; };
 		7B279194247AE00E0038286E /* uiTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B279193247AE00E0038286E /* uiTabBarController.swift */; };
 		7B279196247B24CB0038286E /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B279195247B24CB0038286E /* NotificationsViewController.swift */; };
 		7B279198247B25890038286E /* UIViewSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B279197247B25890038286E /* UIViewSnapshot.swift */; };
@@ -19,7 +20,10 @@
 		7B723B5221F00D95008605FB /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B723B5121F00D95008605FB /* ProductTableViewCell.swift */; };
 		7B9050B02243C210000F2FF5 /* GettingStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9050AF2243C210000F2FF5 /* GettingStartedViewController.swift */; };
 		7BA0191C21ECB4510078E61B /* newProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA0191B21ECB4510078E61B /* newProductViewController.swift */; };
+		7BB4726E24DECDD400345FDE /* Streak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB4726D24DECDD400345FDE /* Streak.swift */; };
+		7BB4727024E07D6F00345FDE /* AppStoreReviewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB4726F24E07D6F00345FDE /* AppStoreReviewManager.swift */; };
 		7BD24D3121F207E500F2CBCE /* ProductTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD24D3021F207E500F2CBCE /* ProductTableViewController.swift */; };
+		7BE10A0524DB738100419C8B /* starRatingAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 7BE10A0424DB738100419C8B /* starRatingAnimation.json */; };
 		7BF2678422C97FA900F92263 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF2678322C97FA900F92263 /* HomeTableViewCell.swift */; };
 		870F034ECB23EA290F5944E1 /* Pods_Flawless.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE9D30E682FB220A11A2676A /* Pods_Flawless.framework */; };
 		910F3091EFA3C21E92AF9213 /* Pods_FlawlessUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE1BD2CA724382144BEE144C /* Pods_FlawlessUITests.framework */; };
@@ -72,6 +76,7 @@
 		302E9339782EAE2D916B49D3 /* Pods-FlawlessTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlawlessTests.release.xcconfig"; path = "Target Support Files/Pods-FlawlessTests/Pods-FlawlessTests.release.xcconfig"; sourceTree = "<group>"; };
 		63727D62FAC9D72A645A3B99 /* Pods_FlawlessTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlawlessTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B0C9E2C2482926D005198CC /* DayOfWeekButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeekButton.swift; sourceTree = "<group>"; };
+		7B0F2B4D24D98B240031B305 /* RatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingViewController.swift; sourceTree = "<group>"; };
 		7B279193247AE00E0038286E /* uiTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uiTabBarController.swift; sourceTree = "<group>"; };
 		7B279195247B24CB0038286E /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		7B279197247B25890038286E /* UIViewSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewSnapshot.swift; sourceTree = "<group>"; };
@@ -84,7 +89,10 @@
 		7B723B5121F00D95008605FB /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
 		7B9050AF2243C210000F2FF5 /* GettingStartedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettingStartedViewController.swift; sourceTree = "<group>"; };
 		7BA0191B21ECB4510078E61B /* newProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newProductViewController.swift; sourceTree = "<group>"; };
+		7BB4726D24DECDD400345FDE /* Streak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Streak.swift; sourceTree = "<group>"; };
+		7BB4726F24E07D6F00345FDE /* AppStoreReviewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreReviewManager.swift; sourceTree = "<group>"; };
 		7BD24D3021F207E500F2CBCE /* ProductTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewController.swift; sourceTree = "<group>"; };
+		7BE10A0424DB738100419C8B /* starRatingAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = starRatingAnimation.json; sourceTree = "<group>"; };
 		7BF2678322C97FA900F92263 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		7D19A54CF3164C081373F3A5 /* Pods-Flawless.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flawless.debug.xcconfig"; path = "Target Support Files/Pods-Flawless/Pods-Flawless.debug.xcconfig"; sourceTree = "<group>"; };
 		953958CE20C469BE00DD069A /* FSCalendar+Deprecated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FSCalendar+Deprecated.m"; sourceTree = "<group>"; };
@@ -221,6 +229,13 @@
 			path = Dev;
 			sourceTree = "<group>";
 		};
+		7BE10A0324DB6B1600419C8B /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
 		953958CD20C469BE00DD069A /* FSCalendar */ = {
 			isa = PBXGroup;
 			children = (
@@ -286,16 +301,20 @@
 		959D89A320B393B300E17F2E /* thebeautyapp */ = {
 			isa = PBXGroup;
 			children = (
+				7BE10A0424DB738100419C8B /* starRatingAnimation.json */,
+				7BE10A0324DB6B1600419C8B /* Animations */,
 				7B3A998822C1A73700A28343 /* Firebase */,
 				959D89A420B393B300E17F2E /* AppDelegate.swift */,
 				959D89A620B393B300E17F2E /* homeViewController.swift */,
 				959D89A820B393B300E17F2E /* Main.storyboard */,
+				7B0F2B4D24D98B240031B305 /* RatingViewController.swift */,
 				7B0C9E2C2482926D005198CC /* DayOfWeekButton.swift */,
 				7B364F8B247C34360088CC5B /* AddProductViewController.swift */,
 				7B279197247B25890038286E /* UIViewSnapshot.swift */,
 				7B279195247B24CB0038286E /* NotificationsViewController.swift */,
 				7B279193247AE00E0038286E /* uiTabBarController.swift */,
 				7B45EF8C22D23B9500A661F5 /* Rating.swift */,
+				7BB4726D24DECDD400345FDE /* Streak.swift */,
 				7B45EF8A22D1527400A661F5 /* RatingControl.swift */,
 				7B9050AF2243C210000F2FF5 /* GettingStartedViewController.swift */,
 				953958CD20C469BE00DD069A /* FSCalendar */,
@@ -311,6 +330,7 @@
 				7B723B5121F00D95008605FB /* ProductTableViewCell.swift */,
 				7BF2678322C97FA900F92263 /* HomeTableViewCell.swift */,
 				7BD24D3021F207E500F2CBCE /* ProductTableViewController.swift */,
+				7BB4726F24E07D6F00345FDE /* AppStoreReviewManager.swift */,
 			);
 			path = thebeautyapp;
 			sourceTree = "<group>";
@@ -446,6 +466,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BE10A0524DB738100419C8B /* starRatingAnimation.json in Resources */,
 				959D89AF20B393B400E17F2E /* Assets.xcassets in Resources */,
 				959D89AA20B393B300E17F2E /* Main.storyboard in Resources */,
 			);
@@ -584,6 +605,7 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Flawless/Pods-Flawless-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -591,6 +613,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -616,6 +639,7 @@
 				953958F120C469BE00DD069A /* FSCalendarAppearance.m in Sources */,
 				953958F520C469BE00DD069A /* FSCalendarCollectionViewLayout.m in Sources */,
 				953958FC20C469BE00DD069A /* FSCalendarStickyHeader.m in Sources */,
+				7BB4727024E07D6F00345FDE /* AppStoreReviewManager.swift in Sources */,
 				959D89A720B393B300E17F2E /* homeViewController.swift in Sources */,
 				953958F820C469BE00DD069A /* FSCalendarDelegationProxy.m in Sources */,
 				7B45EF8D22D23B9500A661F5 /* Rating.swift in Sources */,
@@ -630,6 +654,7 @@
 				953958FE20C469BE00DD069A /* FSCalendarWeekdayView.m in Sources */,
 				7B364F8C247C34360088CC5B /* AddProductViewController.swift in Sources */,
 				953958EF20C469BE00DD069A /* FSCalendar+Deprecated.m in Sources */,
+				7BB4726E24DECDD400345FDE /* Streak.swift in Sources */,
 				7B279194247AE00E0038286E /* uiTabBarController.swift in Sources */,
 				953958FB20C469BE00DD069A /* FSCalendarScopeHandle.m in Sources */,
 				953958F320C469BE00DD069A /* FSCalendarCell.m in Sources */,
@@ -638,6 +663,7 @@
 				7B45EF8B22D1527400A661F5 /* RatingControl.swift in Sources */,
 				953958FA20C469BE00DD069A /* FSCalendarHeaderView.m in Sources */,
 				7B279198247B25890038286E /* UIViewSnapshot.swift in Sources */,
+				7B0F2B4E24D98B240031B305 /* RatingViewController.swift in Sources */,
 				959D89A520B393B300E17F2E /* AppDelegate.swift in Sources */,
 				7B279196247B24CB0038286E /* NotificationsViewController.swift in Sources */,
 			);

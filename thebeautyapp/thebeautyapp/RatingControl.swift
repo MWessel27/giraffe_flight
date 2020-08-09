@@ -9,7 +9,13 @@
 import UIKit
 import os.log
 
+protocol RatingViewDelegate {
+    func setSelectedRating(rating: Int)
+}
+
 @IBDesignable class RatingControl: UIStackView {
+    
+    var delegate: RatingViewDelegate?
     
     let notification = UINotificationFeedbackGenerator()
     
@@ -100,15 +106,15 @@ import os.log
         // Calculate the rating of the selected button
         let selectedRating = index + 1
         
-        if selectedRating == rating {
-            // If the selected star represents the current rating, reset the rating to 0.
-            rating = 0
-        } else {
-            // Otherwise set the rating to the selected star
+//        if selectedRating == rating {
+//            // If the selected star represents the current rating, reset the rating to 0.
+//            rating = 0
+//        } else {
+//            // Otherwise set the rating to the selected star
             rating = selectedRating
-        }
+//        }
         
-        statsViewController.sharedStatsInstance.setSelectedRating(rating: rating)
+        delegate?.setSelectedRating(rating: rating)
     }
     
     private func updateButtonSelectionStates() {

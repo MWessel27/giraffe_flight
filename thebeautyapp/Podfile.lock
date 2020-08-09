@@ -58,6 +58,7 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (5.5.0):
     - GoogleUtilities/Logger
+  - lottie-ios (3.0.3)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
     - nanopb/encode (= 0.3.901)
@@ -68,6 +69,7 @@ DEPENDENCIES:
   - Firebase
   - Firebase/Core
   - Firebase/InAppMessagingDisplay
+  - lottie-ios
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -80,6 +82,7 @@ SPEC REPOS:
     - FirebaseInstanceID
     - GoogleAppMeasurement
     - GoogleUtilities
+    - lottie-ios
     - nanopb
 
 SPEC CHECKSUMS:
@@ -92,8 +95,9 @@ SPEC CHECKSUMS:
   FirebaseInstanceID: a122b0c258720cf250551bb2bedf48c699f80d90
   GoogleAppMeasurement: 1624046ab1bcc5e170061a56ef5679000b079c8e
   GoogleUtilities: 6481e6318c5fcabaaa8513ef8120f329055d7c10
+  lottie-ios: 06e0b54aab85ba128e332687d7f4ac4861a7a7ae
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
 
-PODFILE CHECKSUM: ba069770e91809a4da862e913347ee61ee0999d5
+PODFILE CHECKSUM: 02eb23e38f84e8eb2e7f482feda2085772412474
 
 COCOAPODS: 1.6.1

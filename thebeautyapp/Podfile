@@ -10,6 +10,7 @@ target 'Flawless' do
   pod 'Firebase'
   pod 'Firebase/Core'
   pod 'Firebase/InAppMessagingDisplay'
+  pod 'lottie-ios'
 
   target 'FlawlessTests' do
     inherit! :search_paths

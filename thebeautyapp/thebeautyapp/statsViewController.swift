@@ -14,7 +14,7 @@ var selectedDate: String = ""
 
 class statsViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate {
     
-    static var sharedStatsInstance = statsViewController()
+//    static var sharedStatsInstance = statsViewController()
     
     fileprivate weak var calendar: FSCalendar!
     @IBOutlet weak var statsProductList: UITableView!
@@ -39,6 +39,8 @@ class statsViewController: UIViewController, FSCalendarDataSource, FSCalendarDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.ratingControl.delegate = self
         
         if let savedProds = loadProducts() {
             products += savedProds
@@ -154,10 +156,6 @@ class statsViewController: UIViewController, FSCalendarDataSource, FSCalendarDel
         statsProductList.reloadData()
     }
     
-    func setSelectedRating(rating: Int) {
-        saveRating(rating: rating, date: selectedDate)
-    }
-    
     private func loadProducts() -> [Product]? {
         return NSKeyedUnarchiver.unarchiveObject(withFile: Product.ArchiveURL.path) as? [Product]
     }
@@ -211,7 +209,11 @@ class statsViewController: UIViewController, FSCalendarDataSource, FSCalendarDel
 
 }
 
-extension statsViewController: UITableViewDelegate, UITableViewDataSource {
+extension statsViewController: UITableViewDelegate, UITableViewDataSource, RatingViewDelegate {
+    
+    func setSelectedRating(rating: Int) {
+        saveRating(rating: rating, date: selectedDate)
+    }
     
     private func saveRating(rating: Int, date: String) {
         print("Saving rating")
